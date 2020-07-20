@@ -132,7 +132,7 @@
         <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan">SiCantik</a>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-4 display-4 mb-3">
-        <a type="button" href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan">Standar Pelayanan</a>
+        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan">Standar Pelayanan</a>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-4 display-4 mb-3">
         <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan">OSS</a>
