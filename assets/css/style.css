@@ -1,0 +1,443 @@
+/* Utama */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: #f0f0f0;
+}
+
+main h3,
+main h4,
+main h5 {
+	text-shadow: 1px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron {
+	height: 92vh;
+	width: 100%;
+	background-image: url("../img/bg-web.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+}
+
+.jumbotron::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.8),
+		rgba(0, 0, 0, 0)
+	);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.navbar-brand {
+	font-family: Maven Pro, sans-serif;
+	font-size: 20px;
+}
+
+.jumbotron .display-3 {
+	font-size: 18px;
+}
+
+.jumbotron .display-2 {
+	font-size: 20px;
+}
+
+.jumbotron .display-4 {
+	font-size: 16px;
+}
+
+.jumbotron .judul {
+	color: white;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+	margin-top: 100px;
+	position: relative;
+	z-index: 1;
+}
+
+.navbar {
+	background-image: linear-gradient(to bottom, rgb(196, 0, 0), maroon);
+}
+
+.navbar-brand {
+	font-weight: 700;
+}
+
+.judul-cover {
+	margin-top: 60px;
+}
+
+.garis-judul {
+	width: 150px;
+	border-top: 4px solid maroon;
+}
+
+.footer {
+	background-color: maroon;
+	color: #f0f0f0;
+}
+
+.ikon:hover {
+	color: maroon;
+}
+
+/*tutup utama*/
+
+/*profil*/
+
+.profil {
+	min-height: 650px;
+}
+
+.isi-profil {
+	font-size: 18px;
+	padding: 10px;
+}
+
+.profil .slogan {
+	color: maroon;
+	margin-bottom: 40px;
+	font-size: 40px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/*tutup profil*/
+
+/*pelayanan*/
+
+.pelayanan {
+	min-height: 650px;
+	background-image: url("../img/agam.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	color: white;
+}
+
+.pelayanan .garis-judul {
+	border-top: 4px solid white;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.pelayanan .isi-pelayanan {
+	position: relative;
+	z-index: 1;
+}
+
+.pelayanan .intro-pelayanan {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+	margin-top: 20px;
+}
+
+.pelayanan .pilih-pelayanan:hover {
+	background-color: white;
+	color: maroon;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 10px;
+}
+
+.pelayanan .pilih-pelayanan {
+	font-size: 40px;
+	padding: 10px;
+	text-decoration: none;
+	border: 2px solid;
+	color: #f0f0f0;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+}
+
+.pelayanan::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.8),
+		rgba(0, 0, 0, 0)
+	);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.modal-header {
+	background-color: maroon;
+	color: #f0f0f0;
+}
+
+.judul-modal {
+	font-size: 24px;
+}
+
+.pilih-modal-pelayanan {
+	font-size: 20px;
+	text-decoration: none;
+	display: inline-block;
+	color: maroon;
+	padding: 5px;
+	border: 2px solid maroon;
+	width: 100%;
+}
+
+.pilih-modal-pelayanan:hover {
+	background-color: maroon;
+	color: #f0f0f0;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 5px;
+	text-decoration: none;
+}
+
+/*tutup pelayanan*/
+
+/*investasi*/
+
+.investasi {
+	min-height: 650px;
+	margin-bottom: 30px;
+}
+
+.gis-investasi {
+	border: 1px maroon;
+}
+
+.penjelasan-investasi {
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+/*tutup investasi*/
+
+/*naker*/
+
+.naker {
+	min-height: 650px;
+	background-image: url("../img/agamkuning.png");
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	color: white;
+}
+
+.naker .garis-judul {
+	border-top: 4px solid #f0f0f0;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.naker::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.8),
+		rgba(0, 0, 0, 0)
+	);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.judul-naker {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+	color: maroon;
+}
+
+.isi-naker {
+	font-size: 22px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+	font-weight: 400;
+	color: #f0f0f0;
+	position: relative;
+	z-index: 1;
+}
+
+.naker .pilih-naker:hover {
+	background-color: white;
+	color: maroon;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 10px;
+}
+
+.naker .pilih-naker {
+	font-size: 40px;
+	padding: 10px;
+	text-decoration: none;
+	border: 2px solid;
+	color: #f0f0f0;
+	display: inline-block;
+	width: 100%;
+	margin-top: 20px;
+}
+
+/*tutup naker*/
+
+/*pengaduan*/
+
+.pengaduan {
+	min-height: 650px;
+}
+
+.kontak-pp {
+	font-size: 18px;
+}
+
+.form-pengaduan {
+	margin-bottom: 50px;
+}
+
+.pengaduan .tombol-pp:hover {
+	background-color: white;
+	color: maroon;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 10px;
+}
+
+.pengaduan .tombol-pp {
+	font-size: 24px;
+	padding: 10px;
+	text-decoration: none;
+	border: 2px solid;
+	color: maroon;
+	display: inline-block;
+	margin-bottom: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+/*tutup pengaduan*/
+
+/*kontak*/
+
+.kontak {
+	height: auto;
+	background-color: #333333;
+	color: #f0f0f0;
+}
+
+/*tutup kontak*/
+
+/*perizinan*/
+.btn-group a {
+	color: maroon;
+}
+
+.tutup {
+	color: #f0f0f0f0;
+}
+
+.tutup:hover {
+	color: #2a2a2a;
+}
+/*tutup perizinan*/
+
+@media (min-width: 992px) {
+	.nav-link {
+		padding: 0.25rem 0;
+		margin-right: 10px;
+		color: #999999;
+		background-color: transparent;
+		border-bottom: 0.25rem solid transparent;
+	}
+
+	.nav-link:hover::after,
+	.nav-link:focus::after {
+		content: "";
+		display: block;
+		border-bottom: 3px solid #ffe600;
+		width: 50%;
+		margin: auto;
+		padding-bottom: 5px;
+		margin-bottom: -8px;
+	}
+
+	.jumbotron .display-3 {
+		font-size: 32px;
+	}
+
+	.jumbotron .display-2 {
+		font-size: 34px;
+	}
+
+	.jumbotron .display-4 {
+		font-size: 28px;
+	}
+
+	/*pelayanan*/
+	.pelayanan .pilih-pelayanan {
+		font-size: 60px;
+		padding: 10px;
+		margin-top: 80px;
+		text-decoration: none;
+		color: white;
+		display: inline-block;
+		width: 350px;
+	}
+
+	.pelayanan .pilih-pelayanan:hover {
+		background-color: white;
+		color: maroon;
+		transition-duration: 0.5s;
+		border-radius: 50px;
+		padding: 10px;
+	}
+	/*tutup pelayanan*/
+
+	/*naker*/
+	.naker .pilih-naker {
+		font-size: 60px;
+		text-decoration: none;
+		color: #f0f0f0;
+		display: inline-block;
+		width: 350px;
+	}
+
+	.naker .pilih-naker:hover {
+		background-color: white;
+		color: maroon;
+		transition-duration: 0.5s;
+		border-radius: 50px;
+		padding: 10px;
+	}
+
+	.isi-naker {
+		font-size: 32px;
+	}
+	/*tutup naker*/
+
+	.pengaduan .tombol-pp:hover {
+		background-color: maroon;
+		color: #f0f0f0;
+		transition-duration: 0.5s;
+		border-radius: 30px;
+		padding: 10px;
+		width: 350px;
+	}
+
+	.pengaduan .tombol-pp {
+		font-size: 24px;
+		padding: 10px;
+		text-decoration: none;
+		border: 2px solid;
+		color: maroon;
+		display: inline-block;
+		text-align: center;
+		width: 350px;
+	}
+}
