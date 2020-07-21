@@ -218,7 +218,7 @@
       </div>
     </div>
     <hr>
-    <div class="row form-pengaduan">
+    <div class="row">
       <div class="col-lg-12 col-sm-12">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" class="shadow" width="100%" height="500px" frameborder="0" marginheight="1" marginwidth="0">Memuat…</iframe>
       </div>

@@ -301,8 +301,6 @@ main h5 {
 
 .form-pengaduan {
 	margin-bottom: 50px;
-	z-index: -1;
-	position: relative;
 }
 
 .pengaduan .tombol-pp:hover {
