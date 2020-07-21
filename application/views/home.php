@@ -201,7 +201,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 mt-4 display-4 kontak-pp">
+      <div class="col-lg-8 col-sm-12 mt-4">
+        <img class="mb-4 gambar_pengaduan" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
+      </div>
+      <div class="col-lg-4 col-sm-12 mt-4 display-4 kontak-pp">
         <p>Kami membuka layanan Pengaduan Online. Apabila terjadi atau menemukan ketidaksesuaian di lapangan mengenai <b>Perizinan</b>, silahkan hubungi kami melalui kontak
           dibawah ini :</p>
         <ul class="list-unstyled ">
@@ -214,6 +217,7 @@
         <p>Atau isi Form Pengaduan Online yang telah kami sediakan dibawah ini :</p>
       </div>
     </div>
+    <hr>
     <div class="row form-pengaduan">
       <div class="col-lg-12 col-sm-12">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" class="shadow" width="100%" height="500px" frameborder="0" marginheight="1" marginwidth="0">Memuat…</iframe>

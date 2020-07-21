@@ -295,10 +295,14 @@ main h5 {
 
 .kontak-pp {
 	font-size: 18px;
+	position: relative;
+	z-index: -1;
 }
 
 .form-pengaduan {
 	margin-bottom: 50px;
+	z-index: -1;
+	position: relative;
 }
 
 .pengaduan .tombol-pp:hover {
@@ -319,6 +323,16 @@ main h5 {
 	margin-bottom: 20px;
 	width: 100%;
 	text-align: center;
+}
+
+.gambar_pengaduan {
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+	position: relative;
+	transition-duration: 0.5s;
+}
+
+.gambar_pengaduan:hover {
+	transform: scale(1.3);
 }
 
 /*tutup pengaduan*/
@@ -346,6 +360,23 @@ main h5 {
 	color: #2a2a2a;
 }
 /*tutup perizinan*/
+
+/*Login*/
+.judul_login {
+	font-size: 18px;
+}
+
+.kartu_login {
+	background-color: maroon;
+	border-radius: 20px;
+	color: #f0f0f0f0;
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.kartu_login img {
+	margin: 10px;
+}
+/*tutup login*/
 
 @media (min-width: 992px) {
 	.nav-link {
