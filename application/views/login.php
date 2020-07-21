@@ -3,8 +3,7 @@
         <div class="row">
             <div class="col-lg-12 col-sm-12 text-center text-white" style="margin:80px auto;">
                 <img src="<?= base_url(); ?>assets/img/logoenaker(new)putih.png" width="110px" alt="Logo e-Naker">
-                <h1>e-Naker</h1>
-                <h6>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU DAN KETENAGAKERJAAN <br> KABUPATEN AGAM</h6>
+                <h1>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU DAN KETENAGAKERJAAN <br> KABUPATEN AGAM</h1>
                 <h2>Silahkan Login</h2>
                 <div class="card-body" style="width:400px; margin:auto;">
                     <?php if ($this->session->flashdata('pesan')) : ?>
