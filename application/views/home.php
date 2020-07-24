@@ -193,7 +193,7 @@
 
 <!-- Pengaduan -->
 <section class="pengaduan" id="pengaduan">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row text-center">
       <div class="col-lg-12 mt-4">
         <h1>Pengaduan Online</h1>
@@ -202,15 +202,15 @@
     </div>
     <div class="row">
       <div class="col-lg-8 col-sm-12 mt-4">
-        <img class="mb-4 gambar_pengaduan" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
+        <img class="shadow" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
       </div>
-      <div class="col-lg-4 col-sm-12 mt-4 display-4 kontak-pp">
+      <div class="col-lg-4 col-sm-12 mt-4 display-4 kontak-pp text-justify">
         <p>Kami membuka layanan Pengaduan Online. Apabila terjadi atau menemukan ketidaksesuaian di lapangan mengenai <b>Perizinan</b>, silahkan hubungi kami melalui kontak
           dibawah ini :</p>
         <ul class="list-unstyled ">
-          <li><i class="ikon fa fa-envelope icon-square icon-32"></i>
+          <li><i class="ikon-pengaduan fa fa-envelope icon-square icon-32"></i>
             E-Mail : <b>ppdpmptspkabagam@gmail.com</b></li>
-          <li><i class="ikon fa fa-phone icon-square icon-32"></i> HP : </li>
+          <li><i class="ikon-pengaduan fa fa-phone icon-square icon-32"></i> HP : </li>
           <li><b>> 0852-6381-3484 (Zuherizal)</b></li>
           <li><b>> 0823-8582-2706 (Masrial)</b></li>
         </ul>
@@ -219,7 +219,7 @@
     </div>
     <hr>
     <div class="row">
-      <div class="col-lg-12 col-sm-12">
+      <div class="col-lg-12 col-sm-12 form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" class="shadow" width="100%" height="500px" frameborder="0" marginheight="1" marginwidth="0">Memuat…</iframe>
       </div>
     </div>

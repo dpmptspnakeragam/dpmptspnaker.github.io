@@ -1,0 +1,26 @@
+.header-admin {
+	background-color: maroon;
+}
+
+.brand {
+	text-shadow: 1px 1px 1px black;
+}
+
+/*home*/
+
+.wallpaper-admin {
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+	padding-top: 100px;
+}
+
+.judul-admin {
+	font-size: 24px;
+	text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.welcome {
+	font-size: 36px;
+	font-weight: 5;
+	text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+}
+/*tutup home*/

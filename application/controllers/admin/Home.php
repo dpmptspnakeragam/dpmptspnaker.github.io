@@ -20,7 +20,6 @@ class Home extends CI_controller
     public function logout()
     {
         $this->session->unset_userdata('username');
-        $this->session->unset_userdata('hak_akses');
         session_destroy();
         redirect('login');
     }
