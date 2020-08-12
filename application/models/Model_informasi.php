@@ -6,6 +6,7 @@ class Model_informasi extends CI_model
     {
         $this->db->select('*');
         $this->db->from('berita');
+        $this->db->join('kategori_berita', 'berita.id_kategori=kategori_berita.id_kategori');
         $this->db->order_by('tgl_berita', 'DESC');
         $query = $this->db->get();
         return $query;
@@ -50,6 +51,14 @@ class Model_informasi extends CI_model
         $this->db->select('*');
         $this->db->from('berita');
         $query = $this->db->get()->num_rows();
+        return $query;
+    }
+
+    public function kategori()
+    {
+        $this->db->select('*');
+        $this->db->from('kategori_berita');
+        $query = $this->db->get();
         return $query;
     }
 }

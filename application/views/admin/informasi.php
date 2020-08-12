@@ -36,14 +36,16 @@
                 </div><br>
                 <!-- start: Accordion -->
                 <div class="table-responsive">
-                    <table class="table table-striped table-borderless table-hover" id="TambahBerita">
-                        <thead class="bg-primary text-light">
+                    <table class="table table-striped table-borderless table-hover" id="dataTables-example">
+                        <thead class="bg-dark text-light">
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th class="text-center">Judul</th>
                                 <th class="text-center">Thumbnail</th>
                                 <th class="text-center">Rangkuman</th>
                                 <th class="text-center">Isi</th>
+                                <th class="text-center">Tanggal Berita</th>
+                                <th class="text-center">Kategori</th>
                                 <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
                             </tr>
                         </thead>
@@ -54,15 +56,17 @@
                             ?>
                                 <tr class="odd gradeX">
                                     <td><?= $no++; ?></td>
-                                    <td><?= $row->judul; ?></td>
-                                    <td><?= $row->gambar; ?></td>
+                                    <td><?= $row->judul_berita; ?></td>
+                                    <td><img src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" style="width:95%;" class="img-responsive"></td>
                                     <td><?= $row->rangkuman; ?></td>
-                                    <td><?= $row->isi; ?></td>
+                                    <td><?= $row->isi_berita; ?></td>
+                                    <td><?= $row->tgl_berita; ?></td>
+                                    <td><?= $row->kategori; ?></td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-warning btn-sm btn-circle" href="" data-toggle="modal" data-target="" title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditInformasi<?php echo $row->id_berita; ?>" title="Edit"><i class="fa fa-edit"></i></a>
 
-                                            <a class="btn btn-outline-danger btn-sm btn-circle" href="" title="Hapus" onclick=""><i class="fa fa-times"></i></a>
+                                            <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url() ?>admin/informasi/hapus/<?php echo $row->id_berita; ?>" title="Hapus" onclick="javascript: return confirm('Anda yakin hapus <?= $row->judul_berita; ?>?')"><i class="fa fa-times"></i></a>
                                         </div>
                                     </td>
                                 </tr>
