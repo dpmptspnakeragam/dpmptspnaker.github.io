@@ -99,14 +99,14 @@
 <section class="profil" id="profil">
   <div class="container text-center ">
     <div class="row">
-      <div class="col-lg-12 mt-4 ">
+      <div class="col-lg-12 mt-4 mb-4">
         <h1 class="judul-profil"><b>Profil Dinas</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
     <div class="container">
       <div class="row">
-        <div class="text-justify isi-profil col-lg-12 col-sm-12">
+        <div class="text-justify isi-profil col-lg-12 col-sm-12 mb-0">
           <p>
             Sebelum dibentuknya Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan, OPD ini bernama Kantor Penanaman Modal
             dan Pelayanan Terpadu (KPMPT) yang merupakan unsur pelaksana teknis
@@ -123,31 +123,23 @@
             Satu Pintu dan Ketenagakerjaan (DPMPTSP-NAKER), seterusnya ditindak lanjuti dengan Peraturan Bupati Agam
             Nomor 56 Tahun 2016 tentang Penjabaran Tugas dan Fungsi Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan.
           </p>
-          <h5>Visi :</h5>
-          <p>Terwujudnya iklim Penanaman Modal yang Kondusif, Berdaya Saing serta Pelayanan Terpadu dan Ketenagaerjaan yang Berkualitas.</p>
-          <h5>Misi :</h5>
-          <ul class="list-unstyled">
-            <li>1. Meningkatkan Iklim Investasi yang Kondusif dan Berdaya Saing, sesuai Potensi dan Keunggulan Daerah </li>
-            <li>2. Mewujudkan Pelyanan Penanaman Modal, Perizinan dan Non Perizinan melalui PTSP yang berkualitas berbasis IT </li>
-          </ul>
-          <h5>Tugas :</h5>
-          <p>Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan, mempunyai tugas pokok membantu Bupati
-            melaksanakan urusan pemerintahan yang menjadi kewenangan daerah dan tugas pembantuan dibidang penanaman modal,
-            pelayanan perizinan dan ketenagakerjaan yang berada dan bertanggung jawab kepada Bupati melalui Sekretaris Daerah</p>
-          <h5>Fungsi :</h5>
-          <ul class="list-unstyled">
-            Dalam menyelenggarakan tugasnya sebagaimana dimaksud diatas, Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan mempunyai fungsi:
-            <li>a. Perumusan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan;</li>
-            <li>b. Pelaksanaan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan; </li>
-            <li>c. Pelaksanaan evaluasi dan pelaporan di bidang penanaman modal dan bidang ketenagakerjaan; </li>
-            <li>d. Pelaksanaan administrasi Dinas;
-            <li>e. Pelaksanaan fungsi lain yang diberikan Bupati terkait dengan tugas dan fungsinya.</li>
-          </ul>
+        </div>
+        <div class="col-lg-3 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalVisi">Visi</a>
+        </div>
+        <div class="col-lg-3 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMisi">Misi</a>
+        </div>
+        <div class="col-lg-3 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas">Tugas</a>
+        </div>
+        <div class="col-lg-3 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalFungsi">Fungsi</a>
         </div>
       </div>
       <div class="container">
         <div class="row">
-          <di class="text-center col-md-12 col-lg-12 col-sm-12 display-4">
+          <di class="text-center col-md-12 col-lg-12 col-sm-12 display-4 mt-4">
             <div class="slogan"><u>Kami Melayani Dengan PASTI !!!</u></div>
           </di>
         </div>

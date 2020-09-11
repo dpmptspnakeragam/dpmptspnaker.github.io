@@ -2,7 +2,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>e-Naker Kabupaten Agam</title>
+    <title>DPMPTSP-Naker Kab. Agam</title>
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/plugin/datatables/bootstrap.css">
