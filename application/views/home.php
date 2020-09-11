@@ -22,7 +22,7 @@
           <a class="nav-link page-scroll" href="#profil">Profil Dinas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#pelayanan">Pelayanan</a>
+          <a class="nav-link page-scroll" href="#pelayanan">Layanan</a>
         </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#investasi">GIS Potensi Investasi</a>
@@ -42,12 +42,65 @@
 </nav>
 <!-- close navbar -->
 
+<!-- Informasi -->
+<section class="informasi" id="informasi">
+  <div>
+    <div id="carouselExampleIndicators" class="carousel slide berita-carousel" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <?php
+        for ($i = 0; $i < $berita->num_rows(); $i++) {
+          echo '
+        <li data-target="#carouselExampleIndicators" data-slide-to="' . $i . '"';
+          if ($i == 0) {
+            echo 'class="active"';
+          }
+          echo '></li>';
+        } ?>
+      </ol>
+      <div class="carousel-inner">
+        <?php
+        if ($berita->num_rows() > 0) {
+          foreach ($berita->result() as $row) {
+            if ($row->id_berita == 1) {
+        ?> <div class="carousel-item active">
+              <?php
+            } else {
+              ?> <div class="carousel-item ">
+                <?php
+              }
+                ?>
+                <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
+                  <img class="gambar-carousel" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
+                  <div class="carousel-caption d-none d-sm-block text-left">
+                    <h1 class="judul-informasi"><?= $row->judul_berita; ?></h1>
+                    <p class="rangkuman"><?= $row->rangkuman; ?>'</p>
+                    <small><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
+                </a>
+                </div>
+              </div>';
+          <?php }
+        } ?>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- close informasi -->
+
 <!-- Profil -->
 <section class="profil" id="profil">
   <div class="container text-center ">
     <div class="row">
-      <div class="col-lg-12 mt-4">
-        <h1>Profil Dinas</h1>
+      <div class="col-lg-12 mt-4 ">
+        <h1 class="judul-profil"><b>Profil Dinas</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -108,8 +161,8 @@
 <section class="pelayanan" id="pelayanan">
   <div class="container text-center">
     <div class="row ">
-      <div class="col-lg-12 mt-4 mb-auto">
-        <h1>Pelayanan</h1>
+      <div class="col-lg-12 mt-4 mb-auto ">
+        <h1 class="judul-layanan"><b>Layanan</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -118,7 +171,7 @@
     <div class="row">
       <div class="col-lg-12 text-justify">
         <p class="isi-pelayanan intro-pelayanan">
-          Kami membuka Pelayanan Perizinan dan Non Perizinan melalui tatap muka maupun online. Untuk tatap muka langsung
+          Kami membuka Layanan Perizinan dan Non Perizinan melalui tatap muka maupun online. Untuk tatap muka secara langsung
           silahkan kunjungi kantor kami dengan alamat yang tertera pada menu Kontak. Untuk pelayanan melalui online silahkan
           kunjungi situs yang telah kami sediakan dibawah ini (SiCantik atau OSS) atau bisa juga hubungi nomor HP yang tertera pada menu Kontak.
           Untuk melihat persyaratan atau info tentang Izin yang akan anda buat, silahkan pilih Standar Pelayanan.
@@ -146,8 +199,8 @@
 <section class="investasi" id="investasi">
   <div class="container text-center">
     <div class="row">
-      <div class="col-lg-12 mt-4">
-        <h1>GIS Potensi Investasi</h1>
+      <div class="col-lg-12 mt-4 ">
+        <h1 class="judul-investasi"><b>GIS Potensi Investasi</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -171,15 +224,15 @@
   <div class="container text-center">
     <div class="row isi-naker">
       <div class="col-lg-12 mt-4">
-        <h1 class="judul-naker">e-Naker</h1>
+        <h1 class="judul-naker"><b>e-Naker</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 text-justify">
-        <p class="isi-naker display-4">Merupakan situs yang dapat digunakan pengguna untuk memperoleh informasi dibidang Ketenagakerjaan yang meliputi :
+      <div class="col-lg-12 text-center mt-5">
+        <p class="isi-naker">Merupakan situs yang dapat digunakan pengguna untuk memperoleh informasi dibidang Ketenagakerjaan yang meliputi :
           Lowongan Kerja, Magang, Pelatihan serta yang berkaitan dengan Ketenagakerjaan</p><br>
-        <p class="isi-naker display-4">Untuk mengunjungi situs e-Naker, silahkan klik tombol dibawah ini.<p>
+        <p class="isi-naker">Untuk mengunjungi situs e-Naker, silahkan klik tombol dibawah ini.<p>
       </div>
     </div>
     <div class="row isi-naker">
@@ -195,8 +248,8 @@
 <section class="pengaduan" id="pengaduan">
   <div class="container-fluid">
     <div class="row text-center">
-      <div class="col-lg-12 mt-4">
-        <h1>Pengaduan Online</h1>
+      <div class="col-lg-12 mt-4 ">
+        <h1 class="judul-pengaduan"><b>Pengaduan Online</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -231,8 +284,8 @@
 <section class="kontak" id="kontak">
   <div class="container text-center">
     <div class="row">
-      <div class="col-lg-12 mt-4">
-        <h1>Kontak</h1>
+      <div class="col-lg-12 mt-4 ">
+        <h1 class="judul-kontak"><b>Kontak</b></h1>
         <hr class="garis-judul">
       </div>
       <div class="col-lg-12 container-fluid">
