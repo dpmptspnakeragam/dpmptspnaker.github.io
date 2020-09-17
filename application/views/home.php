@@ -1,7 +1,7 @@
 <!-- Cover -->
 <div class="jumbotron mb-0 ml-0">
   <div class="container text-center judul">
-    <img class="mb-4" src="<?= base_url(); ?>assets/img/vectoragam.png" alt="logoagam" width="80px">
+    <img class="mb-4" src="<?= base_url(); ?>assets/img/vectoragam.png" alt="logoagam" width="10%">
     <h3 class="display-3">SELAMAT DATANG</h3>
     <h4 class="display-2">DINAS PENANAMAN MODAL PELAYANAN TERPADU <br> SATU PINTU DAN KETENAGAKERJAAN</h4>
     <h5 class="display-4">Kabupaten Agam<h5>
@@ -198,8 +198,7 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-sm-12">
-        <iframe class="gis-investasi shadow" src="https://www.arcgis.com/apps/Embed/index.html?webmap=d4e9a550df254cf1a0df8c171094ac14&extent=99.4527,-0.6416,100.8892,0.1192&home=true&zoom=true&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&basemap_gallery=true&disable_scroll=true&theme=light" width="100%" height="500px" frameborder="0" allowfullscreen>
-        </iframe>
+        <iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="PETA POTENSI INVESTASI KABUPATEN AGAM" src="//www.arcgis.com/apps/Embed/index.html?webmap=ae83c5f68ead4e8a894d82b536186438&extent=99.4542,-0.6519,100.8906,0.1131&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light"></iframe>
       </div>
     </div>
     <div class="row">

@@ -18,11 +18,11 @@ main h5 {
 }
 
 .jumbotron {
-	height: 92vh;
+	height: 42vh;
 	width: 100%;
 	background-image: url("../img/bg-web.jpg");
 	background-attachment: fixed;
-	background-size: cover;
+	background-size: 100%;
 	position: relative;
 }
 
@@ -51,17 +51,17 @@ main h5 {
 }
 
 .jumbotron .display-2 {
-	font-size: 20px;
+	font-size: 14px;
 }
 
 .jumbotron .display-4 {
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .jumbotron .judul {
 	color: white;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-	margin-top: 100px;
+	margin-top: 10px;
 	position: relative;
 	z-index: 1;
 }
@@ -438,7 +438,7 @@ a:hover {
 }
 /*tutup login*/
 
-@media (min-width: 992px) {
+@media (min-width: 760px) {
 	.nav-link {
 		padding: 0.25rem 0;
 		margin-right: 10px;
@@ -456,6 +456,38 @@ a:hover {
 		margin: auto;
 		padding-bottom: 5px;
 		margin-bottom: -8px;
+	}
+
+	.jumbotron {
+		height: 92vh;
+		width: 100%;
+		background-image: url("../img/bg-web.jpg");
+		background-attachment: fixed;
+		background-size: cover;
+		position: relative;
+	}
+
+	.jumbotron::after {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-image: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.8),
+			rgba(0, 0, 0, 0)
+		);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+
+	.jumbotron .judul {
+		color: white;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+		margin-top: 100px;
+		position: relative;
+		z-index: 1;
 	}
 
 	.jumbotron .display-3 {
