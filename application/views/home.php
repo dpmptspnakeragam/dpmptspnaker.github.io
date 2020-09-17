@@ -71,10 +71,10 @@
                 ?>
                 <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
                   <img class="gambar-carousel" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
-                  <div class="carousel-caption d-none d-sm-block text-left">
-                    <h1 class="judul-informasi"><?= $row->judul_berita; ?></h1>
-                    <p class="rangkuman"><?= $row->rangkuman; ?>'</p>
-                    <small><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
+                  <div class="carousel-caption text-left">
+                    <p class="judul-informasi mb-0"><?= $row->judul_berita; ?></p>
+                    <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
+                    <p class="ringkasan mt-1"><?= $row->rangkuman; ?>'</p>
                 </a>
                 </div>
               </div>';
@@ -220,9 +220,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 text-center mt-5">
-        <p class="isi-naker">Merupakan situs yang dapat digunakan pengguna untuk memperoleh informasi dibidang Ketenagakerjaan yang meliputi :
-          Lowongan Kerja, Magang, Pelatihan serta yang berkaitan dengan Ketenagakerjaan</p><br>
+      <div class="col-lg-12 text-center">
+        <div class="col-lg-12 mt-4">
+          <img class="logo-enaker" src="<?= base_url(); ?>assets/img/logoenaker.png" alt="logoagam">
+        </div>
+        <p class="isi-naker mt-3">Merupakan situs yang dapat digunakan pengguna untuk memperoleh informasi dibidang Ketenagakerjaan yang meliputi :
+          Lowongan Kerja, Magang, Pelatihan serta yang berkaitan dengan Ketenagakerjaan</p>
         <p class="isi-naker">Untuk mengunjungi situs e-Naker, silahkan klik tombol dibawah ini.<p>
       </div>
     </div>

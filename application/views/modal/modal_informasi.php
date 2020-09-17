@@ -14,10 +14,10 @@
                     <div class="container text-justify">
                         <div class="row modal-informasi">
                             <img class="gambar-carousel" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
-                            <div class="container">
-                                <h1 class="judul-informasi"><?= $row->judul_berita; ?></h1>
-                                <small><?= date_indo($row->tgl_berita) ?>, Kategori : <?= $row->kategori; ?></small>
-                                <p class="rangkuman"><?= $row->isi_berita; ?></p>
+                            <div class="container-fluid">
+                                <p class="judul-informasi mb-0"><?= $row->judul_berita; ?></p>
+                                <small class="tgl_berita text-light"><?= date_indo($row->tgl_berita) ?>, Kategori : <?= $row->kategori; ?></small>
+                                <p class="ringkasan"><?= $row->isi_berita; ?></p>
                             </div>
                         </div>
                     </div>
