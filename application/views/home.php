@@ -43,7 +43,7 @@
 <!-- close navbar -->
 
 <!-- Informasi -->
-<section class="informasi" id="informasi">
+<!-- <section class="informasi" id="informasi">
   <div>
     <div id="carouselExampleIndicators" class="carousel slide berita-carousel" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -92,7 +92,7 @@
       </a>
     </div>
   </div>
-</section>
+</section> -->
 <!-- close informasi -->
 
 <!-- Profil -->
