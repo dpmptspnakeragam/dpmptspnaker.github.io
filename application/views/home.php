@@ -77,7 +77,7 @@
                     <p class="ringkasan mt-1"><?= $row->rangkuman; ?>'</p>
                 </a>
                 </div>
-              </div>';
+              </div>
           <?php }
         } ?>
 
