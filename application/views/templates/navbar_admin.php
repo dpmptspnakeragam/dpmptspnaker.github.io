@@ -26,6 +26,13 @@
                             Informasi
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/investasi">
+                            <span data-feather="trending-up"></span>
+                            Peluang Investasi
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
