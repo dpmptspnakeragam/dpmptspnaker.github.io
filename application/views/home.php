@@ -61,13 +61,15 @@
         <?php
         if ($berita->num_rows() > 0) {
           foreach ($berita->result() as $row) {
-            if ($row->id_berita == 1) {
+            foreach ($idmax->result() as $row2) {
+              if ($row->id_berita == $row2->idmax) {
         ?> <div class="carousel-item active">
-              <?php
-            } else {
-              ?> <div class="carousel-item ">
+                <?php
+              } else {
+                ?> <div class="carousel-item ">
                 <?php
               }
+            }
                 ?>
                 <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
                   <img class="gambar-carousel" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
@@ -76,9 +78,9 @@
                     <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
                     <p class="ringkasan mt-1"><?= $row->rangkuman; ?>'</p>
                 </a>
+                  </div>
                 </div>
-              </div>
-          <?php }
+            <?php }
         } ?>
 
       </div>

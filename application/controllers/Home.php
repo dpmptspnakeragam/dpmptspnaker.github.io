@@ -8,6 +8,7 @@ class Home extends CI_Controller
 	{
 		$this->load->model('Model_informasi');
 		$data['berita'] = $this->Model_informasi->informasi();
+		$data['idmax'] = $this->Model_informasi->idmax();
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
 		$this->load->view('modal/modal_pelayanan');
