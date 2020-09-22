@@ -105,6 +105,11 @@ main h5 {
 	width: 100%;
 }
 
+.gambar-berita {
+	height: 100%;
+	width: 100%;
+}
+
 a,
 a:hover {
 	color: inherit;
@@ -172,6 +177,14 @@ a:hover {
 	position: relative;
 	z-index: 1;
 	width: 100%;
+	padding: 10px;
+}
+
+.pilih-profil:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 30px;
 	padding: 10px;
 }
 
@@ -295,6 +308,42 @@ a:hover {
 .penjelasan-investasi {
 	font-size: 20px;
 	margin-top: 10px;
+}
+
+.pilih-investasi {
+	font-size: 30px;
+	padding: 10px;
+	text-decoration: none;
+	color: maroon;
+	display: inline-block;
+	width: 350px;
+	border: 2px solid;
+}
+
+.pilih-investasi:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 10px;
+}
+
+.pilih-investasi-2 {
+	font-size: 24px;
+	padding: 10px;
+	text-decoration: none;
+	color: maroon;
+	display: inline-block;
+	width: 350px;
+	border: 2px solid;
+}
+
+.pilih-investasi-2:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 10px;
 }
 
 /*tutup investasi*/
@@ -539,7 +588,7 @@ a:hover {
 		height: 100%;
 		background-image: linear-gradient(
 			to top,
-			rgba(0, 0, 0, 0.5),
+			rgba(0, 0, 0, 1),
 			rgba(0, 0, 0, 0)
 		);
 		position: absolute;

@@ -25,7 +25,7 @@
           <a class="nav-link page-scroll" href="#pelayanan">Layanan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#investasi">GIS Potensi Investasi</a>
+          <a class="nav-link page-scroll" href="#investasi">Potensi Investasi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#naker">e-Naker</a>
@@ -76,7 +76,7 @@
                   <div class="carousel-caption text-left">
                     <p class="judul-informasi mb-0"><?= $row->judul_berita; ?></p>
                     <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
-                    <p class="ringkasan mt-1"><?= $row->rangkuman; ?>'</p>
+                    <p class="ringkasan mt-1"><?= $row->rangkuman; ?></p>
                 </a>
                   </div>
                 </div>
@@ -194,7 +194,7 @@
   <div class="container text-center">
     <div class="row">
       <div class="col-lg-12 mt-4 ">
-        <h1 class="judul-investasi"><b>GIS Potensi Investasi</b></h1>
+        <h1 class="judul-investasi"><b>Potensi Investasi</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -206,6 +206,10 @@
     <div class="row">
       <div class="col-lg-12 col-sm-12">
         <p class="display-4 penjelasan-investasi">Peta diatas merupakan peta Penyebaran Potensi Investasi yang berada di Kabupaten Agam.</p>
+        <p class="display-4 penjelasan-investasi">Untuk lebih detailnya mengenai Potensi Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
+      </div>
+      <div class="col-sm-12 col-md-4 col-lg-12 display-4">
+        <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Potensi Investasi</a>
       </div>
     </div>
   </div>
