@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Potensi Investasi Kabupaten</h5>
+                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Peluang Investasi Kabupaten</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,8 +12,8 @@
                 <div class="row">
                     <?php foreach ($investasi->result() as $row) {
                     ?>
-                        <div class="col-lg-6 display-4">
-                            <a href="#" class="pilih-investasi-2 text-center" data-toggle="modal" data-target="#ModalDetailInvestasi"><?= $row->nama_investasi; ?></a>
+                        <div class="col-lg-4 display-4">
+                            <a href="#" class="pilih-investasi-2 text-center" data-toggle="modal" data-target="#ModalDetailInvestasi<?php echo $row->id_investasi; ?>"><?= $row->nama_investasi; ?></a>
                         </div>
                     <?php } ?>
                 </div>

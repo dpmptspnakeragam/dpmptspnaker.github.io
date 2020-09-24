@@ -334,7 +334,7 @@ a:hover {
 	text-decoration: none;
 	color: maroon;
 	display: inline-block;
-	width: 350px;
+	width: 100%;
 	border: 2px solid;
 }
 
@@ -344,6 +344,10 @@ a:hover {
 	transition-duration: 0.5s;
 	border-radius: 30px;
 	padding: 10px;
+}
+
+.img-investasi {
+	width: 100%;
 }
 
 /*tutup investasi*/
@@ -507,6 +511,9 @@ a:hover {
 /*tutup login*/
 
 @media (min-width: 760px) {
+	.modal-lg {
+		max-width: 95% !important;
+	}
 	.nav-link {
 		padding: 0.25rem 0;
 		margin-right: 10px;

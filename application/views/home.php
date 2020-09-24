@@ -25,7 +25,7 @@
           <a class="nav-link page-scroll" href="#pelayanan">Layanan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#investasi">Potensi Investasi</a>
+          <a class="nav-link page-scroll" href="#investasi">Peluang Investasi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#naker">e-Naker</a>
@@ -194,7 +194,7 @@
   <div class="container text-center">
     <div class="row">
       <div class="col-lg-12 mt-4 ">
-        <h1 class="judul-investasi"><b>Potensi Investasi</b></h1>
+        <h1 class="judul-investasi"><b>Peluang Investasi</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -209,7 +209,7 @@
         <p class="display-4 penjelasan-investasi">Untuk lebih detailnya mengenai Potensi Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-12 display-4">
-        <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Potensi Investasi</a>
+        <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Peluang Investasi</a>
       </div>
     </div>
   </div>
