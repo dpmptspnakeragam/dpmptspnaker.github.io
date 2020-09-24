@@ -1,3 +1,4 @@
+<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 <?php foreach ($investasi->result() as $row) {
 ?>
     <div class="modal fade" id="EditInvestasi<?php echo $row->id_investasi; ?>" role="dialog" aria-labelledby="ModalTambahBeritaLabel" aria-hidden="true">
@@ -20,7 +21,10 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun">Deskripsi</label>
-                            <textarea id="ckeditor2" class="form-control" name="deskripsi" placeholder="Deskripsi" required><?php echo $row->deskripsi; ?></textarea>
+                            <textarea id="editinvestasi<?= $row->id_investasi; ?>" class="form-control" name="deskripsi" placeholder="Deskripsi" required><?php echo $row->deskripsi; ?></textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('editinvestasi<?= $row->id_investasi; ?>');
+                            </script>
                         </div>
                         <div class="row">
                             <div class="form-group">

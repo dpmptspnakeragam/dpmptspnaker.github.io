@@ -19,7 +19,6 @@
 <script type="text/javascript">
     $(function() {
         CKEDITOR.replace('ckeditor');
-        CKEDITOR.replace('ckeditor2');
     });
 </script>
 </body>

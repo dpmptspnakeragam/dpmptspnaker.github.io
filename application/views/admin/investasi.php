@@ -58,7 +58,7 @@
                                     <td><?= $row->deskripsi; ?></td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditInvestasi<?php echo $row->id_investasi; ?>" title="Edit"><i class="fa fa-edit"></i></a>
+                                            <a id="edit-investasi" class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditInvestasi<?php echo $row->id_investasi; ?>" title="Edit"><i class="fa fa-edit"></i></a>
                                             <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url() ?>admin/investasi/hapus/<?php echo $row->id_investasi; ?>" title="Hapus" onclick="javascript: return confirm('Anda yakin hapus <?= $row->nama_investasi; ?>?')"><i class="fa fa-times"></i></a>
                                         </div>
                                     </td>
