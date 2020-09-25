@@ -24,7 +24,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <a href="<?= base_url(); ?>informasi" class="btn btn-primary">Informasi Lainnnya >></a>
                 </div>
             </div>
         </div>

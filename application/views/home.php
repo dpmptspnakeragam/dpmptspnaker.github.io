@@ -205,8 +205,8 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-sm-12">
-        <p class="display-4 penjelasan-investasi">Peta diatas merupakan peta Penyebaran Potensi Investasi yang berada di Kabupaten Agam.</p>
-        <p class="display-4 penjelasan-investasi">Untuk lebih detailnya mengenai Potensi Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
+        <p class="display-4 penjelasan-investasi">Peta diatas merupakan Peta Penyebaran Peluang Investasi yang berada di Kabupaten Agam.</p>
+        <p class="display-4 penjelasan-investasi">Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-12 display-4">
         <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Peluang Investasi</a>

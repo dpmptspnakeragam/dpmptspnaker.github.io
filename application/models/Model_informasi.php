@@ -52,6 +52,7 @@ class Model_informasi extends CI_model
     {
         $this->db->select('*');
         $this->db->from('berita');
+        $this->db->join('kategori_berita', 'berita.id_kategori=kategori_berita.id_kategori');
         $this->db->order_by('id_berita', 'DESC');
         $this->db->limit($limit, $start);
         $query = $this->db->get();
@@ -70,6 +71,16 @@ class Model_informasi extends CI_model
     {
         $this->db->select('*');
         $this->db->from('kategori_berita');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function berita_terbaru()
+    {
+        $this->db->select('*');
+        $this->db->from('berita');
+        $this->db->order_by('tgl_berita', 'asc');
+        $this->db->limit(5);
         $query = $this->db->get();
         return $query;
     }

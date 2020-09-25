@@ -11,6 +11,31 @@ body {
 	color: maroon;
 }
 
+/* custom pagination */
+.custom-pagination {
+	margin-bottom: 30px;
+	margin-top: 50px;
+	border-radius: 50px;
+}
+.custom-pagination a {
+	background: whitesmoke;
+	color: maroon;
+	padding: 10px;
+}
+.custom-pagination a:hover {
+	background: maroon;
+	color: whitesmoke;
+	padding: 10px;
+	text-decoration: none;
+}
+.custom-pagination strong {
+	background: maroon;
+	color: whitesmoke;
+	padding: 10px;
+}
+
+/* tutup pagination */
+
 main h3,
 main h4,
 main h5 {
@@ -110,6 +135,18 @@ main h5 {
 	width: 100%;
 }
 
+.gambar-info {
+	height: 100%;
+	width: 100%;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
+.kartu-info {
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
 a,
 a:hover {
 	color: inherit;
@@ -146,6 +183,10 @@ a:hover {
 	background-color: maroon;
 	padding: 3px;
 	border-radius: 10px;
+}
+
+.informasi {
+	min-height: 580px;
 }
 /* tutup informasi */
 
