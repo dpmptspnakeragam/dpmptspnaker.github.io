@@ -185,9 +185,6 @@ a:hover {
 	border-radius: 10px;
 }
 
-.informasi {
-	min-height: 580px;
-}
 /* tutup informasi */
 
 /*profil*/
@@ -272,8 +269,8 @@ a:hover {
 	padding: 10px;
 }
 
-.pelayanan .pilih-pelayanan {
-	font-size: 28px;
+.pilih-pelayanan {
+	font-size: 32px;
 	padding: 10px;
 	text-decoration: none;
 	border: 2px solid;
@@ -352,7 +349,7 @@ a:hover {
 }
 
 .pilih-investasi {
-	font-size: 30px;
+	font-size: 24px;
 	padding: 10px;
 	text-decoration: none;
 	color: maroon;
@@ -661,6 +658,10 @@ a:hover {
 		border-radius: 10px;
 	}
 
+	.informasi {
+		min-height: 580px;
+	}
+
 	/* tutup informasi */
 
 	/* Profil */
@@ -668,13 +669,12 @@ a:hover {
 
 	/*pelayanan*/
 	.pelayanan .pilih-pelayanan {
-		font-size: 60px;
+		font-size: 32px;
 		padding: 10px;
-		margin-top: 80px;
 		text-decoration: none;
 		color: white;
 		display: inline-block;
-		width: 350px;
+		width: 100%;
 	}
 
 	.pelayanan .pilih-pelayanan:hover {

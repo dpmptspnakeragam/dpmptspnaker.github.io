@@ -172,17 +172,18 @@
         </p>
       </div>
     </div>
-  </div>
-  <div class="container text-center">
-    <div class="row isi-pelayanan">
-      <div class="col-sm-12 col-md-4 col-lg-4 display-4 mb-3">
-        <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan">SiCantik</a>
-      </div>
-      <div class="col-sm-12 col-md-4 col-lg-4 display-4 mb-3">
+    <div class="row isi-pelayanan text-center">
+      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-1">
         <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan">Standar Pelayanan</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-4 display-4 mb-3">
+      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-1">
         <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan">OSS</a>
+      </div>
+      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-1">
+        <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan">SiCantik</a>
+      </div>
+      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-4">
+        <a href="#" class="pilih-pelayanan">Tracking SiCantik</a>
       </div>
     </div>
   </div>

@@ -26,7 +26,18 @@
                             Informasi
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
+                            <span data-feather="book"></span>
+                            Layanan
+                        </a>
+                        <div class="collapse" id="collapse1">
+                            <ul>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/perizinan">Perizinan</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/nonperizinan">Non Perizinan</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/investasi">
                             <span data-feather="trending-up"></span>

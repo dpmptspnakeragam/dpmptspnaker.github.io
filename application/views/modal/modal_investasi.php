@@ -12,7 +12,7 @@
                 <div class="row">
                     <?php foreach ($investasi->result() as $row) {
                     ?>
-                        <div class="col-lg-4 display-4">
+                        <div class="col-lg-4 display-4 mb-1">
                             <a href="#" class="pilih-investasi-2 text-center" data-toggle="modal" data-target="#ModalDetailInvestasi<?php echo $row->id_investasi; ?>"><?= $row->nama_investasi; ?></a>
                         </div>
                     <?php } ?>
