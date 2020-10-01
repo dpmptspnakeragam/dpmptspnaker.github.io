@@ -33,206 +33,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Izin Rekomendasi Keramaian</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/666.docx" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/666.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Wilayah Pertambangan(WIUP)</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/wiup.docx" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/wiup.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Izin Usaha Pertambangan(IUP) Eksplorasi</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/eksplo.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/eksplo.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Izin Usaha Pertambangan(IUP) Operasi Produksi</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/tambang.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/tambang.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Izin Pertambangan Rakyat(IPR)</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/ipr.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i>Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/ipr.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Izin Pendirian SPBU</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/spbu.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/spbu.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Izin Depot BBM</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/bbm.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/bbm.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Izin Pengumpulan Dan Penyaluran Pelumas Bekas</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/pbekas.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/pbekas.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Surat Keterangan Penyimpanan Barang(SKPB)</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/simpanbrg.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/simpanbrg.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Eksportir Terdaftar</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/eksp.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/eksp.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Badan Koordinasi Penataan Ruang Daerah</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/daerah.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/daerah.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Surat Pernyataan Pengelolaan Lingkungan(SPPL)</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/sppl.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/sppl.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Surat Keputusan Kelayakan Lingkungan(SKKL)</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/skkl.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/skkl.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Upaya Pengelolaan Lingkungan/Upaya Pemantauan Lingkungan(UKL/UPL)</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/ukl.docx" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/ukl.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Rekomendasi Sarana Umum (PSU) Perumahan</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/8999.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/8999.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Izin Perumahan & Pengembangan Kawasan Permukiman</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/899.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/899.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Pas Kecil Dan Sertifikat Keselamatan Kapal</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/pas.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/pas.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Kartu Pencari Kerja</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/Ak1.doc" onclick="" class="btn btn-basic" title='Form'><i class="fa fa-download"></i> Download</a>
-                                        </div>
-                                        <div class="btn-group">
-                                            <a href="<?= base_url(); ?>assets/file/Ak1.pdf" onclick="" class="btn btn-basic" title='Persyaratan'><i class="fa fa-eye"></i> Persyaratan</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php
+                                $no = 1;
+                                foreach ($nonperizinan->result() as $row) {
+                                ?>
+                                    <tr>
+                                        <td><?= $row->nama_izin; ?></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>" class="tombol-aksi">
+                                                    <i class="fa fa-download ">
+                                                    </i> Formulir
+                                                </a>
+                                            </div>
+                                            <div class="btn-group">
+                                                <a href="<?= base_url(); ?>assets/fileupload/<?= $row->syarat; ?>" class="tombol-aksi">
+                                                    <i class="fa fa-download ">
+                                                    </i> Persyaratan
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

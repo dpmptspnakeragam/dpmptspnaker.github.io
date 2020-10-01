@@ -182,9 +182,9 @@
       <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-1">
         <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan">SiCantik</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-4">
+      <!-- <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-4">
         <a href="#" class="pilih-pelayanan">Tracking SiCantik</a>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
