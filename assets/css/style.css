@@ -542,6 +542,12 @@ a:hover {
 	font-family: Maven Pro, sans-serif;
 	font-size: 28px;
 }
+
+.statistik {
+	background-color: maroon;
+	border-radius: 20px;
+	padding: 20px;
+}
 /*tutup kontak*/
 
 /*perizinan*/

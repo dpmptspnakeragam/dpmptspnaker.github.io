@@ -289,13 +289,13 @@
         <h1 class="judul-kontak"><b>Kontak</b></h1>
         <hr class="garis-judul">
       </div>
-      <div class="col-lg-12 container-fluid">
+      <div class="col-lg-12 container-fluid mb-2">
         <div class="map-container">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7583387626346!2d100.03203871432113!3d-0.3141742354257383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd50d7a167ac1a7%3A0xb9ec2c79c573f227!2sDPMPTSP-Naker+Kab.+Agam!5e0!3m2!1sid!2sid!4v1552378695102" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen>
           </iframe>
         </div>
       </div>
-      <div class="col-lg-8 text-left">
+      <div class="col-lg-6 text-left">
         <address>
           <i class="icon-home">
           </i>
@@ -349,6 +349,28 @@
             </a>
           </li>
         </ul>
+      </div>
+      <div class="col-lg-6 mb-3 text-left">
+        <div class="statistik">
+          <h5>Statistik Pengunjung</h5>
+          <table class="table-statistik" id="foot-table-list">
+            <tr>
+              <td><i class="fa fa-user"></i> Pengunjung Hari ini</td>
+              <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+              <td><?php echo $pengunjunghariini ?> orang</td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-users"></i> Total Pengunjung</td>
+              <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+              <td><?php echo $totalpengunjung ?> orang</td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-eye"></i> Pengunjung Online</td>
+              <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+              <td><?php echo $pengunjungonline ?> orang</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
