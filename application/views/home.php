@@ -1,7 +1,7 @@
 <!-- Cover -->
 <div class="jumbotron mb-0 ml-0">
   <div class="container text-center judul">
-    <img class="mb-4" src="<?= base_url(); ?>assets/img/vectoragam.png" alt="logoagam" width="10%">
+    <img class="mb-4" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="10%">
     <h3 class="display-3">SELAMAT DATANG</h3>
     <h4 class="display-2">DINAS PENANAMAN MODAL PELAYANAN TERPADU <br> SATU PINTU DAN KETENAGAKERJAAN</h4>
     <h5 class="display-4">Kabupaten Agam<h5>
@@ -173,14 +173,14 @@
       </div>
     </div>
     <div class="row isi-pelayanan text-center">
-      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-1">
-        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan">Standar Pelayanan</a>
+      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
+        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%"> Standar Pelayanan</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-1">
-        <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan">OSS</a>
+      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
+        <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%"> OSS</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-1">
-        <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan">SiCantik</a>
+      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
+        <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%"> SiCantik</a>
       </div>
       <!-- <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-4">
         <a href="#" class="pilih-pelayanan">Tracking SiCantik</a>
@@ -247,7 +247,7 @@
 
 <!-- Pengaduan -->
 <section class="pengaduan" id="pengaduan">
-  <div class="container-fluid">
+  <div class="container">
     <div class="row text-center">
       <div class="col-lg-12 mt-4 ">
         <h1 class="judul-pengaduan"><b>Pengaduan Online</b></h1>
@@ -255,26 +255,32 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-8 col-sm-12 mt-4">
+      <div class="col-lg-12 col-sm-12 mt-4 mb-4">
         <img class="shadow" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
       </div>
-      <div class="col-lg-4 col-sm-12 mt-4 display-4 kontak-pp text-justify">
-        <p>Kami membuka layanan Pengaduan Online. Apabila terjadi atau menemukan ketidaksesuaian di lapangan mengenai <b>Perizinan</b>, silahkan hubungi kami melalui kontak
-          dibawah ini :</p>
-        <ul class="list-unstyled ">
-          <li><i class="ikon-pengaduan fa fa-envelope icon-square icon-32"></i>
-            E-Mail : <b>ppdpmptspkabagam@gmail.com</b></li>
-          <li><i class="ikon-pengaduan fa fa-phone icon-square icon-32"></i> HP : </li>
-          <li><b>> 0852-6381-3484 (Zuherizal)</b></li>
-          <li><b>> 0823-8582-2706 (Masrial)</b></li>
-        </ul>
-        <p>Atau isi Form Pengaduan Online yang telah kami sediakan dibawah ini :</p>
-      </div>
     </div>
-    <hr>
     <div class="row">
-      <div class="col-lg-12 col-sm-12 form-pengaduan">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" class="shadow" width="100%" height="500px" frameborder="0" marginheight="1" marginwidth="0">Memuat…</iframe>
+      <div class="col-lg-4 col-sm-4 kontak-pp text-justify">
+        <p>Kami membuka layanan Pengaduan Online. Apabila terjadi atau menemukan ketidaksuaian di lapangan mengenai Perizinan, silahkan hubungi kami melalui kontak
+          dibawah ini :</p>
+        <table>
+          <tr>
+            <td><i class="ikon-pengaduan fa fa-envelope icon-square icon-32"></td>
+            <td>E-Mail</td>
+            <td>:</td>
+            <td><b>ppdpmptspkabagam@gmail.com</b></td>
+          </tr>
+          <tr>
+            <td><i class="ikon-pengaduan fa fa-phone icon-square icon-32"></i></td>
+            <td>HP</td>
+            <td>:</td>
+            <td>> 0852-6381-3484 (Zuherizal)<br>> 0823-8582-2706 (Masrial)</td>
+          </tr>
+        </table>
+        <p>Atau isi Form Pengaduan Online yang telah kami sediakan.</p>
+      </div>
+      <div class="col-lg-8 col-sm-8 form-pengaduan">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="500px" frameborder="0" marginheight="1" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
   </div>

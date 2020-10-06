@@ -283,11 +283,13 @@ a:hover {
 }
 
 .pelayanan .pilih-pelayanan:hover {
-	background-color: white;
-	color: maroon;
+	background-color: maroon;
+	color: white;
 	transition-duration: 0.5s;
 	border-radius: 30px;
 	padding: 10px;
+	border: 2px solid maroon;
+	font-weight: 400;
 }
 
 .pilih-pelayanan {
@@ -301,6 +303,12 @@ a:hover {
 	z-index: 1;
 	width: 100%;
 	transition-duration: 0.5s;
+}
+
+#img-layanan {
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	border: 2px solid maroon;
 }
 
 .pelayanan::after {
@@ -498,9 +506,7 @@ a:hover {
 }
 
 .kontak-pp {
-	font-size: 18px;
-	position: relative;
-	z-index: -1;
+	font-size: 16px;
 }
 
 .form-pengaduan {
@@ -702,7 +708,7 @@ a:hover {
 
 	/*pelayanan*/
 	.pelayanan .pilih-pelayanan {
-		font-size: 32px;
+		font-size: 24px;
 		padding: 10px;
 		text-decoration: none;
 		color: white;
@@ -712,8 +718,8 @@ a:hover {
 	}
 
 	.pelayanan .pilih-pelayanan:hover {
-		background-color: white;
-		color: maroon;
+		background-color: maroon;
+		color: white;
 		transition-duration: 0.5s;
 		border-radius: 50px;
 		padding: 10px;
