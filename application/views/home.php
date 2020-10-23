@@ -182,9 +182,9 @@
       <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
         <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%"> SiCantik</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
+      <!-- <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
         <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%"> Tracking SiCantik</a>
-      </div>
+      </div> -->
       <!-- <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-4">
         <a href="#" class="pilih-pelayanan">Tracking SiCantik</a>
       </div> -->
