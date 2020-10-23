@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
+	var $API = "";
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('curl');
+		$this->API = "https://sicantikws.layanan.go.id/api/TemplateData/keluaran/24218.json";
+	}
 
 	public function index()
 	{
@@ -44,8 +51,16 @@ class Home extends CI_Controller
 		$this->load->view('modal/modal_fungsi');
 		$this->load->view('modal/modal_tugas');
 		$this->load->view('modal/modal_investasi');
+		$this->load->view('modal/modal_tracking');
 		$this->load->view('modal/modal_detail_investasi', $data);
 		$this->load->view('modal/modal_informasi', $data);
 		$this->load->view('templates/footer');
+	}
+
+	public function tracking_sicantik()
+	{
+		$no_permohonan = $_GET['no_permohonan'];
+		$coba = json_decode($this->curl->simple_get($this->API, array('no_permohonan' => $no_permohonan)));
+		var_dump($coba);
 	}
 }
