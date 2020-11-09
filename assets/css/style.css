@@ -205,6 +205,30 @@ a:hover {
 	border-radius: 10px;
 }
 
+.informasi-lainnya {
+	color: white;
+	font-size: 10px;
+	border: 1px solid;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	padding: 5px;
+	transition-duration: 0.5s;
+}
+
+.informasi-lainnya:hover {
+	color: white;
+	font-size: 10px;
+	background-color: maroon;
+	border: 1px solid maroon;
+	border-radius: 30px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	padding: 5px;
+	transition-duration: 0.5s;
+}
+
 /* tutup informasi */
 
 /*profil*/

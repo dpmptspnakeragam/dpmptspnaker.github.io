@@ -77,6 +77,7 @@
                     <p class="judul-informasi mb-0"><?= $row->judul_berita; ?></p>
                     <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
                     <p class="ringkasan mt-1"><?= $row->rangkuman; ?></p>
+                    <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">Informasi lainnnya >></a></small>
                 </a>
                   </div>
                 </div>
