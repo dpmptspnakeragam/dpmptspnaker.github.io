@@ -60,7 +60,6 @@ class Home extends CI_Controller
 	public function tracking_sicantik()
 	{
 		$no_permohonan = $_GET['no_permohonan'];
-		$coba = json_decode($this->curl->simple_get($this->API, array('no_permohonan' => $no_permohonan)));
-		var_dump($coba);
+		echo json_encode(file_get_contents("https://sicantikws.layanan.go.id/api/TemplateData/keluaran/24218.json?no_permohonan=$no_permohonan"), TRUE);
 	}
 }

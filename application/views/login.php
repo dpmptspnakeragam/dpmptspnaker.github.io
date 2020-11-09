@@ -13,6 +13,7 @@
                     <?php endif; ?>
                     <form role="form" action="<?= base_url(); ?>login/cek_login" method="post">
                         <fieldset>
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <div class="form-group">
                                 <input class="form-control shadow" autocomplete="off" placeholder="Masukkan Username" name="usrname" autofocus>
                                 <small id="emailHelp" class="form-text text-danger"><?= form_error('usrname'); ?></small>

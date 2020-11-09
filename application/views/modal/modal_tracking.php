@@ -1,19 +1,39 @@
 <!-- Modal -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
+<script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
 <script type="text/javascript" language="javascript">
     $(document).ready(function() {
-        $("#btn-tracking").click(function(event) {
+        $("#btn-tracking").click(function() {
             var no_permohonan = $("#no_permohonan").val();
             $.ajax({
-                url: 'https://sicantikws.layanan.go.id/api/TemplateData/keluaran/24218.json',
+                url: '<?= base_url(); ?>home/tracking_sicantik',
                 data: "no_permohonan=" + no_permohonan,
-                success: function(data) {
-                    var json = data,
-                        obj = $.parseJSON(json),
-                        coba = JSON.parse(obj);
-                    $('#display').html('<p> Nama: ' + coba.nama + '</p>');
-                    $('#display').append('<p> Jenis Izin : ' + coba.success + '</p>');
+                datatype: "JSON",
+                traditional: true,
+                beforeSend: function() {
+                    $(".spinner").css("display", "block");
+                    $("#display").css("display", "none");
+                    $("#display").empty();
+                },
+                success: function(sicantik) {
+                    if (sicantik === null) {
+                        $(".spinner").css("display", "none");
+                        $('#display').html('<p>Maaf, Data tidak ditemukan. Silahkan periksa kembali Nomor Permohonan Anda. Terima Kasih.</p>')
+                    } else {
+                        var obj = jQuery.parseJSON(sicantik),
+                            coba = JSON.parse(obj),
+                            last = coba.data.proses;
+                        $(".spinner").css("display", "none");
+                        $("#display").css("display", "block");
+                        $('#display').html('<table><tr><td width="170px">No. Permohonan</td><td width="50px">:</td><td width="350px"><b>' + coba.data.pemohon[0].no_permohonan + '</b></td></tr>');
+                        $('#display').append('<tr><td width="170px">Nama</td><td width="50px">:</td><td width="350px"><b>' + coba.data.pemohon[0].nama + '</b></td><tr>');
+                        $('#display').append('<tr><td width="170px">Jenis Izin</td><td width="50px">:</td><td width="350px"><b>' + coba.data.pemohon[0].jenis_izin + '</b></td></tr>');
+                        $('#display').append('<tr><td width="170px">Proses</td><td width="50px">:</td><td width="350px"><b>' + coba.data.proses[0].nama_proses + '</b></td></tr></table>');
+                    }
+                },
+                error: function(error) {
+                    $('#display').html('<p>Maaf, Data tidak ditemukan. Silahkan periksa kembali Nomor Permohonan Anda. Terima Kasih.</p>')
                 }
             });
         });
@@ -36,6 +56,7 @@
                         </div>
                     </div>
                     <div class="row">
+                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="col-lg-10">
                             <div class="form-group">
                                 <input id="no_permohonan" class="form-control" name="no_permohonan" placeholder="Masukkan No. Permohonan Anda" required>
@@ -46,8 +67,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-10">
-                            <div id="display" class="bg-light"></div>
+                        <div class="col-lg-12">
+                            <div id="display" class="bg-light p-3 text-left"></div>
+                        </div>
+                        <div class="d-flex justify-content-center col-lg-12">
+                            <div class="spinner-grow spinner text-danger" role="status" style="display:none">
+                                <span class="sr-only"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
