@@ -22,6 +22,9 @@
           <a class="nav-link page-scroll" href="#profil">Profil Dinas</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link page-scroll" href="#informasi">Informasi</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link page-scroll" href="#pelayanan">Layanan</a>
         </li>
         <li class="nav-item">
@@ -77,8 +80,10 @@
                     <p class="judul-informasi mb-0"><?= $row->judul_berita; ?></p>
                     <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
                     <p class="ringkasan mt-1"><?= $row->rangkuman; ?></p>
-                    <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">Informasi lainnnya >></a></small>
                 </a>
+                <div class="text-center">
+                  <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">Informasi lainnnya<br>KLIK DISINI</a></small>
+                </div>
                   </div>
                 </div>
             <?php }
