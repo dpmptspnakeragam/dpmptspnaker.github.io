@@ -21,6 +21,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/pegawai">
+                            <span data-feather="users"></span>
+                            Pegawai
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/informasi">
                             <span data-feather="info"></span>
                             Informasi

@@ -7,6 +7,10 @@ body {
 	background-color: #f0f0f0;
 }
 
+.carousel-item {
+	transition-duration: 0.5s;
+}
+
 .ikon-pengaduan {
 	color: maroon;
 }
@@ -188,6 +192,10 @@ a:hover {
 	left: 0;
 }
 
+.tombol-informasi {
+	transition-duration: 0.5s;
+}
+
 .judul-informasi {
 	color: maroon;
 	font-size: 24px;
@@ -313,7 +321,6 @@ a:hover {
 	border-radius: 30px;
 	padding: 10px;
 	border: 2px solid maroon;
-	font-weight: 400;
 }
 
 .pilih-pelayanan {
@@ -399,7 +406,6 @@ a:hover {
 }
 
 .penjelasan-investasi {
-	font-size: 20px;
 	margin-top: 10px;
 }
 

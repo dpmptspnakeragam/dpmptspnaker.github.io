@@ -78,10 +78,10 @@
                   <img class="gambar-carousel" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
                   <div class="carousel-caption text-left">
                     <p class="judul-informasi mb-0"><?= $row->judul_berita; ?></p>
-                    <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?> , Kategori : <?= $row->kategori; ?></small>
+                    <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?></small>
                     <p class="ringkasan mt-1"><?= $row->rangkuman; ?></p>
                 </a>
-                <div class="text-center">
+                <div class="text-center tombol-informasi">
                   <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">Informasi lainnnya<br>KLIK DISINI</a></small>
                 </div>
                   </div>
@@ -180,7 +180,7 @@
     </div>
     <div class="row isi-pelayanan text-center">
       <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
-        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%"> Standar Pelayanan</a>
+        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%"> Formulir & Persyaratan Perizinan</a>
       </div>
       <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-3">
         <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%"> OSS</a>
@@ -215,10 +215,10 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-sm-12">
-        <p class="display-4 penjelasan-investasi">Peta diatas merupakan Peta Penyebaran Peluang Investasi yang berada di Kabupaten Agam.</p>
-        <p class="display-4 penjelasan-investasi">Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
+        <p class="penjelasan-investasi">Peta diatas merupakan Peta Penyebaran Peluang Investasi yang berada di Kabupaten Agam.
+          <br>Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-12 display-4">
+      <div class="col-sm-12 col-md-4 col-lg-12 display-4 mt-0">
         <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Peluang Investasi</a>
       </div>
     </div>
@@ -326,9 +326,9 @@
           </i> Jam Operasional :
           <br>
           <i class="icon-time"></i>
-          Hari Senin - Kamis Pukul 08:00 - 16:00
+          Hari Senin - Kamis Pukul 07:30 - 16:00
           <br>
-          Hari Jum'at 08:00 - 16:30
+          Hari Jum'at Pukul 07:30 - 16:30
           <br>
         </p>
         <p>

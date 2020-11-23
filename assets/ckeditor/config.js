@@ -10,6 +10,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.filebrowserUploadUrl = '../assets/kcfinder/upload.php?type=files';
 	config.filebrowserImageUploadUrl = '../assets/kcfinder/upload.php?type=images';
 	config.filebrowserFlashUploadUrl = '../assets/kcfinder/upload.php?type=flash';
+
+	config.filebrowserUploadMethod = 'form';
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html

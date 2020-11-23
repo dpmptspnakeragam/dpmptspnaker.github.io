@@ -24,8 +24,7 @@
                             </div>
                             <div class="card-body">
                                 <small class="tgl_berita text-light mt-3 p-1"><?= date_indo($row->tgl_berita) ?>, Kategori : <?= $row->kategori; ?></small>
-                                <img class="gambar-info img-responsive mt-3" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
-                                <p class="ringkasan"><?= $row->isi_berita; ?></p>
+                                <img class="gambar-info img-responsive mt-3 mb-3" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
                                 <small class="tgl_berita text-light mt-3 p-1">
                                     <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">Selengkapnya >></a>
                                 </small>
