@@ -132,17 +132,20 @@
             Nomor 56 Tahun 2016 tentang Penjabaran Tugas dan Fungsi Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan.
           </p>
         </div>
-        <div class="col-lg-3 display-4 mb-3">
+        <div class="col-lg-4 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalVisi">Visi</a>
         </div>
-        <div class="col-lg-3 display-4 mb-3">
+        <div class="col-lg-4 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMisi">Misi</a>
         </div>
-        <div class="col-lg-3 display-4 mb-3">
+        <div class="col-lg-4 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas">Tugas</a>
         </div>
-        <div class="col-lg-3 display-4 mb-3">
+        <div class="col-lg-4 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalFungsi">Fungsi</a>
+        </div>
+        <div class="col-lg-4 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid">Pegawai</a>
         </div>
       </div>
       <div class="container">

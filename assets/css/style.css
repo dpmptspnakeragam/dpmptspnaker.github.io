@@ -279,6 +279,40 @@ a:hover {
 	padding: 10px;
 }
 
+.img-kabid {
+	height: 100%;
+	width: 100%;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
+.card-kabid {
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
+.nama-kabid {
+	font-size: 24px;
+}
+
+.pilih-kabid {
+	font-size: 14px;
+	padding: 5px;
+	text-decoration: none;
+	color: maroon;
+	display: inline-block;
+	width: 100%;
+	border: 2px solid;
+	transition-duration: 0.5s;
+}
+
+.pilih-kabid:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 5px;
+}
 /*tutup profil*/
 
 /*pelayanan*/

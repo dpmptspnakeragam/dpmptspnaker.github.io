@@ -40,8 +40,11 @@ class Home extends CI_Controller
 
 		$this->load->model('Model_informasi');
 		$this->load->model('Model_investasi');
+		$this->load->model('Model_pegawai');
 		$data['berita'] = $this->Model_informasi->informasi();
 		$data['investasi'] = $this->Model_investasi->tampil_data();
+		$data['kabid'] = $this->Model_pegawai->tampil_kabid();
+		$data['pegawai'] = $this->Model_pegawai->tampil_pegawai();
 		$data['idmax'] = $this->Model_informasi->idmax();
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
@@ -52,6 +55,8 @@ class Home extends CI_Controller
 		$this->load->view('modal/modal_tugas');
 		$this->load->view('modal/modal_investasi');
 		$this->load->view('modal/modal_tracking');
+		$this->load->view('modal/modal_kabid', $data);
+		$this->load->view('modal/modal_pegawai', $data);
 		$this->load->view('modal/modal_detail_investasi', $data);
 		$this->load->view('modal/modal_informasi', $data);
 		$this->load->view('templates/footer');
