@@ -1,5 +1,5 @@
 <!-- Modal -->
-<?php foreach ($kabid->result() as $row) {
+<?php foreach ($pegawai->result() as $row) {
 ?>
     <div class="modal fade" id="ModalPegawai<?php echo $row->id_kabid; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalInformasi" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -20,7 +20,7 @@
                                         <div class="card-body shadow bg-light card-kabid">
                                             <img class="img-responsive img-kabid" src="<?= base_url() ?>assets/imgupload/<?= $row2->gambar; ?>" alt="<?= $row2->nama; ?>">
                                             <p class="display-4 nama-kabid mt-3"><?= $row2->nama; ?></p>
-                                            <p><?= $row2->nip; ?><br><b><?= $row2->jabatan; ?></b><br><?= $row2->alamat; ?></p>
+                                            <p>NIP. <?= $row2->nip; ?><br><b><?= $row2->jabatan; ?></b><br><?= $row2->alamat; ?></p>
                                         </div>
                                     </div>
                                 <?php } ?>
