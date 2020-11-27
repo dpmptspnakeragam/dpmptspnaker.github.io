@@ -11,6 +11,15 @@ class Model_pegawai extends CI_model
         return $query;
     }
 
+    public function view_pegawai($id_kabid)
+    {
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->where('id_kabid', $id_kabid);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function tampil_kabid()
     {
         $this->db->select('*');

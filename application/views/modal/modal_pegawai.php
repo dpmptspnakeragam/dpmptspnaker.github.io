@@ -1,5 +1,5 @@
 <!-- Modal -->
-<?php foreach ($pegawai->result() as $row) {
+<?php foreach ($kabid->result() as $row) {
 ?>
     <div class="modal fade" id="ModalPegawai<?php echo $row->id_kabid; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalInformasi" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

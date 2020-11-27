@@ -17,7 +17,7 @@
         <div class="container-fluid mb-0">
             <div class="row">
                 <?php foreach ($berita->result() as $row) { ?>
-                    <div class="col-lg-4 mt-4">
+                    <div class="col-lg-4 col-6 mt-4">
                         <div class="card kartu-info shadow">
                             <div class="card-header">
                                 <h4><?= $row->judul_berita ?></h4>
