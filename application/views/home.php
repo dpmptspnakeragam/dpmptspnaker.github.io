@@ -145,6 +145,9 @@
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalFungsi">Fungsi</a>
         </div>
         <div class="col-lg-4 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur">Struktur Organisasi</a>
+        </div>
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid">Pegawai</a>
         </div>
       </div>

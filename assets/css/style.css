@@ -312,6 +312,12 @@ a:hover {
 	border-radius: 30px;
 	padding: 5px;
 }
+
+.gambar-struktur {
+	height: 100%;
+	width: 100%;
+	border-radius: 30px;
+}
 /*tutup profil*/
 
 /*pelayanan*/

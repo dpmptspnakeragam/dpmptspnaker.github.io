@@ -21,7 +21,7 @@
                     <div class="col-sm-12 col-md-4 col-lg-4 col-6 mb-3">
                         <div class="card-body shadow bg-light card-kabid">
                             <img class="img-responsive img-kabid" src="<?= base_url() ?>assets/imgupload/<?= $row2->gambar; ?>" alt="<?= $row2->nama; ?>">
-                            <p class="display-4 nama-kabid mt-3"><?= $row2->nama; ?></p>
+                            <p class="display-4 nama-kabid mt-3"><b><?= $row2->nama; ?></b></p>
                             <p>NIP. <?= $row2->nip; ?><br><b><?= $row2->jabatan; ?></b><br><?= $row2->alamat; ?></p>
                         </div>
                     </div>

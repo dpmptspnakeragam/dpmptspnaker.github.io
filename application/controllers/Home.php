@@ -54,6 +54,7 @@ class Home extends CI_Controller
 		$this->load->view('modal/modal_tugas');
 		$this->load->view('modal/modal_investasi');
 		$this->load->view('modal/modal_tracking');
+		$this->load->view('modal/modal_struktur');
 		$this->load->view('modal/modal_kabid', $data);
 		$this->load->view('modal/modal_detail_investasi', $data);
 		$this->load->view('modal/modal_informasi', $data);
