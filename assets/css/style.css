@@ -454,14 +454,15 @@ a:hover {
 }
 
 .pilih-investasi {
-	font-size: 24px;
+	font-size: 20px;
 	padding: 10px;
 	text-decoration: none;
 	color: mintcream;
 	display: inline-block;
-	width: 350px;
+	width: 100%;
 	border: 2px solid;
 	transition-duration: 0.5s;
+	margin: 0;
 }
 
 .pilih-investasi:hover {

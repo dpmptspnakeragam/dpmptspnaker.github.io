@@ -218,14 +218,14 @@
         <hr class="garis-judul">
       </div>
     </div>
-    <div class="row mt-4 p-5">
+    <div class="row mt-4 pt-5 pb-5">
       <div class="col-lg-6 col-sm-6">
         <iframe class="shadow" width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="PETA POTENSI INVESTASI KABUPATEN AGAM" src="//www.arcgis.com/apps/Embed/index.html?webmap=ae83c5f68ead4e8a894d82b536186438&extent=99.4542,-0.6519,100.8906,0.1131&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light"></iframe>
       </div>
       <div class="col-lg-6 col-sm-6">
         <p class="penjelasan-investasi">Peta disamping merupakan Peta Penyebaran Peluang Investasi yang berada di Kabupaten Agam.
           <br>Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
-        <div class="display-4 mt-0">
+        <div class="display-4">
           <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Peluang Investasi</a>
         </div>
       </div>
