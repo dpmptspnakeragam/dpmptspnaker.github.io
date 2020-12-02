@@ -432,12 +432,16 @@ a:hover {
 
 .investasi {
 	min-height: 650px;
-	margin-bottom: 30px;
+	position: relative;
+	background-color: black;
+	width: 100%;
+	overflow: hidden;
 }
 
 .judul-investasi {
 	font-family: Maven Pro, sans-serif;
 	font-size: 28px;
+	color: mintcream;
 }
 
 .gis-investasi {
@@ -446,13 +450,14 @@ a:hover {
 
 .penjelasan-investasi {
 	margin-top: 10px;
+	color: mintcream;
 }
 
 .pilih-investasi {
 	font-size: 24px;
 	padding: 10px;
 	text-decoration: none;
-	color: maroon;
+	color: mintcream;
 	display: inline-block;
 	width: 350px;
 	border: 2px solid;
@@ -488,6 +493,47 @@ a:hover {
 
 .img-investasi {
 	width: 100%;
+}
+
+video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: 0;
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.bid-investasi {
+	position: relative;
+	z-index: 2;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.5;
+	z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+	header {
+		background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black
+			no-repeat center center scroll;
+	}
+	header video {
+		display: none;
+	}
 }
 
 /*tutup investasi*/
