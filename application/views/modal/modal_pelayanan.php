@@ -11,20 +11,15 @@
             <div class="modal-body">
                 <div class="container text-center">
                     <div class="row modal-pelayanan">
-                        <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                        <div class="col-sm-12 col-md-4 col-lg-6 col-6 mb-3">
                             <a href="<?= base_url(); ?>perizinan" class="pilih-modal-pelayanan">
                                 <i class="ikon fa fa-file icon-square icon-32"></i>
                                 <br>Perizinan</a>
                         </div>
-                        <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                        <div class="col-sm-12 col-md-4 col-lg-6 col-6 mb-3">
                             <a href="<?= base_url(); ?>non_perizinan" class="pilih-modal-pelayanan">
                                 <i class="ikon fa fa-file icon-square icon-32"></i>
                                 <br>Non Perizinan</a>
-                        </div>
-                        <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
-                            <a href="<?= base_url(); ?>dasar_hukum" class="pilih-modal-pelayanan">
-                                <i class="ikon fa fa-balance-scale icon-square icon-32" aria-hidden="true"></i>
-                                <br>Dasar Hukum</a>
                         </div>
                     </div>
                 </div>

@@ -50,6 +50,18 @@
                             Peluang Investasi
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/regulasi">
+                            <span data-feather="file-text"></span>
+                            Regulasi
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/ppid">
+                            <span data-feather="database"></span>
+                            PPID
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

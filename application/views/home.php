@@ -132,23 +132,29 @@
             Nomor 56 Tahun 2016 tentang Penjabaran Tugas dan Fungsi Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan.
           </p>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalVisi">Visi</a>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalVisi"><i class="ikon fa fa-paper-plane" aria-hidden="true"></i><br>Visi</a>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMisi">Misi</a>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMisi"><i class="ikon fa fa-list-ol" aria-hidden="true"></i><br>Misi</a>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas">Tugas</a>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas"><i class="ikon fa fa-pen-square" aria-hidden="true"></i><br>Tugas</a>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalFungsi">Fungsi</a>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalFungsi"><i class="ikon fa fa-check" aria-hidden="true"></i><br>Fungsi</a>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur">Struktur Organisasi</a>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur"><i class="ikon fa fa-sitemap" aria-hidden="true"></i><br>Struktur Organisasi</a>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid">Pegawai</a>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid"><i class="ikon fa fa-users" aria-hidden="true"></i><br>Pegawai</a>
+        </div>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="<?= base_url(); ?>regulasi" class="pilih-profil"><i class="ikon fa fa-balance-scale" aria-hidden="true"></i><br>Regulasi</a>
+        </div>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="<?= base_url(); ?>ppid" class="pilih-profil"><i class="ikon fa fa-server" aria-hidden="true"></i><br>PPID</a>
         </div>
       </div>
       <div class="container">
