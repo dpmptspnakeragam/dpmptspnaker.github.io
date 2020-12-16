@@ -291,7 +291,11 @@ a:hover {
 }
 
 .nama-kabid {
-	font-size: 24px;
+	font-size: 18px;
+}
+
+.ket-kabid {
+	font-size: 14px;
 }
 
 .pilih-kabid {

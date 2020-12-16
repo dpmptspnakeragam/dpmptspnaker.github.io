@@ -44,6 +44,7 @@ class Home extends CI_Controller
 		$data['berita'] = $this->Model_informasi->informasi();
 		$data['investasi'] = $this->Model_investasi->tampil_data();
 		$data['kabid'] = $this->Model_pegawai->tampil_kabid();
+		$data['pegawai'] = $this->Model_pegawai->tampil_pegawai();
 		$data['idmax'] = $this->Model_informasi->idmax();
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
