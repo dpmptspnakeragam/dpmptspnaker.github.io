@@ -282,19 +282,19 @@
         <img class="shadow" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
       </div>
     </div>
+  </div>
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-4 col-sm-4 kontak-pp text-justify">
+      <div class="col-lg-3 col-sm-3 kontak-pp text-justify">
         <p>Kami membuka layanan Pengaduan Online. Apabila terjadi atau menemukan ketidaksuaian di lapangan mengenai Perizinan, silahkan hubungi kami melalui kontak
           dibawah ini :</p>
         <table>
           <tr>
-            <td><i class="ikon-pengaduan fa fa-envelope icon-square icon-32"></td>
             <td>E-Mail</td>
             <td>:</td>
             <td><b>ppdpmptspkabagam@gmail.com</b></td>
           </tr>
           <tr>
-            <td><i class="ikon-pengaduan fa fa-phone icon-square icon-32"></i></td>
             <td>HP</td>
             <td>:</td>
             <td>> 0852-6381-3484 (Zuherizal)<br>> 0823-8582-2706 (Masrial)</td>
@@ -302,8 +302,14 @@
         </table>
         <p>Atau isi Form Pengaduan Online yang telah kami sediakan.</p>
       </div>
-      <div class="col-lg-8 col-sm-8 form-pengaduan">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="500px" frameborder="0" marginheight="1" marginwidth="0">Memuat…</iframe>
+      <div class="col-lg-3 col-sm-3 form-pengaduan">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+      </div>
+      <div class="col-lg-3 col-sm-3 form-pengaduan">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScayt1ps4WrnQEW9DXn4yOnQZ1ZleOrowbjLDjW6wnQVFCCPA/viewform" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+      </div>
+      <div class="col-lg-3 col-sm-3 kontak-pp text-justify">
+        <p>Kami juga menyediakan form kuisoner Survey Kepuasan Masyarakat, sebagai bahan evaluasi Kami dalam meningkatkan kualitas Pelayanan yang diberikan di Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan Kabupaten Agam.</p>
       </div>
     </div>
   </div>
