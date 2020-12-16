@@ -7,7 +7,7 @@ class Model_pegawai extends CI_model
         $this->db->select('*');
         $this->db->from('pegawai');
         $this->db->join('kabid', 'pegawai.id_kabid = kabid.id_kabid');
-        $this->db->order_by('id_pegawai', 'DESC');
+        $this->db->order_by('id_pegawai', 'ASC');
         $query = $this->db->get();
         return $query;
     }
