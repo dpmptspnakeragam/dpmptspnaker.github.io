@@ -18,6 +18,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
     <link href="<?= base_url(); ?>assets/css/dashboard.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/style_admin.css" rel="stylesheet">
+    <script src="<?php echo base_url() ?>/assets/js/Chart.js"></script>
 
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/logoagam.png">
 </head>

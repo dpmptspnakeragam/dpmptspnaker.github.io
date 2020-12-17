@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/datatables.min.css" />
   <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/vectoragam.png">
+  <script src="<?php echo base_url() ?>/assets/js/Chart.js"></script>
 
   <title>DPMPTSP-Naker Kab. Agam</title>
 </head>

@@ -41,6 +41,7 @@
                             <ul>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/perizinan">Perizinan</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/nonperizinan">Non Perizinan</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin">Grafik Izin Keluar</a></li>
                             </ul>
                         </div>
                     </li>

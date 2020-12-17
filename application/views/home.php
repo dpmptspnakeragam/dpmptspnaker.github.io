@@ -316,6 +316,61 @@
 </section>
 <!-- close pengaduan -->
 
+<!-- Grafik -->
+<section class="naker" id="naker">
+  <div class="container text-center">
+    <div class="row isi-naker">
+      <div class="col-lg-12 mt-4">
+        <h1 class="judul-naker"><b>Grafik Izin Keluar</b></h1>
+        <hr class="garis-judul">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 text-center bg-light mb-5 isi-naker p-3">
+        <canvas id="myChart"></canvas>
+        <?php
+        //Inisialisasi nilai variabel awal
+        $nama_izin = "";
+        $total = null;
+        foreach ($grafik->result() as $item) {
+          $nama = $item->izin;
+          $nama_izin .= "'$nama'" . ", ";
+          $jum = $item->jumlah;
+          $total .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var tahun = new Date().getFullYear();
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+              labels: [<?php echo $nama_izin; ?>],
+              datasets: [{
+                label: "Data Izin Keluar DPMPTSP-Naker Kab.Agam Tahun " + tahun + "",
+                backgroundColor: 'maroon',
+                data: [<?php echo $total; ?>]
+              }]
+            },
+            // Configuration options go here
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+        </script>
+      </div>
+    </div>
+</section>
+<!-- close Grafik -->
+
 <!-- kontak -->
 <section class="kontak" id="kontak">
   <div class="container text-center">
