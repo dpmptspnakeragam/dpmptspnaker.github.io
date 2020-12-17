@@ -317,7 +317,7 @@
 <!-- close pengaduan -->
 
 <!-- Grafik -->
-<section class="naker" id="naker">
+<section class="grafik" id="naker">
   <div class="container text-center">
     <div class="row isi-naker">
       <div class="col-lg-12 mt-4">
@@ -481,4 +481,11 @@
     s0.parentNode.insertBefore(s1, s0);
   })();
 </script>
+
+<marquee class="layer-1 fixed-bottom bg-dark text-light">
+  <?php foreach ($teks->result() as $running) {
+  ?>
+    <img src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="13px"> - <?php echo $running->teks; ?> -
+  <?php } ?>
+</marquee>
 <!--End of Tawk.to Script-->

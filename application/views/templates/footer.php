@@ -1,4 +1,4 @@
- <div class="col-12 footer text-center pt-1 pb-1">
+ <div class="col-12 footer text-center pt-1 pb-3">
    <p>Copyright 2020 &copy; DPMPTSP-NAKER Kabupaten Agam - All Right Reserved</p>
  </div>
 

@@ -42,6 +42,8 @@ class Home extends CI_Controller
 		$this->load->model('Model_investasi');
 		$this->load->model('Model_pegawai');
 		$this->load->model('Model_grafik');
+		$this->load->model('Model_runningteks');
+		$data['teks'] = $this->Model_runningteks->tampil_data();
 		$data['grafik'] = $this->Model_grafik->tampil_data();
 		$data['berita'] = $this->Model_informasi->informasi();
 		$data['investasi'] = $this->Model_investasi->tampil_data();
