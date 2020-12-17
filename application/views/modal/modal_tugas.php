@@ -3,16 +3,26 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Tugas DPMPTSP-Naker Kab. Agam</h5>
+                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Tugas & Fungsi DPMPTSP-Naker Kab. Agam</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container text-center">
+                <div class="container text-justify">
+                    <h3>Tugas</h3>
                     <p>Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan, mempunyai tugas pokok membantu Bupati
                         melaksanakan urusan pemerintahan yang menjadi kewenangan daerah dan tugas pembantuan dibidang penanaman modal,
                         pelayanan perizinan dan ketenagakerjaan yang berada dan bertanggung jawab kepada Bupati melalui Sekretaris Daerah</p>
+                    <h3>Fungsi</h3>
+                    <ul class="list-unstyled">
+                        Dalam menyelenggarakan tugasnya sebagaimana dimaksud diatas, Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan mempunyai fungsi:
+                        <li>a. Perumusan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan;</li>
+                        <li>b. Pelaksanaan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan; </li>
+                        <li>c. Pelaksanaan evaluasi dan pelaporan di bidang penanaman modal dan bidang ketenagakerjaan; </li>
+                        <li>d. Pelaksanaan administrasi Dinas;
+                        <li>e. Pelaksanaan fungsi lain yang diberikan Bupati terkait dengan tugas dan fungsinya.</li>
+                    </ul>
                 </div>
             </div>
             <div class="modal-footer">

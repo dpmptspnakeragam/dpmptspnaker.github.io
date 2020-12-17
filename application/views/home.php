@@ -112,37 +112,16 @@
         <hr class="garis-judul">
       </div>
     </div>
-    <div class="container">
+    <div class="container pt-5">
       <div class="row">
-        <div class="text-justify isi-profil col-lg-12 col-sm-12 mb-0">
-          <p>
-            Sebelum dibentuknya Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan, OPD ini bernama Kantor Penanaman Modal
-            dan Pelayanan Terpadu (KPMPT) yang merupakan unsur pelaksana teknis
-            Pemerintah Daerah di bidang pelayanan penanaman modal, perizinan, dan non perizinan. Institusi ini dibentuk berdasarkan
-            Peraturan Daerah Kabupaten Agam Nomor 5 Tahun 2011 tentang Perubahan atas Peraturan Daerah Nomor 7 Tahun 2008 tentang
-            Pembentukan Organisasi dan Lembaga Teknis Daerah. Sebelum lahirnya Peraturan Daerah Nomor 5 Tahun 2011 tersebut, pelayanan
-            perizinan dan non perizinan telah dilaksanakan secara terpadu melalui Kantor Pelayanan Terpadu (KPT) sejak tahun 2008.
-            Pada tahun 2011, tugas pokok dan fungsi institusi ini diperluas dengan bergabungnya pelayanan penanaman modal.
-            Tujuannya adalah untuk memberikan pelayanan kepada masyarakat di bidang penanaman modal, perizinan, dan non
-            perizinan dengan kepastian waktu, syarat, biaya, dan akuntabilitas, serta memperpendek jalur birokrasi sehingga ke depannya
-            diharapkan akan berdampak pada peningkatan kenyamanan dan motivasi bagi investor untuk berinvestasi di Kabupaten Agam.
-            Pada tahun 2016 melalui Peraturan Daerah Kabupaten Agam Nomor 11 Tahun 2016 tentang Pembentukan
-            dan Susunan Perangkat Daerah maka dibentuklah Organisasi Perangkat Daerah yaitu Dinas Penanaman Modal Pelayanan Terpadu
-            Satu Pintu dan Ketenagakerjaan (DPMPTSP-NAKER), seterusnya ditindak lanjuti dengan Peraturan Bupati Agam
-            Nomor 56 Tahun 2016 tentang Penjabaran Tugas dan Fungsi Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan.
-          </p>
+        <div class="col-lg-3 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMisi"><i class="ikon fa fa-info" aria-hidden="true"></i><br>Sejarah</a>
         </div>
         <div class="col-lg-3 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalVisi"><i class="ikon fa fa-paper-plane" aria-hidden="true"></i><br>Visi</a>
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalVisi"><i class="ikon fa fa-paper-plane" aria-hidden="true"></i><br>Visi & Misi</a>
         </div>
         <div class="col-lg-3 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMisi"><i class="ikon fa fa-list-ol" aria-hidden="true"></i><br>Misi</a>
-        </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas"><i class="ikon fa fa-pen-square" aria-hidden="true"></i><br>Tugas</a>
-        </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalFungsi"><i class="ikon fa fa-check" aria-hidden="true"></i><br>Fungsi</a>
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas"><i class="ikon fa fa-pen-square" aria-hidden="true"></i><br>Tugas & Fungsi</a>
         </div>
         <div class="col-lg-3 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur"><i class="ikon fa fa-sitemap" aria-hidden="true"></i><br>Struktur Organisasi</a>
@@ -321,7 +300,7 @@
   <div class="container text-center">
     <div class="row isi-naker">
       <div class="col-lg-12 mt-4">
-        <h1 class="judul-naker"><b>Grafik Izin Keluar</b></h1>
+        <h1 class="judul-naker"><b>Grafik Izin Diterbitkan</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -349,7 +328,7 @@
             data: {
               labels: [<?php echo $nama_izin; ?>],
               datasets: [{
-                label: "Data Izin Keluar DPMPTSP-Naker Kab.Agam Tahun " + tahun + "",
+                label: "Data Izin DIterbitkan DPMPTSP-Naker Kab.Agam Tahun " + tahun + "",
                 backgroundColor: 'maroon',
                 data: [<?php echo $total; ?>]
               }]
@@ -482,10 +461,12 @@
   })();
 </script>
 
-<marquee class="layer-1 fixed-bottom bg-dark text-light">
-  <?php foreach ($teks->result() as $running) {
-  ?>
-    <img src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="13px"> - <?php echo $running->teks; ?> -
-  <?php } ?>
+<marquee class=" layer-1 fixed-bottom bg-dark text-light text-justify">
+  <span width="100%">
+    <?php foreach ($teks->result() as $running) {
+    ?>
+      <img src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="15px"> <?php echo $running->teks; ?>
+    <?php } ?>
+  </span>
 </marquee>
 <!--End of Tawk.to Script-->
