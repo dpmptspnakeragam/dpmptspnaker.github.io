@@ -271,7 +271,7 @@
       </div>
       <div class="col-lg-6 col-sm-6 form-pengaduan">
         <h3 class="mb-1">Survey Kepuasan Masyarakat Online</h3>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScayt1ps4WrnQEW9DXn4yOnQZ1ZleOrowbjLDjW6wnQVFCCPA/viewform" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
   </div>
