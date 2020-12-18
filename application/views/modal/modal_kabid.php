@@ -13,7 +13,7 @@
                     <div class="row modal-pelayanan">
                         <?php foreach ($pegawai->result() as $row) {
                         ?>
-                            <div class="col-sm-12 col-md-3 col-lg-3 mb-3">
+                            <div class="col-sm-12 col-md-3 col-6 col-lg-3 mb-3">
                                 <div class="card-body shadow bg-light card-kabid">
                                     <img class="img-responsive img-kabid" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->nama; ?>">
                                     <p class="display-4 nama-kabid mt-3"><b><?= $row->nama; ?></b></p>

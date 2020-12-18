@@ -262,33 +262,16 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-sm-3 kontak-pp text-justify">
-        <p>Kami membuka layanan Pengaduan Online. Apabila terjadi atau menemukan ketidaksuaian di lapangan mengenai Perizinan, silahkan hubungi kami melalui kontak
-          dibawah ini :</p>
-        <table>
-          <tr>
-            <td>E-Mail</td>
-            <td>:</td>
-            <td><b>ppdpmptspkabagam@gmail.com</b></td>
-          </tr>
-          <tr>
-            <td>HP</td>
-            <td>:</td>
-            <td>> 0852-6381-3484 (Zuherizal)<br>> 0823-8582-2706 (Masrial)</td>
-          </tr>
-        </table>
-        <p>Atau isi Form Pengaduan Online yang telah kami sediakan.</p>
-      </div>
-      <div class="col-lg-3 col-sm-3 form-pengaduan">
+      <div class="col-lg-6 col-sm-6 form-pengaduan">
+        <h3 class="mb-1">Pengaduan Online</h3>
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        <p>Email : ppdpmptspkabagam@gmail.com</p>
       </div>
-      <div class="col-lg-3 col-sm-3 form-pengaduan">
+      <div class="col-lg-6 col-sm-6 form-pengaduan">
+        <h3 class="mb-1">Survey Kepuasan Masyarakat Online</h3>
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScayt1ps4WrnQEW9DXn4yOnQZ1ZleOrowbjLDjW6wnQVFCCPA/viewform" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-      </div>
-      <div class="col-lg-3 col-sm-3 kontak-pp text-justify">
-        <p>Kami juga menyediakan form kuisoner Survey Kepuasan Masyarakat, sebagai bahan evaluasi Kami dalam meningkatkan kualitas Pelayanan yang diberikan di Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan Kabupaten Agam.</p>
       </div>
     </div>
   </div>

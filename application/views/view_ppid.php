@@ -30,6 +30,7 @@
                             <table class="table table-striped table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="bg-dark text-light">
                                     <tr>
+                                        <th>No.</th>
                                         <th>Judul</th>
                                         <th>Dokumen</th>
                                     </tr>
@@ -40,6 +41,7 @@
                                     foreach ($ppid->result() as $row) {
                                     ?>
                                         <tr>
+                                            <td><?= $no++; ?></td>
                                             <td><?= $row->judul; ?></td>
                                             <td>
                                                 <div class="btn-group">

@@ -30,7 +30,9 @@
                             <table class="table table-striped table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="bg-dark text-light">
                                     <tr>
+                                        <th>No.</th>
                                         <th>Judul</th>
+                                        <th>Tentang</th>
                                         <th>Dokumen</th>
                                     </tr>
                                 </thead>
@@ -40,7 +42,9 @@
                                     foreach ($regulasi->result() as $row) {
                                     ?>
                                         <tr>
+                                            <td><?= $no++; ?></td>
                                             <td><?= $row->judul; ?></td>
+                                            <td><?= $row->tentang; ?></td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="<?= base_url(); ?>assets/fileupload/<?= $row->file; ?>" class="tombol-aksi">

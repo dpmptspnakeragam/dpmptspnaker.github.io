@@ -283,8 +283,8 @@ a:hover {
 }
 
 .img-kabid {
-	height: 100%;
-	width: 100%;
+	height: 200px;
+	width: auto;
 	border-top-right-radius: 30px;
 	border-bottom-left-radius: 30px;
 }
