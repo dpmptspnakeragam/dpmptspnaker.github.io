@@ -40,6 +40,10 @@
           <a class="nav-link page-scroll" href="#kontak">Kontak</a>
         </li>
       </ul>
+      <span class="navbar-text tanggal text-light">
+        <?php echo longdate_indo(date('Y-m-d')); ?><br>
+        <?php echo konvhijriah(date('Y-m-d H:i:s')); ?>
+      </span>
     </div>
   </div>
 </nav>
@@ -170,21 +174,23 @@
       </div>
     </div>
     <div class="row isi-pelayanan text-center">
-      <div class="col-sm-12 col-md-4 col-lg-3 col-6 display-4 mb-3">
+      <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
         <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%"> Formulir & Persyaratan Perizinan</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 col-6 display-4 mb-3">
+      <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
         <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%"> OSS</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 col-6 display-4 mb-3">
+      <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+        <a href="https://account.kemnaker.go.id/auth/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sisnaker.jpg" alt="gambarsicantikcloud" width="100%"> Tracking SiCantik</a>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col col-sm-12 col-md-4 col-lg-6 col-6 display-4 mb-3">
         <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%"> SiCantik</a>
       </div>
-      <div class="col-sm-12 col-md-4 col-lg-3 col-6 display-4 mb-3">
+      <div class="col col-sm-12 col-md-4 col-lg-6 col-6 display-4 mb-3">
         <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%"> Tracking SiCantik</a>
       </div>
-      <!-- <div class="col-sm-12 col-md-4 col-lg-3 display-4 mb-4">
-        <a href="#" class="pilih-pelayanan">Tracking SiCantik</a>
-      </div> -->
     </div>
   </div>
 </section>

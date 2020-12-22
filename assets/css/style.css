@@ -2,6 +2,16 @@
 html {
 	scroll-behavior: smooth;
 }
+.tanggal {
+	font-size: 9px;
+	color: white;
+}
+
+@media (min-width: 768px) {
+	.ten-columns > .col-sm-2 {
+		width: 20%;
+	}
+}
 
 body {
 	background-color: #f0f0f0;
@@ -859,12 +869,13 @@ video {
 
 	/*pelayanan*/
 	.pelayanan .pilih-pelayanan {
-		font-size: 24px;
+		font-size: 15px;
+		font-weight: 400;
 		padding: 10px;
 		text-decoration: none;
 		color: white;
 		display: inline-block;
-		width: 100%;
+		width: 250px;
 		transition-duration: 0.5s;
 	}
 
