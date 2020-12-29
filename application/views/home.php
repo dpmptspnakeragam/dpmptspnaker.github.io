@@ -448,7 +448,8 @@
   <div class="popUpBannerInner">
     <div class="popUpBannerContent">
       <div class="container modal-dialog modal-lg">
-        <div class="row banner p-3 modal-content mt-5 bg-light">
+        <div class="row banner p-3 modal-content bg-light">
+          <p class="text-right"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
           <?php
           foreach ($banner->result() as $row) {
           ?>
@@ -459,7 +460,6 @@
               <p><?= $row->teks; ?></p>
             </div>
           <?php } ?>
-          <p class="text-center"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
         </div>
       </div>
     </div>
