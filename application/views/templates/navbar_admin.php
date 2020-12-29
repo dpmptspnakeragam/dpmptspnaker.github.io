@@ -69,6 +69,12 @@
                             Running Teks
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/banner">
+                            <span data-feather="image"></span>
+                            Banner
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -435,6 +435,30 @@
 </section>
 <!-- close kontak -->
 
+<!-- popup banner -->
+<div class="popUpBannerBox modal">
+  <div class="popUpBannerInner">
+    <div class="popUpBannerContent">
+      <div class="container modal-dialog modal-lg">
+        <div class="row banner p-3 modal-content mt-5 bg-light">
+          <?php
+          foreach ($banner->result() as $row) {
+          ?>
+            <div class="col-12">
+              <img width="100%" class="img-responsive" src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" alt="" />
+            </div>
+            <div class="col-12 mt-3">
+              <p><?= $row->teks; ?></p>
+            </div>
+          <?php } ?>
+          <p class="text-center"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- close popup banner -->
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
   var Tawk_API = Tawk_API || {},
@@ -448,6 +472,25 @@
     s1.setAttribute('crossorigin', '*');
     s0.parentNode.insertBefore(s1, s0);
   })();
+</script>
+
+<script type="text/javascript">
+  function showPopUpBanner() {
+    $('.popUpBannerBox').fadeIn("2000");
+  }
+  setTimeout(showPopUpBanner, 3000);
+
+  $('.popUpBannerBox').click(function(e) {
+    if (!$(e.target).is('.popUpBannerContent, .popUpBannerContent *')) {
+      $('.popUpBannerBox').fadeOut("2000");
+      return false;
+    }
+  });
+
+  $('.closeButton').click(function() {
+    $('.popUpBannerBox').fadeOut("2000");
+    return false;
+  });
 </script>
 
 <marquee class=" layer-1 fixed-bottom bg-dark text-light text-justify">

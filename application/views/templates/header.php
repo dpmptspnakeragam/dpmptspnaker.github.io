@@ -18,6 +18,9 @@
   <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/vectoragam.png">
   <script src="<?php echo base_url() ?>/assets/js/Chart.js"></script>
 
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
   <title>DPMPTSP-Naker Kab. Agam</title>
 </head>
 
