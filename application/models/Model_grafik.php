@@ -11,6 +11,14 @@ class Model_grafik extends CI_model
         return $query;
     }
 
+    public function tampil_data_periode()
+    {
+        $this->db->select('*');
+        $this->db->from('periode_grafik');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function idmax()
     {
         $this->db->select_max('id_grafik', 'idmax');
@@ -28,6 +36,12 @@ class Model_grafik extends CI_model
     {
         $this->db->where('id_grafik', $id);
         $this->db->update('grafik', $data);
+    }
+
+    public function update_periode($data, $id)
+    {
+        $this->db->where('id_periode', $id);
+        $this->db->update('periode_grafik', $data);
     }
 
     public function delete($id_grafik)

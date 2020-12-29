@@ -290,6 +290,14 @@
     <div class="row isi-naker">
       <div class="col-lg-12 mt-4">
         <h1 class="judul-naker"><b>Grafik Izin Diterbitkan</b></h1>
+        <h5 class="text-center"> Periode
+          <?php
+          $no = 1;
+          foreach ($periode_grafik->result() as $graph) {
+          ?>
+            <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+          <?php } ?>
+        </h5>
         <hr class="garis-judul">
       </div>
     </div>
@@ -317,7 +325,7 @@
             data: {
               labels: [<?php echo $nama_izin; ?>],
               datasets: [{
-                label: "Data Izin DIterbitkan DPMPTSP-Naker Kab.Agam Tahun " + tahun + "",
+                label: "Data Izin DIterbitkan DPMPTSP-Naker Kabupaten Agam",
                 backgroundColor: 'maroon',
                 data: [<?php echo $total; ?>]
               }]
