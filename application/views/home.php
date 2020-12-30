@@ -388,7 +388,7 @@
         </div>
       </div>
       <div class="col-lg-6 text-left">
-        <address>
+        <p>
           <i class="icon-home">
           </i>
           <strong>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan
@@ -397,7 +397,7 @@
           <i class="fa fa-map-pin">
           </i> Jl.Veteran No.1 Padang Baru,
           Lubuk Basung Kabupaten Agam
-        </address>
+        </p>
         <p>
           <i class="fa fa-clock">
           </i> Jam Operasional :
@@ -447,19 +447,37 @@
           <h5>Statistik Pengunjung</h5>
           <table class="table-statistik" id="foot-table-list">
             <tr>
-              <td><i class="fa fa-user"></i> Pengunjung Hari ini</td>
-              <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
-              <td><?php echo $pengunjunghariini ?> orang</td>
+              <td>
+                <p><i class="fa fa-user"></i> Pengunjung Hari ini</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $pengunjunghariini ?> orang</p>
+              </td>
             </tr>
             <tr>
-              <td><i class="fa fa-users"></i> Total Pengunjung</td>
-              <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
-              <td><?php echo $totalpengunjung ?> orang</td>
+              <td>
+                <p><i class="fa fa-users"></i> Total Pengunjung</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $totalpengunjung ?> orang</p>
+              </td>
             </tr>
             <tr>
-              <td><i class="fa fa-eye"></i> Pengunjung Online</td>
-              <td>&nbsp;&nbsp;:&nbsp;&nbsp;</td>
-              <td><?php echo $pengunjungonline ?> orang</td>
+              <td>
+                <p><i class="fa fa-eye"></i> Pengunjung Online</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $pengunjungonline ?> orang</p>
+              </td>
             </tr>
           </table>
         </div>

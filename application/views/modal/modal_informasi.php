@@ -6,7 +6,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan"></h5>
-                    <a href="<?= base_url(); ?>informasi" class="text-light">Informasi Lainnnya >></a>
+                    <a href="<?= base_url(); ?>informasi" class="text-light">Berita Lainnnya >></a>
                     <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
