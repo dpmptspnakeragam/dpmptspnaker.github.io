@@ -73,21 +73,26 @@
         ?> <div class="carousel-item active">
                 <?php
               } else {
-                ?> <div class="carousel-item ">
+                ?> <div class="carousel-item">
                 <?php
               }
             }
                 ?>
                 <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
-                  <img class="gambar-carousel" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
+                  <div class="container">
+                    <div class="row">
+                      <img class="gambar-carousel shadow mt-5" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
+                    </div>
+                  </div>
                   <div class="carousel-caption text-left">
-                    <p class="judul-informasi mb-0"><?= $row->judul_berita; ?></p>
+                    <div class="row">
+                      <p class="judul-informasi mb-2 pl-2 pr-2"><?= $row->judul_berita; ?></p>
+                    </div>
                     <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?></small>
-                    <p class="ringkasan mt-1"><?= $row->rangkuman; ?></p>
                 </a>
-                <div class="text-center tombol-informasi">
+                <!-- <div class="text-center tombol-informasi">
                   <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">Informasi lainnnya<br>KLIK DISINI</a></small>
-                </div>
+                </div> -->
                   </div>
                 </div>
             <?php }
@@ -305,7 +310,6 @@
       <div class="col-lg-12 text-center bg-light mb-5 isi-naker p-3">
         <canvas id="myChart"></canvas>
         <?php
-        //Inisialisasi nilai variabel awal
         $nama_izin = "";
         $total = null;
         foreach ($grafik->result() as $item) {
@@ -318,23 +322,45 @@
         <script>
           var tahun = new Date().getFullYear();
           var ctx = document.getElementById('myChart').getContext('2d');
+          var data = {
+            labels: [<?php echo $nama_izin; ?>],
+            datasets: [{
+              label: "Jumlah Izin Diterbitkan",
+              backgroundColor: 'maroon',
+              data: [<?php echo $total; ?>]
+            }]
+          };
           var chart = new Chart(ctx, {
-            // The type of chart we want to create
+            showTooltips: false,
             type: 'bar',
-            // The data for our dataset
-            data: {
-              labels: [<?php echo $nama_izin; ?>],
-              datasets: [{
-                label: "Data Izin DIterbitkan DPMPTSP-Naker Kabupaten Agam",
-                backgroundColor: 'maroon',
-                data: [<?php echo $total; ?>]
-              }]
-            },
-            // Configuration options go here
+            data: data,
             options: {
+              "hover": {
+                "animationDuration": 0
+              },
+              "animation": {
+                "duration": 1,
+                "onComplete": function() {
+                  var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                  ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+
+                  this.data.datasets.forEach(function(dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function(bar, index) {
+                      var data = dataset.data[index];
+                      ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                    });
+                  });
+                }
+              },
               scales: {
                 yAxes: [{
                   ticks: {
+                    max: Math.max(...data.datasets[0].data) + 10,
                     beginAtZero: true
                   }
                 }]
@@ -447,16 +473,16 @@
 <div class="popUpBannerBox modal">
   <div class="popUpBannerInner">
     <div class="popUpBannerContent">
-      <div class="container modal-dialog modal-lg">
-        <div class="row banner p-3 modal-content bg-light">
-          <p class="text-right"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
+      <div class="container">
+        <div class="row">
+          <p class="text-right text-light"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
           <?php
           foreach ($banner->result() as $row) {
           ?>
             <div class="col-12">
-              <img width="100%" class="img-responsive" src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" alt="" />
+              <img width="100%" class="banner img-responsive" src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" alt="" />
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12 mt-3 text-light">
               <p><?= $row->teks; ?></p>
             </div>
           <?php } ?>
