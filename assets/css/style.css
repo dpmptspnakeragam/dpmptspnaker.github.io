@@ -111,6 +111,7 @@ main h5 {
 	background-attachment: fixed;
 	background-size: 100%;
 	position: relative;
+	overflow: hidden;
 }
 
 .jumbotron::after {
@@ -142,6 +143,20 @@ h6,
 .navbar-brand {
 	font-family: Maven Pro, sans-serif;
 	font-size: 20px;
+}
+
+.jumbotronimg,
+.jumbotronteks {
+	opacity: 0;
+	transform: translate(0, -50px);
+	transition: 1s;
+	overflow: hidden;
+}
+
+.jumbotronimg.muncul,
+.jumbotronteks.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
 }
 
 .jumbotron .display-3 {
@@ -322,6 +337,14 @@ a:hover {
 	margin-bottom: 40px;
 	font-size: 40px;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	transform: translate(0, 50px);
+	transition-duration: 1s;
+}
+
+.slogan.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
 }
 
 .pilih-profil {
@@ -334,7 +357,14 @@ a:hover {
 	z-index: 1;
 	width: 100%;
 	padding: 10px;
-	transition-duration: 0.5s;
+	transition-duration: 1s;
+	opacity: 0;
+	transform: translate(0, -50px);
+}
+
+.pilih-profil.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
 }
 
 .pilih-profil:hover {
@@ -418,6 +448,14 @@ a:hover {
 .pelayanan .isi-pelayanan {
 	position: relative;
 	z-index: 1;
+	transition-duration: 1s;
+	opacity: 0;
+	transform: translate(-50px, 0);
+}
+
+.isi-pelayanan.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
 }
 
 .pelayanan .intro-pelayanan {
@@ -444,7 +482,14 @@ a:hover {
 	position: relative;
 	z-index: 1;
 	width: 100%;
-	transition-duration: 0.5s;
+	transition-duration: 1s;
+	opacity: 0;
+	transform: translate(0, 50px);
+}
+
+.pilih-pelayanan.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
 }
 
 #img-layanan {
@@ -518,6 +563,30 @@ a:hover {
 
 .gis-investasi {
 	border: 1px maroon;
+}
+
+.peta-investasi {
+	transition-duration: 1s;
+	opacity: 0;
+	transform: translate(-50px, 0);
+}
+
+.peta-investasi.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+
+.penjelasan-investasi,
+.pilih-investasi {
+	transition-duration: 1s;
+	opacity: 0;
+	transform: translate(50px, 0);
+}
+
+.penjelasan-investasi.muncul,
+.pilih-investasi.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
 }
 
 .penjelasan-investasi {
@@ -623,6 +692,21 @@ video {
 	color: white;
 }
 
+.logo-enaker,
+.pilih-naker,
+.isi-naker {
+	transition-duration: 1s;
+	opacity: 0;
+	transform: translate(0, 50px);
+}
+
+.logo-enaker.muncul,
+.pilih-naker.muncul,
+.isi-naker.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
+}
+
 .judul-naker {
 	font-family: Maven Pro, sans-serif;
 	font-size: 28px;
@@ -695,6 +779,19 @@ video {
 
 .kontak-pp {
 	font-size: 16px;
+}
+
+.mekanisme-pengaduan,
+.form-pengaduan {
+	transition-duration: 1s;
+	opacity: 0;
+	transform: translate(0, -50px);
+}
+
+.mekanisme-pengaduan.muncul,
+.form-pengaduan.muncul {
+	opacity: 1;
+	transform: translate(0, 0);
 }
 
 .form-pengaduan {

@@ -1,10 +1,11 @@
 <!-- Cover -->
 <div class="jumbotron mb-0 ml-0">
   <div class="container text-center judul">
-    <img class="mb-4" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="10%">
-    <h3 class="display-3">SELAMAT DATANG</h3>
-    <h4 class="display-2">DINAS PENANAMAN MODAL PELAYANAN TERPADU <br> SATU PINTU DAN KETENAGAKERJAAN</h4>
-    <h5 class="display-4">Kabupaten Agam<h5>
+    <img class="mb-4 jumbotronimg" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="10%">
+    <h3 class="display-3 jumbotronteks">SELAMAT DATANG</h3>
+    <h4 class="display-2 jumbotronteks">DINAS PENANAMAN MODAL PELAYANAN TERPADU</h4>
+    <h4 class="display-2 jumbotronteks">SATU PINTU DAN KETENAGAKERJAAN</h4>
+    <h5 class="display-4 jumbotronteks">Kabupaten Agam<h5>
   </div>
 </div>
 <!-- close Cover -->
@@ -216,11 +217,12 @@
     </div>
     <div class="row mt-4 pt-5 pb-5">
       <div class="col-lg-6 col-sm-6">
-        <iframe class="shadow" width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="PETA POTENSI INVESTASI KABUPATEN AGAM" src="//www.arcgis.com/apps/Embed/index.html?webmap=ae83c5f68ead4e8a894d82b536186438&extent=99.4542,-0.6519,100.8906,0.1131&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light"></iframe>
+        <iframe class="peta-investasi shadow" width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="PETA POTENSI INVESTASI KABUPATEN AGAM" src="//www.arcgis.com/apps/Embed/index.html?webmap=ae83c5f68ead4e8a894d82b536186438&extent=99.4542,-0.6519,100.8906,0.1131&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light"></iframe>
       </div>
       <div class="col-lg-6 col-sm-6">
         <p class="penjelasan-investasi">Peta disamping merupakan Peta Penyebaran Peluang Investasi yang berada di Kabupaten Agam.
-          <br>Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :</p>
+          <br>Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
+        </p>
         <div class="display-4">
           <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Peluang Investasi</a>
         </div>
@@ -233,7 +235,7 @@
 <!-- Naker -->
 <section class="naker" id="naker">
   <div class="container text-center">
-    <div class="row isi-naker">
+    <div class="row">
       <div class="col-lg-12 mt-4">
         <h1 class="judul-naker"><b>e-Naker</b></h1>
         <hr class="garis-judul">
@@ -246,7 +248,8 @@
         </div>
         <p class="isi-naker mt-3">Merupakan situs yang dapat digunakan pengguna untuk memperoleh informasi dibidang Ketenagakerjaan yang meliputi :
           Lowongan Kerja, Magang, Pelatihan serta yang berkaitan dengan Ketenagakerjaan</p>
-        <p class="isi-naker">Untuk mengunjungi situs e-Naker, silahkan klik tombol dibawah ini.<p>
+        <p class="isi-naker">Untuk mengunjungi situs e-Naker, silahkan klik tombol dibawah ini.
+        <p>
       </div>
     </div>
     <div class="row isi-naker">
@@ -269,7 +272,7 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-sm-12 mt-4 mb-4">
-        <img class="shadow" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
+        <img class="shadow mekanisme-pengaduan" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
       </div>
     </div>
   </div>
@@ -290,7 +293,7 @@
 <!-- close pengaduan -->
 
 <!-- Grafik -->
-<section class="grafik" id="naker">
+<section class="grafik" id="grafik">
   <div class="container text-center">
     <div class="row isi-naker">
       <div class="col-lg-12 mt-4">
