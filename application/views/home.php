@@ -479,6 +479,7 @@
                 }],
                 yAxes: [{
                   ticks: {
+                    max: Math.max(...data.datasets[0].data) + 100,
                     beginAtZero: true,
                     fontColor: 'white'
                   }
@@ -571,6 +572,7 @@
                 }],
                 yAxes: [{
                   ticks: {
+                    max: Math.max(...data.datasets[0].data) + 100,
                     beginAtZero: true,
                     fontColor: 'white'
                   }
