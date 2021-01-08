@@ -10,7 +10,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form role="form" action="<?= base_url(); ?>admin/grafik_izin/ubah_periode" method="post" enctype="multipart/form-data">
+                    <form role="form" action="<?= base_url(); ?>admin/grafik_skm/ubah_periode" method="post" enctype="multipart/form-data">
                         <div class="form-group" hidden>
                             <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $row->id_periode; ?>">
                         </div>

@@ -19,8 +19,12 @@
                             <input class="form-control" name="tahun" placeholder="Nama Izin" value="<?php echo $row->tahun; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="pelatihan">Nilai</label>
+                            <label for="pelatihan">Semester I</label>
                             <input class="form-control" name="nilai" placeholder="Jumlah Izin" value="<?php echo $row->nilai; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pelatihan">Semester II</label>
+                            <input class="form-control" name="nilai2" placeholder="Jumlah Izin" value="<?php echo $row->nilai2; ?>" required>
                         </div>
                 </div>
                 <div class="modal-footer">

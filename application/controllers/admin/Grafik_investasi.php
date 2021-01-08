@@ -31,11 +31,13 @@ class Grafik_investasi extends CI_controller
         $id = $this->input->post('id', true);
         $tahun = $this->input->post('tahun', true);
         $nilai = $this->input->post('nilai', true);
+        $nilai2 = $this->input->post('nilai2', true);
 
         $data = array(
             'id_grafik' => $id,
             'tahun' => $tahun,
-            'nilai' => $nilai
+            'nilai' => $nilai,
+            'nilai2' => $nilai2
         );
         $this->load->model('Model_grafik_investasi');
         $this->Model_grafik_investasi->input($data);
@@ -48,11 +50,13 @@ class Grafik_investasi extends CI_controller
         $id = $this->input->post('id', true);
         $tahun = $this->input->post('tahun', true);
         $nilai = $this->input->post('nilai', true);
+        $nilai2 = $this->input->post('nilai2', true);
 
         $data = array(
             'id_grafik' => $id,
             'tahun' => $tahun,
-            'nilai' => $nilai
+            'nilai' => $nilai,
+            'nilai2' => $nilai2
         );
         $this->load->model('Model_grafik_investasi');
         $this->Model_grafik_investasi->update($data, $id);

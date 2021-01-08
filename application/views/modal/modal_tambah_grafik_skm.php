@@ -22,8 +22,14 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="pelatihan">Nilai</label>
+                        <label for="pelatihan">Semester I</label>
                         <input class="form-control" name="nilai" placeholder="Nilai" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pelatihan">Semester II</label>
+                        <input class="form-control" name="nilai2" placeholder="Nilai" required>
 
                     </div>
             </div>

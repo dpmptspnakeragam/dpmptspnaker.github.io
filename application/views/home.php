@@ -314,7 +314,7 @@
       </div>
     </div>
     <div class="row pb-4 pt-3">
-      <div class="col-lg-4 text-center text-dark bg-light isi-naker p-3">
+      <div class="col-lg-4 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Izin Diterbitkan</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -342,7 +342,7 @@
             labels: [<?php echo $nama_izin; ?>],
             datasets: [{
               label: "Jumlah",
-              backgroundColor: 'maroon',
+              backgroundColor: '#db162f',
               data: [<?php echo $total; ?>]
             }]
           };
@@ -351,6 +351,11 @@
             type: 'bar',
             data: data,
             options: {
+              legend: {
+                labels: {
+                  fontColor: 'white'
+                }
+              },
               "hover": {
                 "animationDuration": 0
               },
@@ -374,10 +379,16 @@
                 }
               },
               scales: {
+                xAxes: [{
+                  ticks: {
+                    fontColor: 'white'
+                  }
+                }],
                 yAxes: [{
                   ticks: {
                     max: Math.max(...data.datasets[0].data) + 10,
-                    beginAtZero: true
+                    beginAtZero: true,
+                    fontColor: 'white'
                   }
                 }]
               }
@@ -385,25 +396,28 @@
           });
         </script>
       </div>
-      <div class="col-lg-4 text-center text-dark bg-light isi-naker p-3">
-        <h5>Grafik Realisasi Investasi</h5>
+      <div class="col-lg-4 text-center text-light bg-dark isi-naker p-3">
+        <h5>Grafik Realisasi Investasi (Rp/M)</h5>
         <h6 class="text-center"> Periode
           <?php
           $no = 1;
           foreach ($periode_grafik_investasi->result() as $graph) {
           ?>
-            <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+            <?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
           <?php } ?>
         </h6>
         <canvas id="myChart2"></canvas>
         <?php
         $tahun_investasi = "";
         $total = null;
-        foreach ($grafik_skm->result() as $item) {
+        $total2 = null;
+        foreach ($grafik_investasi->result() as $item) {
           $nama = $item->tahun;
           $tahun_investasi .= "'$nama'" . ", ";
           $jum = $item->nilai;
           $total .= "$jum" . ", ";
+          $jum2 = $item->nilai2;
+          $total2 .= "$jum2" . ", ";
         }
         ?>
         <script>
@@ -412,16 +426,24 @@
           var data = {
             labels: [<?php echo $tahun_investasi; ?>],
             datasets: [{
-              label: "Nilai",
-              backgroundColor: 'maroon',
+              label: "Target",
+              backgroundColor: '#f5542e',
               data: [<?php echo $total; ?>]
+            }, {
+              label: "Realisasi",
+              backgroundColor: '#008b6e',
+              data: [<?php echo $total2; ?>]
             }]
           };
           var chart = new Chart(ctx, {
-            showTooltips: false,
             type: 'bar',
             data: data,
             options: {
+              legend: {
+                labels: {
+                  fontColor: 'white'
+                }
+              },
               "hover": {
                 "animationDuration": 0
               },
@@ -444,11 +466,21 @@
                   });
                 }
               },
+              tooltips: {
+                mode: 'index',
+                intersect: true
+              },
+              responsive: true,
               scales: {
+                xAxes: [{
+                  ticks: {
+                    fontColor: 'white'
+                  }
+                }],
                 yAxes: [{
                   ticks: {
-                    max: Math.max(...data.datasets[0].data) + 10,
-                    beginAtZero: true
+                    beginAtZero: true,
+                    fontColor: 'white'
                   }
                 }]
               }
@@ -456,43 +488,54 @@
           });
         </script>
       </div>
-      <div class="col-lg-4 text-center text-dark bg-light  isi-naker p-3">
-        <h5>Grafik Survey Kepuasan</h5>
+      <div class="col-lg-4 text-center text-light bg-dark  isi-naker p-3">
+        <h5>Grafik Survey Kepuasan Masyarakat</h5>
         <h6 class="text-center"> Periode
           <?php
           $no = 1;
           foreach ($periode_grafik_skm->result() as $graph) {
           ?>
-            <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+            <?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
           <?php } ?>
         </h6>
         <canvas id="myChart3"></canvas>
         <?php
-        $tahun_investasi = "";
+        $tahun_skm = "";
         $total = null;
+        $total2 = null;
         foreach ($grafik_skm->result() as $item) {
           $nama = $item->tahun;
-          $tahun_investasi .= "'$nama'" . ", ";
+          $tahun_skm .= "'$nama'" . ", ";
           $jum = $item->nilai;
           $total .= "$jum" . ", ";
+          $jum2 = $item->nilai2;
+          $total2 .= "$jum2" . ", ";
         }
         ?>
         <script>
           var tahun = new Date().getFullYear();
           var ctx = document.getElementById('myChart3').getContext('2d');
           var data = {
-            labels: [<?php echo $tahun_investasi; ?>],
+            labels: [<?php echo $tahun_skm; ?>],
             datasets: [{
-              label: "Nilai",
-              backgroundColor: 'maroon',
+              label: "Semester I",
+              backgroundColor: '#0037B3',
               data: [<?php echo $total; ?>]
+            }, {
+              label: "Semester II",
+              backgroundColor: '#70BAFF',
+              data: [<?php echo $total2; ?>]
             }]
           };
           var chart = new Chart(ctx, {
-            showTooltips: false,
             type: 'bar',
             data: data,
             options: {
+              legend: {
+                labels: {
+                  fontColor: 'white'
+                }
+              },
               "hover": {
                 "animationDuration": 0
               },
@@ -515,11 +558,21 @@
                   });
                 }
               },
+              tooltips: {
+                mode: 'index',
+                intersect: true
+              },
+              responsive: true,
               scales: {
+                xAxes: [{
+                  ticks: {
+                    fontColor: 'white'
+                  }
+                }],
                 yAxes: [{
                   ticks: {
-                    max: Math.max(...data.datasets[0].data) + 10,
-                    beginAtZero: true
+                    beginAtZero: true,
+                    fontColor: 'white'
                   }
                 }]
               }
@@ -707,7 +760,7 @@
   <span width="100%">
     <?php foreach ($teks->result() as $running) {
     ?>
-      <img src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="15px"> <?php echo $running->teks; ?>
+      <img class="ml-3 mr-3" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="15px"> <?php echo $running->teks; ?>
     <?php } ?>
   </span>
 </marquee>

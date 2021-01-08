@@ -19,12 +19,14 @@
                     <div class="form-group">
                         <label for="pelatihan">Tahun Investasi</label>
                         <input class="form-control" name="tahun" placeholder="Tahun Investasi" required>
-
                     </div>
                     <div class="form-group">
-                        <label for="pelatihan">Nilai Investasi</label>
+                        <label for="pelatihan">Nilai Target</label>
                         <input class="form-control" name="nilai" placeholder="Nilai Investasi" required>
-
+                    </div>
+                    <div class="form-group">
+                        <label for="pelatihan">Nilai Realisasi</label>
+                        <input class="form-control" name="nilai2" placeholder="Nilai Investasi" required>
                     </div>
             </div>
             <div class="modal-footer">

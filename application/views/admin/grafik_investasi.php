@@ -13,13 +13,13 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-center">Grafik Realisasi Investasi</h3>
+                <h3 class="text-center">Grafik Realisasi Investasi (Rp/M)</h3>
                 <h5 class="text-center"> Periode
                     <?php
                     $no = 1;
                     foreach ($periode_grafik_investasi->result() as $graph) {
                     ?>
-                        <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?> <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditPeriodeGrafikInvestasi<?php echo $graph->id_periode; ?>" title="Edit"><i class="fa fa-edit"></i></a>
+                        <?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?> <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditPeriodeGrafikInvestasi<?php echo $graph->id_periode; ?>" title="Edit"><i class="fa fa-edit"></i></a>
 
                     <?php } ?>
                 </h5>
@@ -50,7 +50,8 @@
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th class="text-center">Tahun</th>
-                                <th class="text-center">Nilai</th>
+                                <th class="text-center">Target</th>
+                                <th class="text-center">Realisasi</th>
                                 <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
                             </tr>
                         </thead>
@@ -63,6 +64,7 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $row->tahun; ?></td>
                                     <td><?= $row->nilai; ?></td>
+                                    <td><?= $row->nilai2; ?></td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditGrafikInvestasi<?php echo $row->id_grafik; ?>" title="Edit"><i class="fa fa-edit"></i></a>
@@ -76,17 +78,20 @@
                 </div>
                 <!--end: Accordion -->
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-12 bg-dark text-light">
                 <canvas id="myChart"></canvas>
                 <?php
                 //Inisialisasi nilai variabel awal
                 $tahun_investasi = "";
                 $total = null;
+                $total2 = null;
                 foreach ($grafik_investasi->result() as $item) {
                     $nama = $item->tahun;
                     $tahun_investasi .= "'$nama'" . ", ";
                     $jum = $item->nilai;
                     $total .= "$jum" . ", ";
+                    $jum2 = $item->nilai2;
+                    $total2 .= "$jum2" . ", ";
                 }
                 ?>
             </div>
@@ -98,24 +103,64 @@
 <script>
     var tahun = new Date().getFullYear();
     var ctx = document.getElementById('myChart').getContext('2d');
+    var data = {
+        labels: [<?php echo $tahun_investasi; ?>],
+        datasets: [{
+            label: "Target",
+            backgroundColor: '#f5542e',
+            data: [<?php echo $total; ?>]
+        }, {
+            label: "Realisasi",
+            backgroundColor: '#008b6e',
+            data: [<?php echo $total2; ?>]
+        }]
+    };
     var chart = new Chart(ctx, {
-        // The type of chart we want to create
         type: 'bar',
-        // The data for our dataset
-        data: {
-            labels: [<?php echo $tahun_investasi; ?>],
-            datasets: [{
-                label: "Nilai",
-                backgroundColor: 'maroon',
-                data: [<?php echo $total; ?>]
-            }]
-        },
-        // Configuration options go here
+        data: data,
         options: {
+            legend: {
+                labels: {
+                    fontColor: 'white'
+                }
+            },
+            "hover": {
+                "animationDuration": 0
+            },
+            "animation": {
+                "duration": 1,
+                "onComplete": function() {
+                    var chartInstance = this.chart,
+                        ctx = chartInstance.ctx;
+
+                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+
+                    this.data.datasets.forEach(function(dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            var data = dataset.data[index];
+                            ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                        });
+                    });
+                }
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            },
+            responsive: true,
             scales: {
+                xAxes: [{
+                    ticks: {
+                        fontColor: 'white'
+                    }
+                }],
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        fontColor: 'white'
                     }
                 }]
             }
