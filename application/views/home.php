@@ -52,62 +52,73 @@
 
 <!-- Informasi -->
 <section class="informasi" id="informasi">
-  <div>
-    <div id="carouselExampleIndicators" class="carousel slide berita-carousel" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <?php
-        for ($i = 0; $i < $berita->num_rows(); $i++) {
-          echo '
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10 col-10">
+        <div id="carouselExampleIndicators" class="carousel slide berita-carousel" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <?php
+            for ($i = 0; $i < $berita->num_rows(); $i++) {
+              echo '
         <li data-target="#carouselExampleIndicators" data-slide-to="' . $i . '"';
-          if ($i == 0) {
-            echo 'class="active"';
-          }
-          echo '></li>';
-        } ?>
-      </ol>
-      <div class="carousel-inner">
-        <?php
-        if ($berita->num_rows() > 0) {
-          foreach ($berita->result() as $row) {
-            foreach ($idmax->result() as $row2) {
-              if ($row->id_berita == $row2->idmax) {
-        ?> <div class="carousel-item active">
-                <?php
-              } else {
-                ?> <div class="carousel-item">
-                <?php
+              if ($i == 0) {
+                echo 'class="active"';
               }
-            }
-                ?>
-                <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
-                  <div class="container">
-                    <div class="row">
-                      <img class="gambar-carousel shadow mt-5" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
-                    </div>
-                  </div>
-                  <div class="carousel-caption text-left">
-                    <div class="row">
-                      <p class="judul-informasi mb-2 pl-2 pr-2"><?= $row->judul_berita; ?></p>
-                    </div>
-                    <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?></small>
-                </a>
-                <!-- <div class="text-center tombol-informasi">
+              echo '></li>';
+            } ?>
+          </ol>
+          <div class="carousel-inner">
+            <?php
+            if ($berita->num_rows() > 0) {
+              foreach ($berita->result() as $row) {
+                foreach ($idmax->result() as $row2) {
+                  if ($row->id_berita == $row2->idmax) {
+            ?> <div class="carousel-item active">
+                    <?php
+                  } else {
+                    ?> <div class="carousel-item">
+                    <?php
+                  }
+                }
+                    ?>
+                    <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
+                      <div class="container">
+                        <div class="row">
+                          <img class="gambar-carousel shadow mt-5" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
+                        </div>
+                      </div>
+                      <div class="carousel-caption text-left">
+                        <div class="row">
+                          <p class="judul-informasi mb-2 pl-2 pr-2"><?= $row->judul_berita; ?></p>
+                        </div>
+                        <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?></small>
+                    </a>
+                    <!-- <div class="text-center tombol-informasi">
                   <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">Informasi lainnnya<br>KLIK DISINI</a></small>
                 </div> -->
-                  </div>
-                </div>
-            <?php }
-        } ?>
+                      </div>
+                    </div>
+                <?php }
+            } ?>
 
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+      <div class="col-lg-2 col-2">
+        <?php foreach ($berita->result() as $row) { ?>
+          <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
+            <img width="100%" class="shadow mt-5 img-responsive" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
+          </a>
+        <?php } ?>
+      </div>
     </div>
   </div>
 </section>
@@ -184,18 +195,19 @@
         <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%"> Formulir & Persyaratan Perizinan</a>
       </div>
       <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+        <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%"> SiCantik</a>
+      </div>
+      <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%"> Tracking SiCantik</a>
+      </div>
+      <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
         <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%"> OSS</a>
       </div>
       <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+        <a href="https://lkpmonline.bkpm.go.id/pengembangan/login.jsp" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lkpm.jpg" alt="gambarsicantikcloud" width="100%"> LKPM Online</a>
+      </div>
+      <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
         <a href="https://account.kemnaker.go.id/auth/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sisnaker.jpg" alt="gambarsicantikcloud" width="100%"> SISNAKER KEMNAKER</a>
-      </div>
-    </div>
-    <div class="row text-center">
-      <div class="col col-sm-12 col-md-4 col-lg-6 col-6 display-4 mb-3">
-        <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%"> SiCantik</a>
-      </div>
-      <div class="col col-sm-12 col-md-4 col-lg-6 col-6 display-4 mb-3">
-        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%"> Tracking SiCantik</a>
       </div>
     </div>
   </div>
@@ -210,7 +222,7 @@
   </video>
   <div class="container text-center bid-investasi">
     <div class="row">
-      <div class="col-lg-12 mt-1 ">
+      <div class="col-lg-12 mt-4 ">
         <h1 class="judul-investasi"><b>Peluang Investasi</b></h1>
         <hr class="garis-judul">
       </div>
@@ -295,22 +307,23 @@
 <!-- Grafik -->
 <section class="grafik" id="grafik">
   <div class="container text-center">
-    <div class="row isi-naker">
+    <div class="row">
       <div class="col-lg-12 mt-4">
-        <h1 class="judul-naker"><b>Grafik Izin Diterbitkan</b></h1>
-        <h5 class="text-center"> Periode
+        <h1 class="judul-naker"><b>Info Grafik</b></h1>
+        <hr class="garis-judul">
+      </div>
+    </div>
+    <div class="row pb-4 pt-3">
+      <div class="col-lg-4 text-center text-dark bg-light isi-naker p-3">
+        <h5>Grafik Izin Diterbitkan</h5>
+        <h6 class="text-center"> Periode
           <?php
           $no = 1;
           foreach ($periode_grafik->result() as $graph) {
           ?>
             <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
           <?php } ?>
-        </h5>
-        <hr class="garis-judul">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 text-center bg-light mb-5 isi-naker p-3">
+        </h6>
         <canvas id="myChart"></canvas>
         <?php
         $nama_izin = "";
@@ -328,7 +341,149 @@
           var data = {
             labels: [<?php echo $nama_izin; ?>],
             datasets: [{
-              label: "Jumlah Izin Diterbitkan",
+              label: "Jumlah",
+              backgroundColor: 'maroon',
+              data: [<?php echo $total; ?>]
+            }]
+          };
+          var chart = new Chart(ctx, {
+            showTooltips: false,
+            type: 'bar',
+            data: data,
+            options: {
+              "hover": {
+                "animationDuration": 0
+              },
+              "animation": {
+                "duration": 1,
+                "onComplete": function() {
+                  var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                  ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+
+                  this.data.datasets.forEach(function(dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function(bar, index) {
+                      var data = dataset.data[index];
+                      ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                    });
+                  });
+                }
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    max: Math.max(...data.datasets[0].data) + 10,
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+        </script>
+      </div>
+      <div class="col-lg-4 text-center text-dark bg-light isi-naker p-3">
+        <h5>Grafik Realisasi Investasi</h5>
+        <h6 class="text-center"> Periode
+          <?php
+          $no = 1;
+          foreach ($periode_grafik_skm->result() as $graph) {
+          ?>
+            <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+          <?php } ?>
+        </h6>
+        <canvas id="myChart2"></canvas>
+        <?php
+        $tahun_investasi = "";
+        $total = null;
+        foreach ($grafik_skm->result() as $item) {
+          $nama = $item->tahun;
+          $tahun_investasi .= "'$nama'" . ", ";
+          $jum = $item->nilai;
+          $total .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var tahun = new Date().getFullYear();
+          var ctx = document.getElementById('myChart2').getContext('2d');
+          var data = {
+            labels: [<?php echo $tahun_investasi; ?>],
+            datasets: [{
+              label: "Nilai",
+              backgroundColor: 'maroon',
+              data: [<?php echo $total; ?>]
+            }]
+          };
+          var chart = new Chart(ctx, {
+            showTooltips: false,
+            type: 'bar',
+            data: data,
+            options: {
+              "hover": {
+                "animationDuration": 0
+              },
+              "animation": {
+                "duration": 1,
+                "onComplete": function() {
+                  var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                  ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+
+                  this.data.datasets.forEach(function(dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function(bar, index) {
+                      var data = dataset.data[index];
+                      ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                    });
+                  });
+                }
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    max: Math.max(...data.datasets[0].data) + 10,
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+        </script>
+      </div>
+      <div class="col-lg-4 text-center text-dark bg-light  isi-naker p-3">
+        <h5>Grafik Survey Kepuasan</h5>
+        <h6 class="text-center"> Periode
+          <?php
+          $no = 1;
+          foreach ($periode_grafik_skm->result() as $graph) {
+          ?>
+            <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+          <?php } ?>
+        </h6>
+        <canvas id="myChart3"></canvas>
+        <?php
+        $tahun_investasi = "";
+        $total = null;
+        foreach ($grafik_skm->result() as $item) {
+          $nama = $item->tahun;
+          $tahun_investasi .= "'$nama'" . ", ";
+          $jum = $item->nilai;
+          $total .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var tahun = new Date().getFullYear();
+          var ctx = document.getElementById('myChart3').getContext('2d');
+          var data = {
+            labels: [<?php echo $tahun_investasi; ?>],
+            datasets: [{
+              label: "Nilai",
               backgroundColor: 'maroon',
               data: [<?php echo $total; ?>]
             }]

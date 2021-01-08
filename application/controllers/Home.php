@@ -44,10 +44,16 @@ class Home extends CI_Controller
 		$this->load->model('Model_grafik');
 		$this->load->model('Model_runningteks');
 		$this->load->model('Model_banner');
+		$this->load->model('Model_grafik_investasi');
+		$this->load->model('Model_grafik_skm');
 		$data['periode_grafik'] = $this->Model_grafik->tampil_data_periode();
+		$data['periode_grafik_investasi'] = $this->Model_grafik_investasi->tampil_data_periode();
+		$data['periode_grafik_skm'] = $this->Model_grafik_skm->tampil_data_periode();
 		$data['banner'] = $this->Model_banner->tampil_data();
 		$data['teks'] = $this->Model_runningteks->tampil_data();
 		$data['grafik'] = $this->Model_grafik->tampil_data();
+		$data['grafik_investasi'] = $this->Model_grafik_investasi->tampil_data();
+		$data['grafik_skm'] = $this->Model_grafik_skm->tampil_data();
 		$data['berita'] = $this->Model_informasi->informasi();
 		$data['investasi'] = $this->Model_investasi->tampil_data();
 		$data['kabid'] = $this->Model_pegawai->tampil_kabid();

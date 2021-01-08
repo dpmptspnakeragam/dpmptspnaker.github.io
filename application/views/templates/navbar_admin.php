@@ -64,6 +64,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse1">
+                            <span data-feather="trending-up"></span>
+                            Grafik
+                        </a>
+                        <div class="collapse" id="collapse2">
+                            <ul>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin">Grafik Izin Diterbtkan</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_investasi">Grafik Realisasi Investasi</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_skm">Grafik SKM</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/runningteks">
                             <span data-feather="info"></span>
                             Running Teks
