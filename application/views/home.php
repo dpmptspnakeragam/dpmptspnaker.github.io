@@ -390,7 +390,7 @@
         <h6 class="text-center"> Periode
           <?php
           $no = 1;
-          foreach ($periode_grafik_skm->result() as $graph) {
+          foreach ($periode_grafik_investasi->result() as $graph) {
           ?>
             <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
           <?php } ?>
