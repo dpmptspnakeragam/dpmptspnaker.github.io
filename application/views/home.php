@@ -91,11 +91,11 @@
                         <div class="row">
                           <p class="judul-informasi mb-2 pl-2 pr-2"><?= $row->judul_berita; ?></p>
                         </div>
-                        <small class="tgl_berita"><?= date_indo($row->tgl_berita); ?></small>
+                        <small class="tgl_berita bg-dark p-1"><?= date_indo($row->tgl_berita); ?></small>
                     </a>
-                    <!-- <div class="text-center tombol-informasi">
-                  <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">Informasi lainnnya<br>KLIK DISINI</a></small>
-                </div> -->
+                    <div class="text-center tombol-informasi">
+                      <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">> Berita Lainnnya < </a></small>
+                    </div>
                       </div>
                     </div>
                 <?php }
