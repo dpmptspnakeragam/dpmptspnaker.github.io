@@ -306,7 +306,7 @@
       </div>
     </div>
     <div class="row pb-4 pt-3">
-      <div class="col-lg-4 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-12 col text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Izin Diterbitkan</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -392,7 +392,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-4 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Realisasi Investasi (Rp. M)</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -489,7 +489,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-4 text-center text-light bg-dark  isi-naker p-3">
+      <div class="col-lg-6 text-center text-light bg-dark  isi-naker p-3">
         <h5>Grafik Survey Kepuasan Masyarakat (%)</h5>
         <h6 class="text-center"> Periode
           <?php
