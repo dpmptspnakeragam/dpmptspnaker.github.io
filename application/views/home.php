@@ -479,7 +479,7 @@
                     color: 'grey'
                   },
                   ticks: {
-                    max: Math.max(...data.datasets[0].data) + 950,
+                    max: Math.max(...data.datasets[0].data) + 650,
                     beginAtZero: true,
                     fontColor: 'white'
                   }
