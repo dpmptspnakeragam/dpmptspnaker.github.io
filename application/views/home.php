@@ -385,8 +385,12 @@
                   }
                 }],
                 yAxes: [{
+                  gridLines: {
+                    zeroLineColor: 'grey',
+                    color: 'grey'
+                  },
                   ticks: {
-                    max: Math.max(...data.datasets[0].data) + 100,
+                    max: Math.max(...data.datasets[0].data) + 10,
                     beginAtZero: true,
                     fontColor: 'white'
                   }
@@ -478,8 +482,12 @@
                   }
                 }],
                 yAxes: [{
+                  gridLines: {
+                    zeroLineColor: 'grey',
+                    color: 'grey'
+                  },
                   ticks: {
-                    max: Math.max(...data.datasets[0].data) + 1000,
+                    max: Math.max(...data.datasets[0].data) + 500,
                     beginAtZero: true,
                     fontColor: 'white'
                   }
@@ -571,8 +579,12 @@
                   }
                 }],
                 yAxes: [{
+                  gridLines: {
+                    zeroLineColor: 'grey',
+                    color: 'grey'
+                  },
                   ticks: {
-                    max: Math.max(...data.datasets[0].data) + 1000,
+                    max: Math.max(...data.datasets[0].data) + 10,
                     beginAtZero: true,
                     fontColor: 'white'
                   }
@@ -701,27 +713,32 @@
 <!-- close kontak -->
 
 <!-- popup banner -->
-<div class="popUpBannerBox modal">
-  <div class="popUpBannerInner">
-    <div class="popUpBannerContent">
-      <div class="container">
-        <div class="row">
-          <p class="text-right text-light"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
-          <?php
-          foreach ($banner->result() as $row) {
-          ?>
-            <div class="col-12">
-              <img width="100%" class="banner img-responsive" src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" alt="" />
-            </div>
-            <div class="col-12 mt-3 text-light">
-              <p><?= $row->teks; ?></p>
-            </div>
-          <?php } ?>
+<?php if ($banner->num_rows() == 0) { ?>
+  <div class="popUpBannerBox modal" hidden>
+  </div>
+<?php } else {  ?>
+  <div class="popUpBannerBox modal">
+    <div class="popUpBannerInner">
+      <div class="popUpBannerContent">
+        <div class="container">
+          <div class="row">
+            <p class="text-right text-light"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
+            <?php
+            foreach ($banner->result() as $row) {
+            ?>
+              <div class="col-12">
+                <img width="100%" class="banner img-responsive" src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" alt="" />
+              </div>
+              <div class="col-12 mt-3 text-light">
+                <p><?= $row->teks; ?></p>
+              </div>
+            <?php } ?>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<?php } ?>
 <!-- close popup banner -->
 
 <!--Start of Tawk.to Script-->
