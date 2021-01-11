@@ -54,7 +54,7 @@
 <section class="informasi" id="informasi">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-10 col-10">
+      <div class="col">
         <div id="carouselExampleIndicators" class="carousel slide berita-carousel" data-ride="carousel">
           <ol class="carousel-indicators">
             <?php
@@ -68,12 +68,11 @@
             } ?>
           </ol>
           <div class="carousel-inner">
-            <?php
-            if ($berita->num_rows() > 0) {
+            <?php if ($berita->num_rows() > 0) {
               foreach ($berita->result() as $row) {
                 foreach ($idmax->result() as $row2) {
-                  if ($row->id_berita == $row2->idmax) {
-            ?> <div class="carousel-item active">
+                  if ($row->id_berita == $row2->idmax) { ?>
+                    <div class="carousel-item active">
                     <?php
                   } else {
                     ?> <div class="carousel-item">
@@ -111,13 +110,6 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-      </div>
-      <div class="col-lg-2 col-2">
-        <?php foreach ($berita->result() as $row) { ?>
-          <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
-            <img width="100%" class="shadow mt-5 img-responsive" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
-          </a>
-        <?php } ?>
       </div>
     </div>
   </div>
@@ -401,7 +393,7 @@
         </script>
       </div>
       <div class="col-lg-4 text-center text-light bg-dark isi-naker p-3">
-        <h5>Grafik Realisasi Investasi (Rp/M)</h5>
+        <h5>Grafik Realisasi Investasi (Rp. M)</h5>
         <h6 class="text-center"> Periode
           <?php
           $no = 1;
@@ -487,7 +479,7 @@
                     color: 'grey'
                   },
                   ticks: {
-                    max: Math.max(...data.datasets[0].data) + 500,
+                    max: Math.max(...data.datasets[0].data),
                     beginAtZero: true,
                     fontColor: 'white'
                   }
@@ -498,7 +490,7 @@
         </script>
       </div>
       <div class="col-lg-4 text-center text-light bg-dark  isi-naker p-3">
-        <h5>Grafik Survey Kepuasan Masyarakat</h5>
+        <h5>Grafik Survey Kepuasan Masyarakat (%)</h5>
         <h6 class="text-center"> Periode
           <?php
           $no = 1;
