@@ -29,7 +29,7 @@
           <a class="nav-link page-scroll" href="#pelayanan">Layanan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#investasi">Peluang Investasi</a>
+          <a class="nav-link page-scroll" href="#investasi">Investasi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#naker">e-Naker</a>
@@ -215,7 +215,7 @@
   <div class="container text-center bid-investasi">
     <div class="row">
       <div class="col-lg-12 mt-4 ">
-        <h1 class="judul-investasi"><b>Peluang Investasi</b></h1>
+        <h1 class="judul-investasi"><b>Potensi & Peluang Investasi</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -223,12 +223,19 @@
       <div class="col-lg-12 col-sm-6 col-xs-12">
         <iframe class="peta-investasi shadow" width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="PETA POTENSI INVESTASI KABUPATEN AGAM" src="//www.arcgis.com/apps/Embed/index.html?webmap=ae83c5f68ead4e8a894d82b536186438&extent=99.4542,-0.6519,100.8906,0.1131&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light"></iframe>
       </div>
-      <div class="col-lg-12 col-sm-6 col-xs-12">
-        <p class="penjelasan-investasi">Peta diatas merupakan Peta Penyebaran Peluang Investasi yang berada di Kabupaten Agam.
-          <br>Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
+      <div class="col-lg-6">
+        <p class="penjelasan-investasi">Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
         </p>
         <div class="display-4">
           <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Peluang Investasi</a>
+        </div>
+      </div>
+      <div class="col-lg-6 col">
+        <p class="penjelasan-investasi">Peta diatas merupakan Peta Penyebaran Potensi Investasi yang berada di Kabupaten Agam.
+          <br>Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
+        </p>
+        <div class="display-4">
+          <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalPotensiInvestasi">Potensi Investasi</a>
         </div>
       </div>
     </div>

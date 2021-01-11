@@ -46,10 +46,16 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>admin/investasi">
-                            <span data-feather="trending-up"></span>
-                            Peluang Investasi
+                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse1">
+                            <span data-feather="dollar-sign"></span>
+                            Investasi
                         </a>
+                        <div class="collapse" id="collapse3">
+                            <ul>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/investasi">Peluang Investasi</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/potensi_investasi">Potensi Investasi</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/regulasi">

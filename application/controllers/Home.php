@@ -46,6 +46,7 @@ class Home extends CI_Controller
 		$this->load->model('Model_banner');
 		$this->load->model('Model_grafik_investasi');
 		$this->load->model('Model_grafik_skm');
+		$this->load->model('Model_potensi_investasi');
 		$data['periode_grafik'] = $this->Model_grafik->tampil_data_periode();
 		$data['periode_grafik_investasi'] = $this->Model_grafik_investasi->tampil_data_periode();
 		$data['periode_grafik_skm'] = $this->Model_grafik_skm->tampil_data_periode();
@@ -56,6 +57,7 @@ class Home extends CI_Controller
 		$data['grafik_skm'] = $this->Model_grafik_skm->tampil_data();
 		$data['berita'] = $this->Model_informasi->informasi();
 		$data['investasi'] = $this->Model_investasi->tampil_data();
+		$data['potensi_investasi'] = $this->Model_potensi_investasi->tampil_data();
 		$data['kabid'] = $this->Model_pegawai->tampil_kabid();
 		$data['pegawai'] = $this->Model_pegawai->tampil_pegawai();
 		$data['idmax'] = $this->Model_informasi->idmax();
@@ -67,10 +69,12 @@ class Home extends CI_Controller
 		$this->load->view('modal/modal_fungsi');
 		$this->load->view('modal/modal_tugas');
 		$this->load->view('modal/modal_investasi');
+		$this->load->view('modal/modal_potensi_investasi');
 		$this->load->view('modal/modal_tracking');
 		$this->load->view('modal/modal_struktur');
 		$this->load->view('modal/modal_kabid', $data);
 		$this->load->view('modal/modal_detail_investasi', $data);
+		$this->load->view('modal/modal_detail_potensi_investasi', $data);
 		$this->load->view('modal/modal_informasi', $data);
 		$this->load->view('templates/footer');
 	}
