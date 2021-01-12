@@ -221,21 +221,21 @@
     </div>
     <div class="row pb-5">
       <div class="col-lg-12 col-sm-6 col-xs-12">
+        <p class="penjelasan-investasi">Peta dibawah merupakan Peta Penyebaran Potensi Investasi yang berada di Kabupaten Agam. </p>
         <iframe class="peta-investasi shadow" width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="PETA POTENSI INVESTASI KABUPATEN AGAM" src="//www.arcgis.com/apps/Embed/index.html?webmap=ae83c5f68ead4e8a894d82b536186438&extent=99.4542,-0.6519,100.8906,0.1131&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light"></iframe>
+      </div>
+      <div class="col-lg-6 col">
+        <p class="penjelasan-investasi">Untuk lebih detailnya mengenai Potensi Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
+        </p>
+        <div class="display-4">
+          <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalPotensiInvestasi">Potensi Investasi</a>
+        </div>
       </div>
       <div class="col-lg-6">
         <p class="penjelasan-investasi">Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
         </p>
         <div class="display-4">
           <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalInvestasi">Peluang Investasi</a>
-        </div>
-      </div>
-      <div class="col-lg-6 col">
-        <p class="penjelasan-investasi">Peta diatas merupakan Peta Penyebaran Potensi Investasi yang berada di Kabupaten Agam.
-          <br>Untuk lebih detailnya mengenai Peluang Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
-        </p>
-        <div class="display-4">
-          <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalPotensiInvestasi">Potensi Investasi</a>
         </div>
       </div>
     </div>
@@ -497,7 +497,7 @@
         </script>
       </div>
       <div class="col-lg-6 text-center text-light bg-dark  isi-naker p-3">
-        <h5>Grafik Survey Kepuasan Masyarakat (%)</h5>
+        <h5>Grafik Survey Kepuasan Masyarakat</h5>
         <h6 class="text-center"> Periode
           <?php
           $no = 1;
@@ -592,6 +592,9 @@
             }
           });
         </script>
+        <p class="text-left">
+          <small>Keterangan : <br>A (Sangat Baik) : 88,31 - 100,00<br> B (Baik) : 76,61 - 88,30<br>C (Kurang Baik) : 65,00 - 76-60<br>D (Tidak Baik) : 25,00 - 64,99</small>
+        </p>
       </div>
     </div>
 </section>
