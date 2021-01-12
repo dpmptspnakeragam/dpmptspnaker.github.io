@@ -55,7 +55,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <div id="carouselExampleIndicators" class="carousel slide berita-carousel" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide berita-carousel multi-item-carousel" data-ride="carousel">
           <ol class="carousel-indicators">
             <?php
             for ($i = 0; $i < $berita->num_rows(); $i++) {
@@ -80,20 +80,24 @@
                   }
                 }
                     ?>
-                    <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
-                      <div class="container">
-                        <div class="row">
-                          <img class="gambar-carousel shadow mt-5" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
+                    <div class="item__third">
+                      <a href="#" data-toggle="modal" data-target="#DetailInformasi<?php echo $row->id_berita; ?>">
+                        <div class="container">
+                          <div class="row">
+                            <img class="gambar-carousel mt-5" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->judul_berita; ?>">
+                          </div>
                         </div>
+                        <div class="carousel-caption text-left">
+                          <div class="row">
+                            <p class="judul-informasi mb-2 pl-2 pr-2"><?= $row->judul_berita; ?></p>
+                          </div>
+                          <di class="row">
+                            <small class="tgl_berita bg-dark p-1"><?= date_indo($row->tgl_berita); ?></small>
+                          </di>
+                      </a>
+                      <div class="text-center tombol-informasi">
+                        <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">> Berita Lainnnya < </a></small>
                       </div>
-                      <div class="carousel-caption text-left">
-                        <div class="row">
-                          <p class="judul-informasi mb-2 pl-2 pr-2"><?= $row->judul_berita; ?></p>
-                        </div>
-                        <small class="tgl_berita bg-dark p-1"><?= date_indo($row->tgl_berita); ?></small>
-                    </a>
-                    <div class="text-center tombol-informasi">
-                      <small><a href="<?= base_url(); ?>informasi" class="informasi-lainnya">> Berita Lainnnya < </a></small>
                     </div>
                       </div>
                     </div>
@@ -792,3 +796,18 @@
   </span>
 </marquee>
 <!--End of Tawk.to Script-->
+<script>
+  $('.carousel-item', '.multi-item-carousel').each(function() {
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+  }).each(function() {
+    var prev = $(this).prev();
+    if (!prev.length) {
+      prev = $(this).siblings(':last');
+    }
+    prev.children(':nth-last-child(2)').clone().prependTo($(this));
+  });
+</script>
