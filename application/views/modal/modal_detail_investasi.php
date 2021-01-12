@@ -11,11 +11,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="container">
-                            <img class="img-responsive img-investasi" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->nama_investasi; ?>">
-                            <div class="container-fluid">
-                                <p class=""><?= $row->deskripsi; ?></p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <img class="img-responsive img-investasi" src="<?= base_url() ?>assets/imgupload/<?= $row->gambar; ?>" alt="<?= $row->nama_investasi; ?>">
+                            </div>
+                            <div class="col-6">
+                                <div class="container-fluid">
+                                    <p class=""><?= $row->deskripsi; ?></p>
+                                </div>
                             </div>
                         </div>
                     </div>
