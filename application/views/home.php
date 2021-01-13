@@ -500,7 +500,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-6 text-center text-light bg-dark  isi-naker p-3">
+      <div class="col-lg-6 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Survey Kepuasan Masyarakat</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -510,16 +510,10 @@
             <?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
           <?php } ?>
         </h6>
-        <div class="row p-0">
-          <div class="col-9 p-0">
-            <canvas id="myChart3"></canvas>
-          </div>
-          <div class="col-3 p-o">
-            <p class="text-left" style="font-size:10px;">
-              <small>Keterangan : <br>A (Sangat Baik) : 88,31 - 100,00<br> B (Baik) : 76,61 - 88,30<br>C (Kurang Baik) : 65,00 - 76-60<br>D (Tidak Baik) : 25,00 - 64,99</small>
-            </p>
-          </div>
-        </div>
+        <canvas id="myChart3"></canvas>
+        <p style="font-size:12px;">
+          <small>Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang Baik) : 65,00 - 76,60 | D (Tidak Baik) : 25,00 - 64,99</small>
+        </p>
         <?php
         $tahun_skm = "";
         $total = null;
