@@ -17,7 +17,7 @@ class Model_informasi extends CI_model
         $this->db->select('*');
         $this->db->from('berita');
         $this->db->join('kategori_berita', 'berita.id_kategori=kategori_berita.id_kategori');
-        $this->db->limit('3');
+        $this->db->limit('5');
         $this->db->order_by('tgl_berita', 'DESC');
         $query = $this->db->get();
         return $query;
