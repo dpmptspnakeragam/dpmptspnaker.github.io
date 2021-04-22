@@ -675,8 +675,19 @@
       </div>
       <div class="col-lg-6 mb-3 text-left">
         <div class="statistik">
-          <h5>Statistik Pengunjung</h5>
+          <h5><b>Statistik Pengunjung</b></h5>
           <table class="table-statistik" id="foot-table-list">
+            <tr>
+              <td>
+                <p><i class="fa fa-eye"></i> Pengunjung Online</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $pengunjungonline ?> orang</p>
+              </td>
+            </tr>
             <tr>
               <td>
                 <p><i class="fa fa-user"></i> Pengunjung Hari ini</p>
@@ -690,6 +701,29 @@
             </tr>
             <tr>
               <td>
+                <p><i class="fa fa-users"></i> Pengunjung Tahun 2020</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $pengunjung2020 ?> orang</p>
+              </td>
+            </tr>
+            <tr>
+            <tr>
+              <td>
+                <p><i class="fa fa-users"></i> Pengunjung Tahun 2021</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $pengunjung2021 ?> orang</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <p><i class="fa fa-users"></i> Total Pengunjung</p>
               </td>
               <td>
@@ -697,17 +731,6 @@
               </td>
               <td>
                 <p><?php echo $totalpengunjung ?> orang</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p><i class="fa fa-eye"></i> Pengunjung Online</p>
-              </td>
-              <td>
-                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
-              </td>
-              <td>
-                <p><?php echo $pengunjungonline ?> orang</p>
               </td>
             </tr>
           </table>
