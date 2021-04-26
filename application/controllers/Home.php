@@ -15,6 +15,8 @@ class Home extends CI_Controller
 	{
 		$ip    = $this->input->ip_address(); // Mendapatkan IP user
 		$date  = date("Y-m-d"); // Mendapatkan tanggal sekarang
+		$tahunlalu = date("Y" - 1);
+		$tahunini = date("Y");
 		$waktu = time(); //
 		$timeinsert = date("Y-m-d H:i:s");
 		// Cek berdasarkan IP, apakah user sudah pernah mengakses hari ini
@@ -33,16 +35,19 @@ class Home extends CI_Controller
 		$totalpengunjung = isset($dbpengunjung->hits) ? ($dbpengunjung->hits) : 0; // hitung total pengunjung
 		$bataswaktu = time() - 300;
 		$pengunjungonline  = $this->db->query("SELECT * FROM visitor WHERE online > '" . $bataswaktu . "'")->num_rows(); // hitung pengunjung online
-		$dbpengunjung2020 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) ='2020'")->row();
+		$dbpengunjung2020 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) ")->row();
 		$pengunjung2020 = isset($dbpengunjung2020->hits) ? ($dbpengunjung2020->hits) : 0;
-		$dbpengunjung2021 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) ='2021'")->row();
+		$dbpengunjung2021 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) = '" . $tahunini . "'")->row();
 		$pengunjung2021 = isset($dbpengunjung2021->hits) ? ($dbpengunjung2021->hits) : 0;
+		$dbbulanlalu = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)")->row();
+		$bulanlalu = isset($dbbulanlalu->hits) ? ($dbbulanlalu->hits) : 0;
 
 		$data['pengunjunghariini'] = $pengunjunghariini;
 		$data['totalpengunjung'] = $totalpengunjung;
 		$data['pengunjungonline'] = $pengunjungonline;
 		$data['pengunjung2020'] = $pengunjung2020;
 		$data['pengunjung2021'] = $pengunjung2021;
+		$data['pengunjungbulanlalu'] = $bulanlalu;
 
 		$this->load->model('Model_informasi');
 		$this->load->model('Model_investasi');

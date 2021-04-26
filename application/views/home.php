@@ -690,7 +690,7 @@
             </tr>
             <tr>
               <td>
-                <p><i class="fa fa-user"></i> Pengunjung Hari ini</p>
+                <p><i class="fa fa-user"></i> Pengunjung Hari Ini</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
@@ -701,7 +701,7 @@
             </tr>
             <tr>
               <td>
-                <p><i class="fa fa-users"></i> Pengunjung Tahun 2020</p>
+                <p><i class="fa fa-users"></i> Pengunjung Tahun Lalu</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
@@ -711,15 +711,25 @@
               </td>
             </tr>
             <tr>
-            <tr>
               <td>
-                <p><i class="fa fa-users"></i> Pengunjung Tahun 2021</p>
+                <p><i class="fa fa-users"></i> Pengunjung Tahun Ini</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
                 <p><?php echo $pengunjung2021 ?> orang</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><i class="fa fa-users"></i> Pengunjung Bulan Lalu</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $pengunjungbulanlalu ?> orang</p>
               </td>
             </tr>
             <tr>
