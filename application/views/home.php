@@ -129,37 +129,43 @@
         <hr class="garis-judul">
       </div>
     </div>
-    <div class="container pt-5">
+    <div class="container pt-3">
       <div class="row">
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMisi"><i class="ikon fa fa-info" aria-hidden="true"></i><br>Sejarah</a>
         </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalVisi"><i class="ikon fa fa-paper-plane" aria-hidden="true"></i><br>Visi & Misi</a>
         </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas"><i class="ikon fa fa-pen-square" aria-hidden="true"></i><br>Tugas & Fungsi</a>
         </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur"><i class="ikon fa fa-sitemap" aria-hidden="true"></i><br>Struktur Organisasi</a>
         </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid"><i class="ikon fa fa-users" aria-hidden="true"></i><br>Pegawai</a>
         </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="<?= base_url(); ?>regulasi" class="pilih-profil"><i class="ikon fa fa-balance-scale" aria-hidden="true"></i><br>Regulasi</a>
         </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="<?= base_url(); ?>ppid" class="pilih-profil"><i class="ikon fa fa-server" aria-hidden="true"></i><br>PPID</a>
         </div>
-        <div class="col-lg-3 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMaklumat"><i class="ikon fa fa-certificate" aria-hidden="true"></i><br>Maklumat Pelayanan</a>
+        </div>
+        <div class="col-lg-4 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalSarpras"><i class="ikon fa fa-building" aria-hidden="true"></i><br>Sarana & Prasarana</a>
         </div>
       </div>
       <div class="container">
         <div class="row">
           <di class="text-center col-md-12 col-lg-12 col-sm-12 display-4 mt-4">
-            <div class="slogan"><u>Kami Melayani Dengan PASTI !!!</u></div>
+            <div class="slogan">
+              <u>Kami Melayani Dengan PASTI !!!</u><br>
+              <small>Cepat | Sederhana | Transparan | Terintegrasi</small>
+            </div>
           </di>
         </div>
       </div>

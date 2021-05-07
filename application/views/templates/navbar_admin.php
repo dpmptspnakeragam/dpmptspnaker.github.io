@@ -94,6 +94,12 @@
                             Banner
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/sarpras">
+                            <span data-feather="tool"></span>
+                            Sarana & Prasarana
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
