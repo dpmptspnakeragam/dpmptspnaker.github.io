@@ -287,46 +287,154 @@
 
 <!-- Pengaduan -->
 <section class="pengaduan" id="pengaduan">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row text-center">
       <div class="col-lg-12 mt-4 ">
         <h1 class="judul-pengaduan"><b>Pengaduan Online</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 col-sm-12 mt-4 mb-4">
+    <div class="row pl-4 pr-4 pb-2">
+      <div class="col-lg-9 col-sm-12 mt-4 mb-4">
         <img class="shadow mekanisme-pengaduan" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
       </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-sm-6 form-pengaduan">
-        <h3 class="mb-1">Pengaduan Online</h3>
+      <div class="col-lg-3 col-sm-6 form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
         <p>Email : ppdpmptspkabagam@gmail.com</p>
-      </div>
-      <div class="col-lg-6 col-sm-6 form-pengaduan">
-        <h3 class="mb-1">Survey Kepuasan Masyarakat Online</h3>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
   </div>
 </section>
 <!-- close pengaduan -->
 
-<!-- Grafik -->
-<section class="grafik" id="grafik">
-  <div class="container text-center">
+<!-- SKM -->
+<section class="skm" id="skm">
+  <div class="container-fluid text-center">
     <div class="row">
       <div class="col-lg-12 mt-4">
-        <h1 class="judul-naker"><b>Info Grafik</b></h1>
+        <h1 class="judul-naker"><b>Survey Kepuasan Masyarakat Online</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
-    <div class="row pb-4 pt-3">
-      <div class="col-lg-12 col text-center text-light bg-dark isi-naker p-3">
+    <div class="row pb-4 pt-3 pl-4 pr-4">
+      <div class="col-lg-6 text-center text-light bg-dark isi-naker p-3">
+        <h5>Grafik Survey Kepuasan Masyarakat</h5>
+        <h6 class="text-center"> Periode
+          <?php
+          $no = 1;
+          foreach ($periode_grafik_skm->result() as $graph) {
+          ?>
+            <?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
+          <?php } ?>
+        </h6>
+        <canvas id="myChart3"></canvas>
+        <p style="font-size:12px;">
+          <small>Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang Baik) : 65,00 - 76,60 | D (Tidak Baik) : 25,00 - 64,99</small>
+        </p>
+        <?php
+        $tahun_skm = "";
+        $total = null;
+        $total2 = null;
+        foreach ($grafik_skm->result() as $item) {
+          $nama = $item->tahun;
+          $tahun_skm .= "'$nama'" . ", ";
+          $jum = $item->nilai;
+          $total .= "$jum" . ", ";
+          $jum2 = $item->nilai2;
+          $total2 .= "$jum2" . ", ";
+        }
+        ?>
+        <script>
+          var tahun = new Date().getFullYear();
+          var ctx = document.getElementById('myChart3').getContext('2d');
+          var data = {
+            labels: [<?php echo $tahun_skm; ?>],
+            datasets: [{
+              label: "Semester I",
+              backgroundColor: '#0037B3',
+              data: [<?php echo $total; ?>]
+            }, {
+              label: "Semester II",
+              backgroundColor: '#70BAFF',
+              data: [<?php echo $total2; ?>]
+            }]
+          };
+          var chart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+              legend: {
+                labels: {
+                  fontColor: 'white'
+                }
+              },
+              "hover": {
+                "animationDuration": 0
+              },
+              "animation": {
+                "duration": 1,
+                "onComplete": function() {
+                  var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                  ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+
+                  this.data.datasets.forEach(function(dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function(bar, index) {
+                      var data = dataset.data[index];
+                      ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                    });
+                  });
+                }
+              },
+              tooltips: {
+                mode: 'index',
+                intersect: true
+              },
+              responsive: true,
+              scales: {
+                xAxes: [{
+                  ticks: {
+                    fontColor: 'white'
+                  }
+                }],
+                yAxes: [{
+                  gridLines: {
+                    zeroLineColor: 'grey',
+                    color: 'grey'
+                  },
+                  ticks: {
+                    max: Math.max(...data.datasets[0].data) + 10,
+                    beginAtZero: true,
+                    fontColor: 'white'
+                  }
+                }]
+              }
+            }
+          });
+        </script>
+      </div>
+      <div class="col-lg-6 col form-pengaduan">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+      </div>
+    </div>
+</section>
+<!-- close skm -->
+
+<!-- Grafik -->
+<section class="pengaduan" id="">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-lg-12 mt-4 ">
+        <h1 class="judul-pengaduan"><b>Info Grafik</b></h1>
+        <hr class="garis-judul">
+      </div>
+    </div>
+    <div class="row p-3">
+      <div class="col-lg-6 col text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Izin Diterbitkan</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -509,109 +617,10 @@
           });
         </script>
       </div>
-      <div class="col-lg-6 text-center text-light bg-dark isi-naker p-3">
-        <h5>Grafik Survey Kepuasan Masyarakat</h5>
-        <h6 class="text-center"> Periode
-          <?php
-          $no = 1;
-          foreach ($periode_grafik_skm->result() as $graph) {
-          ?>
-            <?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
-          <?php } ?>
-        </h6>
-        <canvas id="myChart3"></canvas>
-        <p style="font-size:12px;">
-          <small>Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang Baik) : 65,00 - 76,60 | D (Tidak Baik) : 25,00 - 64,99</small>
-        </p>
-        <?php
-        $tahun_skm = "";
-        $total = null;
-        $total2 = null;
-        foreach ($grafik_skm->result() as $item) {
-          $nama = $item->tahun;
-          $tahun_skm .= "'$nama'" . ", ";
-          $jum = $item->nilai;
-          $total .= "$jum" . ", ";
-          $jum2 = $item->nilai2;
-          $total2 .= "$jum2" . ", ";
-        }
-        ?>
-        <script>
-          var tahun = new Date().getFullYear();
-          var ctx = document.getElementById('myChart3').getContext('2d');
-          var data = {
-            labels: [<?php echo $tahun_skm; ?>],
-            datasets: [{
-              label: "Semester I",
-              backgroundColor: '#0037B3',
-              data: [<?php echo $total; ?>]
-            }, {
-              label: "Semester II",
-              backgroundColor: '#70BAFF',
-              data: [<?php echo $total2; ?>]
-            }]
-          };
-          var chart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-              legend: {
-                labels: {
-                  fontColor: 'white'
-                }
-              },
-              "hover": {
-                "animationDuration": 0
-              },
-              "animation": {
-                "duration": 1,
-                "onComplete": function() {
-                  var chartInstance = this.chart,
-                    ctx = chartInstance.ctx;
-
-                  ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                  ctx.textAlign = 'center';
-                  ctx.textBaseline = 'bottom';
-
-                  this.data.datasets.forEach(function(dataset, i) {
-                    var meta = chartInstance.controller.getDatasetMeta(i);
-                    meta.data.forEach(function(bar, index) {
-                      var data = dataset.data[index];
-                      ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                    });
-                  });
-                }
-              },
-              tooltips: {
-                mode: 'index',
-                intersect: true
-              },
-              responsive: true,
-              scales: {
-                xAxes: [{
-                  ticks: {
-                    fontColor: 'white'
-                  }
-                }],
-                yAxes: [{
-                  gridLines: {
-                    zeroLineColor: 'grey',
-                    color: 'grey'
-                  },
-                  ticks: {
-                    max: Math.max(...data.datasets[0].data) + 10,
-                    beginAtZero: true,
-                    fontColor: 'white'
-                  }
-                }]
-              }
-            }
-          });
-        </script>
-      </div>
     </div>
+  </div>
 </section>
-<!-- close Grafik -->
+<!-- close grafik -->
 
 <!-- kontak -->
 <section class="kontak" id="kontak">

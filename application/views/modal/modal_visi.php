@@ -16,6 +16,7 @@
                     <ul class="list-unstyled">
                         <li>1. Meningkatkan Iklim Investasi yang Kondusif dan Berdaya Saing, sesuai Potensi dan Keunggulan Daerah </li>
                         <li>2. Mewujudkan Pelyanan Penanaman Modal, Perizinan dan Non Perizinan melalui PTSP yang berkualitas berbasis IT </li>
+                        <li>3. Meningkatkan Kualitas Tenaga Kerja, Menyebarkan Informasi Tenaga kerja, Meningkatkan Kualitas Hubungan Industrial Tenaga kerja dan Memberikan Jaminan Perlindungan Hukum bagi Tenaga Kerja</li>
                     </ul>
                 </div>
             </div>

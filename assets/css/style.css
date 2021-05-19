@@ -865,6 +865,17 @@ video {
 }
 /*tutup perizinan*/
 
+/* skm */
+.skm {
+	background-image: url("../img/wallpaper.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	color: white;
+}
+/* close skm */
+
 /* grafik */
 .grafik {
 	background-image: url("../img/wallpaper.jpg");
