@@ -5,7 +5,7 @@
     <h3 class="display-3 jumbotronteks">SELAMAT DATANG</h3>
     <h4 class="display-2 jumbotronteks">DINAS PENANAMAN MODAL PELAYANAN TERPADU</h4>
     <h4 class="display-2 jumbotronteks">SATU PINTU DAN KETENAGAKERJAAN</h4>
-    <h5 class="display-4 jumbotronteks">Kabupaten Agam<h5>
+    <h4 class="display-4 jumbotronteks">KABUPATEN AGAM<h4>
   </div>
 </div>
 <!-- close Cover -->
