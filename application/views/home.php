@@ -296,10 +296,10 @@
       </div>
     </div>
     <div class="row pl-4 pr-4 pb-2">
-      <div class="col-lg-9 col-sm-12 mt-4 mb-4">
+      <div class="col-lg-7 col-sm-12 mt-4 mb-4">
         <img class="shadow mekanisme-pengaduan" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
       </div>
-      <div class="col-lg-3 col-sm-6 form-pengaduan">
+      <div class="col-lg-5 col-sm-6 form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
         <p>Email : ppdpmptspkabagam@gmail.com</p>
       </div>
@@ -318,7 +318,7 @@
       </div>
     </div>
     <div class="row pb-4 pt-3 pl-4 pr-4">
-      <div class="col-lg-6 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-7 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Survey Kepuasan Masyarakat</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -418,7 +418,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-6 col form-pengaduan">
+      <div class="col-lg-5 col form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
