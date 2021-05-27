@@ -153,6 +153,10 @@ h6,
 	overflow: hidden;
 }
 
+.dinas {
+	font-weight: 400;
+}
+
 .jumbotronimg.muncul,
 .jumbotronteks.muncul {
 	opacity: 1;

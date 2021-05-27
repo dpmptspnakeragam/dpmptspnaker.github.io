@@ -3,9 +3,9 @@
   <div class="container text-center judul">
     <img class="mb-4 jumbotronimg" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="10%">
     <h3 class="display-3 jumbotronteks">SELAMAT DATANG</h3>
-    <h4 class="display-2 jumbotronteks"><b>DINAS PENANAMAN MODAL PELAYANAN TERPADU</b></h4>
-    <h4 class="display-2 jumbotronteks"><b>SATU PINTU DAN KETENAGAKERJAAN</b></h4>
-    <h4 class="display-2 jumbotronteks"><b>KABUPATEN AGAM</b>
+    <h4 class="display-2 jumbotronteks dinas"><b>DINAS PENANAMAN MODAL PELAYANAN TERPADU</b></h4>
+    <h4 class="display-2 jumbotronteks dinas"><b>SATU PINTU DAN KETENAGAKERJAAN</b></h4>
+    <h4 class="display-2 jumbotronteks dinas"><b>KABUPATEN AGAM</b>
       <h4>
   </div>
 </div>
