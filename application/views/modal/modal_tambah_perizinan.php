@@ -19,7 +19,14 @@
                     <div class="form-group">
                         <label for="pelatihan">Nama Izin</label>
                         <input class="form-control" name="nama_izin" placeholder="Nama Izin" required>
-
+                    </div>
+                    <div class="form-group">
+                        <label for="pelatihan">Biaya</label>
+                        <input class="form-control" name="biaya" placeholder="Jumlah Biaya" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pelatihan">Lama Proses</label>
+                        <input class="form-control" name="lamaproses" placeholder="Lama Proses" required>
                     </div>
                     <div class="form-group">
                         <label for="formulir">Formulir</label>

@@ -41,6 +41,8 @@
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th class="text-center">Nama</th>
+                                <th class="text-center">Biaya</th>
+                                <th class="text-center">Lama Proses</th>
                                 <th class="text-center">Formulir</th>
                                 <th class="text-center">Persyaratan</th>
                                 <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
@@ -54,6 +56,8 @@
                                 <tr class="odd gradeX">
                                     <td><?= $no++; ?></td>
                                     <td><?= $row->nama_izin; ?></td>
+                                    <td><?= $row->biaya; ?></td>
+                                    <td><?= $row->lamaproses; ?></td>
                                     <td><a href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>" class="btn btn-sm btn-outline-success">
                                             <i class="fa fa-eye ">
                                             </i> Formulir

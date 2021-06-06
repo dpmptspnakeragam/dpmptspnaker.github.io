@@ -30,6 +30,8 @@ class Nonperizinan extends CI_controller
         $form = $_FILES['form']['name'];
         $syarat = $_FILES['syarat']['name'];
         $nama_izin = $this->input->post('nama_izin', true);
+        $biaya = $this->input->post('biaya', true);
+        $lamaproses = $this->input->post('lamaproses', true);
 
         if ($form = '') {
             $form = "";
@@ -63,7 +65,9 @@ class Nonperizinan extends CI_controller
             'id_izin' => $id,
             'nama_izin' => $nama_izin,
             'form' => $form,
-            'syarat' => $syarat
+            'syarat' => $syarat,
+            'biaya' => $biaya,
+            'lamaproses' => $lamaproses
         );
         $this->load->model('Model_nonperizinan');
         $this->Model_nonperizinan->input($data);
@@ -77,6 +81,8 @@ class Nonperizinan extends CI_controller
         $nama_izin = $this->input->post('nama_izin', true);
         $form = $_FILES['form']['name'];
         $syarat = $_FILES['syarat']['name'];
+        $biaya = $this->input->post('biaya', true);
+        $lamaproses = $this->input->post('lamaproses', true);
 
         if (empty($_FILES['form']['name'])) {
             $form = $this->input->post('old', true);
@@ -116,7 +122,9 @@ class Nonperizinan extends CI_controller
             'id_izin' => $id,
             'nama_izin' => $nama_izin,
             'form' => $form,
-            'syarat' => $syarat
+            'syarat' => $syarat,
+            'biaya' => $biaya,
+            'lamaproses' => $lamaproses
         );
         $this->load->model('Model_nonperizinan');
         $this->Model_nonperizinan->update($data, $id);

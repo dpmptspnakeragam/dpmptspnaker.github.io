@@ -24,13 +24,16 @@
       <div class="container-fluid">
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fa fa-table"></i> Formulir dan Persyaratan</div>
+            <i class="fa fa-table"></i> Formulir dan Persyaratan
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead class="bg-dark text-light">
                   <tr>
                     <th>Jenis Izin</th>
+                    <th>Biaya</th>
+                    <th>Lama Proses</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -41,6 +44,8 @@
                   ?>
                     <tr>
                       <td><?= $row->nama_izin; ?></td>
+                      <td><?= $row->biaya; ?></td>
+                      <td><?= $row->lamaproses; ?></td>
                       <td>
                         <div class="btn-group">
                           <a href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>" class="tombol-aksi">
