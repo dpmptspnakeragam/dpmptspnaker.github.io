@@ -18,6 +18,14 @@
                             <label for="pelatihan">Nama Izin</label>
                             <input class="form-control" name="nama_izin" placeholder="Nama Izin" value="<?php echo $row->nama_izin; ?>" required>
                         </div>
+                        <div class="form-group">
+                            <label for="pelatihan">Biaya</label>
+                            <input class="form-control" name="biaya" placeholder="Jumlah Biaya" value="<?php echo $row->biaya; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pelatihan">Lama Proses</label>
+                            <input class="form-control" name="lamaproses" placeholder="Lama Proses" value="<?php echo $row->lamaproses; ?>" required>
+                        </div>
                         <div class="row">
                             <div class="form-group">
                                 <label class="control-label col-md-12 col-sm-12 col-xs-12" for="gambar">Formulir</label>
