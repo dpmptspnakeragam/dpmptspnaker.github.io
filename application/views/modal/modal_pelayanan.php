@@ -10,6 +10,14 @@
             </div>
             <div class="modal-body">
                 <div class="container text-center">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <img width="100%" class="mb-4" src="<?= base_url() ?>assets/img/aluross.png?>" alt="Alur OSS">
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <img width="100%" class="mb-4" src="<?= base_url() ?>assets/img/alursicantik.png?>" alt="Alur Perizinan">
+                        </div>
+                    </div>
                     <div class="row modal-pelayanan">
                         <div class="col-sm-12 col-md-4 col-lg-6 col-6 mb-3">
                             <a href="<?= base_url(); ?>perizinan" class="pilih-modal-pelayanan">
