@@ -301,6 +301,10 @@
       </div>
       <div class="col-lg-5 col-sm-6 form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        <h4>Info Kontak Pengaduan</h4>
+        <p>Masril, S.IP (Koordinator) - 082385822706</p>
+        <p>Lisnawati (Lubuk Basung) - 081374656568</p>
+        <p>Doni (Bukittinggi) - 085299056904</p>
         <p>Email : ppdpmptspkabagam@gmail.com</p>
       </div>
     </div>
