@@ -628,6 +628,90 @@
           });
         </script>
       </div>
+
+      <div class="col-lg-12 col text-center text-light bg-dark isi-naker p-3">
+        <h5>Grafik Izin Diterbitkan /Bulan</h5>
+        <h6 class="text-center"> Periode
+          <?php
+          $no = 1;
+          foreach ($periode_grafik_izinbulan->result() as $graph) {
+          ?>
+            <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+          <?php } ?>
+        </h6>
+        <canvas id="myChart4"></canvas>
+        <?php
+        $nama_izinbulan = "";
+        $totalbulan = null;
+        foreach ($grafik_bulan->result() as $item) {
+          $nama = $item->izin;
+          $nama_izinbulan .= "'$nama'" . ", ";
+          $jum = $item->jumlah;
+          $totalbulan .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var tahun = new Date().getFullYear();
+          var ctx = document.getElementById('myChart4').getContext('2d');
+          var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+              labels: [<?php echo $nama_izinbulan; ?>],
+              datasets: [{
+                label: "Jumlah Izin Keluar",
+                backgroundColor: '#fccf14',
+                data: [<?php echo $totalbulan; ?>]
+              }]
+            },
+            // Configuration options go here
+            options: {
+              legend: {
+                labels: {
+                  fontColor: 'white'
+                }
+              },
+              "hover": {
+                "animationDuration": 0
+              },
+              "animation": {
+                "duration": 1,
+                "onComplete": function() {
+                  var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                  ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'bottom';
+
+                  this.data.datasets.forEach(function(dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    meta.data.forEach(function(bar, index) {
+                      var data = dataset.data[index];
+                      ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                    });
+                  });
+                }
+              },
+              scales: {
+                xAxes: [{
+                  ticks: {
+                    fontColor: 'white'
+                  }
+                }],
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                    fontColor: 'white'
+                  }
+                }]
+              }
+            }
+          });
+        </script>
+      </div>
+
     </div>
   </div>
 </section>

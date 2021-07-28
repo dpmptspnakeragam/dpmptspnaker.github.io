@@ -79,6 +79,7 @@
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin">Grafik Izin Diterbtkan</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_investasi">Grafik Realisasi Investasi</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_skm">Grafik SKM</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izinbulan">Grafik Izin Diterbitkan /Bulan</a></li>
                             </ul>
                         </div>
                     </li>

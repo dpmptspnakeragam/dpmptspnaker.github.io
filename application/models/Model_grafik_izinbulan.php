@@ -1,0 +1,52 @@
+<?php
+
+class Model_grafik_izinbulan extends CI_model
+{
+    public function tampil_data()
+    {
+        $this->db->select('*');
+        $this->db->from('grafik_izinbulan');
+        $this->db->group_by('izin');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function tampil_data_periode()
+    {
+        $this->db->select('*');
+        $this->db->from('periode_grafik_izinbulan');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function idmax()
+    {
+        $this->db->select_max('id_grafik', 'idmax');
+        $this->db->from('grafik_izinbulan');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function input($data)
+    {
+        $this->db->insert('grafik_izinbulan', $data);
+    }
+
+    public function update($data, $id)
+    {
+        $this->db->where('id_grafik', $id);
+        $this->db->update('grafik_izinbulan', $data);
+    }
+
+    public function update_periode($data, $id)
+    {
+        $this->db->where('id_periode', $id);
+        $this->db->update('periode_grafik_izinbulan', $data);
+    }
+
+    public function delete($id_grafik)
+    {
+        $this->db->where('id_grafik', $id_grafik);
+        $this->db->delete('grafik_izinbulan');
+    }
+}
