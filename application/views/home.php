@@ -660,7 +660,7 @@
             data: {
               labels: [<?php echo $nama_izinbulan; ?>],
               datasets: [{
-                label: "Jumlah Izin Keluar",
+                label: "Jumlah",
                 backgroundColor: '#fccf14',
                 data: [<?php echo $totalbulan; ?>]
               }]
