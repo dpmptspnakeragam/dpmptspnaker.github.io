@@ -1,7 +1,11 @@
 <!-- Cover -->
+
 <div class="jumbotron mb-0 ml-0">
   <div class="container text-center judul">
-    <img class="mb-4 jumbotronimg" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="10%">
+    <div class="inline">
+      <img class="mb-4 mr-1 jumbotronimg" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="10%">
+      <img class="mb-4 jumbotronimg" src="<?= base_url(); ?>assets/img/hut76teks.png" alt="logohut76" width="25%">
+    </div>
     <h3 class="display-3 jumbotronteks">SELAMAT DATANG</h3>
     <h4 class="display-2 jumbotronteks dinas"><b>DINAS PENANAMAN MODAL PELAYANAN TERPADU</b></h4>
     <h4 class="display-2 jumbotronteks dinas"><b>SATU PINTU DAN KETENAGAKERJAAN</b></h4>
@@ -14,7 +18,10 @@
 <!-- navbar -->
 <nav class="navbar shadow sticky-top navbar-bottom navbar-expand-lg navbar-dark">
   <div class="container">
-    <a class="navbar-brand page-scroll" href="#home">DPMPTSP-NAKER KAB.AGAM</a>
+    <div class="inline">
+      <img class="mr-1" src="<?= base_url(); ?>assets/img/hut76.png" alt="logohut76" width="30px">
+      <a class="navbar-brand page-scroll" href="#home">| DPMPTSP-NAKER KAB.AGAM</a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -926,6 +933,7 @@
     return false;
   });
 </script>
+
 
 <marquee class=" layer-1 fixed-bottom bg-dark text-light text-justify">
   <span width="100%">
