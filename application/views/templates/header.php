@@ -16,12 +16,6 @@
   <link media rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/datatables.min.css" />
   <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/vectoragam.png">
-  <script defer src="<?php echo base_url() ?>/assets/js/Chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
-
-  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script defer src="<?= base_url(); ?>assets/js/script.js"></script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@300&display=swap" rel="stylesheet">
