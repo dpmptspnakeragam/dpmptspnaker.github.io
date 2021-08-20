@@ -17,7 +17,7 @@
 
 <!-- navbar -->
 <nav class="navbar shadow sticky-top navbar-bottom navbar-expand-lg navbar-dark">
-  <div class="container">
+  <div class="container-fluid">
     <div class="inline">
       <img class="mr-1" src="<?= base_url(); ?>assets/img/hut76.png" alt="logohut76" width="30px">
       <a class="navbar-brand page-scroll" href="#home">| DPMPTSP-NAKER KAB.AGAM</a>
@@ -34,7 +34,7 @@
           <a class="nav-link page-scroll" href="#informasi">Informasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link page-scroll" href="#pelayanan">Layanan</a>
+          <a class="nav-link page-scroll" href="#pelayanan">Layanan Publik</a>
         </li>
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#investasi">Investasi</a>
@@ -187,7 +187,7 @@
   <div class="container text-center">
     <div class="row ">
       <div class="col-lg-12 mt-4 mb-auto ">
-        <h1 class="judul-layanan"><b>Layanan</b></h1>
+        <h1 class="judul-layanan"><strong>Layanan Publik</strong></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -199,7 +199,7 @@
           Kami membuka Layanan Perizinan dan Non Perizinan melalui tatap muka maupun online. Untuk tatap muka secara langsung
           silahkan kunjungi kantor kami dengan alamat yang tertera pada menu Kontak. Untuk pelayanan melalui online silahkan
           kunjungi situs yang telah kami sediakan dibawah ini (SiCantik atau OSS) atau bisa juga hubungi nomor HP yang tertera pada menu Kontak.
-          Untuk melihat persyaratan atau info tentang Izin yang akan anda buat, silahkan pilih Standar Pelayanan.
+          Untuk melihat persyaratan atau info tentang Izin yang akan anda buat, silahkan pilih Standar Operasional Prosedur.
         </p>
       </div>
     </div>

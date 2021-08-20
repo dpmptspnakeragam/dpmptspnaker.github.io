@@ -542,7 +542,7 @@ a:hover {
 	color: maroon;
 	padding: 5px;
 	border: 2px solid maroon;
-	width: 100%;
+	width: 50%;
 	transition-duration: 0.5s;
 }
 
