@@ -160,9 +160,9 @@
         <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="<?= base_url(); ?>ppid" class="pilih-profil"><i class="ikon fa fa-server" aria-hidden="true"></i><br>PPID</a>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
-          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMaklumat"><i class="ikon fa fa-certificate" aria-hidden="true"></i><br>Maklumat Pelayanan</a>
-        </div>
+        <!-- <div class="col-lg-4 col-6 display-4 mb-3"> -->
+        <!-- <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalMaklumat"><i class="ikon fa fa-certificate" aria-hidden="true"></i><br>Maklumat Pelayanan</a> -->
+        <!-- </div> -->
         <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalSarpras"><i class="ikon fa fa-building" aria-hidden="true"></i><br>Sarana & Prasarana</a>
         </div>
@@ -192,41 +192,44 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-12 text-justify">
+      <div class="col-lg-4 col-md-4 col-12 ">
+        <img style="width:100%;" class="shadow isi-pelayanan intro-pelayanan" src="<?= base_url() ?>assets/img/maklumat.jpg" alt="Maklumat Pelayanan">
+      </div>
+      <div class="col-lg-8 col-12 text-justify">
         <p class="isi-pelayanan intro-pelayanan">
           Kami membuka Layanan Perizinan dan Non Perizinan melalui tatap muka maupun online. Untuk tatap muka secara langsung
           silahkan kunjungi kantor kami dengan alamat yang tertera pada menu Kontak. Untuk pelayanan melalui online silahkan
           kunjungi situs yang telah kami sediakan dibawah ini (SiCantik atau OSS) atau bisa juga hubungi nomor HP yang tertera pada menu Kontak.
           Untuk melihat persyaratan atau info tentang Izin yang akan anda buat, silahkan pilih Standar Operasional Prosedur.
         </p>
-      </div>
-    </div>
-    <div class="row isi-pelayanan text-center">
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%">Formulir & Persyaratan Perizinan</a>
-      </div>
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%">SiCantik</a>
-      </div>
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%">OSS</a>
-      </div>
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="https://account.kemnaker.go.id/auth/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sisnaker.jpg" alt="gambarsicantikcloud" width="100%">SISNAKER KEMNAKER</a>
-      </div>
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="https://www.lapor.go.id/" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lp.jpg" alt="gambarsicantikcloud" width="100%">Lapor.go.id</a>
-      </div>
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%">Tracking SiCantik</a>
-      </div>
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="https://lkpmonline.bkpm.go.id/pengembangan/login.jsp" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lkpm.jpg" alt="gambarsicantikcloud" width="100%">LKPM Online</a>
-      </div>
-      <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-        <a href="https://jobfair.kemnaker.go.id/web" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/jo.jpg" alt="gambarsicantikcloud" width="100%">Jobfair Online</a>
+        <div class="row isi-pelayanan text-center">
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%">Formulir & Persyaratan Perizinan</a>
+          </div>
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%">SiCantik</a>
+          </div>
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%">OSS</a>
+          </div>
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="https://account.kemnaker.go.id/auth/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sisnaker.jpg" alt="gambarsicantikcloud" width="100%">SISNAKER KEMNAKER</a>
+          </div>
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="https://www.lapor.go.id/" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lp.jpg" alt="gambarsicantikcloud" width="100%">Lapor.go.id</a>
+          </div>
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%">Tracking SiCantik</a>
+          </div>
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="https://lkpmonline.bkpm.go.id/pengembangan/login.jsp" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lkpm.jpg" alt="gambarsicantikcloud" width="100%">LKPM Online</a>
+          </div>
+          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+            <a href="https://jobfair.kemnaker.go.id/web" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/jo.jpg" alt="gambarsicantikcloud" width="100%">Jobfair Online</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

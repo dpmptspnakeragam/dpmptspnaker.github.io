@@ -1106,7 +1106,7 @@ video {
 		text-decoration: none;
 		color: white;
 		display: inline-block;
-		width: 250px;
+		width: auto;
 		transition-duration: 0.5s;
 	}
 
