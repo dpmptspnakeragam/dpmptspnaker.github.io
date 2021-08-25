@@ -312,16 +312,16 @@
       </div>
     </div>
     <div class="row pl-4 pr-4 pb-2">
-      <div class="col-lg-7 col-sm-12 mt-4 mb-4">
-        <img class="shadow mekanisme-pengaduan" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
-      </div>
-      <div class="col-lg-5 col-sm-6 form-pengaduan">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-        <h4>Info Kontak Pengaduan</h4>
+      <div class="col-lg-7 col-sm-12 mt-4 mb-1">
+        <img class="shadow mekanisme-pengaduan mb-4" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
+        <h4><strong>Info Kontak Pengaduan</strong></h4>
         <p>Masril, S.IP (Koordinator) - 082385822706</p>
         <p>Lisnawati (Lubuk Basung) - 081374656568</p>
         <p>Doni (Bukittinggi) - 085299056904</p>
         <p>Email : ppdpmptspkabagam@gmail.com</p>
+      </div>
+      <div class="col-lg-5 col-sm-6 form-pengaduan">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf5xrwvHE6LLl3BJZvZggJ5AytgBJgpttuu8gOHtbLQzqhMOw/viewform?embedded=true" width="100%" height="600px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
   </div>
@@ -439,7 +439,7 @@
         </script>
       </div>
       <div class="col-lg-5 col form-pengaduan">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="500px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
 </section>
