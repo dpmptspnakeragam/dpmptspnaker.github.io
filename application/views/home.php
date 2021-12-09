@@ -207,10 +207,10 @@
             <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%">Formulir & Persyaratan Perizinan</a>
           </div>
           <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-            <a href="https://sicantikui.layanan.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%">SiCantik</a>
+            <a href="https://sicantik.go.id/#/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%">SiCantik</a>
           </div>
           <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-            <a href="https://app.oss.go.id/app/#front/home" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%">OSS</a>
+            <a href="https://ui-login.oss.go.id/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%">OSS</a>
           </div>
           <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
             <a href="https://account.kemnaker.go.id/auth/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sisnaker.jpg" alt="gambarsicantikcloud" width="100%">SISNAKER KEMNAKER</a>
