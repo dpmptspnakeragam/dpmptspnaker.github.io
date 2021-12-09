@@ -225,7 +225,7 @@
             <a href="https://lkpmonline.bkpm.go.id/pengembangan/login.jsp" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lkpm.jpg" alt="gambarsicantikcloud" width="100%">LKPM Online</a>
           </div>
           <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-            <a href="https://jobfair.kemnaker.go.id/web" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/jo.jpg" alt="gambarsicantikcloud" width="100%">Jobfair Online</a>
+            <a href="https://simbg.pu.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simbg.jpg" alt="gambarsicantikcloud" width="100%">SIMBG</a>
           </div>
         </div>
       </div>
