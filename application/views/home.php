@@ -18,7 +18,8 @@
 <nav class="navbar shadow sticky-top navbar-bottom navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <div class="inline">
-      <a class="navbar-brand page-scroll" href="#home">DPMPTSP-NAKER KAB.AGAM</a>
+      <a class="navbar-brand page-scroll" href="#home">
+        <img class="" src="<?= base_url(); ?>assets/img/logodpmptsp.png" alt="logodpmptsp" height="35px"></a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
