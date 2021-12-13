@@ -794,6 +794,9 @@
             </a>
           </li>
         </ul>
+        <p>
+          <img class="" src="<?= base_url(); ?>assets/img/logodpmptspwarna.png" alt="logodpmptsp" width="100%"></a>
+        </p>
       </div>
       <div class="col-lg-6 mb-3 text-left">
         <div class="statistik">
