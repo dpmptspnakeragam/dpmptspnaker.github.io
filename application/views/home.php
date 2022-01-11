@@ -639,42 +639,47 @@
       </div>
 
       <div class="col-lg-12 col text-center text-light bg-dark isi-naker p-3">
-        <h5>Grafik Izin Diterbitkan /Bulan</h5>
-        <h6 class="text-center"> Periode
+        <h5>Grafik Izin Diterbitkan /Tahun</h5>
+        <!----<h6 class="text-center"> Periode
           <?php
           $no = 1;
           foreach ($periode_grafik_izinbulan->result() as $graph) {
           ?>
             <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
           <?php } ?>
-        </h6>
+        </h6>--->
         <canvas id="myChart4"></canvas>
         <?php
         $nama_izinbulan = "";
         $totalbulan = null;
+        $totalbulan2 = null;
         foreach ($grafik_bulan->result() as $item) {
           $nama = $item->izin;
           $nama_izinbulan .= "'$nama'" . ", ";
-          $jum = $item->jumlah;
+          $jum = $item->thn2020;
           $totalbulan .= "$jum" . ", ";
+          $jum2 = $item->thn2021;
+          $totalbulan2 .= "$jum2" . ", ";
         }
         ?>
         <script>
           var tahun = new Date().getFullYear();
           var ctx = document.getElementById('myChart4').getContext('2d');
+          var data = {
+            labels: [<?php echo $nama_izinbulan; ?>],
+            datasets: [{
+              label: "Tahun 2020",
+              backgroundColor: '#fb836f',
+              data: [<?php echo $totalbulan; ?>]
+            }, {
+              label: "Tahun 2021",
+              backgroundColor: '#7e549f',
+              data: [<?php echo $totalbulan2; ?>]
+            }]
+          };
           var chart = new Chart(ctx, {
-            // The type of chart we want to create
             type: 'bar',
-            // The data for our dataset
-            data: {
-              labels: [<?php echo $nama_izinbulan; ?>],
-              datasets: [{
-                label: "Jumlah",
-                backgroundColor: '#fccf14',
-                data: [<?php echo $totalbulan; ?>]
-              }]
-            },
-            // Configuration options go here
+            data: data,
             options: {
               legend: {
                 labels: {
@@ -703,6 +708,11 @@
                   });
                 }
               },
+              tooltips: {
+                mode: 'index',
+                intersect: true
+              },
+              responsive: true,
               scales: {
                 xAxes: [{
                   ticks: {

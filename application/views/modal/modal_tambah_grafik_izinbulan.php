@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-light">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Grafik Izin Keluar /Bulan</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Grafik Izin Keluar /Tahun</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,9 +22,12 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="pelatihan">Jumlah Izin</label>
-                        <input class="form-control" name="jumlah" placeholder="Jumlah Izin" required>
-
+                        <label for="pelatihan">Tahun 2020</label>
+                        <input class="form-control" name="thn2020" placeholder="Izin Tahun 2020" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pelatihan">Tahun 2021</label>
+                        <input class="form-control" name="thn2021" placeholder="Izin Tahun 2021" required>
                     </div>
             </div>
             <div class="modal-footer">

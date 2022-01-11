@@ -13,8 +13,8 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-center">Grafik Izin Terbit /Bulan</h3>
-                <h5 class="text-center"> Periode
+                <h3 class="text-center">Grafik Izin Terbit /Tahun</h3>
+                <!---<h5 class="text-center"> Periode
                     <?php
                     $no = 1;
                     foreach ($periode_grafik_izinbulan->result() as $graph) {
@@ -22,7 +22,7 @@
                         <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?> <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditPeriodeGrafikIzinBulan<?php echo $graph->id_periode; ?>" title="Edit"><i class="fa fa-edit"></i></a>
 
                     <?php } ?>
-                </h5>
+                </h5>--->
                 <hr>
                 <div class="panel-heading">
                     <?php if ($this->session->flashdata('gagal')) : ?>
@@ -50,7 +50,8 @@
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th class="text-center">Izin</th>
-                                <th class="text-center">Jumlah</th>
+                                <th class="text-center">2020</th>
+                                <th class="text-center">2021</th>
                                 <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
                             </tr>
                         </thead>
@@ -62,7 +63,8 @@
                                 <tr class="odd gradeX">
                                     <td><?= $no++; ?></td>
                                     <td><?= $row->izin; ?></td>
-                                    <td><?= $row->jumlah; ?></td>
+                                    <td><?= $row->thn2020; ?></td>
+                                    <td><?= $row->thn2021; ?></td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditGrafikIzinBulan<?php echo $row->id_grafik; ?>" title="Edit"><i class="fa fa-edit"></i></a>
@@ -82,11 +84,14 @@
                 //Inisialisasi nilai variabel awal
                 $nama_izin = "";
                 $total = null;
+                $total2 = null;
                 foreach ($grafik->result() as $item) {
                     $nama = $item->izin;
                     $nama_izin .= "'$nama'" . ", ";
-                    $jum = $item->jumlah;
+                    $jum = $item->thn2020;
                     $total .= "$jum" . ", ";
+                    $jum2 = $item->thn2021;
+                    $total2 .= "$jum2" . ", ";
                 }
                 ?>
             </div>
@@ -98,19 +103,21 @@
 <script>
     var tahun = new Date().getFullYear();
     var ctx = document.getElementById('myChart').getContext('2d');
+    var data = {
+        labels: [<?php echo $nama_izin; ?>],
+        datasets: [{
+            label: "Tahun 2020",
+            backgroundColor: '#fb836f',
+            data: [<?php echo $total; ?>]
+        }, {
+            label: "Tahun 2021",
+            backgroundColor: '#7e549f',
+            data: [<?php echo $total2; ?>]
+        }]
+    };
     var chart = new Chart(ctx, {
-        // The type of chart we want to create
         type: 'bar',
-        // The data for our dataset
-        data: {
-            labels: [<?php echo $nama_izin; ?>],
-            datasets: [{
-                label: "Jumlah Izin Keluar",
-                backgroundColor: '#fccf14',
-                data: [<?php echo $total; ?>]
-            }]
-        },
-        // Configuration options go here
+        data: data,
         options: {
             legend: {
                 labels: {
@@ -139,6 +146,11 @@
                     });
                 }
             },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            },
+            responsive: true,
             scales: {
                 xAxes: [{
                     ticks: {

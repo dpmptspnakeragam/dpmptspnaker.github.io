@@ -4,7 +4,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-warning text-dark">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Grafik Izin Keluar /Bulan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Grafik Izin Keluar /Tahun</h5>
                     <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -19,8 +19,12 @@
                             <input class="form-control" name="izin" placeholder="Nama Izin" value="<?php echo $row->izin; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="pelatihan">Jumlah Izin</label>
-                            <input class="form-control" name="jumlah" placeholder="Jumlah Izin" value="<?php echo $row->jumlah; ?>" required>
+                            <label for="pelatihan">Tahun 2020</label>
+                            <input class="form-control" name="thn2020" placeholder="Izin Tahun 2020" value="<?php echo $row->thn2020; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pelatihan">Tahun 2021</label>
+                            <input class="form-control" name="thn2021" placeholder="Izin Tahun 2021" value="<?php echo $row->thn2021; ?>" required>
                         </div>
                 </div>
                 <div class="modal-footer">
