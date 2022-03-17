@@ -118,7 +118,7 @@ main h5 {
 .nama {
 	font-size: 18px;
 	text-align: center;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .agam {
@@ -965,7 +965,7 @@ video {
 
 	.posisi-agam {
 		text-align: left;
-		margin-top: 100px;
+		margin-top: 50px;
 	}
 
 	.jumbotron .judul {
