@@ -1,15 +1,21 @@
 <!-- Cover -->
 
 <div class="jumbotron mb-0 ml-0">
-  <div class="container text-center judul">
-    <div class="inline">
-      <img class="mb-4 mr-1 jumbotronimg" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="10%">
+  <div class="container-fluid text-left">
+    <div class="row">
+      <div class="col-lg-6 col-12">
+        <div class="posisi-agam">
+          <img class="mb-4 mr-1 jumbotronimg agam" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam">
+        </div>
+        <h1 class="jumbotronteks welcome">SELAMAT DATANG</h1>
+        <h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU DAN KETENAGAKERJAAN KABUPATEN AGAM</strong></h1>
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="inline">
+          <img class="jumbotronimg" src="<?= base_url(); ?>assets/img/kantor.png" alt="kantor" width="100%">
+        </div>
+      </div>
     </div>
-    <h3 class="display-3 jumbotronteks">SELAMAT DATANG</h3>
-    <h4 class="display-2 jumbotronteks dinas"><b>DINAS PENANAMAN MODAL PELAYANAN TERPADU</b></h4>
-    <h4 class="display-2 jumbotronteks dinas"><b>SATU PINTU DAN KETENAGAKERJAAN</b></h4>
-    <h4 class="display-2 jumbotronteks dinas"><b>KABUPATEN AGAM</b>
-      <h4>
   </div>
 </div>
 <!-- close Cover -->
@@ -194,7 +200,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-12 ">
-        <img style="width:100%;" class="shadow isi-pelayanan intro-pelayanan" src="<?= base_url() ?>assets/img/maklumat.jpg" alt="Maklumat Pelayanan">
+        <img style="width:100%;" class="shadow isi-pelayanan intro-pelayanan" src="<?= base_url() ?>assets/img/maklumat2022.jpg" alt="Maklumat Pelayanan">
       </div>
       <div class="col-lg-8 col-12 text-justify">
         <p class="isi-pelayanan intro-pelayanan">

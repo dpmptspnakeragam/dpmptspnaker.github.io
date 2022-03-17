@@ -25,22 +25,6 @@ $(window).on('load', function(){
 $(window).scroll(function(){
 	var wScroll = $(this).scrollTop();
 
-	$('.jumbotron img').css({
-		'transform' : 'translate(0px,'+ wScroll/8 +'%)'
-	});
-
-	$('.jumbotron h3').css({
-		'transform' : 'translate(0px,'+ wScroll/4 +'%)'
-	});
-
-	$('.jumbotron h4').css({
-		'transform' : 'translate(0px,'+ wScroll/4 +'%)'
-	});
-
-	$('.jumbotron h5').css({
-		'transform' : 'translate(0px,'+ wScroll/4 +'%)'
-	});
-
 	if(wScroll > $('#profil').offset().top - 57){
 		$('.pilih-profil, .slogan').each(function(i){
 			setTimeout(function(){
