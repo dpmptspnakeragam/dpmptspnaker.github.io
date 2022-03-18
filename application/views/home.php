@@ -355,7 +355,7 @@
         </h6>
         <canvas id="myChart3"></canvas>
         <p style="font-size:12px;">
-          <small>Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang Baik) : 65,00 - 76,60 | D (Tidak Baik) : 25,00 - 64,99</small>
+          <small>Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang) : 65,00 - 76,60 | D (Sangat Kurang) : 25,00 - 64,99</small>
         </p>
         <?php
         $tahun_skm = "";
