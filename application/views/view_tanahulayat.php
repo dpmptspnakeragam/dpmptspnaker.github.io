@@ -50,12 +50,12 @@ foreach ($get_kecamatan->result() as $kec) {
                                     foreach ($tanah_ulayat->result() as $row) {
                                     ?>
                                         <tr class="odd gradeX">
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $row->lokasi; ?></td>
-                                            <td><?= $row->luas; ?></td>
-                                            <td><?= $row->status; ?></td>
-                                            <td><?= $row->jenis; ?></td>
-                                            <td><?= $row->bentuk; ?></td>
+                                            <td class="text-center"><?= $no++; ?></td>
+                                            <td class="text-center"><?= $row->lokasi; ?></td>
+                                            <td class="text-center"><?= $row->luas; ?></td>
+                                            <td class="text-center"><?= $row->status; ?></td>
+                                            <td class="text-center"><?= $row->jenis; ?></td>
+                                            <td class="text-center"><?= $row->bentuk; ?></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
