@@ -6,7 +6,7 @@ foreach ($get_kecamatan->result() as $kec) {
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href=""><i class="fa fa-file"></i> Rincian Tanah Ulayat untuk Investasi</a>
+        <a class="navbar-brand" href=""><i class="fa fa-file"></i> Rincian Tanah Ulayat Untuk Investasi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,6 +41,7 @@ foreach ($get_kecamatan->result() as $kec) {
                                         <th class="text-center">Luas Tanah</th>
                                         <th class="text-center">Status Kepemilikan</th>
                                         <th class="text-center">Jenis Investasi</th>
+                                        <th class="text-center">Bentuk Kerjasama</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,6 +55,7 @@ foreach ($get_kecamatan->result() as $kec) {
                                             <td><?= $row->luas; ?></td>
                                             <td><?= $row->status; ?></td>
                                             <td><?= $row->jenis; ?></td>
+                                            <td><?= $row->bentuk; ?></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

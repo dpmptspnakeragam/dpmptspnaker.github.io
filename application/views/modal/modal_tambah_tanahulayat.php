@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-light">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Tanah Ulayat</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Tanah Ulayat Untuk Investasi</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -38,6 +38,10 @@
                     <div class="form-group">
                         <label for="pelatihan">Jenis Investasi</label>
                         <input type="text" class="form-control" name="jenis" placeholder="Jenis Investasi Tanah Ulayat">
+                    </div>
+                    <div class="form-group">
+                        <label for="pelatihan">Bentuk Kerjasama</label>
+                        <input type="text" class="form-control" name="bentuk" placeholder="Bentuk Kerjasama Investasi Tanah Ulayat">
                     </div>
             </div>
             <div class="modal-footer">

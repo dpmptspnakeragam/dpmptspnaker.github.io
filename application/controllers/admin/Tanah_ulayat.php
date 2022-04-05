@@ -44,6 +44,7 @@ class Tanah_ulayat extends CI_controller
         $luas = $this->input->post('luas', true);
         $status = $this->input->post('status', true);
         $jenis = $this->input->post('jenis', true);
+        $bentuk = $this->input->post('bentuk', true);
 
         $data = array(
             'id_ulayat' => $id_ulayat,
@@ -51,7 +52,8 @@ class Tanah_ulayat extends CI_controller
             'lokasi' => $lokasi,
             'luas' => $luas,
             'status' => $status,
-            'jenis' => $jenis
+            'jenis' => $jenis,
+            'bentuk' => $bentuk
         );
         $this->load->model('Model_tanah_ulayat');
         $this->Model_tanah_ulayat->input($data);
@@ -67,6 +69,7 @@ class Tanah_ulayat extends CI_controller
         $luas = $this->input->post('luas', true);
         $status = $this->input->post('status', true);
         $jenis = $this->input->post('jenis', true);
+        $bentuk = $this->input->post('bentuk', true);
 
         $data = array(
             'id_ulayat' => $id_ulayat,
@@ -74,7 +77,8 @@ class Tanah_ulayat extends CI_controller
             'lokasi' => $lokasi,
             'luas' => $luas,
             'status' => $status,
-            'jenis' => $jenis
+            'jenis' => $jenis,
+            'bentuk' => $bentuk
         );
         $this->load->model('Model_tanah_ulayat');
         $this->Model_tanah_ulayat->update($data, $id_ulayat);

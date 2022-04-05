@@ -54,7 +54,7 @@
                             <ul>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/investasi">Peluang Investasi</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/potensi_investasi">Potensi Investasi</a></li>
-                                <li><a class="nav-link" href="<?= base_url(); ?>admin/tanah_ulayat">Tanah Ulayat</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/tanah_ulayat">Tanah Ulayat Untuk Investasi</a></li>
                             </ul>
                         </div>
                     </li>

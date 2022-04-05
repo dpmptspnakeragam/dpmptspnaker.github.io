@@ -6,7 +6,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tanah Ulayat</li>
+                        <li class="breadcrumb-item active" aria-current="page">Tanah Ulayat Untuk Investasi</li>
                     </ol>
                 </nav>
             </div>
@@ -15,7 +15,7 @@
             <div class="col-lg-12">
                 <?php foreach ($get_kecamatan->result() as $kec) {
                 } ?>
-                <h3 class="text-center">Tanah Ulayat Kecamatan <?= $kec->kecamatan; ?></h3>
+                <h3 class="text-center">Tanah Ulayat Untuk Investasi Kecamatan <?= $kec->kecamatan; ?></h3>
                 <hr>
                 <!-- start: Accordion -->
                 <div class="table-responsive">
@@ -27,6 +27,7 @@
                                 <th class="text-center">Luas Tanah</th>
                                 <th class="text-center">Status Kepemilikan</th>
                                 <th class="text-center">Jenis Investasi</th>
+                                <th class="text-center">Bentuk Kerjasama</th>
                                 <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
                             </tr>
                         </thead>
@@ -41,6 +42,7 @@
                                     <td><?= $row->luas; ?></td>
                                     <td><?= $row->status; ?></td>
                                     <td><?= $row->jenis; ?></td>
+                                    <td><?= $row->bentuk; ?></td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditTanahUlayat<?php echo $row->id_ulayat; ?>" title="Edit"><i class="fa fa-edit"></i></a>

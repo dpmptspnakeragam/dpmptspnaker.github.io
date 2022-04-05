@@ -6,14 +6,14 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tanah Ulayat</li>
+                        <li class="breadcrumb-item active" aria-current="page">Tanah Ulayat Untuk Investasi</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-center">Tanah Ulayat</h3>
+                <h3 class="text-center">Tanah Ulayat Untuk Investasi</h3>
                 <hr>
                 <div class="panel-heading">
                     <?php if ($this->session->flashdata('gagal')) : ?>

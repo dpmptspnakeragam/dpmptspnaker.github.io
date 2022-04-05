@@ -277,7 +277,7 @@
         <p class="penjelasan-investasi">Untuk mengetahui Tanah Ulayat untuk Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
         </p>
         <div class="display-4">
-          <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalTanahUlayat">Tanah Ulayat</a>
+          <a href="#" class="pilih-investasi" data-toggle="modal" data-target="#ModalTanahUlayat">Tanah Ulayat Untuk Investasi</a>
         </div>
       </div>
     </div>

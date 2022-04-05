@@ -4,7 +4,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-warning text-light">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Tanah Ulayat</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Tanah Ulayat Untuk Investasi</h5>
                     <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -29,6 +29,10 @@
                         <div class=" form-group">
                             <label for="pelatihan">Jenis Investasi</label>
                             <input type="text" class="form-control" name="jenis" value="<?php echo $row->jenis; ?>">
+                        </div>
+                        <div class=" form-group">
+                            <label for="pelatihan">Bentuk Kerjasama</label>
+                            <input type="text" class="form-control" name="jenis" value="<?php echo $row->bentuk; ?>">
                         </div>
                 </div>
                 <div class=" modal-footer">
