@@ -24,3 +24,26 @@
 	text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
 }
 /*tutup home*/
+
+/*ulayat*/
+.pilih-ulayat{
+	font-size: 20px;
+	padding: 10px;
+	text-decoration: none;
+	color: maroon;
+	display: inline-block;
+	width: 100%;
+	border: 2px solid;
+	transition-duration: 0.5s;
+	margin: 0;
+	text-align: center;
+}
+
+.pilih-ulayat:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 10px;
+	text-decoration: none;
+}

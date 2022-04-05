@@ -679,6 +679,29 @@ video {
 	z-index: 1;
 }
 
+/*ulayat*/
+.pilih-ulayat{
+	font-size: 20px;
+	padding: 10px;
+	text-decoration: none;
+	color: maroon;
+	display: inline-block;
+	width: 100%;
+	border: 2px solid;
+	transition-duration: 0.5s;
+	margin: 0;
+	text-align: center;
+}
+
+.pilih-ulayat:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 30px;
+	padding: 10px;
+	text-decoration: none;
+}
+
 @media (pointer: coarse) and (hover: none) {
 	header {
 		background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black
