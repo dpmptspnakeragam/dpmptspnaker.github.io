@@ -14,7 +14,7 @@
                     ?>
                         <div class="col-lg-3 col-3">
                             <div class="text-center container">
-                                <a href="<?php echo base_url() ?>tanah_ulayat/rincian/<?php echo $row->id_kecamatan; ?>" class="pilih-ulayat mb-2">Kecamatan <?= $row->kecamatan; ?></a>
+                                <a href="<?php echo base_url() ?>tanah_ulayat/rincian/<?php echo $row->id_kecamatan; ?>" class="pilih-ulayat mb-2">Kec. <?= $row->kecamatan; ?></a>
                             </div>
                         </div>
                     <?php } ?>
