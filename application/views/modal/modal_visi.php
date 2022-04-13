@@ -15,7 +15,7 @@
                     <h3>Misi</h3>
                     <ul class="list-unstyled">
                         <li>
-                            <p>1. Menghadiikan tata Kelola Pemerintaha yang efektif, bersih, akuntabel dan melayani;</p>
+                            <p>1. Menghadirkan tata Kelola Pemerintahan yang efektif, bersih, akuntabel dan melayani;</p>
                         </li>
                         <li>
                             <p>2. Membangun perekonomian masyarakat yang kokoh melalui optimalisasi sumber daya daerah dan pengembangan pariwisata;</p>
@@ -24,7 +24,7 @@
                             <p>3. Pembangunan berkelanjutan yang berwawasan lingkungan, keterpaduan tata ruang wilayah dan mitigasi bencana;
                         </li>
                         <li>
-                            <p>4. Membangun masyarakat yang mandiri, berdaya saig, berkualitas dan berkarakter;
+                            <p>4. Membangun masyarakat yang mandiri, berdaya saing, berkualitas dan berkarakter;
                         </li>
                         <li>
                             <p>3. Meningkatkan kehidupan bermasyarakat yang madani, berlandaskan Adat Basandi Syara' - Syara' Basandi Kitabullah.
