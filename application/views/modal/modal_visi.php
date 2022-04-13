@@ -11,12 +11,24 @@
             <div class="modal-body">
                 <div class="container text-left">
                     <h3>Visi</h3>
-                    <p>Terwujudnya iklim Penanaman Modal yang Kondusif, Berdaya Saing serta Pelayanan Terpadu dan Ketenagakerjaan yang Berkualitas.</p>
+                    <p><strong>Mewujudkan Kabupten Agam Maju, Masyarakat Sejahtera, Menuju Agam Mandiri, Breprestasi Yang Madani</strong></p>
                     <h3>Misi</h3>
                     <ul class="list-unstyled">
-                        <li>1. Meningkatkan Iklim Investasi yang Kondusif dan Berdaya Saing, sesuai Potensi dan Keunggulan Daerah </li>
-                        <li>2. Mewujudkan Pelyanan Penanaman Modal, Perizinan dan Non Perizinan melalui PTSP yang berkualitas berbasis IT </li>
-                        <li>3. Meningkatkan Kualitas Tenaga Kerja, Menyebarkan Informasi Tenaga kerja, Meningkatkan Kualitas Hubungan Industrial Tenaga kerja dan Memberikan Jaminan Perlindungan Hukum bagi Tenaga Kerja</li>
+                        <li>
+                            <p>1. Menghadiikan tata Kelola Pemerintaha yang efektif, bersih, akuntabel dan melayani;</p>
+                        </li>
+                        <li>
+                            <p>2. Membangun perekonomian masyarakat yang kokoh melalui optimalisasi sumber daya daerah dan pengembangan pariwisata;</p>
+                        </li>
+                        <li>
+                            <p>3. Pembangunan berkelanjutan yang berwawasan lingkungan, keterpaduan tata ruang wilayah dan mitigasi bencana;
+                        </li>
+                        <li>
+                            <p>4. Membangun masyarakat yang mandiri, berdaya saig, berkualitas dan berkarakter;
+                        </li>
+                        <li>
+                            <p>3. Meningkatkan kehidupan bermasyarakat yang madani, berlandaskan Adat Basandi Syara' - Syara' Basandi Kitabullah.
+                        </li>
                     </ul>
                 </div>
             </div>

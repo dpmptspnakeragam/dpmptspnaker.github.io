@@ -963,7 +963,7 @@
 </script>
 
 
-<marquee class=" layer-1 fixed-bottom bg-dark text-light text-justify">
+<marquee class=" layer-1 fixed-bottom bg-dark text-light text-center">
   <span width="100%">
     <?php foreach ($teks->result() as $running) {
     ?>
