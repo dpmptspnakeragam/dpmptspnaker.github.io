@@ -48,13 +48,13 @@
                       <td><?= $row->lamaproses; ?></td>
                       <td>
                         <div class="btn-group">
-                          <a href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>" class="tombol-aksi">
+                          <a href="#" class="tombol-aksi" data-toggle="modal" data-target="#ModalFormulirP<?php echo $row->id_izin; ?>">
                             <i class="fa fa-download ">
                             </i> Formulir
                           </a>
                         </div>
                         <div class="btn-group">
-                          <a href="<?= base_url(); ?>assets/fileupload/<?= $row->syarat; ?>" class="tombol-aksi">
+                          <a href="#" class="tombol-aksi" data-toggle="modal" data-target="#ModalPersyaratanP<?php echo $row->id_izin; ?>">
                             <i class="fa fa-download ">
                             </i> Persyaratan
                           </a>

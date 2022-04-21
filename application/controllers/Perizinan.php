@@ -10,6 +10,8 @@ class Perizinan extends CI_Controller
         $data['perizinan'] = $this->Model_perizinan->tampil_data();
         $this->load->view('templates/header');
         $this->load->view('view_perizinan', $data);
+        $this->load->view('modal/modal_formulir_perizinan');
+        $this->load->view('modal/modal_persyaratan_perizinan');
         $this->load->view('templates/footer');
     }
 }
