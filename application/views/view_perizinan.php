@@ -32,9 +32,11 @@
                 <thead class="bg-dark text-light">
                   <tr>
                     <th>Jenis Izin</th>
+                    <th>Dasar Hukum</th>
                     <th>Biaya</th>
                     <th>Lama Proses</th>
-                    <th>Aksi</th>
+                    <th>Formulir</th>
+                    <th>Persyaratan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,6 +46,7 @@
                   ?>
                     <tr>
                       <td><?= $row->nama_izin; ?></td>
+                      <td><?= $row->hukum; ?></td>
                       <td><?= $row->biaya; ?></td>
                       <td><?= $row->lamaproses; ?></td>
                       <td>
@@ -53,13 +56,8 @@
                             </i> Formulir
                           </a>
                         </div>
-                        <div class="btn-group">
-                          <a href="#" class="tombol-aksi" data-toggle="modal" data-target="#ModalPersyaratanP<?php echo $row->id_izin; ?>">
-                            <i class="fa fa-download ">
-                            </i> Persyaratan
-                          </a>
-                        </div>
                       </td>
+                      <td><?= $row->syarat; ?></td>
                     </tr>
                   <?php } ?>
                 </tbody>

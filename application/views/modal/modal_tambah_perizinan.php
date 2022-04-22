@@ -21,6 +21,10 @@
                         <input class="form-control" name="nama_izin" placeholder="Nama Izin" required>
                     </div>
                     <div class="form-group">
+                        <label for="pelatihan">Dasar Hukum</label>
+                        <input class="form-control" name="hukum" placeholder="Dasar Hukum" required>
+                    </div>
+                    <div class="form-group">
                         <label for="pelatihan">Biaya</label>
                         <input class="form-control" name="biaya" placeholder="Jumlah Biaya" required>
                     </div>
@@ -34,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <label for="syarat">Persyaratan</label>
-                        <input type="file" name="syarat">
+                        <textarea id="ckeditor" class="form-control ckeditor" name="syarat" placeholder="Persyaratan" required></textarea>
                     </div>
             </div>
             <div class="modal-footer">

@@ -35,14 +35,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <label class="control-label col-md-12 col-sm-12 col-xs-12" for="syarat">Persyaratan</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="syarat" type="file" id="syarat" /><?php echo $row->syarat; ?>
-                                    <input name="old2" type="hidden" id="old2" value="<?php echo $row->syarat; ?>" />
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="syarat">Persyaratan</label>
+                            <textarea id="ckeditor" class="form-control ckeditor" name="syarat" placeholder="Persyaratan" required><?php echo $row->syarat; ?></textarea>
                         </div>
                 </div>
                 <div class="modal-footer">
