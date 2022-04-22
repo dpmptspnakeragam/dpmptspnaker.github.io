@@ -61,8 +61,7 @@
                                     <td><?= $row->biaya; ?></td>
                                     <td><?= $row->lamaproses; ?></td>
                                     <td><a href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>" class="btn btn-sm btn-outline-success">
-                                            <i class="fa fa-eye ">
-                                            </i> Formulir
+                                            <i class="fa fa-eye "></i>
                                         </a></td>
                                     <td><?= $row->syarat; ?></td>
                                     <td class="text-center">

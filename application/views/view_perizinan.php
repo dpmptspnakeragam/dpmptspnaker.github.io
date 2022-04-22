@@ -52,8 +52,7 @@
                       <td>
                         <div class="btn-group">
                           <a class="tombol-aksi" href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>">
-                            <i class="fa fa-download ">
-                            </i> Formulir
+                            <i class="fa fa-download "></i>
                           </a>
                         </div>
                       </td>
