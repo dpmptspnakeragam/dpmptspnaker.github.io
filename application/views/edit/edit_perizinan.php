@@ -19,6 +19,10 @@
                             <input class="form-control" name="nama_izin" placeholder="Nama Izin" value="<?php echo $row->nama_izin; ?>" required>
                         </div>
                         <div class="form-group">
+                            <label for="pelatihan">Dasar Hukum</label>
+                            <input class="form-control" name="hukum" placeholder="Dasar Hukum" value="<?php echo $row->hukum; ?>" required>
+                        </div>
+                        <div class="form-group">
                             <label for="pelatihan">Biaya</label>
                             <input class="form-control" name="biaya" placeholder="Jumlah Biaya" value="<?php echo $row->biaya; ?>" required>
                         </div>
