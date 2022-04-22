@@ -48,7 +48,7 @@
                       <td><?= $row->lamaproses; ?></td>
                       <td>
                         <div class="btn-group">
-                          <a href="#" class="tombol-aksi" data-toggle="modal" data-target="#ModalFormulirP<?php echo $row->id_izin; ?>">
+                          <a class="tombol-aksi" href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>">
                             <i class="fa fa-download ">
                             </i> Formulir
                           </a>
