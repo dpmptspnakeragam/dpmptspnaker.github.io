@@ -30,9 +30,11 @@
                             <thead class="bg-dark text-light">
                                 <tr>
                                     <th>Jenis Izin</th>
+                                    <th>Dasar Hukum</th>
                                     <th>Biaya</th>
                                     <th>Lama Proses</th>
-                                    <th>Aksi</th>
+                                    <th>Formulir</th>
+                                    <th>Persyaratan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,22 +44,17 @@
                                 ?>
                                     <tr>
                                         <td><?= $row->nama_izin; ?></td>
+                                        <td><?= $row->hukum; ?></td>
                                         <td><?= $row->biaya; ?></td>
                                         <td><?= $row->lamaproses; ?></td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>" class="tombol-aksi">
-                                                    <i class="fa fa-download ">
-                                                    </i> Formulir
-                                                </a>
-                                            </div>
-                                            <div class="btn-group">
-                                                <a href="<?= base_url(); ?>assets/fileupload/<?= $row->syarat; ?>" class="tombol-aksi">
-                                                    <i class="fa fa-download ">
-                                                    </i> Persyaratan
+                                                    <i class="fa fa-download "></i>
                                                 </a>
                                             </div>
                                         </td>
+                                        <td><?= $row->syarat; ?></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

@@ -41,6 +41,7 @@
                             <tr>
                                 <th class="text-center">No.</th>
                                 <th class="text-center">Nama</th>
+                                <th class="text-center">Dasar Hukum</th>
                                 <th class="text-center">Biaya</th>
                                 <th class="text-center">Lama Proses</th>
                                 <th class="text-center">Formulir</th>
@@ -56,16 +57,13 @@
                                 <tr class="odd gradeX">
                                     <td><?= $no++; ?></td>
                                     <td><?= $row->nama_izin; ?></td>
+                                    <td><?= $row->hukum; ?></td>
                                     <td><?= $row->biaya; ?></td>
                                     <td><?= $row->lamaproses; ?></td>
                                     <td><a href="<?= base_url(); ?>assets/fileupload/<?= $row->form; ?>" class="btn btn-sm btn-outline-success">
-                                            <i class="fa fa-eye ">
-                                            </i> Formulir
+                                            <i class="fa fa-eye "></i>
                                         </a></td>
-                                    <td><a href="<?= base_url(); ?>assets/fileupload/<?= $row->syarat; ?>" class="btn btn-sm btn-outline-success">
-                                            <i class="fa fa-eye ">
-                                            </i> Persyaratan
-                                        </a></td>
+                                    <td><?= $row->syarat; ?></td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditNonPerizinan<?php echo $row->id_izin; ?>" title="Edit"><i class="fa fa-edit"></i></a>
