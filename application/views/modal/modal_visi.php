@@ -3,13 +3,16 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Visi & Misi DPMPTSP-Naker Kab. Agam</h5>
+                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Visi & Misi</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container text-left">
+                    <h3 class="text-center">
+                        Visi & Misi Pemerintah Kabupaten Agam
+                    </h3>
                     <h3>Visi</h3>
                     <p><strong>Mewujudkan Kabupten Agam Maju, Masyarakat Sejahtera, Menuju Agam Mandiri, Breprestasi Yang Madani</strong></p>
                     <h3>Misi</h3>
@@ -30,11 +33,31 @@
                             <p>5. Meningkatkan kehidupan bermasyarakat yang madani, berlandaskan Adat Basandi Syara' - Syara' Basandi Kitabullah.
                         </li>
                     </ul>
+                    <hr>
+                    <h3 class="text-center">
+                        Visi & Misi Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu & Ketenagakerjaan Kabupaten Agam
+                    </h3>
+                    <h3>Visi</h3>
+                    <p><strong>Terwijudnya Iklim Penanaman Modal Yang Kondusif, Berdaya Saing Serta Pelayanan Terpadu Dan Ketenagakerjaan Yang Berkualitas</strong></p>
+                    <h3>Misi</h3>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p>1. Meningkatkan iklim investasi yang kondusif dan berdaya saing yang sesuai potensi dan keunggulan daerah;</p>
+                        </li>
+                        <li>
+                            <p>2. Meningkatkan pelayanan penanaman modal dan perizinan dan non perizinan melalui PTSP yang berkualitas berbasis IT;</p>
+                        </li>
+                        <li>
+                            <p>3. Meningkatkan kualitas tenaga kerja, meningkatkan kesempatan kerja, meningkatkan kualitas hubungan industrial, tenaga kerja dan perlindungan tenaga kerja.</p>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+    </div>
+</div>
+</div>
 </div>

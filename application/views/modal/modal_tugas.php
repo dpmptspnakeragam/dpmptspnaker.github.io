@@ -16,12 +16,23 @@
                         pelayanan perizinan dan ketenagakerjaan yang berada dan bertanggung jawab kepada Bupati melalui Sekretaris Daerah</p>
                     <h3>Fungsi</h3>
                     <ul class="list-unstyled">
-                        Dalam menyelenggarakan tugasnya sebagaimana dimaksud diatas, Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan mempunyai fungsi:
-                        <li>a. Perumusan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan;</li>
-                        <li>b. Pelaksanaan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan; </li>
-                        <li>c. Pelaksanaan evaluasi dan pelaporan di bidang penanaman modal dan bidang ketenagakerjaan; </li>
-                        <li>d. Pelaksanaan administrasi Dinas;
-                        <li>e. Pelaksanaan fungsi lain yang diberikan Bupati terkait dengan tugas dan fungsinya.</li>
+                        <p>Dalam menyelenggarakan tugasnya sebagaimana dimaksud diatas, Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan mempunyai fungsi:</p>
+                        <li>
+                            <p>a. Perumusan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan;</p>
+                        </li>
+                        <li>
+                            <p>b. Pelaksanaan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan;</p>
+                        </li>
+                        <li>
+                            <p>c. Pelaksanaan evaluasi dan pelaporan di bidang penanaman modal dan bidang ketenagakerjaan;
+                            <p>
+                        </li>
+                        <li>
+                            <p>d. Pelaksanaan administrasi Dinas;</p>
+                        </li>
+                        <li>
+                            <p>e. Pelaksanaan fungsi lain yang diberikan Bupati terkait dengan tugas dan fungsinya.</p>
+                        </li>
                     </ul>
                 </div>
             </div>
