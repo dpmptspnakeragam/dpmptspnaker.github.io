@@ -102,6 +102,12 @@
                             Sarana & Prasarana
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/skm">
+                            <span data-feather="file"></span>
+                            Survey Kepuasan masyarakat (SKM)
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -345,12 +345,18 @@
   <div class="container-fluid text-center">
     <div class="row">
       <div class="col-lg-12 mt-4">
-        <h1 class="judul-naker"><b>Survey Kepuasan Masyarakat Online</b></h1>
+        <h1 class="judul-naker"><b>Survey Kepuasan Masyarakat (SKM) Online</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
     <div class="row pb-4 pt-3 pl-4 pr-4">
-      <div class="col-lg-7 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-12 mb-3">
+        <div class="text-center">
+          <p style="font-size:20px;">Untuk mengisi kuesioner Survey Kepuasan Masyarakat (SKM) secara online, silahkan klik tombol dibawah ini</p>
+          <a href="<?= base_url(); ?>skm" class="pilih-profil">Lakukan Survey</a>
+        </div>
+      </div>
+      <div class="col-12 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Survey Kepuasan Masyarakat</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -450,9 +456,9 @@
           });
         </script>
       </div>
-      <div class="col-lg-5 col form-pengaduan">
+      <!-- <div class="col-lg-5 col form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="500px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-      </div>
+      </div> -->
     </div>
 </section>
 <!-- close skm -->
