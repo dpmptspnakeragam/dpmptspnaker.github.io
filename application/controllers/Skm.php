@@ -55,15 +55,18 @@ class Skm extends CI_Controller
 
     public function form()
     {
+        $this->load->model('Model_skm');
         // $this->load->model('Model_skm');
         // $data['ppid'] = $this->Model_ppid->tampil_data();
+        $data['idmax'] = $this->Model_skm->idmax();
         $this->load->view('templates/header');
-        $this->load->view('form_skm');
+        $this->load->view('form_skm', $data);
         $this->load->view('templates/footer');
     }
 
     public function tambah()
     {
+        $id_skm = $this->input->post('id_skm', true);
         $jk = $this->input->post('jk', true);
         $umur = $this->input->post('umur', true);
         $pendidikan = $this->input->post('pendidikan', true);
@@ -81,6 +84,7 @@ class Skm extends CI_Controller
         $date = $this->input->post('date', true);
 
         $input = array(
+            'id_skm' => $id_skm,
             'jk' => $jk,
             'umur' => $umur,
             'pendidikan' => $pendidikan,

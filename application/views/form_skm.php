@@ -29,6 +29,13 @@
                     <div class="row">
                         <div class="col-12">
                             <form role="form" action="<?= base_url(); ?>skm/tambah" method="post" enctype="multipart/form-data">
+                                <?php foreach ($idmax->result() as $row) {
+                                ?>
+                                    <div class="form-group" hidden>
+                                        <label class=" control-label">Id</label>
+                                        <input type="text" class="form-control" id="id" name="id_skm" value="<?= $row->idmax + 1; ?>">
+                                    </div>
+                                <?php } ?>
                                 <div class="form-group">
                                     <label for="pelatihan">Jenis Kelamin</label>
                                     <select required name="jk" class="form-control">

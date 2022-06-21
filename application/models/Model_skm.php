@@ -36,6 +36,14 @@ class Model_skm extends CI_model
         return $query;
     }
 
+    public function idmax()
+    {
+        $this->db->select_max('id_skm', 'idmax');
+        $this->db->from('skm');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function input($data)
     {
         $this->db->insert('skm', $data);
