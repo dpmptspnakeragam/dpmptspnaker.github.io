@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-12 text-center">
                             <h1>NILAI IKM</h1>
-                            <P style="font-size:200px;" class="text-info"><strong><?php echo number_format($ikm); ?></strong></P>
+                            <P style="font-size:200px;" class="text-info"><strong><?php echo round($ikm, 2); ?></strong></P>
                         </div>
                         <div class="col-lg-6 col-12 text-center">
                             <h6>NAMA LAYANAN : PERIZINAN & NON PERIZINAN</h6>
