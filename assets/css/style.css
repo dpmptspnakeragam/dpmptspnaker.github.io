@@ -125,6 +125,10 @@ main h5 {
 	width: 50px;
 }
 
+.hut {
+	width: 100px;
+}
+
 .posisi-agam {
 	text-align: center;
 	margin-top: 10px;
@@ -984,6 +988,10 @@ video {
 
 	.agam {
 		width: 100px;
+	}
+
+	.hut {
+		width: 250px;
 	}
 
 	.posisi-agam {

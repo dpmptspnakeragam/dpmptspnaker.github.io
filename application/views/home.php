@@ -6,6 +6,7 @@
       <div class="col-lg-6 col-12">
         <div class="posisi-agam">
           <img class="mb-4 mr-1 jumbotronimg agam" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam">
+          <img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam">
         </div>
         <h1 class="jumbotronteks welcome">SELAMAT DATANG</h1>
         <h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU DAN KETENAGAKERJAAN KABUPATEN AGAM</strong></h1>
