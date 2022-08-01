@@ -116,7 +116,7 @@
                                 var kanvasunsur = document.getElementById("grafikunsur").getContext("2d");
 
                                 Chart.defaults.global.defaultFontFamily = "Lato";
-                                Chart.defaults.global.defaultFontSize = 18;
+                                Chart.defaults.global.defaultFontSize = 14;
 
                                 var nilai = {
                                     labels: ["Persyaratan", "Prosedur", "Kecepatan", "Tarif", "Kesesuaian", "Kompeten", "Perilaku", "Penanganan", "Sarana"],
