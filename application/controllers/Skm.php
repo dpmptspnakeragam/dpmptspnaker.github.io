@@ -34,6 +34,16 @@ class Skm extends CI_Controller
         $avg_u8 = $this->Model_skm->avg_u8();
         $avg_u9 = $this->Model_skm->avg_u9();
 
+        $data['u1'] = $avg_u1;
+        $data['u2'] = $avg_u2;
+        $data['u3'] = $avg_u3;
+        $data['u4'] = $avg_u4;
+        $data['u5'] = $avg_u5;
+        $data['u6'] = $avg_u6;
+        $data['u7'] = $avg_u7;
+        $data['u8'] = $avg_u8;
+        $data['u9'] = $avg_u9;
+
         $nrr_u1 = $avg_u1 * 0.1111;
         $nrr_u2 = $avg_u2 * 0.1111;
         $nrr_u3 = $avg_u3 * 0.1111;

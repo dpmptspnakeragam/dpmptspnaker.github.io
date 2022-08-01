@@ -108,6 +108,55 @@
                             </p>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-12 text-center p-3">
+                            <h3><strong>Grafik Nilai Per Unsur</strong></h3>
+                            <canvas id="grafikunsur" width="100%"></canvas>
+                            <script>
+                                var kanvasunsur = document.getElementById("grafikunsur").getContext("2d");
+
+                                Chart.defaults.global.defaultFontFamily = "Lato";
+                                Chart.defaults.global.defaultFontSize = 18;
+
+                                var nilai = {
+                                    labels: ["Persyaratan", "Prosedur", "Kecepatan", "Tarif", "Kesesuaian", "Kompeten", "Perilaku", "Penanganan", "Sarana"],
+                                    datasets: [{
+                                        label: "Nilai Rata-Rata",
+                                        data: [<?php echo $u1; ?>, <?php echo $u2; ?>, <?php echo $u3; ?>, <?php echo $u4; ?>, <?php echo $u5; ?>, <?php echo $u6; ?>, <?php echo $u7; ?>, <?php echo $u8; ?>, <?php echo $u9; ?>],
+                                        lineTension: 0,
+                                        fill: false,
+                                        beginAtZero: true,
+                                        borderColor: 'maroon',
+                                        backgroundColor: 'transparent',
+                                        pointBorderColor: 'yellow',
+                                        pointBackgroundColor: 'rgba(255,150,0,0.5)',
+                                        pointRadius: 5,
+                                        pointHoverRadius: 10,
+                                        pointHitRadius: 30,
+                                        pointBorderWidth: 2,
+                                        pointStyle: 'rectRounded'
+                                    }]
+                                };
+
+                                var chartOptions = {
+                                    legend: {
+                                        display: true,
+                                        position: 'top',
+                                        labels: {
+                                            boxWidth: 80,
+                                            fontColor: 'black'
+                                        }
+                                    }
+                                };
+
+                                var lineChart = new Chart(kanvasunsur, {
+                                    type: 'line',
+                                    data: nilai,
+                                    options: chartOptions
+                                });
+                            </script>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
