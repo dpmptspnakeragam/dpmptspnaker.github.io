@@ -41,6 +41,7 @@
                             <ul>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/perizinan">Perizinan</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/nonperizinan">Non Perizinan</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/perizinan_risiko">Perizinan Berbasis Risiko</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin">Grafik Izin Terbit</a></li>
                             </ul>
                         </div>
@@ -81,6 +82,7 @@
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_investasi">Grafik Realisasi Investasi</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_skm">Grafik SKM</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izinbulan">Grafik Izin Diterbitkan /Tahun</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_nib">Grafik NIB</a></li>
                             </ul>
                         </div>
                     </li>
