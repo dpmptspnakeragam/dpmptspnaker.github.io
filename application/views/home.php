@@ -6,7 +6,7 @@
       <div class="col-lg-6 col-12">
         <div class="posisi-agam">
           <img class="mb-4 mr-1 jumbotronimg agam" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam">
-          <img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam">
+          <!---<img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam">--->
         </div>
         <h1 class="jumbotronteks welcome">SELAMAT DATANG</h1>
         <h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU DAN KETENAGAKERJAAN KABUPATEN AGAM</strong></h1>
@@ -658,7 +658,7 @@
         </script>
       </div>
 
-      <div class="col-lg-12 col text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-12 col-12 col text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Izin Diterbitkan /Tahun</h5>
         <!----<h6 class="text-center"> Periode
           <?php
@@ -747,6 +747,270 @@
                 }]
               }
             }
+          });
+        </script>
+        <hr>
+        <h3>Grafik OSS RBA<h3>
+      </div>
+      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+        <h5>Grafik PMDN / PMA & UMK / Non UMK</h5>
+        <canvas id="grafiknib"></canvas>
+        <?php
+        $nama_nib = "";
+        $total = null;
+        foreach ($grafik_nib->result() as $item) {
+          $nama = $item->nib;
+          $nama_nib .= "'$nama'" . ", ";
+          $jum = $item->jumlah;
+          $total .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var kanvasnib = document.getElementById("grafiknib").getContext("2d");
+
+          Chart.defaults.global.defaultFontFamily = "Lato";
+          Chart.defaults.global.defaultFontSize = 12;
+
+          var nilai = {
+            labels: [<?php echo $nama_nib; ?>],
+            datasets: [{
+              label: "Jumlah",
+              data: [<?php echo $total; ?>],
+              backgroundColor: ['#8bfd43', '#fdfd43', '#8bfd43', '#fdfd43']
+            }]
+          };
+
+          var chartOptions = {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                boxWidth: 10,
+                fontColor: 'white'
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  fontColor: 'white'
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true,
+                  fontColor: 'white'
+                }
+              }]
+            }
+          };
+
+          var lineChart = new Chart(kanvasnib, {
+            type: 'bar',
+            data: nilai,
+            options: chartOptions
+          });
+        </script>
+      </div>
+      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+        <h5>Grafik Sebaran Proyek Bedasarkan Risiko</h5>
+        <div class="chart-container" style="width:70%; margin:auto;">
+          <canvas id="grafikrisiko" style="width:50% !important"></canvas>
+        </div>
+        <?php
+        $nama_risiko = "";
+        $total = null;
+        foreach ($grafik_risiko->result() as $item) {
+          $nama = $item->risiko;
+          $nama_risiko .= "'$nama'" . ", ";
+          $jum = $item->jumlah;
+          $total .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var kanvasrisiko = document.getElementById("grafikrisiko").getContext("2d");
+
+          Chart.defaults.global.defaultFontFamily = "Lato";
+          Chart.defaults.global.defaultFontSize = 12;
+
+          var nilai = {
+            labels: [<?php echo $nama_risiko; ?>],
+            datasets: [{
+              label: "Jumlah",
+              data: [<?php echo $total; ?>],
+              backgroundColor: ['#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
+            }]
+          };
+
+          var chartOptions = {
+            responsive: true,
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                boxWidth: 10,
+                fontColor: 'white'
+              }
+            }
+          };
+
+          var lineChart = new Chart(kanvasrisiko, {
+            type: 'doughnut',
+            data: nilai,
+            options: chartOptions
+          });
+        </script>
+      </div>
+      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+        <h5>Grafik Sebaran Proyek Per Kecamatan Usaha</h5>
+        <canvas id="grafikkecamatan" width="100%"></canvas>
+        <?php
+        $nama_kecamatan = "";
+        $total = null;
+        foreach ($grafik_kecamatan->result() as $item) {
+          $nama = $item->kecamatan;
+          $nama_kecamatan .= "'$nama'" . ", ";
+          $jum = $item->jumlah;
+          $total .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var kanvaskecamatan = document.getElementById("grafikkecamatan").getContext("2d");
+
+          Chart.defaults.global.defaultFontFamily = "Lato";
+          Chart.defaults.global.defaultFontSize = 12;
+
+          var nilai = {
+            labels: [<?php echo $nama_kecamatan; ?>],
+            datasets: [{
+              label: "Jumlah",
+              data: [<?php echo $total; ?>],
+              backgroundColor: ['#42ccff', '#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
+            }]
+          };
+
+          var chartOptions = {
+            indexAxis: 'y',
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                boxWidth: 10,
+                fontColor: 'white'
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  min: 0, // Edit the value according to what you need
+                  fontColor: 'white'
+                }
+              }],
+              yAxes: [{
+                stacked: true,
+                ticks: {
+                  fontColor: 'white'
+                }
+              }]
+            }
+          };
+
+          var lineChart = new Chart(kanvaskecamatan, {
+            type: 'horizontalBar',
+            data: nilai,
+            options: chartOptions
+          });
+        </script>
+      </div>
+      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+        <h5>Grafik Top 5 KBLI</h5>
+        <canvas id="grafikkbli" width="100%"></canvas>
+        <?php
+        $nama_kbli = "";
+        $total = null;
+        foreach ($grafik_kbli->result() as $item) {
+          $kbli = $item->kbli;
+          $nama_kbli .= "'$kbli'" . ", ";
+          $jum = $item->jumlah;
+          $total .= "$jum" . ", ";
+        }
+        ?>
+        <script>
+          var kanvaskbli = document.getElementById("grafikkbli").getContext("2d");
+
+          Chart.defaults.global.defaultFontFamily = "Lato";
+          Chart.defaults.global.defaultFontSize = 12;
+
+          var nilai = {
+            labels: [<?php echo $nama_kbli; ?>],
+            datasets: [{
+              label: "Jumlah",
+              data: [<?php echo $total; ?>],
+              backgroundColor: ['#42ccff', '#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
+            }]
+          };
+
+          var chartOptions = {
+            indexAxis: 'y',
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                boxWidth: 10,
+                fontColor: 'white'
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  min: 0, // Edit the value according to what you need
+                  fontColor: 'white'
+                }
+              }],
+              yAxes: [{
+                stacked: true,
+                ticks: {
+                  mirror: true,
+                  fontColor: 'white'
+                }
+              }]
+            },
+            events: false,
+            showTooltips: false,
+            animation: {
+              duration: 500,
+              easing: "easeOutQuart",
+              onComplete: function() {
+                var ctx = this.chart.ctx;
+                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'bottom';
+                this.data.datasets.forEach(function(dataset) {
+                  console.log(dataset);
+                  for (var i = 0; i < dataset.data.length; i++) {
+                    var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+                      scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                    left = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.left;
+                    offset = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.longestLabelWidth;
+                    ctx.fillStyle = '#000';
+                    var y_pos = model.y - 5;
+                    var label = model.label;
+                    // Make sure data value does not get overflown and hidden
+                    // when the bar's value is too close to max value of scale
+                    // Note: The y value is reverse, it counts from top down
+                    if ((scale_max - model.y) / scale_max >= 0.93)
+                      y_pos = model.y + 20;
+                    // ctx.fillText(dataset.data[i], model.x, y_pos);
+                    ctx.fillText(label, left + 10, model.y + 8);
+                  }
+                });
+              }
+            }
+          };
+
+          var lineChart = new Chart(kanvaskbli, {
+            type: 'horizontalBar',
+            data: nilai,
+            options: chartOptions
           });
         </script>
       </div>

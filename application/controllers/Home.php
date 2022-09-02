@@ -61,6 +61,7 @@ class Home extends CI_Controller
 		$this->load->model('Model_potensi_investasi');
 		$this->load->model('Model_sarpras');
 		$this->load->model('Model_tanah_ulayat');
+		$this->load->model('Model_grafik_nib');
 		$data['periode_grafik'] = $this->Model_grafik->tampil_data_periode();
 		$data['periode_grafik_investasi'] = $this->Model_grafik_investasi->tampil_data_periode();
 		$data['periode_grafik_skm'] = $this->Model_grafik_skm->tampil_data_periode();
@@ -79,6 +80,10 @@ class Home extends CI_Controller
 		$data['sarpras'] = $this->Model_sarpras->tampil_data();
 		$data['idmax'] = $this->Model_informasi->idmax();
 		$data['ulayat'] = $this->Model_tanah_ulayat->tampil_kecamatan();
+		$data['grafik_nib'] = $this->Model_grafik_nib->tampil_data_nib();
+		$data['grafik_risiko'] = $this->Model_grafik_nib->tampil_data_risiko();
+		$data['grafik_kecamatan'] = $this->Model_grafik_nib->tampil_data_kecamatan();
+		$data['grafik_kbli'] = $this->Model_grafik_nib->tampil_data_kbli();
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
 		$this->load->view('modal/modal_pelayanan');

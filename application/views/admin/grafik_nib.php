@@ -91,7 +91,7 @@
                                 datasets: [{
                                     label: "Jumlah",
                                     data: [<?php echo $total; ?>],
-                                    backgroundColor: 'maroon'
+                                    backgroundColor: ['#8bfd43', '#fdfd43', '#8bfd43', '#fdfd43']
                                 }]
                             };
 
@@ -168,7 +168,7 @@
                                 datasets: [{
                                     label: "Jumlah",
                                     data: [<?php echo $total; ?>],
-                                    backgroundColor: ['green', 'yellow', 'orange', 'maroon']
+                                    backgroundColor: ['#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
                                 }]
                             };
 
@@ -248,7 +248,7 @@
                                 datasets: [{
                                     label: "Jumlah",
                                     data: [<?php echo $total; ?>],
-                                    backgroundColor: ['green', 'yellow', 'orange', 'maroon']
+                                    backgroundColor: ['#42ccff', '#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
                                 }]
                             };
 
@@ -290,7 +290,6 @@
                                     <tr>
                                         <th class="text-center">No.</th>
                                         <th class="text-center">KBLI</th>
-                                        <th class="text-center">Sektor</th>
                                         <th class="text-center">Jumlah</th>
                                         <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
                                     </tr>
@@ -303,7 +302,6 @@
                                         <tr class="odd gradeX">
                                             <td><?= $no++; ?></td>
                                             <td><?= $row->kbli; ?></td>
-                                            <td><?= $row->sektor; ?></td>
                                             <td><?= $row->jumlah; ?></td>
                                             <td class="text-center">
                                                 <div class="btn-group">
@@ -319,54 +317,90 @@
                         <canvas id="grafikkbli" width="100%"></canvas>
                         <?php
                         $nama_kbli = "";
-                        $nama_sektor = "";
                         $total = null;
                         foreach ($grafik_kbli->result() as $item) {
                             $kbli = $item->kbli;
                             $nama_kbli .= "'$kbli'" . ", ";
-                            $sektor = $item->sektor;
-                            $nama_sektor .= "'$sektor'" . ", ";
                             $jum = $item->jumlah;
                             $total .= "$jum" . ", ";
                         }
                         ?>
                         <script>
-                            const labels = [<?php echo $nama_kbli; ?>];
+                            var kanvaskbli = document.getElementById("grafikkbli").getContext("2d");
 
-                            const data = {
-                                labels: labels,
+                            Chart.defaults.global.defaultFontFamily = "Lato";
+                            Chart.defaults.global.defaultFontSize = 12;
+
+                            var nilai = {
+                                labels: [<?php echo $nama_kbli; ?>],
                                 datasets: [{
-                                    label: 'Jumlah',
+                                    label: "Jumlah",
                                     data: [<?php echo $total; ?>],
-                                    datalabels: {
-                                        color: '#000000'
-                                    },
-                                    backgroundColor: ['green', 'yellow', 'orange', 'maroon']
+                                    backgroundColor: ['#42ccff', '#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
                                 }]
                             };
 
-                            const config = {
-                                type: 'bar',
-                                data: data,
-                                options: {
-                                    indexAxis: 'y',
-                                    plugins: {
-                                        datalabels: {
-                                            formatter: (value, ctx) => {
-                                                const nilai = [<?php echo $total; ?>];
-                                                const sektor = [<?php echo $nama_sektor; ?>];
-                                                return '${nilai} and ${sektor}'
-                                            }
-                                        }
+                            var chartOptions = {
+                                indexAxis: 'y',
+                                legend: {
+                                    display: true,
+                                    position: 'top',
+                                    labels: {
+                                        boxWidth: 80,
+                                        fontColor: 'black'
                                     }
                                 },
-                                plugins: [ChartDataLabels],
+                                scales: {
+                                    xAxes: [{
+                                        ticks: {
+                                            min: 0 // Edit the value according to what you need
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        stacked: true,
+                                        ticks: {
+                                            mirror: true
+                                        }
+                                    }]
+                                },
+                                events: false,
+                                showTooltips: false,
+                                animation: {
+                                    duration: 500,
+                                    easing: "easeOutQuart",
+                                    onComplete: function() {
+                                        var ctx = this.chart.ctx;
+                                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+                                        ctx.textAlign = 'left';
+                                        ctx.textBaseline = 'bottom';
+                                        this.data.datasets.forEach(function(dataset) {
+                                            console.log(dataset);
+                                            for (var i = 0; i < dataset.data.length; i++) {
+                                                var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+                                                    scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                                                left = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.left;
+                                                offset = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.longestLabelWidth;
+                                                ctx.fillStyle = '#000';
+                                                var y_pos = model.y - 5;
+                                                var label = model.label;
+                                                // Make sure data value does not get overflown and hidden
+                                                // when the bar's value is too close to max value of scale
+                                                // Note: The y value is reverse, it counts from top down
+                                                if ((scale_max - model.y) / scale_max >= 0.93)
+                                                    y_pos = model.y + 20;
+                                                // ctx.fillText(dataset.data[i], model.x, y_pos);
+                                                ctx.fillText(label, left + 10, model.y + 8);
+                                            }
+                                        });
+                                    }
+                                }
                             };
 
-                            const myChart = new Chart(
-                                document.getElementById('grafikkbli'),
-                                config
-                            );
+                            var lineChart = new Chart(kanvaskbli, {
+                                type: 'horizontalBar',
+                                data: nilai,
+                                options: chartOptions
+                            });
                         </script>
                     </div>
                 </div>

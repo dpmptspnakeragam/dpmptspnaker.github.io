@@ -15,12 +15,8 @@
                             <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $row->id_grafik; ?>">
                         </div>
                         <div class="form-group">
-                            <label>KBLI</label>
+                            <label>KBLI (sektor)</label>
                             <input class="form-control" name="kbli" value="<?php echo $row->kbli; ?>" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Sektor</label>
-                            <input class="form-control" name="sektor" value="<?php echo $row->sektor; ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="pelatihan">Jumlah</label>

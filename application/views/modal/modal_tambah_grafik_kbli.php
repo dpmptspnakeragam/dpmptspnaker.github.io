@@ -10,12 +10,8 @@
             <div class="modal-body">
                 <form role="form" action="<?= base_url(); ?>admin/grafik_nib/tambah_kbli" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>KBLI</label>
+                        <label>KBLI (sektor)</label>
                         <input class="form-control" name="kbli" placeholder="Nomor KBLI" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Sektor</label>
-                        <input class="form-control" name="sektor" placeholder="Nama Sektor" required>
                     </div>
                     <div class="form-group">
                         <label for="jumlah">Jumlah</label>

@@ -162,12 +162,10 @@ class Grafik_nib extends CI_controller
     public function tambah_kbli()
     {
         $kbli = $this->input->post('kbli', true);
-        $sektor = $this->input->post('sektor', true);
         $jumlah = $this->input->post('jumlah', true);
 
         $data = array(
             'kbli' => $kbli,
-            'sektor' => $sektor,
             'jumlah' => $jumlah
         );
         $this->load->model('Model_grafik_nib');
@@ -180,13 +178,11 @@ class Grafik_nib extends CI_controller
     {
         $id = $this->input->post('id', true);
         $kbli = $this->input->post('kbli', true);
-        $sektor = $this->input->post('sektor', true);
         $jumlah = $this->input->post('jumlah', true);
 
         $data = array(
             'id_grafik' => $id,
             'kbli' => $kbli,
-            'sektor' => $sektor,
             'jumlah' => $jumlah
         );
         $this->load->model('Model_grafik_nib');
