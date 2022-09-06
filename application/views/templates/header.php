@@ -25,6 +25,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <link media rel="stylesheet" href="<?= base_url(); ?>assets/css/wa.css">
 
   <title>DPMPTSP-Naker Kab. Agam</title>
 </head>
