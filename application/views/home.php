@@ -1199,7 +1199,7 @@
 <?php } ?>
 <!-- close popup banner -->
 
-<input class='chatMenu hidden' id='offchatMenu' type='checkbox' />
+<!--<input class='chatMenu hidden' id='offchatMenu' type='checkbox' />
 <label class='chatButton' for='offchatMenu'>
   <svg class='svg-1' viewBox='0 0 32 32'>
     <g>
@@ -1233,7 +1233,7 @@
   <a class='chatStart' href='https://api.whatsapp.com/send?phone=6285263882201&text=Assalamualaikum,%20Saya%20ingin%20bertanya' rel='nofollow noreferrer' target='_blank'>
     <span>Mulai chat...</span>
   </a>
-</div>
+</div>---->
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
