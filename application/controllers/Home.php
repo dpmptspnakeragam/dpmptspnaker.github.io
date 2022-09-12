@@ -66,6 +66,7 @@ class Home extends CI_Controller
 		$data['periode_grafik_investasi'] = $this->Model_grafik_investasi->tampil_data_periode();
 		$data['periode_grafik_skm'] = $this->Model_grafik_skm->tampil_data_periode();
 		$data['periode_grafik_izinbulan'] = $this->Model_grafik_izinbulan->tampil_data_periode();
+		$data['periode_grafik_oss'] = $this->Model_grafik_nib->tampil_data_periode();
 		$data['banner'] = $this->Model_banner->tampil_data();
 		$data['teks'] = $this->Model_runningteks->tampil_data();
 		$data['grafik'] = $this->Model_grafik->tampil_data();

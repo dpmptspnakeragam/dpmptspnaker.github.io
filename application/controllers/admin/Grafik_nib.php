@@ -18,6 +18,7 @@ class Grafik_nib extends CI_controller
         $data['grafik_risiko'] = $this->Model_grafik_nib->tampil_data_risiko();
         $data['grafik_kecamatan'] = $this->Model_grafik_nib->tampil_data_kecamatan();
         $data['grafik_kbli'] = $this->Model_grafik_nib->tampil_data_kbli();
+        $data['periode_grafik'] = $this->Model_grafik_nib->tampil_data_periode();
         $this->load->view('templates/header_admin');
         $this->load->view('templates/navbar_admin');
         $this->load->view('admin/grafik_nib', $data);
@@ -29,6 +30,7 @@ class Grafik_nib extends CI_controller
         $this->load->view('edit/edit_grafik_kecamatan');
         $this->load->view('modal/modal_tambah_grafik_kbli');
         $this->load->view('edit/edit_grafik_kbli');
+        $this->load->view('edit/edit_periode_grafik_nib');
         $this->load->view('templates/footer_admin');
     }
 
@@ -200,4 +202,20 @@ class Grafik_nib extends CI_controller
     }
     //-----------Grafik kbli------//
 
+    public function ubah_periode()
+    {
+        $id = $this->input->post('id', true);
+        $tgl_awal = $this->input->post('tgl_awal', true);
+        $tgl_akhir = $this->input->post('tgl_akhir', true);
+
+        $data = array(
+            'id_periode' => $id,
+            'tgl_awal' => $tgl_awal,
+            'tgl_akhir' => $tgl_akhir
+        );
+        $this->load->model('Model_grafik_nib');
+        $this->Model_grafik_nib->update_periode($data, $id);
+        $this->session->set_flashdata("berhasil", "Ubah data Periode berhasil !");
+        redirect('admin/grafik_nib');
+    }
 }

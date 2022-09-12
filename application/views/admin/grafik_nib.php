@@ -14,6 +14,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="text-center">Grafik NIB Yang Diterbitkan</h3>
+                <h5 class="text-center"> Periode
+                    <?php
+                    $no = 1;
+                    foreach ($periode_grafik->result() as $graph) {
+                    ?>
+                        <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?> <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditPeriodeGrafikOss<?php echo $graph->id_periode; ?>" title="Edit"><i class="fa fa-edit"></i></a>
+
+                    <?php } ?>
+                </h5>
                 <hr>
                 <div class="panel-heading">
                     <?php if ($this->session->flashdata('gagal')) : ?>

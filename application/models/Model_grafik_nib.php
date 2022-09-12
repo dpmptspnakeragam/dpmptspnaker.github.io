@@ -110,4 +110,18 @@ class Model_grafik_nib extends CI_model
         $this->db->delete('grafik_kbli');
     }
     //--------Grafik Risiko------//
+
+    public function tampil_data_periode()
+    {
+        $this->db->select('*');
+        $this->db->from('periode_grafik_oss');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function update_periode($data, $id)
+    {
+        $this->db->where('id_periode', $id);
+        $this->db->update('periode_grafik_oss', $data);
+    }
 }

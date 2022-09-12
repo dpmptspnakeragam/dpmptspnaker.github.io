@@ -751,8 +751,16 @@
         </script>
         <hr>
         <h3>Grafik OSS RBA<h3>
+            <h6 class="text-center"> Periode
+              <?php
+              $no = 1;
+              foreach ($periode_grafik_oss->result() as $graph) {
+              ?>
+                <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+              <?php } ?>
+            </h6>
       </div>
-      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik PMDN / PMA & UMK / Non UMK</h5>
         <canvas id="grafiknib"></canvas>
         <?php
@@ -782,11 +790,33 @@
 
           var chartOptions = {
             legend: {
-              display: true,
+              display: false,
               position: 'top',
               labels: {
                 boxWidth: 10,
                 fontColor: 'white'
+              }
+            },
+            "hover": {
+              "animationDuration": 0
+            },
+            "animation": {
+              "duration": 1,
+              "onComplete": function() {
+                var chartInstance = this.chart,
+                  ctx = chartInstance.ctx;
+
+                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+
+                this.data.datasets.forEach(function(dataset, i) {
+                  var meta = chartInstance.controller.getDatasetMeta(i);
+                  meta.data.forEach(function(bar, index) {
+                    var data = dataset.data[index];
+                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                  });
+                });
               }
             },
             scales: {
@@ -811,7 +841,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Sebaran Proyek Bedasarkan Risiko</h5>
         <div class="chart-container" style="width:70%; margin:auto;">
           <canvas id="grafikrisiko" style="width:50% !important"></canvas>
@@ -860,7 +890,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Sebaran Proyek Per Kecamatan Usaha</h5>
         <canvas id="grafikkecamatan" width="100%"></canvas>
         <?php
@@ -891,11 +921,33 @@
           var chartOptions = {
             indexAxis: 'y',
             legend: {
-              display: true,
+              display: false,
               position: 'top',
               labels: {
                 boxWidth: 10,
                 fontColor: 'white'
+              }
+            },
+            "hover": {
+              "animationDuration": 0
+            },
+            "animation": {
+              "duration": 1,
+              "onComplete": function() {
+                var chartInstance = this.chart,
+                  ctx = chartInstance.ctx;
+
+                ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+
+                this.data.datasets.forEach(function(dataset, i) {
+                  var meta = chartInstance.controller.getDatasetMeta(i);
+                  meta.data.forEach(function(bar, index) {
+                    var data = dataset.data[index];
+                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                  });
+                });
               }
             },
             scales: {
@@ -921,7 +973,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-3 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
         <h5>Grafik Top 5 KBLI</h5>
         <canvas id="grafikkbli" width="100%"></canvas>
         <?php
@@ -952,7 +1004,7 @@
           var chartOptions = {
             indexAxis: 'y',
             legend: {
-              display: true,
+              display: false,
               position: 'top',
               labels: {
                 boxWidth: 10,
