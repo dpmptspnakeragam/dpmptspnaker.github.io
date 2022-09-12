@@ -257,7 +257,7 @@
                                 datasets: [{
                                     label: "Jumlah",
                                     data: [<?php echo $total; ?>],
-                                    backgroundColor: ['#42ccff', '#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
+                                    backgroundColor: ['#8bfd43', '#8bfd43', '#8bfd43', '#8bfd43', '#fdfd43', '#fdfd43', '#fdfd43', '#fdfd43', '#fe9643', '#fe9643', '#fe9643', '#fe9643', '#ff4442', '#ff4442', '#ff4442', '#ff4442']
                                 }]
                             };
 
