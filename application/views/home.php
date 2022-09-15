@@ -761,7 +761,7 @@
             </h6>
       </div>
       <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
-        <h5>Grafik PMDN / PMA & UMK / Non UMK</h5>
+        <h5>Grafik NIB Diterbitkan</h5>
         <canvas id="grafiknib"></canvas>
         <?php
         $nama_nib = "";
@@ -857,10 +857,7 @@
         }
         ?>
         <script>
-          var kanvasrisiko = document.getElementById("grafikrisiko").getContext("2d");
-
-          Chart.defaults.global.defaultFontFamily = "Lato";
-          Chart.defaults.global.defaultFontSize = 12;
+          var kanvasrisiko = $("#grafikrisiko");
 
           var nilai = {
             labels: [<?php echo $nama_risiko; ?>],
@@ -884,6 +881,7 @@
           };
 
           var lineChart = new Chart(kanvasrisiko, {
+            plugins: ["ChartDataLabels"],
             type: 'doughnut',
             data: nilai,
             options: chartOptions
