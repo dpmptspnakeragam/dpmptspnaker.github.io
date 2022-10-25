@@ -230,8 +230,8 @@
             <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%">Tracking SiCantik</a>
           </div>
           <!----<div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-            <a href="https://lkpmonline.bkpm.go.id/pengembangan/login.jsp" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lkpm.jpg" alt="gambarsicantikcloud" width="100%">LKPM Online</a>
-          </div>---->
+            <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalRetribusi"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sr.jpg" alt="gambarsimulasiretribusi" width="100%">Simulasi Retribusi</a>
+          </div>--->
           <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
             <a href="https://simbg.pu.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simbg.jpg" alt="gambarsicantikcloud" width="100%">SIMBG</a>
           </div>
@@ -1313,7 +1313,7 @@
     }
   });
 
-  $('.closeButton').click(function() {
+  $('.popUpBannerBox').click(function() {
     $('.popUpBannerBox').fadeOut("2000");
     return false;
   });

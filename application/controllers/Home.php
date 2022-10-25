@@ -98,6 +98,7 @@ class Home extends CI_Controller
 		$this->load->view('modal/modal_struktur');
 		$this->load->view('modal/modal_maklumat');
 		$this->load->view('modal/modal_sarpras');
+		$this->load->view('modal/modal_retribusi');
 		$this->load->view('modal/modal_kabid', $data);
 		$this->load->view('modal/modal_detail_investasi', $data);
 		$this->load->view('modal/modal_detail_potensi_investasi', $data);
@@ -119,6 +120,6 @@ class Home extends CI_Controller
 	public function tracking_sicantik()
 	{
 		$no_permohonan = $_GET['no_permohonan'];
-		echo json_encode(file_get_contents("https://sicantikws.layanan.go.id/api/TemplateData/keluaran/24218.json?no_permohonan=$no_permohonan"), TRUE);
+		echo json_encode(file_get_contents("https://ws.sicantik.go.id/api/TemplateData/keluaran/24218.json?no_permohonan=$no_permohonan"), TRUE);
 	}
 }

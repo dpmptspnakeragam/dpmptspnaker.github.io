@@ -906,6 +906,14 @@ video {
 }
 /*tutup perizinan*/
 
+/*simulasi retribusi*/
+.header-retribusi h2{
+	color:maroon;
+	text-decoration: none;
+	font-family: Maven Pro, sans-serif;
+}
+/*tutup simulasi retribusi*/
+
 /* skm */
 .skm {
 	background-image: url("../img/wallpaper.jpg");
