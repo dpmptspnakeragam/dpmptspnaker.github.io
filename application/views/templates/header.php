@@ -29,7 +29,7 @@
   <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <link media rel="stylesheet" href="<?= base_url(); ?>assets/css/wa.css">
 
-  <title>DPMPTSP-Naker Kab. Agam</title>
+  <title>DPMPTSP Kabupaten Agam</title>
 </head>
 
 <body>

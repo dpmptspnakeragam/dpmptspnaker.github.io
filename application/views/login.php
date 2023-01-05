@@ -4,7 +4,7 @@
             <div class="col-lg-4 col-sm-12 text-center" style="margin:80px auto;">
                 <div class="card-body kartu_login" style="width:400px; margin:auto;">
                     <img src="<?= base_url(); ?>assets/img/vectoragam.png" width="90px" alt="Logo Agam">
-                    <h3 class="display-4 judul_login">DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU DAN KETENAGAKERJAAN KABUPATEN AGAM</h3>
+                    <h3 class="display-4 judul_login">DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU KABUPATEN AGAM</h3>
                     <h5>Login</h5>
                     <?php if ($this->session->flashdata('pesan')) : ?>
                         <div class="alert alert-danger" role="alert">

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Tugas & Fungsi DPMPTSP-Naker Kab. Agam</h5>
+                <h5 class="modal-title display-4 judul-modal" id="LabelModalPelayanan">Tugas & Fungsi DPMPTSP Kabupaten Agam</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,20 +11,20 @@
             <div class="modal-body">
                 <div class="container text-justify">
                     <h3>Tugas</h3>
-                    <p>Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan, mempunyai tugas pokok membantu Bupati
-                        melaksanakan urusan pemerintahan yang menjadi kewenangan daerah dan tugas pembantuan dibidang penanaman modal,
-                        pelayanan perizinan dan ketenagakerjaan yang berada dan bertanggung jawab kepada Bupati melalui Sekretaris Daerah</p>
+                    <p>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu, mempunyai tugas pokok membantu Bupati
+                        melaksanakan urusan pemerintahan yang menjadi kewenangan daerah dan tugas pembantuan dibidang penanaman modal dan
+                        pelayanan perizinan yang berada dan bertanggung jawab kepada Bupati melalui Sekretaris Daerah</p>
                     <h3>Fungsi</h3>
                     <ul class="list-unstyled">
-                        <p>Dalam menyelenggarakan tugasnya sebagaimana dimaksud diatas, Dinas Penanaman Modal, Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan mempunyai fungsi:</p>
+                        <p>Dalam menyelenggarakan tugasnya sebagaimana dimaksud diatas, Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu mempunyai fungsi:</p>
                         <li>
-                            <p>a. Perumusan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan;</p>
+                            <p>a. Perumusan kebijakan di bidang penanaman modal;</p>
                         </li>
                         <li>
-                            <p>b. Pelaksanaan kebijakan di bidang penanaman modal dan bidang ketenagakerjaan;</p>
+                            <p>b. Pelaksanaan kebijakan di bidang penanaman modal;</p>
                         </li>
                         <li>
-                            <p>c. Pelaksanaan evaluasi dan pelaporan di bidang penanaman modal dan bidang ketenagakerjaan;
+                            <p>c. Pelaksanaan evaluasi dan pelaporan di bidang penanaman modal;
                             <p>
                         </li>
                         <li>

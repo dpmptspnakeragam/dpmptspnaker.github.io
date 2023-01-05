@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-center">Pegawai DPMPTSP-Naker Kab. Agam</h3>
+                <h3 class="text-center">Pegawai DPMPTSP Kabupaten Agam</h3>
                 <hr>
                 <div class="panel-heading">
                     <?php if ($this->session->flashdata('gagal')) : ?>
@@ -76,7 +76,7 @@
                 </div>
                 <!--end: Accordion -->
 
-                <h3 class="text-center">Pejabat DPMPTSP-Naker Kab. Agam</h3>
+                <h3 class="text-center">Pejabat DPMPTSP Kabupaten Agam</h3>
                 <hr>
                 <!-- start: Accordion -->
                 <div class="table-responsive">

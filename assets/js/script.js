@@ -49,14 +49,6 @@ $(window).scroll(function(){
 		});
 	}
 
-	if(wScroll > $('#naker').offset().top - 57){
-		$('.pilih-naker, .logo-enaker, .isi-naker').each(function(i){
-			setTimeout(function(){
-				$('.pilih-naker, .logo-enaker, .isi-naker').eq(i).addClass('muncul');
-			}, 100 * (i+1));
-		});
-	}
-
 	if(wScroll > $('#pengaduan').offset().top - 57){
 		$('.mekanisme-pengaduan, .form-pengaduan').each(function(i){
 			setTimeout(function(){

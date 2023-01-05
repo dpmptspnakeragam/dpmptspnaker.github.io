@@ -25,7 +25,7 @@ svg{width: 22px;height: 22px;vertical-align: middle;fill: var(--warna-icon)}
 .chatText span{display: inline-block;margin-right: auto;padding: 10px 10px 10px 20px;background-color: var(--warna-bg-chat);border-radius: 3px 15px 15px}
 .chatText span:after{content: 'Just now';margin-left: 15px;font-size: 9px;color: var(--warna-text-alt)}
 .chatText .typing{margin: 15px 0 0 auto;padding: 10px 20px 10px 10px;border-radius: 15px 3px 15px 15px}
-.chatText .typing: after{display: none}
+.chatText .typing after{display: none}
   
 .chatStart{display: flex;align-items: center;margin-top: 15px;padding: 18px 20px;border-radius: 10px;background-color: #fff;overflow: hidden;font-size: 12px;color: var(--warna-text)}
 .chatMenu:checked + .chatButton{-webkit-transform: rotate(360deg);transform: rotate(360deg)}

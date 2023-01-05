@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title display-4 judul-modal" id="LabelModalKabid">Pegawai DPMPTSP-Naker Kab. Agam</h5>
+                <h5 class="modal-title display-4 judul-modal" id="LabelModalKabid">Pegawai DPMPTSP Agam</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

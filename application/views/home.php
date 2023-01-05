@@ -9,11 +9,11 @@
           <!---<img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam">--->
         </div>
         <h1 class="jumbotronteks welcome">SELAMAT DATANG</h1>
-        <h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU DAN KETENAGAKERJAAN KABUPATEN AGAM</strong></h1>
+        <h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU KABUPATEN AGAM</strong></h1>
       </div>
       <div class="col-lg-6 col-12">
         <div class="inline">
-          <img class="jumbotronimg" src="<?= base_url(); ?>assets/img/kantor.png" alt="kantor" width="100%">
+          <img class="jumbotronimg" src="<?= base_url(); ?>assets/img/kantor_vector.png" alt="kantor" width="100%">
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
   <div class="container-fluid">
     <div class="inline">
       <a class="navbar-brand page-scroll" href="#home">
-        <img class="" src="<?= base_url(); ?>assets/img/logodpmptsp.png" alt="logodpmptsp" height="35px"></a>
+        <img class="" src="<?= base_url(); ?>assets/img/logo_dpmptsp.png" alt="logodpmptsp" height="50px"></a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -45,9 +45,9 @@
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#investasi">Investasi</a>
         </li>
-        <li class="nav-item">
+        <!---<li class="nav-item">
           <a class="nav-link page-scroll" href="#naker">e-Naker</a>
-        </li>
+        </li>--->
         <li class="nav-item">
           <a class="nav-link page-scroll" href="#pengaduan">Pengaduan</a>
         </li>
@@ -211,28 +211,28 @@
           Untuk melihat persyaratan atau info tentang Izin yang akan anda buat, silahkan pilih Standar Operasional Prosedur.
         </p>
         <div class="row isi-pelayanan text-center">
-          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+          <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
             <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%">Formulir & Persyaratan Perizinan</a>
           </div>
-          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+          <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
             <a href="https://sicantik.go.id/#/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%">SiCantik</a>
           </div>
-          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+          <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
             <a href="https://ui-login.oss.go.id/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%">OSS</a>
           </div>
-          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+          <!---<div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
             <a href="https://account.kemnaker.go.id/auth/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sisnaker.jpg" alt="gambarsicantikcloud" width="100%">SISNAKER KEMNAKER</a>
-          </div>
-          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+          </div>--->
+          <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
             <a href="https://www.lapor.go.id/" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lp.jpg" alt="gambarsicantikcloud" width="100%">Lapor.go.id</a>
           </div>
-          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+          <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
             <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%">Tracking SiCantik</a>
           </div>
           <!----<div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
             <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalRetribusi"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sr.jpg" alt="gambarsimulasiretribusi" width="100%">Simulasi Retribusi</a>
           </div>--->
-          <div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
+          <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
             <a href="https://simbg.pu.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simbg.jpg" alt="gambarsicantikcloud" width="100%">SIMBG</a>
           </div>
         </div>
@@ -286,34 +286,7 @@
 </section>
 <!-- close Investasi -->
 
-<!-- Naker -->
-<section class="naker" id="naker">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-lg-12 mt-4">
-        <h1 class="judul-naker"><b>e-Naker</b></h1>
-        <hr class="garis-judul">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="col-lg-12 mt-4">
-          <img class="logo-enaker" src="<?= base_url(); ?>assets/img/logoenaker.png" alt="logoagam">
-        </div>
-        <p class="isi-naker mt-3">Merupakan situs yang dapat digunakan pengguna untuk memperoleh informasi dibidang Ketenagakerjaan yang meliputi :
-          Lowongan Kerja, Magang, Pelatihan serta yang berkaitan dengan Ketenagakerjaan</p>
-        <p class="isi-naker">Untuk mengunjungi situs e-Naker, silahkan klik tombol dibawah ini.
-        <p>
-      </div>
-    </div>
-    <div class="row isi-naker">
-      <div class="col-sm-12 col-md-4 col-lg-12 display-4">
-        <a href="https://enaker.agamkab.go.id" class="pilih-naker">e-Naker</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- close Investasi -->
+
 
 <!-- Pengaduan -->
 <section class="pengaduan" id="pengaduan">
@@ -331,7 +304,7 @@
         <p>Masril, S.IP (Koordinator) - 082385822706</p>
         <p>Lisnawati (Lubuk Basung) - 081374656568</p>
         <p>Doni (Bukittinggi) - 085299056904</p>
-        <p>Email : dpmptspnakeragam@gmail.com</p>
+        <p>Email : dpmptspagam@gmail.com</p>
       </div>
       <div class="col-lg-5 col-sm-6 form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEdehMffkt4wy2FCzDQhUWSh0VxNOAcJWaIDiInOV3790FKg/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
@@ -346,7 +319,7 @@
   <div class="container-fluid text-center">
     <div class="row">
       <div class="col-lg-12 mt-4">
-        <h1 class="judul-naker"><b>Survey Kepuasan Masyarakat (SKM) Online</b></h1>
+        <h1 class="judul-investasi"><b>Survey Kepuasan Masyarakat (SKM) Online</b></h1>
         <hr class="garis-judul">
       </div>
     </div>
@@ -357,7 +330,7 @@
           <a href="<?= base_url(); ?>skm" class="pilih-profil">Lakukan Survey</a>
         </div>
       </div>
-      <div class="col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-12 text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik Survey Kepuasan Masyarakat</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -474,7 +447,7 @@
       </div>
     </div>
     <div class="row p-3">
-      <div class="col-lg-6 col text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik Izin Diterbitkan</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -560,7 +533,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-6 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik Realisasi Investasi (Rp. M)</h5>
         <h6 class="text-center"> Periode
           <?php
@@ -658,7 +631,7 @@
         </script>
       </div>
 
-      <div class="col-lg-12 col-12 col text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-12 col-12 col text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik Izin Diterbitkan /Tahun</h5>
         <!----<h6 class="text-center"> Periode
           <?php
@@ -760,7 +733,7 @@
               <?php } ?>
             </h6>
       </div>
-      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik NIB Diterbitkan</h5>
         <canvas id="grafiknib"></canvas>
         <?php
@@ -841,7 +814,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik Sebaran Proyek Bedasarkan Risiko</h5>
         <div class="chart-container" style="width:70%; margin:auto;">
           <canvas id="grafikrisiko" style="width:50% !important"></canvas>
@@ -888,7 +861,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik Sebaran Proyek Per Kecamatan Usaha</h5>
         <canvas id="grafikkecamatan" width="100%"></canvas>
         <?php
@@ -971,7 +944,7 @@
           });
         </script>
       </div>
-      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-naker p-3">
+      <div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
         <h5>Grafik Top 5 KBLI</h5>
         <canvas id="grafikkbli" width="100%"></canvas>
         <?php
@@ -1088,7 +1061,7 @@
         <p>
           <i class="icon-home">
           </i>
-          <strong>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu dan Ketenagakerjaan
+          <strong>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu
           </strong>
           <br>
           <i class="fa fa-map-pin">
@@ -1110,36 +1083,36 @@
           </i> 0752-66354 / 081364609770
           <br>--->
           <i class="fa fa-envelope">
-          </i> dpmptspnakeragam@gmail.com
+          </i> dpmptspagam@gmail.com
         </p>
         <ul class="list-inline social-buttons mt-10">
           <li class="list-inline-item">
-            <a href="https://twitter.com/DpmptspA" data-toggle="tooltip" data-placement="top" title="Twitter DPMPTSP-NAKER AGAM" style="color:white;">
+            <a href="https://twitter.com/DpmptspA" data-toggle="tooltip" data-placement="top" title="Twitter DPMPTSP AGAM" style="color:white;">
               <i class="ikon fab fa-twitter icon-square">
               </i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="https://www.facebook.com/dpmptsp.agam/" data-toggle="tooltip" data-placement="top" title="Facebook DPMPTSP-NAKER AGAM" style="color:white;">
+            <a href="https://www.facebook.com/dpmptspkab.agam" data-toggle="tooltip" data-placement="top" title="Facebook DPMPTSP AGAM" style="color:white;">
               <i class="ikon fab fa-facebook icon-square icon-32 ">
               </i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="https://www.instagram.com/dpmptspnakeragam/" data-toggle="tooltip" data-placement="top" title="Instagram DPMPTSP-NAKER AGAM" style="color:white;">
+            <a href="https://www.instagram.com/dpmptsp_kab.agam/" data-toggle="tooltip" data-placement="top" title="Instagram DPMPTSP AGAM" style="color:white;">
               <i class="ikon fab fa-instagram icon-square icon-32">
               </i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a href="https://www.youtube.com/channel/UCIRaBvE_7XyLf1lKFyGa08Q" data-toggle="tooltip" data-placement="top" title="Youtube DPMPTSP-NAKER AGAM" style="color:white;">
+            <a href="https://www.youtube.com/channel/UCIRaBvE_7XyLf1lKFyGa08Q" data-toggle="tooltip" data-placement="top" title="Youtube DPMPTSP AGAM" style="color:white;">
               <i class="ikon fab fa-youtube icon-square icon-32">
               </i>
             </a>
           </li>
         </ul>
         <p>
-          <img class="" src="<?= base_url(); ?>assets/img/logodpmptspwarna.png" alt="logodpmptsp" width="100%"></a>
+          <img class="" src="<?= base_url(); ?>assets/img/logo_dpmptspwarna.png" alt="logodpmptsp" width="50%"></a>
         </p>
       </div>
       <div class="col-lg-6 mb-3 text-left">

@@ -24,7 +24,8 @@
             <div class="container-fluid">
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-table"></i> PPID DPMPTSP-Naker Kab. Agam</div>
+                        <i class="fa fa-table"></i> PPID DPMPTSP Kabupaten Agam
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-borderless table-hover" id="dataTable" width="100%" cellspacing="0">

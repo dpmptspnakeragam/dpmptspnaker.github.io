@@ -768,7 +768,7 @@ video {
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-.naker::after {
+/*.naker::after {
 	content: "";
 	display: block;
 	width: 100%;
@@ -781,7 +781,8 @@ video {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-}
+	z-index: 0;
+}*/
 
 .isi-naker {
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);

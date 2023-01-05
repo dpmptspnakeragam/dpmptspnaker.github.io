@@ -35,10 +35,10 @@
                     </ul>
                     <hr>
                     <h3 class="text-center">
-                        Visi & Misi Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu & Ketenagakerjaan Kabupaten Agam
+                        Visi & Misi Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu Kabupaten Agam
                     </h3>
                     <h3>Visi</h3>
-                    <p><strong>Terwijudnya Iklim Penanaman Modal Yang Kondusif, Berdaya Saing Serta Pelayanan Terpadu Dan Ketenagakerjaan Yang Berkualitas</strong></p>
+                    <p><strong>Terwijudnya Iklim Penanaman Modal Yang Kondusif, Berdaya Saing Serta Pelayanan Terpadu Yang Berkualitas</strong></p>
                     <h3>Misi</h3>
                     <ul class="list-unstyled">
                         <li>
@@ -46,9 +46,6 @@
                         </li>
                         <li>
                             <p>2. Meningkatkan pelayanan penanaman modal dan perizinan dan non perizinan melalui PTSP yang berkualitas berbasis IT;</p>
-                        </li>
-                        <li>
-                            <p>3. Meningkatkan kualitas tenaga kerja, meningkatkan kesempatan kerja, meningkatkan kualitas hubungan industrial, tenaga kerja dan perlindungan tenaga kerja.</p>
                         </li>
                     </ul>
                 </div>

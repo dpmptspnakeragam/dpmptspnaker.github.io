@@ -23,7 +23,7 @@
             <!-- Example DataTables Card-->
             <div class="card mb-3">
                 <div class="card-header text-center">
-                    <p style="font-size:24px;"><strong>Indeks Kepuasan Masyarakat (IKM)<br>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu & Ketenagakerjaan<br>Kabupaten Agam</strong></p>
+                    <p style="font-size:24px;"><strong>Indeks Kepuasan Masyarakat (IKM)<br>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu<br>Kabupaten Agam</strong></p>
                 </div>
                 <div class="card-body">
                     <div class="panel-heading">
