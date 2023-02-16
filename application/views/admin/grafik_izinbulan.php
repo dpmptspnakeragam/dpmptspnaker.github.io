@@ -52,6 +52,7 @@
                                 <th class="text-center">Izin</th>
                                 <th class="text-center">2020</th>
                                 <th class="text-center">2021</th>
+                                <th class="text-center">2022</th>
                                 <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
                             </tr>
                         </thead>
@@ -65,6 +66,7 @@
                                     <td><?= $row->izin; ?></td>
                                     <td><?= $row->thn2020; ?></td>
                                     <td><?= $row->thn2021; ?></td>
+                                    <td><?= $row->thn2022; ?></td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a class="btn btn-outline-warning btn-sm btn-circle" href="#" data-toggle="modal" data-target="#EditGrafikIzinBulan<?php echo $row->id_grafik; ?>" title="Edit"><i class="fa fa-edit"></i></a>
@@ -85,6 +87,7 @@
                 $nama_izin = "";
                 $total = null;
                 $total2 = null;
+                $total3 = null;
                 foreach ($grafik->result() as $item) {
                     $nama = $item->izin;
                     $nama_izin .= "'$nama'" . ", ";
@@ -92,6 +95,8 @@
                     $total .= "$jum" . ", ";
                     $jum2 = $item->thn2021;
                     $total2 .= "$jum2" . ", ";
+                    $jum3 = $item->thn2022;
+                    $total3 .= "$jum3" . ", ";
                 }
                 ?>
             </div>
@@ -113,6 +118,10 @@
             label: "Tahun 2021",
             backgroundColor: '#7e549f',
             data: [<?php echo $total2; ?>]
+        }, {
+            label: "Tahun 2022",
+            backgroundColor: '#7e549f',
+            data: [<?php echo $total3; ?>]
         }]
     };
     var chart = new Chart(ctx, {

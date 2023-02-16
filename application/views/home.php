@@ -154,9 +154,9 @@
         <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas"><i class="ikon fa fa-pen-square" aria-hidden="true"></i><br>Tugas & Fungsi</a>
         </div>
-        <div class="col-lg-4 col-6 display-4 mb-3">
+        <!---<div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur"><i class="ikon fa fa-sitemap" aria-hidden="true"></i><br>Struktur Organisasi</a>
-        </div>
+        </div>--->
         <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid"><i class="ikon fa fa-users" aria-hidden="true"></i><br>Pegawai</a>
         </div>
@@ -646,6 +646,7 @@
         $nama_izinbulan = "";
         $totalbulan = null;
         $totalbulan2 = null;
+        $totalbulan3 = null;
         foreach ($grafik_bulan->result() as $item) {
           $nama = $item->izin;
           $nama_izinbulan .= "'$nama'" . ", ";
@@ -653,6 +654,8 @@
           $totalbulan .= "$jum" . ", ";
           $jum2 = $item->thn2021;
           $totalbulan2 .= "$jum2" . ", ";
+          $jum3 = $item->thn2022;
+          $totalbulan3 .= "$jum3" . ", ";
         }
         ?>
         <script>
@@ -662,12 +665,16 @@
             labels: [<?php echo $nama_izinbulan; ?>],
             datasets: [{
               label: "Tahun 2020",
-              backgroundColor: '#fb836f',
+              backgroundColor: '#679289',
               data: [<?php echo $totalbulan; ?>]
             }, {
               label: "Tahun 2021",
-              backgroundColor: '#7e549f',
+              backgroundColor: '#f4c095',
               data: [<?php echo $totalbulan2; ?>]
+            }, {
+              label: "Tahun 2022",
+              backgroundColor: '#ee2e31',
+              data: [<?php echo $totalbulan3; ?>]
             }]
           };
           var chart = new Chart(ctx, {

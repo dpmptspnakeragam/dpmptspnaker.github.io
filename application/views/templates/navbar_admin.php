@@ -1,6 +1,6 @@
 <nav class="navbar header-admin navbar-dark p-0 sticky-top flex-md-nowrap shadow">
     <a class="navbar-brand brand col-sm-3 col-md-2 mr-0" href="<?= base_url(); ?>admin/home">
-        <img src="<?= base_url(); ?>assets/img/vectoragam.png" width="25px" alt="Logo Agam"> DPMPTSP-NAKER AGAM
+        <img src="<?= base_url(); ?>assets/img/logo_dpmptsp.png" width="75px" alt="Logo Agam">
     </a>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
