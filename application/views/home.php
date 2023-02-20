@@ -307,7 +307,7 @@
         <p>Email : dpmptspagam@gmail.com</p>
       </div>
       <div class="col-lg-5 col-sm-6 form-pengaduan">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEdehMffkt4wy2FCzDQhUWSh0VxNOAcJWaIDiInOV3790FKg/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc8Jd_iY0No3oCuuqGXBMD0kz4g4Uexw0yJLUobFRZJNCFO6A/viewform?embedded=true" width="500" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
   </div>
