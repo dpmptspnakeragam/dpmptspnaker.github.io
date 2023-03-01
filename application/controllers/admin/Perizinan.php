@@ -112,7 +112,6 @@ class Perizinan extends CI_controller
         $row = $query->row();
 
         unlink("./assets/fileupload/$row->form");
-        unlink("./assets/fileupload/$row->syarat");
 
         $this->load->model('Model_perizinan');
         $this->Model_perizinan->delete($id);
