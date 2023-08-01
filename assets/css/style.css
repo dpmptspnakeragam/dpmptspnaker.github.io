@@ -133,6 +133,10 @@ main h5 {
 	width: 50px;
 }
 
+.agam2 {
+	width: 100px;
+}
+
 .hut {
 	width: 100px;
 }
@@ -1010,6 +1014,10 @@ video {
 
 	.agam {
 		width: 100px;
+	}
+
+	.agam2 {
+		width: 200px;
 	}
 
 	.hut {
