@@ -115,7 +115,10 @@ main h5 {
 .jumbotron {
 	height: 92vh;
 	width: 100%;
-	background-color: white;
+	background-image: url("../img/bg_hut_ri.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center center;
 }
 
 .welcome {
@@ -999,7 +1002,10 @@ video {
 	.jumbotron {
 		height: 92vh;
 		width: 100%;
-		background-color: white;
+		background-image: url("../img/bg_hut_ri.jpg");
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center center;
 	}
 
 	.welcome {

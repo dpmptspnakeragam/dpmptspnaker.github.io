@@ -6,17 +6,17 @@
       <div class="col-lg-6 col-12">
         <div class="posisi-agam">
           <img class="mb-4 mr-1 jumbotronimg agam" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam">
-          <img class="mb-4 mr-1 jumbotronimg agam2" src="<?= base_url(); ?>assets/img/hut_ri_78.png" alt="logohutri">
+          <img class="mb-4 ml-5 jumbotronimg agam2" src="<?= base_url(); ?>assets/img/hut_ri_78.png" alt="logohutri">
           <!---<img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam">--->
         </div>
         <h1 class="jumbotronteks welcome">SELAMAT DATANG</h1>
-        <h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL PELAYANAN TERPADU SATU PINTU KABUPATEN AGAM</strong></h1>
+        <h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL <br> PELAYANAN TERPADU SATU PINTU <br> KABUPATEN AGAM</strong></h1>
       </div>
-      <div class="col-lg-6 col-12">
+      <!---<div class="col-lg-6 col-12">
         <div class="inline">
           <img class="jumbotronimg" src="<?= base_url(); ?>assets/img/kantor_vector.png" alt="kantor" width="100%">
         </div>
-      </div>
+      </div>--->
     </div>
   </div>
 </div>
@@ -308,7 +308,7 @@
         <p>Email : dpmptspagam@gmail.com</p>
       </div>
       <div class="col-lg-5 col-sm-6 form-pengaduan">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc8Jd_iY0No3oCuuqGXBMD0kz4g4Uexw0yJLUobFRZJNCFO6A/viewform?embedded=true" width="500" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc8Jd_iY0No3oCuuqGXBMD0kz4g4Uexw0yJLUobFRZJNCFO6A/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div>
     </div>
   </div>
