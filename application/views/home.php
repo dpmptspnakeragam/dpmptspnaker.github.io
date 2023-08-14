@@ -156,9 +156,9 @@
         <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalTugas"><i class="ikon fa fa-pen-square" aria-hidden="true"></i><br>Tugas & Fungsi</a>
         </div>
-        <!---<div class="col-lg-4 col-6 display-4 mb-3">
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur"><i class="ikon fa fa-sitemap" aria-hidden="true"></i><br>Struktur Organisasi</a>
-        </div>--->
+        </div>
         <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid"><i class="ikon fa fa-users" aria-hidden="true"></i><br>Pegawai</a>
         </div>
@@ -307,6 +307,8 @@
         <p>Lisnawati (Lubuk Basung) - 081374656568</p>
         <p>Doni (Bukittinggi) - 085299056904</p>
         <p>Email : dpmptspagam@gmail.com</p>
+        <a href="" class="pilih-profil" data-toggle="modal" data-target="#ModalTrackingPengaduan"><i class="ikon fa fa-search" aria-hidden="true"></i> Tracking Pengaduan</a>
+
       </div>
       <div class="col-lg-5 col-sm-6 form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc8Jd_iY0No3oCuuqGXBMD0kz4g4Uexw0yJLUobFRZJNCFO6A/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>

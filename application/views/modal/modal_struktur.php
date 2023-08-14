@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="container text-justify">
                     <div class="row">
-                        <img class="shadow gambar-struktur img-responsive" src="<?= base_url() ?>assets/img/struktur.jpg">
+                        <img class="shadow gambar-struktur img-responsive" src="<?= base_url() ?>assets/img/struktur-web.jpg">
                     </div>
                 </div>
             </div>

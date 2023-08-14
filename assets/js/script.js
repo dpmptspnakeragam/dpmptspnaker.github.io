@@ -50,9 +50,9 @@ $(window).scroll(function(){
 	}
 
 	if(wScroll > $('#pengaduan').offset().top - 57){
-		$('.mekanisme-pengaduan, .form-pengaduan').each(function(i){
+		$('.mekanisme-pengaduan, .form-pengaduan, .pilih-pengaduan').each(function(i){
 			setTimeout(function(){
-				$('.mekanisme-pengaduan, .form-pengaduan').eq(i).addClass('muncul');
+				$('.mekanisme-pengaduan, .form-pengaduan, .pilih-pengaduan').eq(i).addClass('muncul');
 			}, 100 * (i+1));
 		});
 	}

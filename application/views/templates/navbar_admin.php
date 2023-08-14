@@ -60,6 +60,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/pengaduan">
+                            <span data-feather="info"></span>
+                            Pengaduan
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/regulasi">
                             <span data-feather="file-text"></span>
                             Regulasi
