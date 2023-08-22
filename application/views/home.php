@@ -179,7 +179,7 @@
         <div class="row">
           <di class="text-center col-md-12 col-lg-12 col-sm-12 display-4 mt-4">
             <div class="slogan">
-              <u>MOTTO :</u><br>
+              <strong>MOTTO :</strong><br>
               <u>Kami Melayani Dengan PASTI !!!</u><br>
               <small>Cepat | Sederhana | Transparan | Terintegrasi</small>
             </div>
