@@ -42,6 +42,8 @@ class Login extends CI_controller
                 }
                 if ($this->session->userdata('username') == 'agamdpmptspnaker') {
                     redirect('admin/home');
+                } elseif ($this->session->userdata('username') == 'asetdpmptspagam') {
+                    redirect('admin/aset');
                 }
             } else {
                 $this->session->set_flashdata('pesan', 'Maaf, Username atau Password anda <b>Salah</b>');
