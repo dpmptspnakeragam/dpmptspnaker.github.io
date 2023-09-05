@@ -6,7 +6,6 @@
       <div class="col-lg-6 col-12">
         <div class="posisi-agam">
           <img class="mb-4 mr-1 jumbotronimg agam" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam">
-          <img class="mb-4 ml-5 jumbotronimg agam2" src="<?= base_url(); ?>assets/img/hut_ri_78.png" alt="logohutri">
           <!---<img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam">--->
         </div>
         <h1 class="jumbotronteks welcome">SELAMAT DATANG</h1>
@@ -28,7 +27,6 @@
     <div class="inline">
       <a class="navbar-brand page-scroll" href="#home">
         <img class="" src="<?= base_url(); ?>assets/img/logo_dpmptsp.png" alt="logodpmptsp" height="50px">
-        <img class="ml-4" src="<?= base_url(); ?>assets/img/hut_ri_putih.png" alt="logo hut ri" height="50px"></a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
