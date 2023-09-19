@@ -27,6 +27,7 @@
     <div class="inline">
       <a class="navbar-brand page-scroll" href="#home">
         <img class="" src="<?= base_url(); ?>assets/img/logo_dpmptsp.png" alt="logodpmptsp" height="50px">
+      </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
