@@ -203,7 +203,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-12 ">
-        <img style="width:100%;" class="shadow mb-3 isi-pelayanan intro-pelayanan" src="<?= base_url() ?>assets/img/maklumat_2023.jpg" alt="Maklumat Pelayanan">
+        <?php
+        foreach ($pengaturan->result() as $row) {
+        ?>
+          <img style="width:100%;" class="shadow mb-3 isi-pelayanan intro-pelayanan" src="<?= base_url(); ?>assets/imgupload/<?= $row->maklumat; ?>" alt="Maklumat Pelayanan">
+        <?php } ?>
       </div>
       <div class="col-lg-8 col-12 text-justify">
         <p class="isi-pelayanan intro-pelayanan">

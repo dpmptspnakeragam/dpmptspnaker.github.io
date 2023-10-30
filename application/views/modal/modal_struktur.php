@@ -11,7 +11,11 @@
             <div class="modal-body">
                 <div class="container text-justify">
                     <div class="row">
-                        <img class="shadow gambar-struktur img-responsive" src="<?= base_url() ?>assets/img/struktur-web.jpg">
+                        <?php
+                        foreach ($pengaturan->result() as $row) {
+                        ?>
+                            <img class="shadow gambar-struktur img-responsive" src="<?= base_url(); ?>assets/imgupload/<?= $row->struktur; ?>">
+                        <?php } ?>
                     </div>
                 </div>
             </div>

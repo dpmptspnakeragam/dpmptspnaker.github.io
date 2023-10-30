@@ -37,7 +37,7 @@ class Home extends CI_Controller
 		$pengunjungonline  = $this->db->query("SELECT * FROM visitor WHERE online > '" . $bataswaktu . "'")->num_rows(); // hitung pengunjung online
 		$dbpengunjung2020 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) ")->row();
 		$pengunjung2020 = isset($dbpengunjung2020->hits) ? ($dbpengunjung2020->hits) : 0;
-		$dbpengunjung2021 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) = '" . $tahunini . "'")->row();
+		$dbpengunjung2021 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(CURDATE())")->row();
 		$pengunjung2021 = isset($dbpengunjung2021->hits) ? ($dbpengunjung2021->hits) : 0;
 		$dbbulanlalu = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)")->row();
 		$bulanlalu = isset($dbbulanlalu->hits) ? ($dbbulanlalu->hits) : 0;
@@ -62,6 +62,7 @@ class Home extends CI_Controller
 		$this->load->model('Model_sarpras');
 		$this->load->model('Model_tanah_ulayat');
 		$this->load->model('Model_grafik_nib');
+		$this->load->model('Model_pengaturan');
 		$data['periode_grafik'] = $this->Model_grafik->tampil_data_periode();
 		$data['periode_grafik_investasi'] = $this->Model_grafik_investasi->tampil_data_periode();
 		$data['periode_grafik_skm'] = $this->Model_grafik_skm->tampil_data_periode();
@@ -85,6 +86,7 @@ class Home extends CI_Controller
 		$data['grafik_risiko'] = $this->Model_grafik_nib->tampil_data_risiko();
 		$data['grafik_kecamatan'] = $this->Model_grafik_nib->tampil_data_kecamatan();
 		$data['grafik_kbli'] = $this->Model_grafik_nib->tampil_data_kbli();
+		$data['pengaturan'] = $this->Model_pengaturan->tampil_data();
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
 		$this->load->view('modal/modal_pelayanan');

@@ -122,6 +122,12 @@
                             Survey Kepuasan masyarakat (SKM)
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url(); ?>admin/pengaturan">
+                            <span data-feather="settings"></span>
+                            Pengaturan
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
