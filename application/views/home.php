@@ -307,9 +307,7 @@
       <div class="col-lg-7 col-sm-12 mt-4 mb-1">
         <img class="shadow mekanisme-pengaduan mb-4" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
         <h4><strong>Info Kontak Pengaduan</strong></h4>
-        <p>Masril, S.IP (Koordinator) - 082385822706</p>
-        <p>Lisnawati (Lubuk Basung) - 081374656568</p>
-        <p>Doni (Bukittinggi) - 085299056904</p>
+        <p>Masril, S.IP - 082385822706</p>
         <p>Email : dpmptspagam@gmail.com</p>
         <a href="" class="pilih-profil" data-toggle="modal" data-target="#ModalTrackingPengaduan"><i class="ikon fa fa-search" aria-hidden="true"></i> Tracking Pengaduan</a>
 
