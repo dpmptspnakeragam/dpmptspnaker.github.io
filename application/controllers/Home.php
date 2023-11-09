@@ -17,6 +17,7 @@ class Home extends CI_Controller
 		$date  = date("Y-m-d"); // Mendapatkan tanggal sekarang
 		$tahunlalu = date("Y" - 1);
 		$tahunini = date("Y");
+		$bulankemaren = date("m" - 1);
 		$waktu = time(); //
 		$timeinsert = date("Y-m-d H:i:s");
 		// Cek berdasarkan IP, apakah user sudah pernah mengakses hari ini
@@ -39,7 +40,7 @@ class Home extends CI_Controller
 		$pengunjung2020 = isset($dbpengunjung2020->hits) ? ($dbpengunjung2020->hits) : 0;
 		$dbpengunjung2021 = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE YEAR(date) = '" . $tahunini . "'")->row();
 		$pengunjung2021 = isset($dbpengunjung2021->hits) ? ($dbpengunjung2021->hits) : 0;
-		$dbbulanlalu = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)")->row();
+		$dbbulanlalu = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE MONTH(date) = '" . $bulankemaren . "'")->row();
 		$bulanlalu = isset($dbbulanlalu->hits) ? ($dbbulanlalu->hits) : 0;
 
 		$data['pengunjunghariini'] = $pengunjunghariini;
