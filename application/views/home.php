@@ -1151,7 +1151,7 @@
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjunghariini ?></p>
+                <p><?php echo $pengunjunghariini ?> Kali</p>
               </td>
             </tr>
             <tr>
@@ -1162,7 +1162,7 @@
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjung2020 ?></p>
+                <p><?php echo $pengunjung2020 ?> Kali</p>
               </td>
             </tr>
             <tr>
@@ -1173,7 +1173,7 @@
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjung2021 ?></p>
+                <p><?php echo $pengunjung2021 ?> Kali</p>
               </td>
             </tr>
             <tr>
@@ -1184,7 +1184,18 @@
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjungbulanlalu ?></p>
+                <p><?php echo $pengunjungbulanlalu ?> Kali</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><i class="fa fa-users"></i> Kunjungan Bulan Ini</p>
+              </td>
+              <td>
+                <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <p><?php echo $pengunjungbulanini ?> Kali</p>
               </td>
             </tr>
             <tr>
@@ -1195,7 +1206,7 @@
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $totalpengunjung ?></p>
+                <p><?php echo $totalpengunjung ?> Kali</p>
               </td>
             </tr>
           </table>
