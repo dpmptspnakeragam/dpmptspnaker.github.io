@@ -1130,72 +1130,72 @@
       </div>
       <div class="col-lg-6 mb-3 text-left">
         <div class="statistik">
-          <h5><b>Statistik Pengunjung</b></h5>
+          <h5><b>Statistik Kunjungan</b></h5>
           <table class="table-statistik" id="foot-table-list">
             <tr>
               <td>
-                <p><i class="fa fa-eye"></i> Pengunjung Online</p>
+                <p><i class="fa fa-eye"></i> Sedang Online</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjungonline ?> orang</p>
+                <p><?php echo $pengunjungonline ?></p>
               </td>
             </tr>
             <tr>
               <td>
-                <p><i class="fa fa-user"></i> Pengunjung Hari Ini</p>
+                <p><i class="fa fa-user"></i> Kunjungan Hari Ini</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjunghariini ?> orang</p>
+                <p><?php echo $pengunjunghariini ?></p>
               </td>
             </tr>
             <tr>
               <td>
-                <p><i class="fa fa-users"></i> Pengunjung Tahun Lalu</p>
+                <p><i class="fa fa-users"></i> Kunjungan Tahun Lalu</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjung2020 ?> orang</p>
+                <p><?php echo $pengunjung2020 ?></p>
               </td>
             </tr>
             <tr>
               <td>
-                <p><i class="fa fa-users"></i> Pengunjung Tahun Ini</p>
+                <p><i class="fa fa-users"></i> Kunjungan Tahun Ini</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjung2021 ?> orang</p>
+                <p><?php echo $pengunjung2021 ?></p>
               </td>
             </tr>
             <tr>
               <td>
-                <p><i class="fa fa-users"></i> Pengunjung Bulan Lalu</p>
+                <p><i class="fa fa-users"></i> Kunjungan Bulan Lalu</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $pengunjungbulanlalu ?> orang</p>
+                <p><?php echo $pengunjungbulanlalu ?></p>
               </td>
             </tr>
             <tr>
               <td>
-                <p><i class="fa fa-users"></i> Total Pengunjung</p>
+                <p><i class="fa fa-users"></i> Total Kunjungan</p>
               </td>
               <td>
                 <p>&nbsp;&nbsp;:&nbsp;&nbsp;</p>
               </td>
               <td>
-                <p><?php echo $totalpengunjung ?> orang</p>
+                <p><?php echo $totalpengunjung ?></p>
               </td>
             </tr>
           </table>

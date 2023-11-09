@@ -37,7 +37,7 @@ class Home extends CI_Controller
 		$pengunjungonline  = $this->db->query("SELECT * FROM visitor WHERE online > '" . $bataswaktu . "'")->num_rows(); // hitung pengunjung online
 		$dbpengunjung2020 = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) ")->row();
 		$pengunjung2020 = isset($dbpengunjung2020->hits) ? ($dbpengunjung2020->hits) : 0;
-		$dbpengunjung2021 = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(CURDATE())")->row();
+		$dbpengunjung2021 = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE YEAR(date) = '" . $tahunini . "'")->row();
 		$pengunjung2021 = isset($dbpengunjung2021->hits) ? ($dbpengunjung2021->hits) : 0;
 		$dbbulanlalu = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)")->row();
 		$bulanlalu = isset($dbbulanlalu->hits) ? ($dbbulanlalu->hits) : 0;
