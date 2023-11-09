@@ -31,17 +31,17 @@ class Home extends CI_Controller
 			$this->db->query("UPDATE visitor SET hits=hits+1, online='" . $waktu . "' WHERE ip='" . $ip . "' AND date='" . $date . "'");
 		}
 		$pengunjunghariini  = $this->db->query("SELECT * FROM visitor WHERE date='" . $date . "' GROUP BY ip")->num_rows(); // Hitung jumlah pengunjung
-		$dbpengunjung = $this->db->query("SELECT SUM(hits) as hits FROM visitor")->row();
+		$dbpengunjung = $this->db->query("SELECT COUNT(hits) as hits FROM visitor")->row();
 		$totalpengunjung = isset($dbpengunjung->hits) ? ($dbpengunjung->hits) : 0; // hitung total pengunjung
 		$bataswaktu = time() - 300;
 		$pengunjungonline  = $this->db->query("SELECT * FROM visitor WHERE online > '" . $bataswaktu . "'")->num_rows(); // hitung pengunjung online
-		$dbpengunjung2020 = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) ")->row();
+		$dbpengunjung2020 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR)) ")->row();
 		$pengunjung2020 = isset($dbpengunjung2020->hits) ? ($dbpengunjung2020->hits) : 0;
-		$dbpengunjung2021 = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(CURRENT_DATE())")->row();
+		$dbpengunjung2021 = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE YEAR(date) = YEAR(CURRENT_DATE())")->row();
 		$pengunjung2021 = isset($dbpengunjung2021->hits) ? ($dbpengunjung2021->hits) : 0;
-		$dbbulanlalu = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE() - INTERVAL 1 MONTH) and YEAR(date) = YEAR(CURRENT_DATE())")->row();
+		$dbbulanlalu = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE() - INTERVAL 1 MONTH) and YEAR(date) = YEAR(CURRENT_DATE())")->row();
 		$bulanlalu = isset($dbbulanlalu->hits) ? ($dbbulanlalu->hits) : 0;
-		$dbbulanini = $this->db->query("SELECT SUM(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE()) and YEAR(date) = YEAR(CURRENT_DATE())")->row();
+		$dbbulanini = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE()) and YEAR(date) = YEAR(CURRENT_DATE())")->row();
 		$bulanini = isset($dbbulanini->hits) ? ($dbbulanini->hits) : 0;
 
 		$data['pengunjunghariini'] = $pengunjunghariini;
