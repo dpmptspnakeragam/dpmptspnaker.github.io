@@ -1010,7 +1010,7 @@
                 }
               }]
             },
-            events: true,
+            events: false,
             showTooltips: true,
             animation: {
               duration: 500,
