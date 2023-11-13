@@ -1005,7 +1005,7 @@
               yAxes: [{
                 stacked: true,
                 ticks: {
-                  mirror: false,
+                  mirror: true,
                   fontColor: 'white'
                 }
               }]
