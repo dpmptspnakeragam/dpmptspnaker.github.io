@@ -90,6 +90,7 @@ class Model_grafik_nib extends CI_model
     {
         $this->db->select('*');
         $this->db->from('grafik_kbli');
+        $this->db->order_by('jumlah', 'DESC');
         $query = $this->db->get();
         return $query;
     }
