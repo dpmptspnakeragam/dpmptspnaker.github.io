@@ -1011,7 +1011,7 @@
               }]
             },
             events: false,
-            showTooltips: false,
+            showTooltips: true,
             animation: {
               duration: 500,
               easing: "easeOutQuart",
