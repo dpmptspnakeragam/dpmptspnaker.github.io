@@ -1005,12 +1005,12 @@
               yAxes: [{
                 stacked: true,
                 ticks: {
-                  mirror: true,
+                  mirror: false,
                   fontColor: 'white'
                 }
               }]
             },
-            events: false,
+            events: true,
             showTooltips: true,
             animation: {
               duration: 500,
