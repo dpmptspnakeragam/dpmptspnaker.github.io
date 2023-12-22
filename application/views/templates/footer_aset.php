@@ -1,4 +1,4 @@
-<footer class="footer mt-4 py-3">
+<footer class="footer mt-1 py-3">
     <div class="container-fluid text-center">
         <span class="text-muted">Copyright &copy; 2023 - DPMPTSP KAB. AGAM</span>
     </div>
@@ -17,9 +17,38 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap4.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script>
     new DataTable('#DataTables', {
         responsive: true
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#kecamatan').change(function() {
+            var id = $(this).val();
+            $.ajax({
+                url: "<?php echo base_url(); ?>admin/reklame/get_nagari",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+
+                    var html = '';
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value=' + data[i].id_nagari + '>' + data[i].nama_nagari + '</option>';
+                    }
+                    $('#nagari').html(html);
+                }
+            });
+            return false;
+        });
+
     });
 </script>
 </body>

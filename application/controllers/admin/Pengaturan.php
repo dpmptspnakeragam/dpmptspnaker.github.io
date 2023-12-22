@@ -23,6 +23,11 @@ class Pengaturan extends CI_controller
     public function ubah()
     {
         $id_setting = $this->input->post('id', true);
+        $sejarah = $this->input->post('sejarah', true);
+        $visi = $this->input->post('visi', true);
+        $misi = $this->input->post('misi', true);
+        $tugas = $this->input->post('tugas', true);
+        $fungsi = $this->input->post('fungsi', true);
         $struktur = $_FILES['struktur']['name'];
         $maklumat = $_FILES['maklumat']['name'];
 
@@ -56,6 +61,11 @@ class Pengaturan extends CI_controller
 
         $data = array(
             'id_setting' => $id_setting,
+            'sejarah' => $sejarah,
+            'visi' => $visi,
+            'misi' => $misi,
+            'tugas' => $tugas,
+            'fungsi' => $fungsi,
             'struktur' => $struktur,
             'maklumat' => $maklumat
         );

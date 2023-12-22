@@ -126,7 +126,7 @@ class Home extends CI_Controller
 	public function tracking_sicantik()
 	{
 		$no_permohonan = $_GET['no_permohonan'];
-		echo json_encode(file_get_contents("https://ws.sicantik.go.id/api/TemplateData/keluaran/24218.json?no_permohonan=$no_permohonan"), TRUE);
+		echo json_encode(file_get_contents("https://sicantik.go.id/api/TemplateData/keluaran/24218.json?no_permohonan=$no_permohonan"), TRUE);
 	}
 
 	public function tracking_pengaduan()

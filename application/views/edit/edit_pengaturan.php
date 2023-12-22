@@ -1,3 +1,4 @@
+<script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 <?php foreach ($pengaturan->result() as $row) {
 ?>
     <div class="modal fade" id="EditPengaturan<?php echo $row->id_setting; ?>" role="dialog" aria-labelledby="EditPengaturan" aria-hidden="true">
@@ -13,6 +14,41 @@
                     <form role="form" action="<?= base_url(); ?>admin/pengaturan/ubah" method="post" enctype="multipart/form-data">
                         <div class="form-group" hidden>
                             <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $row->id_setting; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="sejarah">Sejarah</label>
+                            <textarea id="editsejarah" type="text" class="form-control" rows="5" name="sejarah" placeholder="Sejarah" required><?php echo $row->sejarah; ?></textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('editsejarah');
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label for="visi">Visi</label>
+                            <textarea id="editvisi" type="text" class="form-control" rows="5" name="visi" placeholder="Visi" required><?php echo $row->visi; ?></textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('editvisi');
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label for="Misi">Misi</label>
+                            <textarea id="editmisi" type="text" class="form-control" rows="5" name="misi" placeholder="Misi" required><?php echo $row->misi; ?></textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('editmisi');
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label for="tugas">Tugas</label>
+                            <textarea id="edittugas" type="text" class="form-control" rows="5" name="tugas" placeholder="Tugas" required><?php echo $row->tugas; ?></textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('edittugas');
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label for="fungsi">Fungsi</label>
+                            <textarea id="editfungsi" type="text" class="form-control" rows="5" name="fungsi" placeholder="Fungsi" required><?php echo $row->fungsi; ?></textarea>
+                            <script type="text/javascript">
+                                CKEDITOR.replace('editfungsi');
+                            </script>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-12 col-sm-12 col-xs-12" for="struktur">Struktur Organisasi</label>

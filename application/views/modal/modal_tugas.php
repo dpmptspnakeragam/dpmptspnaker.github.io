@@ -11,29 +11,21 @@
             <div class="modal-body">
                 <div class="container text-justify">
                     <h3>Tugas</h3>
-                    <p>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu, mempunyai tugas pokok membantu Bupati
-                        melaksanakan urusan pemerintahan yang menjadi kewenangan daerah dan tugas pembantuan dibidang penanaman modal dan
-                        pelayanan perizinan yang berada dan bertanggung jawab kepada Bupati melalui Sekretaris Daerah</p>
+                    <?php
+                    foreach ($pengaturan->result() as $row) {
+                    ?>
+                        <p>
+                            <?= $row->tugas; ?>
+                        </p>
+                    <?php } ?>
                     <h3>Fungsi</h3>
-                    <ul class="list-unstyled">
-                        <p>Dalam menyelenggarakan tugasnya sebagaimana dimaksud diatas, Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu mempunyai fungsi:</p>
-                        <li>
-                            <p>a. Perumusan kebijakan di bidang penanaman modal;</p>
-                        </li>
-                        <li>
-                            <p>b. Pelaksanaan kebijakan di bidang penanaman modal;</p>
-                        </li>
-                        <li>
-                            <p>c. Pelaksanaan evaluasi dan pelaporan di bidang penanaman modal;
-                            <p>
-                        </li>
-                        <li>
-                            <p>d. Pelaksanaan administrasi Dinas;</p>
-                        </li>
-                        <li>
-                            <p>e. Pelaksanaan fungsi lain yang diberikan Bupati terkait dengan tugas dan fungsinya.</p>
-                        </li>
-                    </ul>
+                    <?php
+                    foreach ($pengaturan->result() as $row) {
+                    ?>
+                        <p>
+                            <?= $row->fungsi; ?>
+                        </p>
+                    <?php } ?>
                 </div>
             </div>
             <div class="modal-footer">

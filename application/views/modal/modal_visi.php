@@ -14,40 +14,21 @@
                         Visi & Misi Pemerintah Kabupaten Agam
                     </h3>
                     <h3>Visi</h3>
-                    <p><strong>Mewujudkan Kabupten Agam Maju, Masyarakat Sejahtera, Menuju Agam Mandiri, Breprestasi Yang Madani</strong></p>
+                    <?php
+                    foreach ($pengaturan->result() as $row) {
+                    ?>
+                        <p>
+                            <?= $row->visi; ?>
+                        </p>
+                    <?php } ?>
                     <h3>Misi</h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            <p>1. Menghadirkan tata kelola Pemerintahan yang efektif, bersih, akuntabel dan melayani;</p>
-                        </li>
-                        <li>
-                            <p>2. Membangun perekonomian masyarakat yang kokoh melalui optimalisasi sumber daya daerah dan pengembangan pariwisata;</p>
-                        </li>
-                        <li>
-                            <p>3. Pembangunan berkelanjutan yang berwawasan lingkungan, keterpaduan tata ruang wilayah dan mitigasi bencana;
-                        </li>
-                        <li>
-                            <p>4. Membangun masyarakat yang mandiri, berdaya saing, berkualitas dan berkarakter;
-                        </li>
-                        <li>
-                            <p>5. Meningkatkan kehidupan bermasyarakat yang madani, berlandaskan Adat Basandi Syara' - Syara' Basandi Kitabullah.
-                        </li>
-                    </ul>
-                    <hr>
-                    <h3 class="text-center">
-                        Visi & Misi Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu Kabupaten Agam
-                    </h3>
-                    <h3>Visi</h3>
-                    <p><strong>Terwijudnya Iklim Penanaman Modal Yang Kondusif, Berdaya Saing Serta Pelayanan Terpadu Yang Berkualitas</strong></p>
-                    <h3>Misi</h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            <p>1. Meningkatkan iklim investasi yang kondusif dan berdaya saing yang sesuai potensi dan keunggulan daerah;</p>
-                        </li>
-                        <li>
-                            <p>2. Meningkatkan pelayanan penanaman modal dan perizinan dan non perizinan melalui PTSP yang berkualitas berbasis IT;</p>
-                        </li>
-                    </ul>
+                    <?php
+                    foreach ($pengaturan->result() as $row) {
+                    ?>
+                        <p>
+                            <?= $row->misi; ?>
+                        </p>
+                    <?php } ?>
                 </div>
             </div>
             <div class="modal-footer">

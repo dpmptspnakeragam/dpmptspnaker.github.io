@@ -1,0 +1,31 @@
+.judul-reklame h1 { 
+    text-shadow: 0 0 15px #600574, 0 0 5px #000000; 
+    font-size: 24px;
+} 
+
+.judul-reklame h4 { 
+    text-shadow: 0 0 15px #600574, 0 0 5px #000000; 
+    font-size: 12px;
+} 
+
+.judul-reklame .logo{
+    width:50px;
+    margin-bottom: 20px;
+}
+
+
+
+@media (min-width: 760px) {
+    .judul-reklame h1 { 
+        text-shadow: 0 0 15px #600574, 0 0 5px #000000; 
+        font-size: 32px;
+    } 
+    .judul-reklame h4 { 
+        text-shadow: 0 0 15px #600574, 0 0 5px #000000; 
+        font-size: 18px;
+    } 
+    .judul-reklame .logo{
+        width:80px;
+        margin-bottom: 20px;
+    }
+}

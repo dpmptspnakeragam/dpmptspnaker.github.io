@@ -39,6 +39,26 @@
                 </div><br>
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-6 mb-3">
+                        <h6><strong>Sejarah</strong></h6>
+                        <p><?= $row->sejarah; ?></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 mb-3">
+                        <h6><strong>Visi</strong></h6>
+                        <p><?= $row->visi; ?></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 mb-3">
+                        <h6><strong>Misi</strong></h6>
+                        <p><?= $row->misi; ?></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 mb-3">
+                        <h6><strong>Tugas</strong></h6>
+                        <p><?= $row->tugas; ?></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 mb-3">
+                        <h6><strong>Fungsi</strong></h6>
+                        <p><?= $row->fungsi; ?></p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 mb-3">
                         <h6><strong>Struktur Organisasi</strong></h6>
                         <img src="<?= base_url(); ?>assets/imgupload/<?= $row->struktur; ?>" style="width:100%;" class="img-responsive">
                     </div>
