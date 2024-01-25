@@ -159,6 +159,9 @@
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalStruktur"><i class="ikon fa fa-sitemap" aria-hidden="true"></i><br>Struktur Organisasi</a>
         </div>
         <div class="col-lg-4 col-6 display-4 mb-3">
+          <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKadis"><i class="ikon fa fa-user" aria-hidden="true"></i><br>Kepala Dinas</a>
+        </div>
+        <div class="col-lg-4 col-6 display-4 mb-3">
           <a href="#" class="pilih-profil" data-toggle="modal" data-target="#ModalKabid"><i class="ikon fa fa-users" aria-hidden="true"></i><br>Pegawai</a>
         </div>
         <div class="col-lg-4 col-6 display-4 mb-3">

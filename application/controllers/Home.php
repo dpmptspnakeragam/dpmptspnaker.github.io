@@ -66,6 +66,7 @@ class Home extends CI_Controller
 		$this->load->model('Model_tanah_ulayat');
 		$this->load->model('Model_grafik_nib');
 		$this->load->model('Model_pengaturan');
+		$this->load->model('Model_kadis');
 		$data['periode_grafik'] = $this->Model_grafik->tampil_data_periode();
 		$data['periode_grafik_investasi'] = $this->Model_grafik_investasi->tampil_data_periode();
 		$data['periode_grafik_skm'] = $this->Model_grafik_skm->tampil_data_periode();
@@ -90,6 +91,7 @@ class Home extends CI_Controller
 		$data['grafik_kecamatan'] = $this->Model_grafik_nib->tampil_data_kecamatan();
 		$data['grafik_kbli'] = $this->Model_grafik_nib->tampil_data_kbli();
 		$data['pengaturan'] = $this->Model_pengaturan->tampil_data();
+		$data['kadis'] = $this->Model_kadis->tampil_kadis();
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
 		$this->load->view('modal/modal_pelayanan');
@@ -110,6 +112,7 @@ class Home extends CI_Controller
 		$this->load->view('modal/modal_detail_potensi_investasi', $data);
 		$this->load->view('modal/modal_informasi', $data);
 		$this->load->view('modal/modal_tanahulayat', $data);
+		$this->load->view('modal/modal_kadis', $data);
 		$this->load->view('templates/footer');
 	}
 

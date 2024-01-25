@@ -27,10 +27,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>admin/pegawai">
-                            <span data-feather="users"></span>
-                            Pegawai
+                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#profil" role="button" aria-expanded="false" aria-controls="profil">
+                            <span data-feather="book"></span>
+                            Profil
                         </a>
+                        <div class="collapse" id="profil">
+                            <ul>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/kadis">Kepala Dinas</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/pegawai">Pegawai</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/regulasi">Regulasi</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/ppid">PPID</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/sarpras">Sarana & Prasana</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/pengaturan">Pengaturan Teks</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/informasi">
@@ -72,18 +82,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>admin/regulasi">
-                            <span data-feather="file-text"></span>
-                            Regulasi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>admin/ppid">
-                            <span data-feather="database"></span>
-                            PPID
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse1">
                             <span data-feather="trending-up"></span>
                             Grafik
@@ -111,21 +109,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>admin/sarpras">
-                            <span data-feather="tool"></span>
-                            Sarana & Prasarana
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/skm">
                             <span data-feather="file"></span>
                             Survey Kepuasan masyarakat (SKM)
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>admin/pengaturan">
-                            <span data-feather="settings"></span>
-                            Pengaturan
                         </a>
                     </li>
                 </ul>
