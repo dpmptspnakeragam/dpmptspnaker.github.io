@@ -677,19 +677,19 @@
             labels: [<?php echo $nama_izinbulan; ?>],
             datasets: [{
               label: "Tahun 2020",
-              backgroundColor: '#679289',
+              backgroundColor: '#BBE2F2',
               data: [<?php echo $totalbulan; ?>]
             }, {
               label: "Tahun 2021",
-              backgroundColor: '#f4c095',
+              backgroundColor: '#34A6BF',
               data: [<?php echo $totalbulan2; ?>]
             }, {
               label: "Tahun 2022",
-              backgroundColor: '#ee2e31',
+              backgroundColor: '#F2C094',
               data: [<?php echo $totalbulan3; ?>]
             }, {
               label: "Tahun 2024",
-              backgroundColor: '#ee2e31',
+              backgroundColor: '#D90404',
               data: [<?php echo $totalbulan4; ?>]
             }]
           };
