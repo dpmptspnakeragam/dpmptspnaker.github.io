@@ -688,7 +688,7 @@
               backgroundColor: '#F2C094',
               data: [<?php echo $totalbulan3; ?>]
             }, {
-              label: "Tahun 2024",
+              label: "Tahun 2023",
               backgroundColor: '#D90404',
               data: [<?php echo $totalbulan4; ?>]
             }]
