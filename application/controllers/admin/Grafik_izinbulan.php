@@ -33,13 +33,15 @@ class Grafik_izinbulan extends CI_controller
         $thn2020 = $this->input->post('thn2020', true);
         $thn2021 = $this->input->post('thn2021', true);
         $thn2022 = $this->input->post('thn2022', true);
+        $thn2023 = $this->input->post('thn2023', true);
 
         $data = array(
             'id_grafik' => $id,
             'izin' => $izin,
             'thn2020' => $thn2020,
             'thn2021' => $thn2021,
-            'thn2022' => $thn2022
+            'thn2022' => $thn2022,
+            'thn2023' => $thn2023
         );
         $this->load->model('Model_grafik_izinbulan');
         $this->Model_grafik_izinbulan->input($data);
@@ -54,13 +56,15 @@ class Grafik_izinbulan extends CI_controller
         $thn2020 = $this->input->post('thn2020', true);
         $thn2021 = $this->input->post('thn2021', true);
         $thn2022 = $this->input->post('thn2022', true);
+        $thn2023 = $this->input->post('thn2023', true);
 
         $data = array(
             'id_grafik' => $id,
             'izin' => $izin,
             'thn2020' => $thn2020,
             'thn2021' => $thn2021,
-            'thn2022' => $thn2022
+            'thn2022' => $thn2022,
+            'thn2023' => $thn2023
         );
         $this->load->model('Model_grafik_izinbulan');
         $this->Model_grafik_izinbulan->update($data, $id);

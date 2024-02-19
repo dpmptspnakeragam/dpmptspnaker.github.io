@@ -33,6 +33,10 @@
                         <label for="pelatihan">Tahun 2022</label>
                         <input class="form-control" name="thn2022" placeholder="Izin Tahun 2022" required>
                     </div>
+                    <div class="form-group">
+                        <label for="pelatihan">Tahun 2023</label>
+                        <input class="form-control" name="thn2023" placeholder="Izin Tahun 2023" required>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

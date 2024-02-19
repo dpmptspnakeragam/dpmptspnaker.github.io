@@ -656,6 +656,7 @@
         $totalbulan = null;
         $totalbulan2 = null;
         $totalbulan3 = null;
+        $totalbulan4 = null;
         foreach ($grafik_bulan->result() as $item) {
           $nama = $item->izin;
           $nama_izinbulan .= "'$nama'" . ", ";
@@ -665,6 +666,8 @@
           $totalbulan2 .= "$jum2" . ", ";
           $jum3 = $item->thn2022;
           $totalbulan3 .= "$jum3" . ", ";
+          $jum4 = $item->thn2023;
+          $totalbulan4 .= "$jum4" . ", ";
         }
         ?>
         <script>
@@ -684,6 +687,10 @@
               label: "Tahun 2022",
               backgroundColor: '#ee2e31',
               data: [<?php echo $totalbulan3; ?>]
+            }, {
+              label: "Tahun 2024",
+              backgroundColor: '#ee2e31',
+              data: [<?php echo $totalbulan4; ?>]
             }]
           };
           var chart = new Chart(ctx, {
