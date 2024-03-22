@@ -244,9 +244,6 @@
           <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
             <a href="https://simbg.pu.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simbg.jpg" alt="gambarsicantikcloud" width="100%">SIMBG</a>
           </div>
-          <div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-            <a href="https://simbg.pu.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simbg.jpg" alt="gambarsicantikcloud" width="100%">SIMBG</a>
-          </div>
         </div>
       </div>
     </div>
