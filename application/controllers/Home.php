@@ -15,7 +15,7 @@ class Home extends CI_Controller
 	{
 		$ip    = $this->input->ip_address(); // Mendapatkan IP user
 		$date  = date("Y-m-d"); // Mendapatkan tanggal sekarang
-		$tahunlalu = date("Y" - 1);
+		$tahunlalu = date("Y") - 1;
 		$tahunini = date("Y");
 		$waktu = time(); //
 		$timeinsert = date("Y-m-d H:i:s");
