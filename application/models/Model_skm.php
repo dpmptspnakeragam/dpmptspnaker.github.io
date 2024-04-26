@@ -274,4 +274,12 @@ class Model_skm extends CI_model
         $query = $this->db->get()->row()->avg_u9;
         return $query;
     }
+
+    // Hapus SKM
+    public function hapus_skm($id_skm)
+    {
+        $this->db->where('id_skm', $id_skm);
+        $this->db->delete('skm');
+        return $this->db->affected_rows() > 0;
+    }
 }

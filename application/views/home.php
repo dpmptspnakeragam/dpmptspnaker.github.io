@@ -647,9 +647,9 @@
 				<h5>Grafik Izin Diterbitkan /Tahun</h5>
 				<!----<h6 class="text-center"> Periode
           <?php
-					$no = 1;
-					foreach ($periode_grafik_izinbulan->result() as $graph) {
-					?>
+			$no = 1;
+			foreach ($periode_grafik_izinbulan->result() as $graph) {
+			?>
             <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
           <?php } ?>
         </h6>--->

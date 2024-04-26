@@ -119,4 +119,12 @@ class Skm extends CI_Controller
         $this->session->set_flashdata("berhasil", "Pengisian kuesioner berhasil. Terima kasih");
         redirect('skm');
     }
+
+    public function delete($id_skm)
+    {
+        $this->load->model('Model_skm');
+        $this->Model_skm->hapus_skm($id_skm);
+        $this->session->set_flashdata('berhasil', 'Data SKM berhasil dihapus.');
+        redirect('admin/skm', 'refresh');
+    }
 }
