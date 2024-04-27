@@ -55,27 +55,30 @@ class Banner extends CI_controller
     {
         $id_banner = $this->input->post('id', true);
         $teks = $this->input->post('teks', true);
-        $gambar = $_FILES['gambar']['name'];
+        $old_image = $this->input->post('old', true);
 
-        // Menghapus gambar lama jika ada gambar baru yang diunggah
+        // Jika ada gambar baru diunggah
         if (!empty($_FILES['gambar']['name'])) {
-            $old_image = $this->input->post('old', true);
-            if ($old_image) {
-                $path = './assets/imgupload/' . $old_image;
-                if (file_exists($path)) {
-                    unlink($path); // Menghapus gambar lama dari folder
+            $nmfile = "banner-" . time();
+            $config['upload_path'] = './assets/imgupload/';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['file_name'] = $nmfile;
+
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('gambar')) {
+                // Hapus gambar lama jika ada
+                if ($old_image) {
+                    $path = './assets/imgupload/' . $old_image;
+                    if (file_exists($path)) {
+                        unlink($path); // Menghapus gambar lama dari folder
+                    }
                 }
+                $gambar = $this->upload->data('file_name');
+            } else {
+                $gambar = $old_image; // Gunakan gambar lama jika upload gagal
             }
-        }
-
-        $nmfile = "banner-" . time();
-        $config['upload_path'] = './assets/imgupload/';
-        $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['file_name'] = $nmfile;
-
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('gambar')) {
-            $gambar = $this->upload->data('file_name');
+        } else {
+            $gambar = $old_image; // Gunakan gambar lama jika tidak ada gambar baru
         }
 
         $data = array(
