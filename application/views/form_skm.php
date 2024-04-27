@@ -218,8 +218,8 @@
                                                     <option value="" selected disabled>Pilih Pendapat</option>
                                                     <option value="4" <?= set_select('u9', '4', ($this->input->post('u9') == '4')); ?>>Sangat Baik</option>
                                                     <option value="3" <?= set_select('u9', '3', ($this->input->post('u9') == '3')); ?>>Baik</option>
-                                                    <option value="2" <?= set_select('u9', '2', ($this->input->post('u9') == '2')); ?>>Cukup</option>
-                                                    <option value="1" <?= set_select('u9', '1', ($this->input->post('u9') == '1')); ?>>Kurang</option>
+                                                    <option value="2" <?= set_select('u9', '2', ($this->input->post('u9') == '2')); ?>>Cukup Baik</option>
+                                                    <option value="1" <?= set_select('u9', '1', ($this->input->post('u9') == '1')); ?>>Kurang Baik</option>
                                                 </select>
                                                 <small class="text-danger"><?= form_error('u9'); ?></small>
                                             </div>
@@ -234,12 +234,12 @@
                                                 <label for="R1">1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</label>
                                                 <br>
                                                 <div class="stars" data-rating="rating_1">
-                                                    <i class="fas fa-star" data-value="1"></i>
-                                                    <i class="fas fa-star" data-value="2"></i>
-                                                    <i class="fas fa-star" data-value="3"></i>
-                                                    <i class="fas fa-star" data-value="4"></i>
-                                                    <i class="fas fa-star" data-value="5"></i>
-                                                    <i class="fas fa-star" data-value="6"></i>
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
                                                 </div>
                                                 <small class="text-danger"><?= form_error('rating_1'); ?></small>
                                                 <input type="hidden" name="rating_1" value="<?= set_value('rating_1'); ?>">
@@ -248,12 +248,12 @@
                                                 <label for="R2">2. Tidak ada pelayanan diluar prosedur/kecurangan pelayanan pada unit layanan ini.</label>
                                                 <br>
                                                 <div class="stars" data-rating="rating_2">
-                                                    <i class="fas fa-star" data-value="1"></i>
-                                                    <i class="fas fa-star" data-value="2"></i>
-                                                    <i class="fas fa-star" data-value="3"></i>
-                                                    <i class="fas fa-star" data-value="4"></i>
-                                                    <i class="fas fa-star" data-value="5"></i>
-                                                    <i class="fas fa-star" data-value="6"></i>
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
                                                 </div>
                                                 <small class="text-danger"><?= form_error('rating_2'); ?></small>
                                                 <input type="hidden" name="rating_2" value="<?= set_value('rating_2'); ?>">
@@ -262,12 +262,12 @@
                                                 <label for="R3">3. Tidak ada penerimaan imbalan uang/barang/fasilitas diluar ketentuan yang berlaku pada unit layanan ini.</label>
                                                 <br>
                                                 <div class="stars" data-rating="rating_3">
-                                                    <i class="fas fa-star" data-value="1"></i>
-                                                    <i class="fas fa-star" data-value="2"></i>
-                                                    <i class="fas fa-star" data-value="3"></i>
-                                                    <i class="fas fa-star" data-value="4"></i>
-                                                    <i class="fas fa-star" data-value="5"></i>
-                                                    <i class="fas fa-star" data-value="6"></i>
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
                                                 </div>
                                                 <small class="text-danger"><?= form_error('rating_3'); ?></small>
                                                 <input type="hidden" name="rating_3" value="<?= set_value('rating_3'); ?>">
@@ -276,12 +276,12 @@
                                                 <label for="R4">4. Tidak ada pungutan liar (pungli) pada unit layanan ini.</label>
                                                 <br>
                                                 <div class="stars" data-rating="rating_4">
-                                                    <i class="fas fa-star" data-value="1"></i>
-                                                    <i class="fas fa-star" data-value="2"></i>
-                                                    <i class="fas fa-star" data-value="3"></i>
-                                                    <i class="fas fa-star" data-value="4"></i>
-                                                    <i class="fas fa-star" data-value="5"></i>
-                                                    <i class="fas fa-star" data-value="6"></i>
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
                                                 </div>
                                                 <small class="text-danger"><?= form_error('rating_4'); ?></small>
                                                 <input type="hidden" name="rating_4" value="<?= set_value('rating_4'); ?>">
@@ -290,12 +290,12 @@
                                                 <label for="R5">5. Tidak ada percaloan/perantara tidak resmi pada unit layanan ini.</label>
                                                 <br>
                                                 <div class="stars" data-rating="rating_5">
-                                                    <i class="fas fa-star" data-value="1"></i>
-                                                    <i class="fas fa-star" data-value="2"></i>
-                                                    <i class="fas fa-star" data-value="3"></i>
-                                                    <i class="fas fa-star" data-value="4"></i>
-                                                    <i class="fas fa-star" data-value="5"></i>
-                                                    <i class="fas fa-star" data-value="6"></i>
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
                                                 </div>
                                                 <small class="text-danger"><?= form_error('rating_5'); ?></small>
                                                 <input type="hidden" name="rating_5" value="<?= set_value('rating_5'); ?>">

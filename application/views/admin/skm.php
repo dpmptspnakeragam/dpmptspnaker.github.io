@@ -105,9 +105,21 @@
                                 <td class="text-center align-middle"><?= $row->r5; ?></td>
                                 <td class="text-center align-middle"><?= $row->date; ?></td>
                                 <td class="text-center align-middle">
-                                    <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="javascript: return confirm('Anda yakin hapus <?= $row->layanan; ?>?')"><i class="fas fa-trash"></i></a>
-                                    <a class="btn btn-outline-success btn-sm btn-circle" href="<?php echo base_url('admin/skm/print/' . $row->id_skm); ?>"><i class="fas fa-print"></i></a>
+                                    <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus <?= $row->layanan; ?>?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                    <button class="btn btn-outline-success btn-sm btn-circle" onclick="printSKM(<?= $row->id_skm; ?>)">
+                                        <i class="fas fa-print"></i>
+                                    </button>
                                 </td>
+
+                                <script>
+                                    function printSKM(id) {
+                                        // Redirect ke halaman cetak dengan ID kuesioner
+                                        window.open('<?php echo base_url('admin/skm/print/'); ?>' + id, '_blank');
+                                    }
+                                </script>
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

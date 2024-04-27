@@ -28,12 +28,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function resetStars(stars) {
         stars.forEach(star => {
             star.classList.remove('selected');
+            star.classList.replace('fas', 'far'); // Mengganti kelas ikon dari fas fa-star menjadi far fa-star
         });
     }
 
     function highlightStars(stars, value) {
         for (let i = 0; i < value; i++) {
             stars[i].classList.add('selected');
+            stars[i].classList.replace('far', 'fas'); // Mengganti kelas ikon dari far fa-star menjadi fas fa-star
         }
     }
+
 });

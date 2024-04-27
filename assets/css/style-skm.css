@@ -6,7 +6,8 @@
 }
 
 .fa-star {
-    color: #7e6714;
+    /* 7e6714 */
+    color: #707070;
     /* Warna bintang */
     transition: color 0.5s ease-in-out;
     /* Animasi perubahan warna */
@@ -15,7 +16,7 @@
 .fa-star.selected {
     color: #ffd700;
     /* Warna bintang yang dipilih */
-    transform: scale(1.1);
+    transform: scale(1.2);
     /* Skala bintang saat dipilih */
 }
 
