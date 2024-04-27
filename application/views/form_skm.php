@@ -18,15 +18,6 @@
     </nav>
     <!-- /.navbar -->
 
-    <style>
-        @media (max-width: 991.98px) {
-            .navbar-brand {
-                display: none;
-                /* Sembunyikan brand pada hp dan tablet */
-            }
-        }
-    </style>
-
     <div class="content-wrapper mb-3">
         <!-- Content Header (Page header) -->
         <div class="container">
@@ -309,76 +300,6 @@
                                                 <small class="text-danger"><?= form_error('rating_5'); ?></small>
                                                 <input type="hidden" name="rating_5" value="<?= set_value('rating_5'); ?>">
                                             </div>
-
-                                            <style>
-                                                .stars {
-                                                    display: inline-block;
-                                                    font-size: 20px;
-                                                    cursor: pointer;
-                                                }
-
-                                                .fa-star {
-                                                    color: #7e6714;
-                                                    /* Warna bintang */
-                                                    transition: color 0.5s ease-in-out;
-                                                    /* Animasi perubahan warna */
-                                                }
-
-                                                .fa-star.selected {
-                                                    color: #ffd700;
-                                                    /* Warna bintang yang dipilih */
-                                                    transform: scale(1.1);
-                                                    /* Skala bintang saat dipilih */
-                                                }
-
-                                                .stars .fa-star:nth-child(n + 2) {
-                                                    transition-delay: 0.3s;
-                                                    /* Delay animasi untuk bintang kedua dan seterusnya */
-                                                }
-                                            </style>
-
-                                            <script>
-                                                document.addEventListener("DOMContentLoaded", function() {
-                                                    const starsContainers = document.querySelectorAll('.stars');
-
-                                                    starsContainers.forEach(container => {
-                                                        const stars = container.querySelectorAll('.fa-star');
-
-                                                        stars.forEach(star => {
-                                                            star.addEventListener('click', function() {
-                                                                const value = parseInt(this.getAttribute('data-value'));
-                                                                const ratingContainer = container.getAttribute('data-rating');
-                                                                const hiddenInput = document.querySelector(`input[name="${ratingContainer}"]`);
-
-                                                                if (hiddenInput) {
-                                                                    hiddenInput.value = value;
-                                                                    resetStars(stars);
-                                                                    highlightStars(stars, value);
-                                                                }
-                                                            });
-                                                        });
-
-                                                        // Set initial value based on set_value
-                                                        const hiddenInput = document.querySelector(`input[name="${container.getAttribute('data-rating')}"]`);
-                                                        if (hiddenInput && hiddenInput.value) {
-                                                            highlightStars(stars, parseInt(hiddenInput.value));
-                                                        }
-                                                    });
-
-                                                    function resetStars(stars) {
-                                                        stars.forEach(star => {
-                                                            star.classList.remove('selected');
-                                                        });
-                                                    }
-
-                                                    function highlightStars(stars, value) {
-                                                        for (let i = 0; i < value; i++) {
-                                                            stars[i].classList.add('selected');
-                                                        }
-                                                    }
-                                                });
-                                            </script>
-
                                             <div class="modal-footer">
                                                 <a href="<?= base_url('skm'); ?>" class="btn btn-secondary">Batal</a>
                                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Kirim</button>

@@ -1,0 +1,32 @@
+/* SKM Bintang */
+.stars {
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.fa-star {
+    color: #7e6714;
+    /* Warna bintang */
+    transition: color 0.5s ease-in-out;
+    /* Animasi perubahan warna */
+}
+
+.fa-star.selected {
+    color: #ffd700;
+    /* Warna bintang yang dipilih */
+    transform: scale(1.1);
+    /* Skala bintang saat dipilih */
+}
+
+.stars .fa-star:nth-child(n + 2) {
+    transition-delay: 0.3s;
+    /* Delay animasi untuk bintang kedua dan seterusnya */
+}
+
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        display: none;
+        /* Sembunyikan brand pada hp dan tablet */
+    }
+}
