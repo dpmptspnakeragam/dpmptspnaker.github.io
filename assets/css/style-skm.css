@@ -1,7 +1,7 @@
 /* SKM Bintang */
 .stars {
     display: inline-block;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
 }
 

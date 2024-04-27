@@ -29,8 +29,8 @@
   <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <link media rel="stylesheet" href="<?= base_url(); ?>assets/css/wa.css">
 
-  <link media rel="stylesheet" href="<?= base_url(); ?>assets/css/style-skm.css">
-
+  <link rel="stylesheet" href="<?= base_url('assets/css/style-skm.css'); ?>">
+  <script src="<?= base_url('assets/js/script-skm.js'); ?>"></script>
 
   <title>DPMPTSP Kabupaten Agam</title>
 </head>
