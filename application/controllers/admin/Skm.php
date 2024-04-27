@@ -28,7 +28,7 @@ class Skm extends CI_controller
         redirect('admin/skm', 'refresh');
     }
 
-    public function print($id_skm)
+    public function cetak($id_skm)
     {
         $data['skm'] = $this->Model_skm->get_data_by_id($id_skm);
 
