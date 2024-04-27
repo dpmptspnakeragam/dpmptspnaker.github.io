@@ -4,8 +4,9 @@ class Model_skm extends CI_model
 {
     public function get_data()
     {
-        $this->db->select('*');
+        $this->db->select('skm.*, IFNULL(spak.r1, 0) AS r1, IFNULL(spak.r2, 0) AS r2, IFNULL(spak.r3, 0) AS r3, IFNULL(spak.r4, 0) AS r4, IFNULL(spak.r5, 0) AS r5');
         $this->db->from('skm');
+        $this->db->join('spak', 'skm.id_skm = spak.id_skm', 'left'); // Gunakan left join untuk menampilkan data dari spak walaupun id_skm tidak ada
         $query = $this->db->get();
         return $query;
     }
@@ -44,9 +45,14 @@ class Model_skm extends CI_model
         return $query;
     }
 
-    public function input($data)
+    public function simpan_skm($data_skm)
     {
-        $this->db->insert('skm', $data);
+        $this->db->insert('skm', $data_skm);
+    }
+
+    public function simpan_spak($data_spak)
+    {
+        $this->db->insert('spak', $data_spak);
     }
 
     public function update($data, $id)
@@ -145,7 +151,7 @@ class Model_skm extends CI_model
         return $query;
     }
 
-    //----------------Hitung Data Pekerjaan
+    //---------------------------Hitung Data Pekerjaan
 
     public function jmlh_pns()
     {
@@ -275,11 +281,27 @@ class Model_skm extends CI_model
         return $query;
     }
 
-    // Hapus SKM
+    //--------------------------- Admin Hapus Pada Tabel SKM
     public function hapus_skm($id_skm)
     {
         $this->db->where('id_skm', $id_skm);
         $this->db->delete('skm');
         return $this->db->affected_rows() > 0;
+    }
+    public function hapus_spak($id_skm)
+    {
+        $this->db->where('id_skm', $id_skm);
+        $this->db->delete('spak');
+        return $this->db->affected_rows() > 0;
+    }
+
+    public function get_data_by_id($id_skm)
+    {
+        $this->db->select('skm.*, IFNULL(spak.r1, 0) AS r1, IFNULL(spak.r2, 0) AS r2, IFNULL(spak.r3, 0) AS r3, IFNULL(spak.r4, 0) AS r4, IFNULL(spak.r5, 0) AS r5');
+        $this->db->from('skm');
+        $this->db->join('spak', 'skm.id_skm = spak.id_skm', 'left'); // Gunakan left join untuk menampilkan data dari spak walaupun id_skm tidak ada
+        $this->db->where('skm.id_skm', $id_skm);
+        $query = $this->db->get();
+        return $query;
     }
 }

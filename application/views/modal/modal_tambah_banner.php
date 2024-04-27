@@ -7,8 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form role="form" action="<?= base_url(); ?>admin/banner/tambah" method="post" enctype="multipart/form-data">
+            <form role="form" action="<?= base_url(); ?>admin/banner/tambah" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
                     <?php foreach ($idmax->result() as $row) {
                     ?>
                         <div hidden class="form-group">
@@ -18,17 +18,17 @@
                     <?php } ?>
                     <div class="form-group">
                         <label for="tahun">Banner Teks</label>
-                        <textarea id="ckeditor" class="form-control" name="teks" placeholder="Isi Berita" required></textarea>
+                        <textarea id="ckeditor" class="form-control" name="teks" placeholder="Isi Berita"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="gambar">Banner Gambar</label>
-                        <input type="file" name="gambar">
+                        <input type="file" name="gambar" required>
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                </div>
             </form>
         </div>
     </div>

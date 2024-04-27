@@ -1239,19 +1239,13 @@
 		<div class="popUpBannerInner">
 			<div class="popUpBannerContent">
 				<div class="container">
-					<div class="row">
-						<p class="text-right text-light"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
-						<?php
-						foreach ($banner->result() as $row) {
-						?>
-							<div class="col-12">
-								<img width="100%" class="banner img-responsive" src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" alt="" />
-							</div>
-							<div class="col-12 mt-3 text-light">
-								<p><?= $row->teks; ?></p>
-							</div>
-						<?php } ?>
-					</div>
+					<p class="text-left text-light mt-4"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
+					<?php foreach ($banner->result() as $row) : ?>
+						<div class="form-group mt-4">
+							<strong class="d-flex justify-content-center align-items-center text-light"><?= $row->teks; ?></strong>
+							<img width="100%" class="banner img-responsive" src="<?= base_url('assets/imgupload/' . $row->gambar); ?>" alt="Gambar Banner" />
+						</div>
+					<?php endforeach ?>
 				</div>
 			</div>
 		</div>

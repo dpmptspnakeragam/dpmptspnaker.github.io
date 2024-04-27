@@ -21,7 +21,7 @@
                     "paging": true,
                     "lengthChange": true,
                     "searching": true,
-                    "ordering": false,
+                    "ordering": true,
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,
@@ -33,6 +33,30 @@
         DataTable(["#TabelData1", "#TabelData2", "#TabelData3", "#TabelData4"]);
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function(alert) {
+            var alertKey = alert.getAttribute('data-alert-key');
+            setTimeout(function() {
+                alert.parentNode.removeChild(alert); // Menghapus elemen alert dari DOM
+                // Hapus juga flashdata sesuai dengan kunci alert
+                <?php if ($this->session->flashdata('gagal')) : ?>
+                    if (alertKey === 'gagal') {
+                        <?= $this->session->set_flashdata('gagal', ''); ?>
+                    }
+                <?php endif; ?>
+                <?php if ($this->session->flashdata('berhasil')) : ?>
+                    if (alertKey === 'berhasil') {
+                        <?= $this->session->set_flashdata('berhasil', ''); ?>
+                    }
+                <?php endif; ?>
+            }, 5000); // Menghapus setelah 5 detik (5000 milidetik)
+        });
+    });
+</script>
+
 </body>
 
 </html>

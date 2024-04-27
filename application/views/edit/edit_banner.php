@@ -17,27 +17,47 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun">Banner Teks</label>
-                            <textarea id="editbanner<?= $row->id_banner; ?>" class="form-control" name="teks" placeholder="Isi Berita" required><?php echo $row->teks; ?></textarea>
-                            <script type="text/javascript">
+                            <textarea id="editbanner<?= $row->id_banner; ?>" class="form-control" name="teks" placeholder="Isi Berita"><?php echo $row->teks; ?></textarea>
+                            <!-- <script type="text/javascript">
                                 CKEDITOR.replace('editbanner<?= $row->id_banner; ?>');
-                            </script>
+                            </script> -->
                         </div>
                         <div class="row">
+                            <div class="col-md-12">
+                                <label for="preview-gambar">Preview Gambar</label>
+                                <div class="form-group">
+                                    <img src="<?= base_url('assets/imgupload/' . $row->gambar); ?>" class="img-thumbnail w-auto" style="max-width: 15%;">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="gambar">Upload Gambar</label>
+                                <div class="form-group">
+                                    <input name="gambar" type="file" id="gambar">
+                                    <input name="old" type="hidden" id="old" value="<?php echo $row->gambar; ?>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
                             <div class="form-group">
-                                <label class="control-label col-md-12 col-sm-12 col-xs-12" for="gambar">Gambar</label>
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" for="gambar">Preview Gambar:</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <img src="<?= base_url(); ?>assets/imgupload/<?php echo $row->gambar; ?>" width='80' height='60' />
+                                    <img src="<?= base_url(); ?>assets/imgupload/<?php echo $row->gambar; ?>" class="img-thumbnail w-25 mb-2"><br>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12 col-sm-12 col-xs-12" for="gambar">Upload Gambar:</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="gambar" type="file" id="gambar" />
                                     <input name="old" type="hidden" id="old" value="<?php echo $row->gambar; ?>" />
                                 </div>
                             </div>
+                        </div> -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
                         </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
-                </div>
-                </form>
             </div>
         </div>
     </div>
