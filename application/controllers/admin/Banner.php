@@ -57,19 +57,27 @@ class Banner extends CI_controller
         $teks = $this->input->post('teks', true);
         $gambar = $_FILES['gambar']['name'];
 
-        if (empty($_FILES['gambar']['name'])) {
-            $gambar = $this->input->post('old', true);
-        } else {
-            $nmfile = "banner-" . time();
-            $config['upload_path'] = './assets/imgupload/';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $config['file_name'] = $nmfile;
-
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload('gambar')) {
-                $gambar = $this->upload->data('file_name');
+        // Menghapus gambar lama jika ada gambar baru yang diunggah
+        if (!empty($_FILES['gambar']['name'])) {
+            $old_image = $this->input->post('old', true);
+            if ($old_image) {
+                $path = './assets/imgupload/' . $old_image;
+                if (file_exists($path)) {
+                    unlink($path); // Menghapus gambar lama dari folder
+                }
             }
         }
+
+        $nmfile = "banner-" . time();
+        $config['upload_path'] = './assets/imgupload/';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['file_name'] = $nmfile;
+
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('gambar')) {
+            $gambar = $this->upload->data('file_name');
+        }
+
         $data = array(
             'id_banner' => $id_banner,
             'teks' => $teks,
