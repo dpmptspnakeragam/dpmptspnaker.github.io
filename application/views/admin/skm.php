@@ -103,7 +103,7 @@
                                 <td class="text-center align-middle"><?= $row->r3; ?></td>
                                 <td class="text-center align-middle"><?= $row->r4; ?></td>
                                 <td class="text-center align-middle"><?= $row->r5; ?></td>
-                                <td class="text-center align-middle"><?= $row->date; ?></td>
+                                <td class="text-center align-middle"><?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB</td>
                                 <td class="text-center align-middle">
                                     <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus <?= $row->layanan; ?>?')">
                                         <i class="fas fa-trash"></i>
