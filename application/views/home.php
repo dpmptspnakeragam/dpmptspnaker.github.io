@@ -339,7 +339,7 @@
 			<div class="col-12 mb-3">
 				<div class="text-center">
 					<p style="font-size:20px;">Untuk mengisi kuesioner Survey Kepuasan Masyarakat (SKM) secara online, silahkan klik tombol dibawah ini</p>
-					<a href="<?= base_url(); ?>skm" class="pilih-profil">Lakukan Survey</a>
+					<a href="<?= base_url(); ?>skm" class="pilih-profil border-white text-white">Lakukan Survey</a>
 				</div>
 			</div>
 			<div class="col-12 text-center text-light bg-dark isi-investasi p-3">

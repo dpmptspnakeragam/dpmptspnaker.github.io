@@ -106,31 +106,26 @@ class Skm extends CI_Controller
             ['field' => 'u6', 'label' => 'pendapat nomor 6 diatas', 'rules' => 'required'],
             ['field' => 'u7', 'label' => 'pendapat nomor 7 diatas', 'rules' => 'required'],
             ['field' => 'u8', 'label' => 'pendapat nomor 8 diatas', 'rules' => 'required'],
-            ['field' => 'u9', 'label' => 'pendapat nomor 9 diatas', 'rules' => 'required']
+            ['field' => 'u9', 'label' => 'pendapat nomor 9 diatas', 'rules' => 'required'],
+            ['field' => 'rating_r1', 'label' => 'bintang dari pernyataan nomor 1 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_r2', 'label' => 'bintang dari pernyataan nomor 2 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_r3', 'label' => 'bintang dari pernyataan nomor 3 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_r4', 'label' => 'bintang dari pernyataan nomor 4 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_r5', 'label' => 'bintang dari pernyataan nomor 5 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z1', 'label' => 'bintang dari pernyataan nomor 1 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z2', 'label' => 'bintang dari pernyataan nomor 2 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z3', 'label' => 'bintang dari pernyataan nomor 3 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z4', 'label' => 'bintang dari pernyataan nomor 4 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z5', 'label' => 'bintang dari pernyataan nomor 5 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z6', 'label' => 'bintang dari pernyataan nomor 6 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z7', 'label' => 'bintang dari pernyataan nomor 7 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
+            ['field' => 'rating_z8', 'label' => 'bintang dari pernyataan nomor 8 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
         ];
-
         foreach ($validation_rules as $rule) {
             $this->form_validation->set_rules($rule['field'], $rule['label'], $rule['rules'], [
                 'required' => 'Pilih %s!'
             ]);
         }
-
-
-        $this->form_validation->set_rules('rating_1', 'Rating 1', 'required|greater_than[0]|less_than[7]', [
-            'required' => 'Pilih bintang dari pernyataan diatas!',
-        ]);
-        $this->form_validation->set_rules('rating_2', 'Rating 2', 'required|greater_than[0]|less_than[7]', [
-            'required' => 'Pilih bintang dari pernyataan diatas!',
-        ]);
-        $this->form_validation->set_rules('rating_3', 'Rating 3', 'required|greater_than[0]|less_than[7]', [
-            'required' => 'Pilih bintang dari pernyataan diatas!',
-        ]);
-        $this->form_validation->set_rules('rating_4', 'Rating 4', 'required|greater_than[0]|less_than[7]', [
-            'required' => 'Pilih bintang dari pernyataan diatas!',
-        ]);
-        $this->form_validation->set_rules('rating_5', 'Rating 5', 'required|greater_than[0]|less_than[7]', [
-            'required' => 'Pilih bintang dari pernyataan diatas!',
-        ]);
     }
 
     // ------------------ User
@@ -159,6 +154,14 @@ class Skm extends CI_Controller
                 'u7'            => $this->input->post('u7', true),
                 'u8'            => $this->input->post('u8', true),
                 'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
+                'u9'            => $this->input->post('u9', true),
                 'date'          => $date
             );
 
@@ -167,15 +170,30 @@ class Skm extends CI_Controller
 
             $input_spak = array(
                 'id_skm'        => $this->input->post('id_skm'),
-                'r1' => $this->input->post('rating_1', true),
-                'r2' => $this->input->post('rating_2', true),
-                'r3' => $this->input->post('rating_3', true),
-                'r4' => $this->input->post('rating_4', true),
-                'r5' => $this->input->post('rating_5', true),
+                'r1' => $this->input->post('rating_r1', true),
+                'r2' => $this->input->post('rating_r2', true),
+                'r3' => $this->input->post('rating_r3', true),
+                'r4' => $this->input->post('rating_r4', true),
+                'r5' => $this->input->post('rating_r5', true),
             );
 
             $data_spak = $this->security->xss_clean($input_spak);
             $this->Model_skm->simpan_spak($data_spak);
+
+            $input_spkp = array(
+                'id_skm'    => $this->input->post('id_skm'),
+                'z1'        => $this->input->post('rating_z1'),
+                'z2'        => $this->input->post('rating_z2'),
+                'z3'        => $this->input->post('rating_z3'),
+                'z4'        => $this->input->post('rating_z4'),
+                'z5'        => $this->input->post('rating_z5'),
+                'z6'        => $this->input->post('rating_z6'),
+                'z7'        => $this->input->post('rating_z7'),
+                'z8'        => $this->input->post('rating_z8')
+            );
+
+            $data_spkp = $this->security->xss_clean($input_spkp);
+            $this->Model_skm->simpan_spkp($data_spkp);
 
             $this->session->set_flashdata("berhasil", "Pengisian kuesioner berhasil. Terima kasih");
             redirect('skm');

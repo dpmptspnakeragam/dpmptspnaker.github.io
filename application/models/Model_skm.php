@@ -55,6 +55,11 @@ class Model_skm extends CI_model
         $this->db->insert('spak', $data_spak);
     }
 
+    public function simpan_spkp($data_spkp)
+    {
+        $this->db->insert('spkp', $data_spkp);
+    }
+
     public function update($data, $id)
     {
         $this->db->where('id_ulayat', $id);
