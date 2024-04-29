@@ -357,9 +357,135 @@
             <div class="divider mb-3"></div>
 
             <div class="mb-3">
-                <h4 class="text-center">Jawaban Responden Tentang Persepsi Anti Korupsi</h4>
+                <h4 class="text-center mb-3">Jawaban Responden Tentang Persepsi Kualitas Pelayanan (SPKP)</h4>
+            </div>
+            <div class="form-group">
+                <h5>1. Informasi pelayanan pada unit layanan ini tersedia melalui media sosial elektronik maupun non elektronik.</h5>
+                <div class="stars-cetak" data-rating="rating_z1">
+                    <?php
+                    $rating = $row->z1; // Ambil nilai rating dari $row->r1
+
+                    // Loop untuk menghasilkan bintang sesuai dengan nilai rating
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star'; // Tentukan kelas bintang, jika $i kurang dari atau sama dengan $rating maka berikan kelas fas fa-star, jika tidak berikan kelas far fa-star
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070'; // Tentukan warna bintang, jika $i kurang dari atau sama dengan $rating maka berikan warna kuning (#ffd700), jika tidak kosongkan warna agar mengikuti default
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>'; // Tampilkan bintang dengan kelas dan warna yang sudah ditentukan
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5>2. Persyaratan pelayanan yang diinformasikan sesuai dengan persyaratan yang ditetapkan unit layanan ini.</h5>
+                <div class="stars-cetak" data-rating="rating_2">
+                    <?php
+                    $rating = $row->z2;
+
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5>3. Prosedur/Alur pelayanan yang ditetapkan unit layanan ini mudah diikuti/dilakukan.</h5>
+                <div class="stars-cetak" data-rating="rating_3">
+                    <?php
+                    $rating = $row->z3;
+
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5>4. Jangka waktu penyelesaian pelayanan yang diterima Bapak/Ibu sesuai dengan yang ditetapkan unit layanan ini.</h5>
+                <div class="stars-cetak" data-rating="rating_4">
+                    <?php
+                    $rating = $row->z4;
+
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5>5. Tarif/Biaya pelayanan yang dibayarkan pada unit layanan ini sesuai dengan tarif/biaya yang ditetapkan.</h5>
+                <div class="stars-cetak" data-rating="rating_5">
+                    <?php
+                    $rating = $row->z5;
+
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5>6. Sarana prasarana pendukung pelayanan/sistem pelayanan online yang disediakan unit layanan ini memberikan kenyamanan/mudah digunakan.</h5>
+                <div class="stars-cetak" data-rating="rating_5">
+                    <?php
+                    $rating = $row->z6;
+
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5>7. Petugas pelayanan/sistem pelayanan online pada unit layanan ini merespon keperluan Bapak/Ibu dengan cepat.</h5>
+                <div class="stars-cetak" data-rating="rating_5">
+                    <?php
+                    $rating = $row->z7;
+
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <h5>8. Layanan konsultasi dan pengaduan yang disediakan unit layanan ini mudah digunakan/diakses.</h5>
+                <div class="stars-cetak" data-rating="rating_5">
+                    <?php
+                    $rating = $row->z8;
+
+                    for ($i = 1; $i <= 6; $i++) {
+                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
+                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
+
+                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
+                    }
+                    ?>
+                </div>
             </div>
 
+            <div class="divider mb-3"></div>
+
+            <div class="mb-3">
+                <h4 class="text-center mb-3">Jawaban Responden Tentang Persepsi Anti Korupsi</h4>
+            </div>
             <div class="form-group">
                 <h5>1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</h5>
                 <div class="stars-cetak" data-rating="rating_1">
