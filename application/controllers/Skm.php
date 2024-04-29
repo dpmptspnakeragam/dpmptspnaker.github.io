@@ -140,6 +140,9 @@ class Skm extends CI_Controller
 
         if ($this->form_validation->run() == TRUE) {
 
+            date_default_timezone_set('Asia/Jakarta');
+            $date = date("Y-m-d H:i:s");
+
             $input_skm = array(
                 'id_skm'        => $this->input->post('id_skm'),
                 'jk'            => $this->input->post('jk', true),
@@ -156,7 +159,7 @@ class Skm extends CI_Controller
                 'u7'            => $this->input->post('u7', true),
                 'u8'            => $this->input->post('u8', true),
                 'u9'            => $this->input->post('u9', true),
-                'date'          => $this->input->post('date', true)
+                'date'          => $date
             );
 
             $data_skm = $this->security->xss_clean($input_skm);

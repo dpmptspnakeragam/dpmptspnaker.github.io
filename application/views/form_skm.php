@@ -118,7 +118,7 @@
                                                 <label for="jenis_layanan">Jenis Layanan yang diterima</label>
                                                 <input type="text" class="form-control" name="layanan" placeholder="Masukan Jenis layanan yang diterima" value="<?= set_value('layanan'); ?>">
                                                 <small class="text-danger mb-0"><?= form_error('layanan'); ?></small>
-                                                <small>Contoh: <span class="font-italic font-weight-bold">IMB, SIP, SIUP, dll.</span></small>
+                                                <small>Contoh: <span class="font-italic font-weight-bold">PBG, SIP Bidan, Izin Penelitian, dll.</span></small>
                                             </div>
 
                                             <hr>
@@ -224,13 +224,14 @@
                                                 <small class="text-danger"><?= form_error('u9'); ?></small>
                                             </div>
                                             <div class="form-group" hidden>
-                                                <input type="hidden" class="form-control" name="date" value="<?php echo date("Y-m-d"); ?>">
+                                                <input type="hidden" class="form-control" name="date" value="<?= date("Y-m-d H:i:s"); ?>">
                                             </div>
 
                                             <hr>
+
                                             <p class="text-center"> PENDAPAT RESPONDEN TENTANG PERSEPSI ANTI KORUPSI </P>
-                                            <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1 - 6 pada setiap pernyataan dibawah ini:</small>
-                                            <div class="form-group">
+                                            <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1 - 6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
+                                            <div class="form-group mt-2">
                                                 <label for="R1">1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</label>
                                                 <br>
                                                 <div class="stars" data-rating="rating_1">

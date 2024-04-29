@@ -143,7 +143,7 @@
 
                     <td class="h5">Tanggal Survey</td>
                     <td class="h5">:
-                        <?= $row->date; ?>
+                        <?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB
                     </td>
                 </tr>
             </table>
