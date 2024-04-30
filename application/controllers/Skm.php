@@ -8,6 +8,7 @@ class Skm extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_skm');
+        $this->load->model('Model_spkp_antikorupsi');
     }
 
 
@@ -61,8 +62,9 @@ class Skm extends CI_Controller
         $nrr_u9 = $avg_u9 * 0.1111;
 
         $sum_nrr = $nrr_u1 + $nrr_u2 + $nrr_u3 + $nrr_u4 + $nrr_u5 + $nrr_u6 + $nrr_u7 + $nrr_u8 + $nrr_u9;
-
         $data['ikm'] = $sum_nrr * 25;
+
+        $data['rating_spkp'] = $this->Model_spkp_antikorupsi->get_rating_spkp();
 
         $this->load->view('templates/header');
         $this->load->view('view_skm',  $data);
@@ -73,13 +75,14 @@ class Skm extends CI_Controller
     {
         // $this->load->model('Model_skm');
         // $data['ppid'] = $this->Model_ppid->tampil_data();
-        $data['idmax'] = $this->Model_skm->idmax();
+        $data['idmax_skm'] = $this->Model_skm->idmax_skm();
+        $data['idmax_rating'] = $this->Model_skm->idmax_rating();
         $this->load->view('templates/header');
         $this->load->view('form_skm', $data);
         $this->load->view('templates/footer');
     }
 
-    private function _rules()
+    public function _rules_skm()
     {
         $this->form_validation->set_rules('jk', 'jenis kelamin', 'required', [
             'required' => 'Pilih %s!',
@@ -107,6 +110,17 @@ class Skm extends CI_Controller
             ['field' => 'u7', 'label' => 'pendapat nomor 7 diatas', 'rules' => 'required'],
             ['field' => 'u8', 'label' => 'pendapat nomor 8 diatas', 'rules' => 'required'],
             ['field' => 'u9', 'label' => 'pendapat nomor 9 diatas', 'rules' => 'required'],
+        ];
+        foreach ($validation_rules as $rule) {
+            $this->form_validation->set_rules($rule['field'], $rule['label'], $rule['rules'], [
+                'required' => 'Pilih %s!'
+            ]);
+        }
+    }
+
+    private function _rules_rating()
+    {
+        $validation_rules = [
             ['field' => 'rating_r1', 'label' => 'bintang dari pernyataan nomor 1 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
             ['field' => 'rating_r2', 'label' => 'bintang dari pernyataan nomor 2 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
             ['field' => 'rating_r3', 'label' => 'bintang dari pernyataan nomor 3 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
@@ -129,9 +143,9 @@ class Skm extends CI_Controller
     }
 
     // ------------------ User
-    public function tambah()
+    public function tambah_skm()
     {
-        $this->_rules();
+        $this->_rules_skm();
 
         if ($this->form_validation->run() == TRUE) {
 
@@ -168,20 +182,38 @@ class Skm extends CI_Controller
             $data_skm = $this->security->xss_clean($input_skm);
             $this->Model_skm->simpan_skm($data_skm);
 
+
+            $this->session->set_flashdata("berhasil", "Pengisian kuesioner berhasil. Terima kasih");
+            redirect('skm');
+        } else {
+            $data['idmax_skm'] = $this->Model_skm->idmax_skm();
+            $data['idmax_rating'] = $this->Model_skm->idmax_rating();
+            $this->load->view('templates/header');
+            $this->load->view('form_skm', $data);
+            $this->load->view('templates/footer');
+        }
+    }
+    public function tambah_rating()
+    {
+        $this->_rules_rating();
+
+        if ($this->form_validation->run() == TRUE) {
+
             $input_spak = array(
-                'id_skm'        => $this->input->post('id_skm'),
+                'id_spkp'        => $this->input->post('id_spkp'),
                 'r1' => $this->input->post('rating_r1', true),
                 'r2' => $this->input->post('rating_r2', true),
                 'r3' => $this->input->post('rating_r3', true),
                 'r4' => $this->input->post('rating_r4', true),
                 'r5' => $this->input->post('rating_r5', true),
             );
-
             $data_spak = $this->security->xss_clean($input_spak);
             $this->Model_skm->simpan_spak($data_spak);
 
+            date_default_timezone_set('Asia/Jakarta');
+            $date = date("Y-m-d H:i:s");
+
             $inputspkp = array(
-                'id_skm'        => $this->input->post('id_skm'),
                 'z1' => $this->input->post('rating_z1', true),
                 'z2' => $this->input->post('rating_z2', true),
                 'z3' => $this->input->post('rating_z3', true),
@@ -190,15 +222,16 @@ class Skm extends CI_Controller
                 'z6' => $this->input->post('rating_z6', true),
                 'z7' => $this->input->post('rating_z7', true),
                 'z8' => $this->input->post('rating_z8', true),
+                'date' => $date
             );
-
             $data_spkp = $this->security->xss_clean($inputspkp);
             $this->Model_skm->simpan_spkp($data_spkp);
 
             $this->session->set_flashdata("berhasil", "Pengisian kuesioner berhasil. Terima kasih");
             redirect('skm');
         } else {
-            $data['idmax'] = $this->Model_skm->idmax();
+            $data['idmax_skm'] = $this->Model_skm->idmax_skm();
+            $data['idmax_rating'] = $this->Model_skm->idmax_rating();
             $this->load->view('templates/header');
             $this->load->view('form_skm', $data);
             $this->load->view('templates/footer');

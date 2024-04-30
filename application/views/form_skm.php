@@ -34,7 +34,8 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+
+                    <div class="col-12 mb-2">
                         <div class="card">
                             <div class="card-header text-center">
                                 <p class="h5">
@@ -50,12 +51,12 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <form role="form" action="<?= base_url('skm/tambah'); ?>" method="post">
+                                        <form role="form" action="<?= base_url('skm/tambah_skm'); ?>" method="post">
 
-                                            <?php foreach ($idmax->result() as $row) : ?>
+                                            <?php foreach ($idmax_skm->result() as $row) : ?>
                                                 <div class="form-group" hidden>
                                                     <label class=" control-label">Id</label>
-                                                    <input type="text" class="form-control" id="id" name="id_skm" value="<?= $row->idmax + 1; ?>">
+                                                    <input type="text" class="form-control" id="id" name="id_spkp" value="<?= $row->idmax_skm + 1; ?>">
                                                 </div>
                                             <?php endforeach; ?>
 
@@ -227,7 +228,31 @@
                                                 <input type="hidden" class="form-control" name="date" value="<?= date("Y-m-d H:i:s"); ?>">
                                             </div>
 
-                                            <hr>
+                                            <div class="modal-footer">
+                                                <a href="<?= base_url('skm'); ?>" class="btn btn-secondary">Batal</a>
+                                                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Kirim</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-md-12 -->
+
+                    <div class="col-12 mt-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form role="form" action="<?= base_url('skm/tambah_rating'); ?>" method="post">
+
+                                            <?php foreach ($idmax_rating->result() as $row) : ?>
+                                                <div class="form-group" hidden>
+                                                    <label class=" control-label">Id</label>
+                                                    <input type="text" class="form-control" id="id" name="id_spkp" value="<?= $row->idmax_rating + 1; ?>">
+                                                </div>
+                                            <?php endforeach; ?>
 
                                             <p class="text-center"> PENDAPAT RESPONDEN TENTANG PERSEPSI KUALITAS PELAYANAN (SPKP) </p>
                                             <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1-6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
@@ -417,6 +442,9 @@
                                                 </div>
                                                 <small class="text-danger"><?= form_error('rating_r5'); ?></small>
                                                 <input type="hidden" name="rating_r5" value="<?= set_value('rating_r5'); ?>">
+                                            </div>
+                                            <div class="form-group" hidden>
+                                                <input type="hidden" class="form-control" name="date" value="<?= date("Y-m-d H:i:s"); ?>">
                                             </div>
 
                                             <div class="modal-footer">

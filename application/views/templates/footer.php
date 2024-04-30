@@ -56,6 +56,10 @@
      });
    });
  </script>
+
+ <script>
+   var permintaanData = <?= json_encode($permintaan) ?>;
+ </script>
  </body>
 
  </html>

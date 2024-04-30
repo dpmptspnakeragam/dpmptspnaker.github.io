@@ -108,11 +108,23 @@
                             Banner
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/skm">
                             <span data-feather="file"></span>
                             Survey Kepuasan masyarakat (SKM)
                         </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#survey" role="button" aria-expanded="false" aria-controls="collapse1">
+                            <span data-feather="trending-up"></span>
+                            Survey
+                        </a>
+                        <div class="collapse" id="survey">
+                            <ul>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/skm">Kepuasan masyarakat (SKM)</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/spkp_antikorupsi">SPKP & Anti Korupsi</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>

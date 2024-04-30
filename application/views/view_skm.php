@@ -83,35 +83,35 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-12 text-center">
                                         <h1>NILAI IKM</h1>
-                                        <h1 class="text-info" style="font-size: 135px;"><strong><?php echo round($ikm, 2); ?></strong></h1>
+                                        <h1 class="text-info" style="font-size: 135px;"><strong><?= round($ikm, 2); ?></strong></h1>
                                     </div>
                                     <div class="col-lg-6 col-12 text-center">
                                         <h6>NAMA LAYANAN : PERIZINAN & NON PERIZINAN</h6>
                                         <hr>
                                         <p><strong>RESPONDEN</strong></p>
-                                        <P><strong>JUMLAH</strong> : <?php echo number_format($jumlah); ?> ORANG</P>
-                                        <p><strong>LAKI-LAKI</strong> : <?php echo number_format($jmlh_lk); ?> ORANG / <strong>PEREMPUAN</strong> : <?php echo number_format($jmlh_pr); ?> ORANG</p>
+                                        <P><strong>JUMLAH</strong> : <?= number_format($jumlah); ?> ORANG</P>
+                                        <p><strong>LAKI-LAKI</strong> : <?= number_format($jmlh_lk); ?> ORANG / <strong>PEREMPUAN</strong> : <?= number_format($jmlh_pr); ?> ORANG</p>
                                         <div class="row">
                                             <div class="col-6 text-left">
                                                 <p><strong>PENDIDIKAN</strong></p>
                                                 <ul>
-                                                    <li>SD : <?php echo number_format($jmlh_sd); ?> ORANG</li>
-                                                    <li>SMP : <?php echo number_format($jmlh_smp); ?> ORANG</li>
-                                                    <li>SMA : <?php echo number_format($jmlh_sma); ?> ORANG</li>
-                                                    <li>DI/DII/DIII : <?php echo number_format($jmlh_d1); ?> ORANG</li>
-                                                    <li>DIV/S1 : <?php echo number_format($jmlh_s1); ?> ORANG</li>
-                                                    <li>S2 : <?php echo number_format($jmlh_s2); ?> ORANG</li>
+                                                    <li>SD : <?= number_format($jmlh_sd); ?> ORANG</li>
+                                                    <li>SMP : <?= number_format($jmlh_smp); ?> ORANG</li>
+                                                    <li>SMA : <?= number_format($jmlh_sma); ?> ORANG</li>
+                                                    <li>DI/DII/DIII : <?= number_format($jmlh_d1); ?> ORANG</li>
+                                                    <li>DIV/S1 : <?= number_format($jmlh_s1); ?> ORANG</li>
+                                                    <li>S2 : <?= number_format($jmlh_s2); ?> ORANG</li>
                                                 </ul>
                                             </div>
                                             <div class="col-6 text-left">
                                                 <p><strong>PEKERJAAN</strong></p>
                                                 <ul>
-                                                    <li>PNS : <?php echo number_format($jmlh_pns); ?> ORANG</li>
-                                                    <li>TNI : <?php echo number_format($jmlh_tni); ?> ORANG</li>
-                                                    <li>POLRI : <?php echo number_format($jmlh_polri); ?> ORANG</li>
-                                                    <li>SWASTA : <?php echo number_format($jmlh_swasta); ?> ORANG</li>
-                                                    <li>WIRAUSAHA : <?php echo number_format($jmlh_wirausaha); ?> ORANG</li>
-                                                    <li>LAINNYA : <?php echo number_format($jmlh_lainnya); ?> ORANG</li>
+                                                    <li>PNS : <?= number_format($jmlh_pns); ?> ORANG</li>
+                                                    <li>TNI : <?= number_format($jmlh_tni); ?> ORANG</li>
+                                                    <li>POLRI : <?= number_format($jmlh_polri); ?> ORANG</li>
+                                                    <li>SWASTA : <?= number_format($jmlh_swasta); ?> ORANG</li>
+                                                    <li>WIRAUSAHA : <?= number_format($jmlh_wirausaha); ?> ORANG</li>
+                                                    <li>LAINNYA : <?= number_format($jmlh_lainnya); ?> ORANG</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -152,7 +152,7 @@
                                                 labels: ["Persyaratan", "Prosedur", "Kecepatan", "Tarif", "Kesesuaian", "Kompeten", "Perilaku", "Penanganan", "Sarana"],
                                                 datasets: [{
                                                     label: "Nilai Rata-Rata",
-                                                    data: [<?php echo $u1; ?>, <?php echo $u2; ?>, <?php echo $u3; ?>, <?php echo $u4; ?>, <?php echo $u5; ?>, <?php echo $u6; ?>, <?php echo $u7; ?>, <?php echo $u8; ?>, <?php echo $u9; ?>],
+                                                    data: [<?= $u1; ?>, <?= $u2; ?>, <?= $u3; ?>, <?= $u4; ?>, <?= $u5; ?>, <?= $u6; ?>, <?= $u7; ?>, <?= $u8; ?>, <?= $u9; ?>],
                                                     lineTension: 0,
                                                     fill: false,
                                                     beginAtZero: true,
@@ -187,6 +187,99 @@
                                         </script>
                                     </div>
                                 </div>
+
+                                <hr>
+
+                                <!-- GRAFIK TENTANG PERSEPSI KUALITAS PELAYANAN (SPKP) -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h3 class="text-center"><strong>Grafik Rating SPKP</strong></h3>
+                                                <div class="position-relative mb-4">
+                                                    <canvas id="barChartSPKP" height="300"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                <script>
+                                    var avg_values = <?= json_encode($rating_spkp) ?>;
+
+                                    var chart_data = [];
+                                    var percentages = [];
+                                    for (var i = 1; i <= 6; i++) {
+                                        chart_data.push(avg_values[i]['total']);
+                                        percentages.push(avg_values[i]['percentage']);
+                                    }
+
+                                    var $barChart = document.getElementById('barChartSPKP').getContext('2d');
+
+                                    var barChart = new Chart($barChart, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Bintang 1', 'Bintang 2', 'Bintang 3', 'Bintang 4', 'Bintang 5', 'Bintang 6'],
+                                            datasets: [{
+                                                label: 'Total Bintang',
+                                                backgroundColor: '#007bff',
+                                                borderColor: '#007bff',
+                                                borderWidth: 1,
+                                                data: chart_data
+                                            }, {
+                                                label: 'Persentase',
+                                                backgroundColor: '#28a745',
+                                                borderColor: '#28a745',
+                                                borderWidth: 1,
+                                                data: percentages
+                                            }]
+                                        },
+                                        options: {
+                                            maintainAspectRatio: false,
+                                            tooltips: {
+                                                mode: 'index',
+                                                intersect: false,
+                                                callbacks: {
+                                                    label: function(tooltipItem, data) {
+                                                        var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+                                                        var value = tooltipItem.yLabel;
+                                                        return datasetLabel + ': ' + value;
+                                                    }
+                                                }
+                                            },
+                                            hover: {
+                                                mode: 'index',
+                                                intersect: true
+                                            },
+                                            legend: {
+                                                display: true,
+                                                labels: {
+                                                    fontColor: 'black'
+                                                }
+                                            },
+                                            title: {
+                                                display: true,
+                                                text: 'Grafik Rating Survei'
+                                            },
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                    }
+                                                }],
+                                                xAxes: [{
+                                                    ticks: {
+                                                        fontColor: 'black',
+                                                        fontSize: 12,
+                                                        fontWeight: 'bold'
+                                                    }
+                                                }]
+                                            }
+                                        }
+                                    });
+                                </script>
+
+
                             </div>
                         </div>
                     </div>

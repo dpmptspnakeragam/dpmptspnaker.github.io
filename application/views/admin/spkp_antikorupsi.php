@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-center">Survey Kepuasan Masyarakat (SKM)</h3>
+                <h3 class="text-center">Suvey Persepsi Kualitas Pelayanan (SPKP) dan Persepsi Anti Korupsi</h3>
                 <hr>
 
                 <?php if ($this->session->flashdata('gagal')) : ?>
@@ -38,26 +38,25 @@
                     <thead class="bg-dark text-light">
                         <tr>
                             <th class="text-center align-middle" rowspan="2">No.</th>
-                            <th class="text-center align-middle" rowspan="2">Jenis Kelamin</th>
-                            <th class="text-center align-middle" rowspan="2">Umur</th>
-                            <th class="text-center align-middle" rowspan="2">Pendidikan</th>
-                            <th class="text-center align-middle" rowspan="2">Pekerjaan</th>
-                            <th class="text-center align-middle" rowspan="2">Layanan</th>
-                            <th id="toggle-column" class="text-center align-middle" colspan="9" style="cursor: pointer;">Pendapat Responden</th>
+                            <th id="toggle-column" class="text-center align-middle" colspan="13" style="cursor: pointer;">Pendapat Responden</th>
                             <th class="text-center align-middle" rowspan="2">Tanggal</th>
                             <th class="text-center align-middle" rowspan="2">Aksi</th>
                         </tr>
 
                         <tr id="hidden-rows">
-                            <th class="text-center align-middle">U1</th>
-                            <th class="text-center align-middle">U2</th>
-                            <th class="text-center align-middle">U3</th>
-                            <th class="text-center align-middle">U4</th>
-                            <th class="text-center align-middle">U5</th>
-                            <th class="text-center align-middle">U6</th>
-                            <th class="text-center align-middle">U7</th>
-                            <th class="text-center align-middle">U8</th>
-                            <th class="text-center align-middle">U9</th>
+                            <th class="text-center align-middle">Z1</th>
+                            <th class="text-center align-middle">Z2</th>
+                            <th class="text-center align-middle">Z3</th>
+                            <th class="text-center align-middle">Z4</th>
+                            <th class="text-center align-middle">Z5</th>
+                            <th class="text-center align-middle">Z6</th>
+                            <th class="text-center align-middle">Z7</th>
+                            <th class="text-center align-middle">Z8</th>
+                            <th class="text-center align-middle">R1</th>
+                            <th class="text-center align-middle">R2</th>
+                            <th class="text-center align-middle">R3</th>
+                            <th class="text-center align-middle">R4</th>
+                            <th class="text-center align-middle">R5</th>
                         </tr>
                     </thead>
                     <script>
@@ -77,29 +76,28 @@
 
                     <tbody>
                         <?php $no = 1;
-                        foreach ($skm->result() as $row) : ?>
+                        foreach ($rating->result() as $row) : ?>
                             <tr class="odd gradeX">
                                 <td class="text-center align-middle"><?= $no++; ?></td>
-                                <td class="text-center align-middle"><?= $row->jk; ?></td>
-                                <td class="text-center align-middle"><?= $row->umur; ?></td>
-                                <td class="text-center align-middle"><?= $row->pendidikan; ?></td>
-                                <td class="text-center align-middle"><?= $row->pekerjaan; ?></td>
-                                <td class="text-center align-middle"><?= $row->layanan; ?></td>
-                                <td class="text-center align-middle"><?= $row->u1; ?></td>
-                                <td class="text-center align-middle"><?= $row->u2; ?></td>
-                                <td class="text-center align-middle"><?= $row->u3; ?></td>
-                                <td class="text-center align-middle"><?= $row->u4; ?></td>
-                                <td class="text-center align-middle"><?= $row->u5; ?></td>
-                                <td class="text-center align-middle"><?= $row->u6; ?></td>
-                                <td class="text-center align-middle"><?= $row->u7; ?></td>
-                                <td class="text-center align-middle"><?= $row->u8; ?></td>
-                                <td class="text-center align-middle"><?= $row->u9; ?></td>
+                                <td class="text-center align-middle"><?= $row->z1; ?></td>
+                                <td class="text-center align-middle"><?= $row->z2; ?></td>
+                                <td class="text-center align-middle"><?= $row->z3; ?></td>
+                                <td class="text-center align-middle"><?= $row->z4; ?></td>
+                                <td class="text-center align-middle"><?= $row->z5; ?></td>
+                                <td class="text-center align-middle"><?= $row->z6; ?></td>
+                                <td class="text-center align-middle"><?= $row->z7; ?></td>
+                                <td class="text-center align-middle"><?= $row->z8; ?></td>
+                                <td class="text-center align-middle"><?= $row->r1; ?></td>
+                                <td class="text-center align-middle"><?= $row->r2; ?></td>
+                                <td class="text-center align-middle"><?= $row->r3; ?></td>
+                                <td class="text-center align-middle"><?= $row->r4; ?></td>
+                                <td class="text-center align-middle"><?= $row->r5; ?></td>
                                 <td class="text-center align-middle"><?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB</td>
                                 <td class="text-center align-middle">
-                                    <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus <?= $row->layanan; ?>?')">
+                                    <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url('admin/spkp_antikorupsi/delete/' . $row->id_spkp); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus data ini?')">
                                         <i class="fas fa-trash"></i>
                                     </a>
-                                    <!-- <button class="btn btn-outline-success btn-sm btn-circle" onclick="printSKM(<?= $row->id_skm; ?>)">
+                                    <!-- <button class="btn btn-outline-success btn-sm btn-circle" onclick="printSKM(<?= $row->id_spkp; ?>)">
                                         <i class="fas fa-print"></i>
                                     </button> -->
                                 </td>
