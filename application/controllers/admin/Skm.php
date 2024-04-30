@@ -24,6 +24,7 @@ class Skm extends CI_controller
     {
         $this->Model_skm->hapus_skm($id_skm);
         $this->Model_skm->hapus_spak($id_skm);
+        $this->Model_skm->hapus_spkp($id_skm);
         $this->session->set_flashdata('berhasil', 'Data SKM berhasil dihapus.');
         redirect('admin/skm', 'refresh');
     }

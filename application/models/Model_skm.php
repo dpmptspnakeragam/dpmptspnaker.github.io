@@ -8,7 +8,6 @@ class Model_skm extends CI_model
         $this->db->from('skm');
         $this->db->join('spak', 'skm.id_skm = spak.id_skm', 'left'); // Gunakan left join untuk menampilkan data dari spak walaupun id_skm tidak ada
         $this->db->join('spkp', 'skm.id_skm = spkp.id_skm', 'left');
-
         $query = $this->db->get();
         return $query;
     }
@@ -299,6 +298,14 @@ class Model_skm extends CI_model
     {
         $this->db->where('id_skm', $id_skm);
         $this->db->delete('spak');
+        return $this->db->affected_rows() > 0;
+    }
+
+    public function hapus_spkp($id_skm)
+
+    {
+        $this->db->where('id_skm', $id_skm);
+        $this->db->delete('spkp');
         return $this->db->affected_rows() > 0;
     }
 

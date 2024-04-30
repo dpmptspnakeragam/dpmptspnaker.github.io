@@ -180,19 +180,16 @@ class Skm extends CI_Controller
             $data_spak = $this->security->xss_clean($input_spak);
             $this->Model_skm->simpan_spak($data_spak);
 
-            $input_spkp = array(
-                'id_skm'    => $this->input->post('id_skm'),
-                'z1'        => $this->input->post('rating_z1'),
-                'z2'        => $this->input->post('rating_z2'),
-                'z3'        => $this->input->post('rating_z3'),
-                'z4'        => $this->input->post('rating_z4'),
-                'z5'        => $this->input->post('rating_z5'),
-                'z6'        => $this->input->post('rating_z6'),
-                'z7'        => $this->input->post('rating_z7'),
-                'z8'        => $this->input->post('rating_z8')
+            $inputspkp = array(
+                'id_skm'        => $this->input->post('id_skm'),
+                'r1' => $this->input->post('rating_r1', true),
+                'r2' => $this->input->post('rating_r2', true),
+                'r3' => $this->input->post('rating_r3', true),
+                'r4' => $this->input->post('rating_r4', true),
+                'r5' => $this->input->post('rating_r5', true),
             );
 
-            $data_spkp = $this->security->xss_clean($input_spkp);
+            $data_spkp = $this->security->xss_clean($inputspkp);
             $this->Model_skm->simpan_spkp($data_spkp);
 
             $this->session->set_flashdata("berhasil", "Pengisian kuesioner berhasil. Terima kasih");
