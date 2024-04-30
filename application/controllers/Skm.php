@@ -182,11 +182,14 @@ class Skm extends CI_Controller
 
             $inputspkp = array(
                 'id_skm'        => $this->input->post('id_skm'),
-                'r1' => $this->input->post('rating_r1', true),
-                'r2' => $this->input->post('rating_r2', true),
-                'r3' => $this->input->post('rating_r3', true),
-                'r4' => $this->input->post('rating_r4', true),
-                'r5' => $this->input->post('rating_r5', true),
+                'z1' => $this->input->post('rating_z1', true),
+                'z2' => $this->input->post('rating_z2', true),
+                'z3' => $this->input->post('rating_z3', true),
+                'z4' => $this->input->post('rating_z4', true),
+                'z5' => $this->input->post('rating_z5', true),
+                'z6' => $this->input->post('rating_z6', true),
+                'z7' => $this->input->post('rating_z7', true),
+                'z8' => $this->input->post('rating_z8', true),
             );
 
             $data_spkp = $this->security->xss_clean($inputspkp);
