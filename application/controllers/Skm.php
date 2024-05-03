@@ -65,6 +65,7 @@ class Skm extends CI_Controller
         $data['ikm'] = $sum_nrr * 25;
 
         $data['rating_spkp'] = $this->Model_spkp_antikorupsi->get_rating_spkp();
+        $data['rating_antikorupsi'] = $this->Model_spkp_antikorupsi->get_rating_antikorupsi();
 
         $this->load->view('templates/header');
         $this->load->view('view_skm',  $data);

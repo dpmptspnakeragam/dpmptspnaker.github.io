@@ -52,6 +52,46 @@ class Model_spkp_antikorupsi extends CI_Model
         return $ratings;
     }
 
+    public function get_rating_antikorupsi()
+    {
+        $ratings = [];
+
+        // Mengambil data dari tabel 'spak'
+        $query = $this->db->get('spak');
+        $results = $query->result_array();
+
+        // Inisialisasi total bintang untuk nilai 1-6
+        $total_bintang = [0, 0, 0, 0, 0, 0];
+
+        // Menghitung total bintang untuk setiap nilai (1-6)
+        foreach ($results as $result) {
+            for ($i = 1; $i <= 6; $i++) {
+                $field = "r$i";
+                if (isset($result[$field]) && $result[$field] >= 1 && $result[$field] <= 6) {
+                    $total_bintang[$result[$field] - 1]++;
+                }
+            }
+        }
+
+        // Menghitung total jawaban
+        $total_jawaban = array_sum($total_bintang);
+
+        // Menghitung persentase untuk setiap nilai (1-6) jika total jawaban tidak nol
+        if ($total_jawaban != 0) {
+            for ($i = 0; $i < 6; $i++) {
+                $percentage = ($total_bintang[$i] / $total_jawaban) * 100;
+                $ratings[$i + 1] = ['total' => $total_bintang[$i], 'percentage' => round($percentage, 2)];
+            }
+        } else {
+            // Jika total jawaban nol, kosongkan nilai persentase
+            for ($i = 0; $i < 6; $i++) {
+                $ratings[$i + 1] = ['total' => $total_bintang[$i], 'percentage' => 0];
+            }
+        }
+
+        return $ratings;
+    }
+
     public function hapus_spkp($id_spkp)
     {
         $this->db->where('id_spkp', $id_spkp);
