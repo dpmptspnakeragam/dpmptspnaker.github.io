@@ -139,75 +139,98 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 text-center p-3">
-                                        <h3><strong>Grafik Nilai Per Unsur</strong></h3>
-                                        <canvas id="grafikunsur" width="100%"></canvas>
-                                        <script>
-                                            var kanvasunsur = document.getElementById("grafikunsur").getContext("2d");
-
-                                            Chart.defaults.global.defaultFontFamily = "Lato";
-                                            Chart.defaults.global.defaultFontSize = 14;
-
-                                            var nilai = {
-                                                labels: ["Persyaratan", "Prosedur", "Kecepatan", "Tarif", "Kesesuaian", "Kompeten", "Perilaku", "Penanganan", "Sarana"],
-                                                datasets: [{
-                                                    label: "Nilai Rata-Rata",
-                                                    data: [<?= $u1; ?>, <?= $u2; ?>, <?= $u3; ?>, <?= $u4; ?>, <?= $u5; ?>, <?= $u6; ?>, <?= $u7; ?>, <?= $u8; ?>, <?= $u9; ?>],
-                                                    lineTension: 0,
-                                                    fill: false,
-                                                    beginAtZero: true,
-                                                    borderColor: 'maroon',
-                                                    backgroundColor: 'transparent',
-                                                    pointBorderColor: 'yellow',
-                                                    pointBackgroundColor: 'rgba(255,150,0,0.5)',
-                                                    pointRadius: 5,
-                                                    pointHoverRadius: 10,
-                                                    pointHitRadius: 30,
-                                                    pointBorderWidth: 2,
-                                                    pointStyle: 'rectRounded'
-                                                }]
-                                            };
-
-                                            var chartOptions = {
-                                                legend: {
-                                                    display: true,
-                                                    position: 'top',
-                                                    labels: {
-                                                        boxWidth: 80,
-                                                        fontColor: 'black'
-                                                    }
-                                                }
-                                            };
-
-                                            var lineChart = new Chart(kanvasunsur, {
-                                                type: 'line',
-                                                data: nilai,
-                                                options: chartOptions
-                                            });
-                                        </script>
-                                    </div>
-                                </div>
-
-                                <hr>
-
-                                <!-- GRAFIK TENTANG PERSEPSI KUALITAS PELAYANAN (SPKP) -->
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-md-12 text-center">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h5 class="text-center"><strong>Grafik Rating <br> Survey Persepsi Kualitas Pelayanan (SPKP)</strong></h5>
-                                                <div class="position-relative mb-4">
-                                                    <canvas id="barChartSPKP" height="300"></canvas>
+                                                <h3><strong>Grafik Nilai Per Unsur</strong></h3>
+                                                <div class="position-relative">
+                                                    <canvas id="grafikunsur" width="100%"></canvas>
+                                                    <script>
+                                                        var kanvasunsur = document.getElementById("grafikunsur").getContext("2d");
+
+                                                        Chart.defaults.global.defaultFontFamily = "Lato";
+                                                        Chart.defaults.global.defaultFontSize = 14;
+
+                                                        var nilai = {
+                                                            labels: ["Persyaratan", "Prosedur", "Kecepatan", "Tarif", "Kesesuaian", "Kompeten", "Perilaku", "Penanganan", "Sarana"],
+                                                            datasets: [{
+                                                                label: "Nilai Rata-Rata",
+                                                                data: [<?= $u1; ?>, <?= $u2; ?>, <?= $u3; ?>, <?= $u4; ?>, <?= $u5; ?>, <?= $u6; ?>, <?= $u7; ?>, <?= $u8; ?>, <?= $u9; ?>],
+                                                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                                                borderColor: 'rgba(54, 162, 235, 1)',
+                                                                borderWidth: 2,
+                                                                pointBackgroundColor: 'rgba(255, 159, 64, 1)',
+                                                                pointBorderColor: '#fff',
+                                                                pointBorderWidth: 2,
+                                                                pointRadius: 5,
+                                                                pointHoverRadius: 8,
+                                                                pointHoverBackgroundColor: '#ff6b6b',
+                                                                pointHoverBorderColor: '#fff',
+                                                                pointHoverBorderWidth: 2,
+                                                                pointStyle: 'circle'
+                                                            }]
+                                                        };
+
+                                                        var chartOptions = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true,
+                                                                        fontColor: 'black',
+                                                                        fontSize: 12,
+                                                                        // fontStyle: 'bold'
+                                                                    },
+                                                                    gridLines: {
+                                                                        color: 'rgba(0, 0, 0, 0.1)'
+                                                                    }
+                                                                }],
+                                                                xAxes: [{
+                                                                    ticks: {
+                                                                        fontColor: 'black',
+                                                                        fontSize: 12,
+                                                                        fontStyle: 'bold'
+                                                                    },
+                                                                    gridLines: {
+                                                                        color: 'rgba(0, 0, 0, 0.1)'
+                                                                    }
+                                                                }]
+                                                            },
+                                                            legend: {
+                                                                display: true,
+                                                                position: 'top',
+                                                                labels: {
+                                                                    boxWidth: 80,
+                                                                    fontColor: 'black'
+                                                                }
+                                                            },
+                                                            title: {
+                                                                display: false,
+                                                                // text: 'Grafik Nilai Rata-Rata per Unsur',
+                                                                fontSize: 12,
+                                                                fontColor: 'black'
+                                                            }
+                                                        };
+
+                                                        var lineChart = new Chart(kanvasunsur, {
+                                                            type: 'line',
+                                                            data: nilai,
+                                                            options: chartOptions
+                                                        });
+                                                    </script>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="card">
+                                </div>
+
+                                <!-- GRAFIK SURVEY PERSEPSI KUALITAS PELAYANAN (SPKP) dan PERSEPSI ANTI KORUPSI (SPAK) -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="card mt-4">
                                             <div class="card-body">
-                                                <h5 class="text-center"><strong>Grafik Rating <br> Survey Persepsi Anti Korupsi (SPAK)</strong></h5>
-                                                <div class="position-relative mb-4">
-                                                    <canvas id="barChartSPAK" height="300"></canvas>
+                                                <h5 class="text-center"><strong>Grafik Rating <br> Survey Persepsi Kualitas Pelayanan (SPKP)</strong></h5>
+                                                <div class="position-relative">
+                                                    <canvas id="barChartSPKP" height="275"></canvas>
                                                     <!-- Bar grafik SPKP (Survey Persepsi Kualitas Pelayanan) -->
                                                     <script>
                                                         var avg_values = <?= json_encode($rating_spkp) ?>;
@@ -266,27 +289,39 @@
                                                                     }
                                                                 },
                                                                 title: {
-                                                                    display: true,
-                                                                    text: 'Grafik Rating Survei'
+                                                                    display: false,
+                                                                    // text: 'Grafik Rating Survei'
                                                                 },
                                                                 scales: {
                                                                     yAxes: [{
                                                                         ticks: {
-                                                                            beginAtZero: true
-                                                                        }
+                                                                            beginAtZero: true,
+                                                                            fontColor: 'black',
+                                                                            fontSize: 12,
+                                                                            // fontStyle: 'bold'
+                                                                        },
                                                                     }],
                                                                     xAxes: [{
                                                                         ticks: {
                                                                             fontColor: 'black',
                                                                             fontSize: 12,
-                                                                            fontWeight: 'bold'
-                                                                        }
+                                                                            fontStyle: 'bold'
+                                                                        },
                                                                     }]
                                                                 }
                                                             }
                                                         });
                                                     </script>
-
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card mt-4">
+                                            <div class="card-body">
+                                                <h5 class="text-center"><strong>Grafik Rating <br> Survey Persepsi Anti Korupsi (SPAK)</strong></h5>
+                                                <div class="position-relative">
+                                                    <canvas id="barChartSPAK" height="275"></canvas>
                                                     <!-- Bar grafik SPAK (Survey Persepsi Anti Korupsi) -->
                                                     <script>
                                                         var avg_values = <?= json_encode($rating_antikorupsi) ?>;
@@ -312,8 +347,8 @@
                                                                     data: chart_data
                                                                 }, {
                                                                     label: 'Persentase',
-                                                                    backgroundColor: '#28a745',
-                                                                    borderColor: '#28a745',
+                                                                    backgroundColor: '#e9724d',
+                                                                    borderColor: '#e9724d',
                                                                     borderWidth: 1,
                                                                     data: percentages
                                                                 }]
@@ -345,21 +380,24 @@
                                                                     }
                                                                 },
                                                                 title: {
-                                                                    display: true,
+                                                                    display: false,
                                                                     text: 'Grafik Rating Survei'
                                                                 },
                                                                 scales: {
                                                                     yAxes: [{
                                                                         ticks: {
-                                                                            beginAtZero: true
-                                                                        }
+                                                                            beginAtZero: true,
+                                                                            fontColor: 'black',
+                                                                            fontSize: 12,
+                                                                            // fontStyle: 'bold'
+                                                                        },
                                                                     }],
                                                                     xAxes: [{
                                                                         ticks: {
                                                                             fontColor: 'black',
                                                                             fontSize: 12,
-                                                                            fontWeight: 'bold'
-                                                                        }
+                                                                            fontStyle: 'bold'
+                                                                        },
                                                                     }]
                                                                 }
                                                             }
