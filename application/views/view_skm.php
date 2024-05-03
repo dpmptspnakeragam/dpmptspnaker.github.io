@@ -138,13 +138,15 @@
                                         </p>
                                     </div>
                                 </div>
+
+                                <!-- GRAFIK SURVEY NILAI PER UNSUR -->
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h3><strong>Grafik Nilai Per Unsur</strong></h3>
                                                 <div class="position-relative">
-                                                    <canvas id="barChartPerUnsur" height="200"></canvas>
+                                                    <canvas id="barChartPerUnsur" height="350"></canvas>
                                                     <script>
                                                         var kanvasunsur = document.getElementById("barChartPerUnsur").getContext("2d");
 
@@ -217,7 +219,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <!-- GRAFIK SURVEY PERSEPSI KUALITAS PELAYANAN (SPKP) dan PERSEPSI ANTI KORUPSI (SPAK) -->
                                 <div class="row">
