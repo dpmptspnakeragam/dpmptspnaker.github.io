@@ -83,7 +83,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-12 text-center">
                                         <h1>NILAI IKM</h1>
-                                        <h1 class="text-info" style="font-size: 135px;"><strong><?= round($ikm, 2); ?></strong></h1>
+                                        <h1 class="text-info" style="font-size: 110px;"><strong><?= round($ikm, 2); ?></strong></h1>
                                     </div>
                                     <div class="col-lg-6 col-12 text-center">
                                         <h6>NAMA LAYANAN : PERIZINAN & NON PERIZINAN</h6>
@@ -144,7 +144,7 @@
                                             <div class="card-body">
                                                 <h3><strong>Grafik Nilai Per Unsur</strong></h3>
                                                 <div class="position-relative">
-                                                    <canvas id="barChartPerUnsur" height="300"></canvas>
+                                                    <canvas id="barChartPerUnsur" height="200"></canvas>
                                                     <script>
                                                         var kanvasunsur = document.getElementById("barChartPerUnsur").getContext("2d");
 
