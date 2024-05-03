@@ -144,9 +144,9 @@
                                             <div class="card-body">
                                                 <h3><strong>Grafik Nilai Per Unsur</strong></h3>
                                                 <div class="position-relative">
-                                                    <canvas id="grafikunsur" width="100%"></canvas>
+                                                    <canvas id="barChartPerUnsur" height="300"></canvas>
                                                     <script>
-                                                        var kanvasunsur = document.getElementById("grafikunsur").getContext("2d");
+                                                        var kanvasunsur = document.getElementById("barChartPerUnsur").getContext("2d");
 
                                                         Chart.defaults.global.defaultFontFamily = "Lato";
                                                         Chart.defaults.global.defaultFontSize = 14;
@@ -172,13 +172,14 @@
                                                         };
 
                                                         var chartOptions = {
+                                                            responsive: true, // Grafik akan menyesuaikan ukuran layar
+                                                            maintainAspectRatio: false, // Grafik tidak akan mempertahankan rasio aspek
                                                             scales: {
                                                                 yAxes: [{
                                                                     ticks: {
                                                                         beginAtZero: true,
                                                                         fontColor: 'black',
                                                                         fontSize: 12,
-                                                                        // fontStyle: 'bold'
                                                                     },
                                                                     gridLines: {
                                                                         color: 'rgba(0, 0, 0, 0.1)'
@@ -202,12 +203,6 @@
                                                                     boxWidth: 80,
                                                                     fontColor: 'black'
                                                                 }
-                                                            },
-                                                            title: {
-                                                                display: false,
-                                                                // text: 'Grafik Nilai Rata-Rata per Unsur',
-                                                                fontSize: 12,
-                                                                fontColor: 'black'
                                                             }
                                                         };
 
@@ -222,6 +217,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <!-- GRAFIK SURVEY PERSEPSI KUALITAS PELAYANAN (SPKP) dan PERSEPSI ANTI KORUPSI (SPAK) -->
                                 <div class="row">
