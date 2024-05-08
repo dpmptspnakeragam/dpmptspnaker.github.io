@@ -202,7 +202,8 @@ class Skm extends CI_Controller
         if ($this->form_validation->run() == TRUE) {
 
             $input_spak = array(
-                'id_spkp'        => $this->input->post('id_spkp'),
+                'id_spak' => $this->input->post('id_spkp'),
+                'id_spkp' => $this->input->post('id_spkp'),
                 'r1' => $this->input->post('rating_r1', true),
                 'r2' => $this->input->post('rating_r2', true),
                 'r3' => $this->input->post('rating_r3', true),
@@ -216,6 +217,7 @@ class Skm extends CI_Controller
             $date = date("Y-m-d H:i:s");
 
             $inputspkp = array(
+                'id_spkp' => $this->input->post('id_spkp'),
                 'z1' => $this->input->post('rating_z1', true),
                 'z2' => $this->input->post('rating_z2', true),
                 'z3' => $this->input->post('rating_z3', true),
