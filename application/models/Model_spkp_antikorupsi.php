@@ -8,6 +8,7 @@ class Model_spkp_antikorupsi extends CI_Model
         $this->db->select('spkp.*, IFNULL(spak.r1, 0) AS r1, IFNULL(spak.r2, 0) AS r2, IFNULL(spak.r3, 0) AS r3, IFNULL(spak.r4, 0) AS r4, IFNULL(spak.r5, 0) AS r5, IFNULL(spkp.z1, 0) AS z1, IFNULL(spkp.z2, 0) AS z2, IFNULL(spkp.z3, 0) AS z3, IFNULL(spkp.z4, 0) AS z4, IFNULL(spkp.z5, 0) AS z5, IFNULL(spkp.z6, 0) AS z6, IFNULL(spkp.z7, 0) AS z7, IFNULL(spkp.z8, 0) AS z8');
         $this->db->from('spkp');
         $this->db->join('spak', 'spkp.id_spkp = spak.id_spkp', 'left');
+        $this->db->order_by('date', 'asc');
         $query = $this->db->get();
         return $query;
     }
