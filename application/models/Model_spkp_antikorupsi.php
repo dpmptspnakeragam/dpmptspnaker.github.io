@@ -12,6 +12,13 @@ class Model_spkp_antikorupsi extends CI_Model
         return $query;
     }
 
+    public function total_responden()
+    {
+        $this->db->from('spkp');
+        $total = $this->db->count_all_results();
+        return $total;
+    }
+
     public function get_rating_spkp()
     {
         $ratings = [];
@@ -25,9 +32,9 @@ class Model_spkp_antikorupsi extends CI_Model
 
         // Menghitung total bintang untuk setiap nilai (1-6)
         foreach ($results as $result) {
-            for ($i = 1; $i <= 6; $i++) {
+            for ($i = 1; $i <= 8; $i++) { // Ubah dari 1-8 sesuai dengan kolom z1 - z8
                 $field = "z$i";
-                if ($result[$field] >= 1 && $result[$field] <= 6) {
+                if ($result[$field] >= 1 && $result[$field] <= 6) { // Hanya menghitung bintang 1-6
                     $total_bintang[$result[$field] - 1]++;
                 }
             }
@@ -63,11 +70,11 @@ class Model_spkp_antikorupsi extends CI_Model
         // Inisialisasi total bintang untuk nilai 1-6
         $total_bintang = [0, 0, 0, 0, 0, 0];
 
-        // Menghitung total bintang untuk setiap nilai (1-6)
+        // Menghitung total bintang untuk setiap nilai (1-6) dari kolom r1 hingga r5
         foreach ($results as $result) {
-            for ($i = 1; $i <= 6; $i++) {
+            for ($i = 1; $i <= 5; $i++) { // Ubah dari 1-5 sesuai dengan kolom r1 - r5
                 $field = "r$i";
-                if (isset($result[$field]) && $result[$field] >= 1 && $result[$field] <= 6) {
+                if (isset($result[$field]) && $result[$field] >= 1 && $result[$field] <= 6) { // Hanya menghitung bintang 1-6
                     $total_bintang[$result[$field] - 1]++;
                 }
             }

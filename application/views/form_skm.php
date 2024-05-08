@@ -254,10 +254,12 @@
                                                 </div>
                                             <?php endforeach; ?>
 
-                                            <p class="text-center"> PENDAPAT RESPONDEN TENTANG PERSEPSI KUALITAS PELAYANAN (SPKP) </p>
+                                            <div class="card bg-dark text-light">
+                                                <p class="text-center mt-3"> PENDAPAT RESPONDEN TENTANG PERSEPSI KUALITAS PELAYANAN (SPKP) </p>
+                                            </div>
                                             <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1-6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
                                             <div class="form-group mt-2">
-                                                <label>1. Informasi pelayanan pada unit layanan ini tersedia melalui media sosial elektronik maupun non elektronik.</label>
+                                                <span>1. Informasi pelayanan pada unit layanan ini tersedia melalui media sosial elektronik maupun non elektronik.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z1">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -271,7 +273,7 @@
                                                 <input type="hidden" name="rating_z1" value="<?= set_value('rating_z1'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>2. Persyaratan pelayanan yang diinformasikan sesuai dengan persyaratan yang ditetapkan unit layanan ini.</label>
+                                                <span>2. Persyaratan pelayanan yang diinformasikan sesuai dengan persyaratan yang ditetapkan unit layanan ini.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z2">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -285,7 +287,7 @@
                                                 <input type="hidden" name="rating_z2" value="<?= set_value('rating_z2'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>3. Prosedur/Alur pelayanan yang ditetapkan unit layanan ini mudah diikuti/dilakukan.</label>
+                                                <span>3. Prosedur/Alur pelayanan yang ditetapkan unit layanan ini mudah diikuti/dilakukan.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z3">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -299,7 +301,7 @@
                                                 <input type="hidden" name="rating_z3" value="<?= set_value('rating_z3'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>4. Jangka waktu penyelesaian pelayanan yang diterima Bapak/Ibu sesuai dengan yang ditetapkan unit layanan ini.</label>
+                                                <span>4. Jangka waktu penyelesaian pelayanan yang diterima Bapak/Ibu sesuai dengan yang ditetapkan unit layanan ini.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z4">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -313,7 +315,7 @@
                                                 <input type="hidden" name="rating_z4" value="<?= set_value('rating_z4'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>5. Tarif/Biaya pelayanan yang dibayarkan pada unit layanan ini sesuai dengan tarif/biaya yang ditetapkan.</label>
+                                                <span>5. Tarif/Biaya pelayanan yang dibayarkan pada unit layanan ini sesuai dengan tarif/biaya yang ditetapkan.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z5">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -327,7 +329,7 @@
                                                 <input type="hidden" name="rating_z5" value="<?= set_value('rating_z5'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>6. Sarana prasarana pendukung pelayanan/sistem pelayanan online yang disediakan unit layanan ini memberikan kenyamanan/mudah digunakan.</label>
+                                                <span>6. Sarana prasarana pendukung pelayanan/sistem pelayanan online yang disediakan unit layanan ini memberikan kenyamanan/mudah digunakan.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z6">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -341,7 +343,7 @@
                                                 <input type="hidden" name="rating_z6" value="<?= set_value('rating_z6'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>7. Petugas pelayanan/sistem pelayanan online pada unit layanan ini merespon keperluan Bapak/Ibu dengan cepat.</label>
+                                                <span>7. Petugas pelayanan/sistem pelayanan online pada unit layanan ini merespon keperluan Bapak/Ibu dengan cepat.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z7">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -355,7 +357,7 @@
                                                 <input type="hidden" name="rating_z7" value="<?= set_value('rating_z7'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>8. Layanan konsultasi dan pengaduan yang disediakan unit layanan ini mudah digunakan/diakses.</label>
+                                                <span>8. Layanan konsultasi dan pengaduan yang disediakan unit layanan ini mudah digunakan/diakses.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_z8">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -374,7 +376,7 @@
                                             <p class="text-center"> PENDAPAT RESPONDEN TENTANG PERSEPSI ANTI KORUPSI </P>
                                             <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1 - 6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
                                             <div class="form-group mt-2">
-                                                <label>1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</label>
+                                                <span>1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_r1">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -388,7 +390,7 @@
                                                 <input type="hidden" name="rating_r1" value="<?= set_value('rating_r1'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>2. Tidak ada pelayanan diluar prosedur/kecurangan pelayanan pada unit layanan ini.</label>
+                                                <span>2. Tidak ada pelayanan diluar prosedur/kecurangan pelayanan pada unit layanan ini.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_r2">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -402,7 +404,7 @@
                                                 <input type="hidden" name="rating_r2" value="<?= set_value('rating_r2'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>3. Tidak ada penerimaan imbalan uang/barang/fasilitas diluar ketentuan yang berlaku pada unit layanan ini.</label>
+                                                <span>3. Tidak ada penerimaan imbalan uang/barang/fasilitas diluar ketentuan yang berlaku pada unit layanan ini.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_r3">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -416,7 +418,7 @@
                                                 <input type="hidden" name="rating_r3" value="<?= set_value('rating_r3'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>4. Tidak ada pungutan liar (pungli) pada unit layanan ini.</label>
+                                                <span class="overflow-auto">4. Tidak ada pungutan liar (pungli) pada unit layanan ini.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_r4">
                                                     <i class="far fa-star" data-value="1"></i>
@@ -430,7 +432,7 @@
                                                 <input type="hidden" name="rating_r4" value="<?= set_value('rating_r4'); ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>5. Tidak ada percaloan/perantara tidak resmi pada unit layanan ini.</label>
+                                                <span>5. Tidak ada percaloan/perantara tidak resmi pada unit layanan ini.</span>
                                                 <br>
                                                 <div class="stars" data-rating="rating_r5">
                                                     <i class="far fa-star" data-value="1"></i>

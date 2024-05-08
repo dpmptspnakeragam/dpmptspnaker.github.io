@@ -34,11 +34,12 @@
                 <?php endif; ?>
 
                 <!-- start: Accordion -->
-                <table class="table table-sm table-responsive table-striped table-borderless table-hover" id="TabelData1">
+                <table class="table table-sm table-responsive table-bordered table-striped table-hover" id="TabelData1">
                     <thead class="bg-dark text-light">
                         <tr>
                             <th class="text-center align-middle" rowspan="2">No.</th>
-                            <th id="toggle-column" class="text-center align-middle" colspan="13" style="cursor: pointer;">Pendapat Responden</th>
+                            <th id="toggle-column" class="text-center align-middle" colspan="8" style="cursor: pointer;">SPKP</th>
+                            <th id="toggle-column" class="text-center align-middle" colspan="5" style="cursor: pointer;">Anti Korupsi</th>
                             <th class="text-center align-middle" rowspan="2">Tanggal</th>
                             <th class="text-center align-middle" rowspan="2">Aksi</th>
                         </tr>
