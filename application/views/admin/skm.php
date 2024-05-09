@@ -34,7 +34,7 @@
                 <?php endif; ?>
 
                 <!-- start: Accordion -->
-                <table class="table table-sm table-responsive table-striped table-borderless table-hover" id="TabelData1">
+                <table class="table table-sm table-responsive table-bordered table-striped table-hover" id="TabelData1">
                     <thead class="bg-dark text-light">
                         <tr>
                             <th class="text-center align-middle" rowspan="2">No.</th>
@@ -94,23 +94,21 @@
                                 <td class="text-center align-middle"><?= $row->u7; ?></td>
                                 <td class="text-center align-middle"><?= $row->u8; ?></td>
                                 <td class="text-center align-middle"><?= $row->u9; ?></td>
-                                <td class="text-center align-middle"><?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB</td>
+                                <td class="text-center align-middle"><?= date('d-m-Y / H:i:s', strtotime($row->date)); ?></td>
                                 <td class="text-center align-middle">
-                                    <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus <?= $row->layanan; ?>?')">
+                                    <a class="btn btn-outline-danger btn-sm btn-circle mt-1 mb-1" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus <?= $row->layanan; ?>?')">
                                         <i class="fas fa-trash"></i>
                                     </a>
-                                    <!-- <button class="btn btn-outline-success btn-sm btn-circle" onclick="printSKM(<?= $row->id_skm; ?>)">
+                                    <button class="btn btn-outline-success btn-sm btn-circle mt-1 mb-1" onclick="printSKM(<?= $row->id_skm; ?>)">
                                         <i class="fas fa-print"></i>
-                                    </button> -->
+                                    </button>
+                                    <script>
+                                        function printSKM(id) {
+                                            // Redirect ke halaman cetak dengan ID kuesioner
+                                            window.open('<?php echo base_url('PdfController/cetak/'); ?>' + id, '_blank');
+                                        }
+                                    </script>
                                 </td>
-
-                                <script>
-                                    function printSKM(id) {
-                                        // Redirect ke halaman cetak dengan ID kuesioner
-                                        window.open('<?php echo base_url('admin/skm/cetak/'); ?>' + id, '_blank');
-                                    }
-                                </script>
-
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -1,636 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cetak Data Survey Kepuasan Masyarakat (SKM)</title>
-
-    <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/vectoragam.png">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link media rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <style>
-        /* CSS umum */
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            margin: 20px;
-        }
-
-        .logo {
-            max-width: 60px;
-        }
-
-        /* Pembatas */
-        .divider {
-            border-top: 1px solid #000;
-            margin-bottom: 3px;
-        }
-
-        .jawaban {
-            margin-left: 20px;
-        }
-
-        .table.table-sm tr td,
-        .table.table-sm tr th {
-            border-top: none;
-            /* Menghilangkan garis bagian atas pada semua baris */
-        }
-
-        .h5 {
-            font-size: 18px;
-        }
-
-        /* SKM Bintang */
-        .stars-cetak {
-            display: inline-block;
-            font-size: 28px;
-        }
-
-        .stars-cetak .fa-star {
-            color: #707070;
-        }
-    </style>
+    <title>Cetak Survey Kepuasan Masyarakat</title>
 </head>
+
+<style>
+    .divider {
+        border: 0;
+        border-style: inset;
+        border-top: 1px solid #000;
+    }
+
+    .d-block {
+        display: block;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+</style>
 
 <body>
     <!-- Header -->
-    <header class="mb-2">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2 text-center">
-                    <img class="logo" src="<?= base_url('assets/img/agam.png'); ?>" alt="Logo">
-                </div>
-                <div class="col-sm-8 text-center d-flex justify-content-center align-items-center">
-                    <h3>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu<br>Kabupaten Agam</h3>
-                </div>
-                <div class="col-sm-2">
-                </div>
-            </div>
-        </div>
-    </header>
+    <img src="<?= $imageSrc; ?>" alt="Logo" style="position: absolute; width: 50px; height: auto; margin-left: 30px;">
+    <table style="width: 100%;">
+        <tr>
+            <td align="center">
+                <span style="line-height: 1.3; font-weight: bold; font-size: 18px;">
+                    Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu<br>(DPMPTSP) Kabupaten Agam
+                </span>
+            </td>
+        </tr>
+    </table>
 
-    <!-- Pembatas -->
-    <div class="divider"></div>
-    <div class="divider"></div>
-    <div class="divider"></div>
+    <div class="divider" style="margin-top: 20px;"></div>
+    <div class="divider" style="margin-top: 1px;"></div>
+    <div class="divider" style="margin-top: 1px;"></div>
 
-
-    <!-- Judul -->
-    <div class="text-center mt-3 mb-3">
-        <h4>Data Survey Kepuasan Masyarakat (SKM)</h4>
-    </div>
-
-    <?php foreach ($skm->result() as $row) : ?>
-        <div class="container-fluid">
-            <table class="table table-sm">
-                <tr>
-                    <td class="h5">Jenis Kelamin</td>
-                    <td class="h5">:
-                        <?php if ($row->jk == 1) : ?>
-                            Laki-Laki
-                        <?php elseif ($row->jk == 2) : ?>
-                            Perempuan
-                        <?php endif ?>
-                    </td>
-
-                    <td class="h5">Pekerjaan</td>
-                    <td class="h5">:
-                        <?php if ($row->pekerjaan == 1) : ?>
-                            PNS
-                        <?php elseif ($row->pekerjaan == 2) : ?>
-                            TNI
-                        <?php elseif ($row->pekerjaan == 3) : ?>
-                            POLRI
-                        <?php elseif ($row->pekerjaan == 4) : ?>
-                            Swasta
-                        <?php elseif ($row->pekerjaan == 5) : ?>
-                            Wirausaha
-                        <?php elseif ($row->pekerjaan == 6) : ?>
-                            Lainnya
-                        <?php endif; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="h5">Umur</td>
-                    <td class="h5">:
-                        <?= $row->umur; ?> Tahun</td>
-
-                    <td class="h5">Layanan</td>
-                    <td class="h5">:
-                        <?= $row->layanan; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="h5">Pendidikan</td>
-                    <td class="h5">:
-                        <?php if ($row->pendidikan == 1) : ?>
-                            SD Sederajat
-                        <?php elseif ($row->pendidikan == 2) : ?>
-                            SLTP Sederajat
-                        <?php elseif ($row->pendidikan == 3) : ?>
-                            SLTA Sederajat
-                        <?php elseif ($row->pendidikan == 4) : ?>
-                            D3
-                        <?php elseif ($row->pendidikan == 5) : ?>
-                            S1
-                        <?php elseif ($row->pendidikan == 6) : ?>
-                            S2
-                        <?php endif; ?>
-                    </td>
-
-                    <td class="h5">Tanggal Survey</td>
-                    <td class="h5">:
-                        <?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB
-                    </td>
-                </tr>
-            </table>
-
-            <div class="divider mb-3"></div>
-
-            <div class="mb-3">
-                <h4 class="text-center">Jawaban Responden Tentang Pelayanan Publik</h4>
-            </div>
-            <table class="table table-sm">
-                <tr>
-                    <td class="h5">1. </td>
-                    <td class="h5">Bagaimana pendapat Saudara tentang kesesuaian persyaratan pelayanan dengan jenis pelayanannya ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bold">
-                            <?php if ($row->u1 == 4) : ?>
-                                Sangat Sesuai
-                            <?php elseif ($row->u1 == 3) : ?>
-                                Sesuai
-                            <?php elseif ($row->u1 == 2) : ?>
-                                Kurang Sesuai
-                            <?php elseif ($row->u1 == 1) : ?>
-                                Tidak Sesuai
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">2. </td>
-                    <td class="h5">Bagaimana pemahaman Saudara tentang kemudahan prosedur pelayanan di unit ini ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bolder">
-                            <?php if ($row->u2 == 4) : ?>
-                                Sangat Mudah
-                            <?php elseif ($row->u2 == 3) : ?>
-                                Mudah
-                            <?php elseif ($row->u2 == 2) : ?>
-                                Kurang Mudah
-                            <?php elseif ($row->u2 == 1) : ?>
-                                Tidak Mudah
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">3. </td>
-                    <td class="h5">Bagaimana pemahaman Saudara tentang kecepatan waktu dalam memberikan pelayanan ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bolder">
-                            <?php if ($row->u3 == 4) : ?>
-                                Sangat Cepat
-                            <?php elseif ($row->u3 == 3) : ?>
-                                Cepat
-                            <?php elseif ($row->u3 == 2) : ?>
-                                Kurang Cepat
-                            <?php elseif ($row->u3 == 1) : ?>
-                                Tidak Cepat
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">4. </td>
-                    <td class="h5">Bagaimana pendapat Saudara tentang kewajaran biaya/tarif dalam pelayanan ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bolder">
-                            <?php if ($row->u4 == 4) : ?>
-                                Gratis
-                            <?php elseif ($row->u4 == 3) : ?>
-                                Murah
-                            <?php elseif ($row->u4 == 2) : ?>
-                                Cukup Mahal
-                            <?php elseif ($row->u4 == 1) : ?>
-                                Sangat Mahal
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">5. </td>
-                    <td class="h5">Bagaimana pendapat Saudara tentang kesesuaian pelayanan yang tercantum dalam standar pelayanan dengan hasil yang diberikan ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bold">
-                            <?php if ($row->u5 == 4) : ?>
-                                Sangat Sesuai
-                            <?php elseif ($row->u5 == 3) : ?>
-                                Sesuai
-                            <?php elseif ($row->u5 == 2) : ?>
-                                Kurang Sesuai
-                            <?php elseif ($row->u5 == 1) : ?>
-                                Tidak Sesuai
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">6. </td>
-                    <td class="h5">Bagaimana pendapat Saudara tentang kompetensi/kemampuan petugas dalam pelayanan ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bold">
-                            <?php if ($row->u6 == 4) : ?>
-                                Sangat Kompeten
-                            <?php elseif ($row->u6 == 3) : ?>
-                                Kompeten
-                            <?php elseif ($row->u6 == 2) : ?>
-                                Kurang Kompeten
-                            <?php elseif ($row->u6 == 1) : ?>
-                                Tidak Kompeten
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">7. </td>
-                    <td class="h5">Bagaimana pendapat Saudara tentang perilaku petugas dalam pelayanan terkait kesopanan dan keramahan ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bold">
-                            <?php if ($row->u7 == 4) : ?>
-                                Sangat Sopan & Ramah
-                            <?php elseif ($row->u7 == 3) : ?>
-                                Sopan & Ramah
-                            <?php elseif ($row->u7 == 2) : ?>
-                                Kurang Sopan & Ramah
-                            <?php elseif ($row->u7 == 1) : ?>
-                                Tidak Sopan & Ramah
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">8. </td>
-                    <td class="h5">Bagaimana pendapat Saudara tentang penanganan pengaduan pengguna layanan ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bold">
-                            <?php if ($row->u8 == 4) : ?>
-                                Dikelola Dengan Baik
-                            <?php elseif ($row->u8 == 3) : ?>
-                                Berfungsi Kurang Maksimal
-                            <?php elseif ($row->u8 == 2) : ?>
-                                Ada Tetapi Tidak Berfungsi
-                            <?php elseif ($row->u8 == 1) : ?>
-                                Tidak Ada
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-                <tr>
-                    <td class="h5">9. </td>
-                    <td class="h5">Bagaimana pendapat Saudara tentang kualitas sarana dan prasarana ?</td>
-                </tr>
-                <tr>
-                    <td class="h5"></td>
-                    <td class="h5">Jawaban:
-                        <span class="font-weight-bold">
-                            <?php if ($row->u9 == 4) : ?>
-                                Sangat Baik
-                            <?php elseif ($row->u9 == 3) : ?>
-                                Baik
-                            <?php elseif ($row->u9 == 2) : ?>
-                                Cukup Baik
-                            <?php elseif ($row->u9 == 1) : ?>
-                                Kurang Baik
-                            <?php endif; ?>
-                        </span>
-                    </td>
-                    <td class="h5"> </td>
-                </tr>
-
-            </table>
-
-            <div class="divider mb-3"></div>
-
-            <div class="mb-3">
-                <h4 class="text-center mb-3">Jawaban Responden Tentang Persepsi Kualitas Pelayanan (SPKP)</h4>
-            </div>
-            <div class="form-group">
-                <h5>1. Informasi pelayanan pada unit layanan ini tersedia melalui media sosial elektronik maupun non elektronik.</h5>
-                <div class="stars-cetak" data-rating="rating_z1">
-                    <?php
-                    $rating = $row->z1; // Ambil nilai rating dari $row->r1
-
-                    // Loop untuk menghasilkan bintang sesuai dengan nilai rating
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star'; // Tentukan kelas bintang, jika $i kurang dari atau sama dengan $rating maka berikan kelas fas fa-star, jika tidak berikan kelas far fa-star
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070'; // Tentukan warna bintang, jika $i kurang dari atau sama dengan $rating maka berikan warna kuning (#ffd700), jika tidak kosongkan warna agar mengikuti default
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>'; // Tampilkan bintang dengan kelas dan warna yang sudah ditentukan
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>2. Persyaratan pelayanan yang diinformasikan sesuai dengan persyaratan yang ditetapkan unit layanan ini.</h5>
-                <div class="stars-cetak" data-rating="rating_2">
-                    <?php
-                    $rating = $row->z2;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>3. Prosedur/Alur pelayanan yang ditetapkan unit layanan ini mudah diikuti/dilakukan.</h5>
-                <div class="stars-cetak" data-rating="rating_3">
-                    <?php
-                    $rating = $row->z3;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>4. Jangka waktu penyelesaian pelayanan yang diterima Bapak/Ibu sesuai dengan yang ditetapkan unit layanan ini.</h5>
-                <div class="stars-cetak" data-rating="rating_4">
-                    <?php
-                    $rating = $row->z4;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>5. Tarif/Biaya pelayanan yang dibayarkan pada unit layanan ini sesuai dengan tarif/biaya yang ditetapkan.</h5>
-                <div class="stars-cetak" data-rating="rating_5">
-                    <?php
-                    $rating = $row->z5;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>6. Sarana prasarana pendukung pelayanan/sistem pelayanan online yang disediakan unit layanan ini memberikan kenyamanan/mudah digunakan.</h5>
-                <div class="stars-cetak" data-rating="rating_5">
-                    <?php
-                    $rating = $row->z6;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>7. Petugas pelayanan/sistem pelayanan online pada unit layanan ini merespon keperluan Bapak/Ibu dengan cepat.</h5>
-                <div class="stars-cetak" data-rating="rating_5">
-                    <?php
-                    $rating = $row->z7;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>8. Layanan konsultasi dan pengaduan yang disediakan unit layanan ini mudah digunakan/diakses.</h5>
-                <div class="stars-cetak" data-rating="rating_5">
-                    <?php
-                    $rating = $row->z8;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-
-            <div class="divider mb-3"></div>
-
-            <div class="mb-3">
-                <h4 class="text-center mb-3">Jawaban Responden Tentang Persepsi Anti Korupsi</h4>
-            </div>
-            <div class="form-group">
-                <h5>1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</h5>
-                <div class="stars-cetak" data-rating="rating_1">
-                    <?php
-                    $rating = $row->r1; // Ambil nilai rating dari $row->r1
-
-                    // Loop untuk menghasilkan bintang sesuai dengan nilai rating
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star'; // Tentukan kelas bintang, jika $i kurang dari atau sama dengan $rating maka berikan kelas fas fa-star, jika tidak berikan kelas far fa-star
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070'; // Tentukan warna bintang, jika $i kurang dari atau sama dengan $rating maka berikan warna kuning (#ffd700), jika tidak kosongkan warna agar mengikuti default
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>'; // Tampilkan bintang dengan kelas dan warna yang sudah ditentukan
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>2. Tidak ada pelayanan diluar prosedur/kecurangan pelayanan pada unit layanan ini.</h5>
-                <div class="stars-cetak" data-rating="rating_2">
-                    <?php
-                    $rating = $row->r2;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>3. Tidak ada penerimaan imbalan uang/barang/fasilitas diluar ketentuan yang berlaku pada unit layanan ini.</h5>
-                <div class="stars-cetak" data-rating="rating_3">
-                    <?php
-                    $rating = $row->r3;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>4. Tidak ada pungutan liar (pungli) pada unit layanan ini.</h5>
-                <div class="stars-cetak" data-rating="rating_4">
-                    <?php
-                    $rating = $row->r4;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <h5>5. Tidak ada percaloan/perantara tidak resmi pada unit layanan ini.</h5>
-                <div class="stars-cetak" data-rating="rating_5">
-                    <?php
-                    $rating = $row->r5;
-
-                    for ($i = 1; $i <= 6; $i++) {
-                        $class = ($i <= $rating) ? 'fas fa-star' : 'far fa-star';
-                        $starColor = ($i <= $rating) ? '#ffd700' : '#707070';
-
-                        echo '<i class="' . $class . '" data-value="' . $i . '" style="color: ' . $starColor . '; border-color: #000;"></i>';
-                    }
-                    ?>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-
-    <!-- Tabel Data -->
-    <!-- <table class="table">
-        <thead>
+    <?php foreach ($skm as $row) : ?>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
             <tr>
-                <th class="text-center align-middle">Jenis Kelamin</th>
-                <th class="text-center align-middle">Umur</th>
-                <th class="text-center align-middle">Pendidikan</th>
-                <th class="text-center align-middle">Pekerjaan</th>
-                <th class="text-center align-middle">Layanan</th>
-                <th class="text-center align-middle">U1</th>
-                <th class="text-center align-middle">U2</th>
-                <th class="text-center align-middle">U3</th>
-                <th class="text-center align-middle">U4</th>
-                <th class="text-center align-middle">U5</th>
-                <th class="text-center align-middle">U6</th>
-                <th class="text-center align-middle">U7</th>
-                <th class="text-center align-middle">U8</th>
-                <th class="text-center align-middle">U9</th>
-                <th class="text-center align-middle">R1</th>
-                <th class="text-center align-middle">R2</th>
-                <th class="text-center align-middle">R3</th>
-                <th class="text-center align-middle">R4</th>
-                <th class="text-center align-middle">R5</th>
-                <th class="text-center align-middle">Tanggal</th>
+                <td>Jenis Kelamin</td>
+                <td>:
+                    <?php if ($row->jk == 1) : ?>
+                        Laki-Laki
+                    <?php elseif ($row->jk == 2) : ?>
+                        Perempuan
+                    <?php endif ?>
+                </td>
+
+                <td>Pekerjaan</td>
+                <td>:
+                    <?php if ($row->pekerjaan == 1) : ?>
+                        PNS
+                    <?php elseif ($row->pekerjaan == 2) : ?>
+                        TNI
+                    <?php elseif ($row->pekerjaan == 3) : ?>
+                        POLRI
+                    <?php elseif ($row->pekerjaan == 4) : ?>
+                        Swasta
+                    <?php elseif ($row->pekerjaan == 5) : ?>
+                        Wirausaha
+                    <?php elseif ($row->pekerjaan == 6) : ?>
+                        Lainnya
+                    <?php endif; ?>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($skm->result() as $row) : ?>
-                <tr>
-                    <td class="text-center align-middle"><?= $row->jk; ?></td>
-                    <td class="text-center align-middle"><?= $row->umur; ?></td>
-                    <td class="text-center align-middle"><?= $row->pendidikan; ?></td>
-                    <td class="text-center align-middle"><?= $row->pekerjaan; ?></td>
-                    <td class="text-center align-middle"><?= $row->layanan; ?></td>
-                    <td class="text-center align-middle"><?= $row->u1; ?></td>
-                    <td class="text-center align-middle"><?= $row->u2; ?></td>
-                    <td class="text-center align-middle"><?= $row->u3; ?></td>
-                    <td class="text-center align-middle"><?= $row->u4; ?></td>
-                    <td class="text-center align-middle"><?= $row->u5; ?></td>
-                    <td class="text-center align-middle"><?= $row->u6; ?></td>
-                    <td class="text-center align-middle"><?= $row->u7; ?></td>
-                    <td class="text-center align-middle"><?= $row->u8; ?></td>
-                    <td class="text-center align-middle"><?= $row->u9; ?></td>
-                    <td class="text-center align-middle"><?= $row->r1; ?></td>
-                    <td class="text-center align-middle"><?= $row->r2; ?></td>
-                    <td class="text-center align-middle"><?= $row->r3; ?></td>
-                    <td class="text-center align-middle"><?= $row->r4; ?></td>
-                    <td class="text-center align-middle"><?= $row->r5; ?></td>
-                    <td class="text-center align-middle"><?= $row->date; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table> -->
+            <tr>
+                <td>Umur</td>
+                <td>:
+                    <?= $row->umur; ?> Tahun</td>
 
-    <!-- Bootstrap JS (for optional functionalities) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                <td>Layanan</td>
+                <td>:
+                    <?= $row->layanan; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Pendidikan</td>
+                <td>:
+                    <?php if ($row->pendidikan == 1) : ?>
+                        SD Sederajat
+                    <?php elseif ($row->pendidikan == 2) : ?>
+                        SLTP Sederajat
+                    <?php elseif ($row->pendidikan == 3) : ?>
+                        SLTA Sederajat
+                    <?php elseif ($row->pendidikan == 4) : ?>
+                        D3
+                    <?php elseif ($row->pendidikan == 5) : ?>
+                        S1
+                    <?php elseif ($row->pendidikan == 6) : ?>
+                        S2
+                    <?php endif; ?>
+                </td>
 
+                <td>Tanggal Survey</td>
+                <td>:
+                    <?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB
+                </td>
+            </tr>
+        </table>
 
-    <!-- Script untuk mencetak otomatis saat halaman dimuat -->
-    <script>
-        window.onload = function() {
-            window.print();
-        }
-    </script>
+        <div style="margin-top: 15px;" class="bold">
+            <span>Jawaban Responden Tentang Pelayanan Publik:</span>
+        </div>
+        <table class="table table-sm">
+            <tr>
+                <td class="d-block">1. </td>
+                <td>Bagaimana pendapat Saudara tentang kesesuaian persyaratan pelayanan dengan jenis pelayanannya?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u1 == 4) : ?>
+                            Sangat Sesuai
+                        <?php elseif ($row->u1 == 3) : ?>
+                            Sesuai
+                        <?php elseif ($row->u1 == 2) : ?>
+                            Kurang Sesuai
+                        <?php elseif ($row->u1 == 1) : ?>
+                            Tidak Sesuai
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td class="d-block">2. </td>
+                <td>Bagaimana pemahaman Saudara tentang kemudahan prosedur pelayanan di unit ini?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u2 == 4) : ?>
+                            Sangat Mudah
+                        <?php elseif ($row->u2 == 3) : ?>
+                            Mudah
+                        <?php elseif ($row->u2 == 2) : ?>
+                            Kurang Mudah
+                        <?php elseif ($row->u2 == 1) : ?>
+                            Tidak Mudah
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td class="d-block">3. </td>
+                <td>Bagaimana pemahaman Saudara tentang kecepatan waktu dalam memberikan pelayanan?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u3 == 4) : ?>
+                            Sangat Cepat
+                        <?php elseif ($row->u3 == 3) : ?>
+                            Cepat
+                        <?php elseif ($row->u3 == 2) : ?>
+                            Kurang Cepat
+                        <?php elseif ($row->u3 == 1) : ?>
+                            Tidak Cepat
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td class="d-block">4. </td>
+                <td>Bagaimana pendapat Saudara tentang kewajaran biaya/tarif dalam pelayanan?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u4 == 4) : ?>
+                            Gratis
+                        <?php elseif ($row->u4 == 3) : ?>
+                            Murah
+                        <?php elseif ($row->u4 == 2) : ?>
+                            Cukup Mahal
+                        <?php elseif ($row->u4 == 1) : ?>
+                            Sangat Mahal
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td class="d-block">5. </td>
+                <td>Bagaimana pendapat Saudara tentang kesesuaian pelayanan yang tercantum dalam standar pelayanan dengan hasil yang diberikan?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u5 == 4) : ?>
+                            Sangat Sesuai
+                        <?php elseif ($row->u5 == 3) : ?>
+                            Sesuai
+                        <?php elseif ($row->u5 == 2) : ?>
+                            Kurang Sesuai
+                        <?php elseif ($row->u5 == 1) : ?>
+                            Tidak Sesuai
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td class="d-block">6. </td>
+                <td>Bagaimana pendapat Saudara tentang kompetensi/kemampuan petugas dalam pelayanan?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u6 == 4) : ?>
+                            Sangat Kompeten
+                        <?php elseif ($row->u6 == 3) : ?>
+                            Kompeten
+                        <?php elseif ($row->u6 == 2) : ?>
+                            Kurang Kompeten
+                        <?php elseif ($row->u6 == 1) : ?>
+                            Tidak Kompeten
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td class="d-block">7. </td>
+                <td>Bagaimana pendapat Saudara tentang perilaku petugas dalam pelayanan terkait kesopanan dan keramahan?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u7 == 4) : ?>
+                            Sangat Sopan & Ramah
+                        <?php elseif ($row->u7 == 3) : ?>
+                            Sopan & Ramah
+                        <?php elseif ($row->u7 == 2) : ?>
+                            Kurang Sopan & Ramah
+                        <?php elseif ($row->u7 == 1) : ?>
+                            Tidak Sopan & Ramah
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td class="d-block">8. </td>
+                <td>Bagaimana pendapat Saudara tentang penanganan pengaduan pengguna layanan?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u8 == 4) : ?>
+                            Dikelola Dengan Baik
+                        <?php elseif ($row->u8 == 3) : ?>
+                            Berfungsi Kurang Maksimal
+                        <?php elseif ($row->u8 == 2) : ?>
+                            Ada Tetapi Tidak Berfungsi
+                        <?php elseif ($row->u8 == 1) : ?>
+                            Tidak Ada
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+            <tr>
+                <td>9. </td>
+                <td>Bagaimana pendapat Saudara tentang kualitas sarana dan prasarana?</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Jawaban:
+                    <span class="bold">
+                        <?php if ($row->u9 == 4) : ?>
+                            Sangat Baik
+                        <?php elseif ($row->u9 == 3) : ?>
+                            Baik
+                        <?php elseif ($row->u9 == 2) : ?>
+                            Cukup Baik
+                        <?php elseif ($row->u9 == 1) : ?>
+                            Kurang Baik
+                        <?php endif; ?>
+                    </span>
+                </td>
+                <td> </td>
+            </tr>
+
+        </table>
+    <?php endforeach; ?>
 </body>
 
 </html>

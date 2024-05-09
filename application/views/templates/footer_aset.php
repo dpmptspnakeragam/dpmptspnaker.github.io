@@ -1,6 +1,6 @@
 <footer class="footer mt-1 py-3">
     <div class="container-fluid text-center">
-        <span class="text-muted">Copyright &copy; 2023 - DPMPTSP KAB. AGAM</span>
+        <span class="text-muted">Copyright 2023 - <?= date("Y"); ?> &copy; DPMPTSP Kabupaten Agam - All Right Reserved</span>
     </div>
 </footer>
 <!-- Optional JavaScript -->

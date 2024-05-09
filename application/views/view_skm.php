@@ -1,6 +1,6 @@
 <body class="layout-top-nav layout-navbar-fixed bg-dark" id="page-top">
     <!-- Navigation-->
-    <nav class="main-header navbar navbar-expand-md navbar-dark bg-dark fixed-top navbar-white">
+    <nav class="main-header navbar navbar-expand-md navbar-dark fixed-top navbar-white" style="background-color: maroon;">
         <div class="container-fluid">
             <a href="<?= base_url('skm/form'); ?>" class="navbar-brand">
                 <span class="brand-text font-weight-light font-weight-bold"><i class="fas fa-file"></i> Survey Kepuasan Masyarakat (SKM)</span>
@@ -41,6 +41,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
+
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -82,8 +83,27 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-6 col-12 text-center">
+
+                                        <?php
+                                        // Hitung nilai mutu pelayanan
+                                        $nilai_mutu = round($ikm, 2);
+
+                                        // Tentukan kategori mutu
+                                        if ($nilai_mutu >= 88.31 && $nilai_mutu <= 100.00) {
+                                            $kategori_mutu = "A (Sangat Baik)";
+                                        } elseif ($nilai_mutu >= 76.61 && $nilai_mutu <= 88.30) {
+                                            $kategori_mutu = "B (Baik)";
+                                        } elseif ($nilai_mutu >= 65.00 && $nilai_mutu <= 76.00) {
+                                            $kategori_mutu = "C (Kurang Baik)";
+                                        } elseif ($nilai_mutu >= 25.00 && $nilai_mutu <= 64.99) {
+                                            $kategori_mutu = "D (Tidak Baik)";
+                                        } else {
+                                            $kategori_mutu = "Tidak Diketahui";
+                                        }
+                                        ?>
+
                                         <h1>NILAI IKM</h1>
-                                        <h1 class="text-info" style="font-size: 110px;"><strong><?= round($ikm, 2); ?></strong></h1>
+                                        <h1 class="text-info"><strong><?= $kategori_mutu ?> <br> <?= round($ikm, 2); ?></strong></h1>
                                     </div>
                                     <div class="col-lg-6 col-12 text-center">
                                         <h6>NAMA LAYANAN : PERIZINAN & NON PERIZINAN</h6>
@@ -142,9 +162,9 @@
                                 <!-- GRAFIK SURVEY NILAI PER UNSUR -->
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <div class="card">
+                                        <div class="card shadow-lg">
                                             <div class="card-body">
-                                                <h3><strong>Grafik Nilai Per Unsur</strong></h3>
+                                                <h5><strong>Grafik Nilai Per Unsur <br> Survey Kepuasan Masyarakat</strong></h5>
                                                 <div class="position-relative">
                                                     <canvas id="barChartPerUnsur" height="350"></canvas>
                                                     <script>
@@ -174,8 +194,8 @@
                                                         };
 
                                                         var chartOptions = {
-                                                            responsive: true, // Grafik akan menyesuaikan ukuran layar
-                                                            maintainAspectRatio: false, // Grafik tidak akan mempertahankan rasio aspek
+                                                            responsive: true,
+                                                            maintainAspectRatio: false,
                                                             scales: {
                                                                 yAxes: [{
                                                                     ticks: {
@@ -225,194 +245,384 @@
                     <!-- /.col-12 -->
                 </div>
                 <!-- /.row -->
+
                 <div class="row mt-3">
                     <!-- GRAFIK SURVEY PERSEPSI KUALITAS PELAYANAN (SPKP) dan PERSEPSI ANTI KORUPSI (SPAK) -->
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header text-center mt-2">
-                                <h6>NAMA LAYANAN : PERIZINAN & NON PERIZINAN</h6>
+                            <div class="card-header text-center">
+                                <p class="h5">
+                                    <strong>
+                                        Survey Persepsi Kualitas Pelayanan (SPKP)
+                                        <br>
+                                        &
+                                        <br>
+                                        Survey Persepsi Anti Korupsi (SPAK)
+                                    </strong>
+                                </p>
                             </div>
-                            <div class="row mt-4">
-                                <div class="col-12 text-center">
-                                    <p><strong>JUMLAH RESPONDEN : <?= $total_responden; ?> ORANG</strong></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="card-body">
-                                        <h5 class="text-center"><strong>Grafik Rating <br> Survey Persepsi Kualitas Pelayanan (SPKP)</strong></h5>
-                                        <div class="position-relative">
-                                            <canvas id="barChartSPKP" height="275"></canvas>
-                                            <!-- Bar grafik SPKP (Survey Persepsi Kualitas Pelayanan) -->
-                                            <script>
-                                                var avg_values = <?= json_encode($rating_spkp) ?>;
+                            <div class="card-body">
+                                <div class="row mt-3">
+                                    <div class="col-lg-6 col-12 text-center">
+                                        <h1>NILAI SURVEY</h1>
+                                        <?php
+                                        // Hitung nilai mutu pelayanan
+                                        $nilai_mutu = round($spkp_spak, 2);
 
-                                                var chart_data = [];
-                                                var percentages = [];
-                                                for (var i = 1; i <= 6; i++) {
-                                                    chart_data.push(avg_values[i]['total']);
-                                                    percentages.push(avg_values[i]['percentage']);
-                                                }
-
-                                                var $barChart = document.getElementById('barChartSPKP').getContext('2d');
-
-                                                var barChart = new Chart($barChart, {
-                                                    type: 'bar',
-                                                    data: {
-                                                        labels: ['Bintang 1', 'Bintang 2', 'Bintang 3', 'Bintang 4', 'Bintang 5', 'Bintang 6'],
-                                                        datasets: [{
-                                                            label: 'Total Bintang',
-                                                            backgroundColor: '#FFD700',
-                                                            borderColor: '#FFD700',
-                                                            borderWidth: 1,
-                                                            data: chart_data
-                                                        }, {
-                                                            label: 'Persentase',
-                                                            backgroundColor: '#007bff',
-                                                            borderColor: '#007bff',
-                                                            borderWidth: 1,
-                                                            data: percentages
-                                                        }]
-                                                    },
-                                                    options: {
-                                                        maintainAspectRatio: false,
-                                                        tooltips: {
-                                                            mode: 'index',
-                                                            intersect: false,
-                                                            callbacks: {
-                                                                label: function(tooltipItem, data) {
-                                                                    var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
-                                                                    var value = tooltipItem.yLabel;
-                                                                    if (datasetLabel === 'Persentase') {
-                                                                        value += '%'; // Menambahkan simbol "%" untuk persentase
-                                                                    }
-                                                                    return datasetLabel + ': ' + value;
-                                                                }
-                                                            }
-                                                        },
-                                                        hover: {
-                                                            mode: 'index',
-                                                            intersect: true
-                                                        },
-                                                        legend: {
-                                                            display: true,
-                                                            labels: {
-                                                                fontColor: 'black'
-                                                            }
-                                                        },
-                                                        title: {
-                                                            display: false,
-                                                            // text: 'Grafik Rating Survei'
-                                                        },
-                                                        scales: {
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                    beginAtZero: true,
-                                                                    fontColor: 'black',
-                                                                    fontSize: 12,
-                                                                    // fontStyle: 'bold'
-                                                                },
-                                                            }],
-                                                            xAxes: [{
-                                                                ticks: {
-                                                                    fontColor: 'black',
-                                                                    fontSize: 12,
-                                                                    fontStyle: 'bold'
-                                                                },
-                                                            }]
-                                                        }
-                                                    }
-                                                });
-                                            </script>
-                                        </div>
+                                        // Tentukan kategori mutu
+                                        if ($nilai_mutu >= 88.31 && $nilai_mutu <= 100.00) {
+                                            $kategori_mutu = "A (Sangat Baik)";
+                                        } elseif ($nilai_mutu >= 76.61 && $nilai_mutu <= 88.30) {
+                                            $kategori_mutu = "B (Baik)";
+                                        } elseif ($nilai_mutu >= 65.00 && $nilai_mutu <= 76.00) {
+                                            $kategori_mutu = "C (Kurang Baik)";
+                                        } elseif ($nilai_mutu >= 25.00 && $nilai_mutu <= 64.99) {
+                                            $kategori_mutu = "D (Tidak Baik)";
+                                        } else {
+                                            $kategori_mutu = "Tidak Diketahui";
+                                        }
+                                        ?>
+                                        <h1 class="text-info"><strong><?= $kategori_mutu ?> <br> <?= round($spkp_spak, 2); ?></strong></h1>
+                                    </div>
+                                    <div class=" col-lg-6 col-12 text-center">
+                                        <hr>
+                                        <h6>NAMA LAYANAN : PERIZINAN & NON PERIZINAN</h6>
+                                        <hr>
+                                        <p><strong>RESPONDEN</strong></p>
+                                        <P><strong>JUMLAH</strong> : <?= number_format($total_responden); ?> ORANG</P>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="card-body">
-                                        <h5 class="text-center"><strong>Grafik Rating <br> Survey Persepsi Anti Korupsi (SPAK)</strong></h5>
-                                        <div class="position-relative">
-                                            <canvas id="barChartSPAK" height="275"></canvas>
-                                            <!-- Bar grafik SPAK (Survey Persepsi Anti Korupsi) -->
-                                            <script>
-                                                var avg_values = <?= json_encode($rating_antikorupsi) ?>;
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>MUTU PELAYANAN
+                                        <ul>
+                                            <li><strong>A (Sangat Baik)</strong> : 88,31 - 100,00</li>
+                                            <li><strong>B (Baik)</strong> : 76,61 - 88,30</li>
+                                            <li><strong>C (Kurang Baik)</strong> : 65,00 - 76,00)</li>
+                                            <li><strong>D (Tidak Baik)</strong> : 25,00 - 64,99</li>
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
 
-                                                var chart_data = [];
-                                                var percentages = [];
-                                                for (var i = 1; i <= 6; i++) {
-                                                    chart_data.push(avg_values[i]['total']);
-                                                    percentages.push(avg_values[i]['percentage']);
-                                                }
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card shadow-lg">
+                                            <div class="card-body">
+                                                <h5 class="text-center"><strong>Grafik Per-Unsur <br> Survey Persepsi Kualitas Pelayanan (SPKP) & Survey Persepsi Anti Korupsi (SPAK)</strong></h5>
+                                                <div class="position-relative">
+                                                    <canvas id="barChartUnsurCombined" height="275"></canvas>
+                                                    <!-- Bar grafik Per-Unsur SPKP dan SPAK -->
+                                                    <script>
+                                                        $(function() {
+                                                            'use strict';
 
-                                                var $barChart = document.getElementById('barChartSPAK').getContext('2d');
+                                                            var ticksStyle = {
+                                                                fontColor: '#495057',
+                                                                fontStyle: 'bold',
+                                                                suggestedMin: 0,
+                                                            };
 
-                                                var barChart = new Chart($barChart, {
-                                                    type: 'bar',
-                                                    data: {
-                                                        labels: ['Bintang 1', 'Bintang 2', 'Bintang 3', 'Bintang 4', 'Bintang 5', 'Bintang 6'],
-                                                        datasets: [{
-                                                            label: 'Total Bintang',
-                                                            backgroundColor: '#FFD700',
-                                                            borderColor: '#FFD700',
-                                                            borderWidth: 1,
-                                                            data: chart_data
-                                                        }, {
-                                                            label: 'Persentase',
-                                                            backgroundColor: '#e9724d',
-                                                            borderColor: '#e9724d',
-                                                            borderWidth: 1,
-                                                            data: percentages
-                                                        }]
-                                                    },
-                                                    options: {
-                                                        maintainAspectRatio: false,
-                                                        tooltips: {
-                                                            mode: 'index',
-                                                            intersect: false,
-                                                            callbacks: {
-                                                                label: function(tooltipItem, data) {
-                                                                    var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
-                                                                    var value = tooltipItem.yLabel;
-                                                                    if (datasetLabel === 'Persentase') {
-                                                                        value += '%'; // Menambahkan simbol "%" untuk persentase
+                                                            var mode = 'index';
+                                                            var intersect = true;
+
+                                                            var $combinedChart = $('#barChartUnsurCombined');
+                                                            var combinedChart = new Chart($combinedChart, {
+                                                                type: 'line',
+                                                                data: {
+                                                                    labels: ['Medsos', 'Persyaratan', 'Alur', 'Waktu', 'Tarif', 'Sarana', 'Petugas', 'Konsultasi', 'Deskriminasi', 'Prosedur', 'Imbalan', 'Pungli', 'Calo'],
+                                                                    datasets: [{
+                                                                        label: 'Rata-rata SPKP',
+                                                                        data: [
+                                                                            <?= $z1; ?>,
+                                                                            <?= $z2; ?>,
+                                                                            <?= $z3; ?>,
+                                                                            <?= $z4; ?>,
+                                                                            <?= $z5; ?>,
+                                                                            <?= $z6; ?>,
+                                                                            <?= $z7; ?>,
+                                                                            <?= $z8; ?>,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null
+                                                                        ],
+                                                                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                                                        borderColor: 'rgba(54, 162, 235, 1)',
+                                                                        borderWidth: 2,
+                                                                        pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                                                                        pointBorderColor: '#fff',
+                                                                        pointBorderWidth: 2,
+                                                                        pointRadius: 5,
+                                                                        pointHoverRadius: 8,
+                                                                        pointHoverBackgroundColor: 'rgba(54, 162, 235, 1)',
+                                                                        pointHoverBorderColor: '#fff',
+                                                                        pointHoverBorderWidth: 2,
+                                                                        pointStyle: 'circle'
+                                                                    }, {
+                                                                        label: 'Rata-rata SPAK',
+                                                                        data: [
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            null,
+                                                                            <?= $r1; ?>,
+                                                                            <?= $r2; ?>,
+                                                                            <?= $r3; ?>,
+                                                                            <?= $r4; ?>,
+                                                                            <?= $r5; ?>
+                                                                        ],
+                                                                        backgroundColor: 'rgba(253, 126, 20, 0.1)',
+                                                                        borderColor: 'rgba(255, 159, 64, 1)',
+                                                                        borderWidth: 2,
+                                                                        pointBackgroundColor: 'rgba(255, 159, 64, 1)',
+                                                                        pointBorderColor: '#fff',
+                                                                        pointBorderWidth: 2,
+                                                                        pointRadius: 5,
+                                                                        pointHoverRadius: 8,
+                                                                        pointHoverBackgroundColor: 'rgba(255, 159, 64, 1)',
+                                                                        pointHoverBorderColor: '#fff',
+                                                                        pointHoverBorderWidth: 2,
+                                                                        pointStyle: 'circle'
+                                                                    }]
+                                                                },
+                                                                options: {
+                                                                    maintainAspectRatio: false,
+                                                                    tooltips: {
+                                                                        mode: mode,
+                                                                        intersect: intersect
+                                                                    },
+                                                                    hover: {
+                                                                        mode: mode,
+                                                                        intersect: intersect
+                                                                    },
+                                                                    legend: {
+                                                                        display: true
+                                                                    },
+                                                                    scales: {
+                                                                        yAxes: [{
+                                                                            gridLines: {
+                                                                                display: true, // Menampilkan garis di sumbu Y
+                                                                                color: 'rgba(0, 0, 0, 0.1)', // Warna garis
+                                                                                lineWidth: 1, // Lebar garis
+                                                                                drawBorder: false // Tidak menggambar garis tepi
+                                                                            },
+                                                                            ticks: {
+                                                                                ...ticksStyle,
+                                                                                callback: function(value, index, values) {
+                                                                                    return value.toLocaleString('id-ID', {
+                                                                                        minimumFractionDigits: 2
+                                                                                    });
+                                                                                }
+                                                                            }
+                                                                        }],
+                                                                        xAxes: [{
+                                                                            display: true,
+                                                                            gridLines: {
+                                                                                display: true, // Menampilkan garis di sumbu X
+                                                                                color: 'rgba(0, 0, 0, 0.1)', // Warna garis
+                                                                                lineWidth: 1, // Lebar garis
+                                                                                drawBorder: false // Tidak menggambar garis tepi
+                                                                            },
+                                                                            ticks: ticksStyle
+                                                                        }]
                                                                     }
-                                                                    return datasetLabel + ': ' + value;
+                                                                }
+                                                            });
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 mt-3">
+                                        <div class="card shadow-lg">
+                                            <div class="card-body">
+                                                <h5 class="text-center"><strong>Grafik Per-Bintang <br> Survey Persepsi Kualitas Pelayanan (SPKP)</strong></h5>
+                                                <div class="position-relative">
+                                                    <canvas id="barChartSPKP" height="275"></canvas>
+                                                    <!-- Bar grafik SPKP (Survey Persepsi Kualitas Pelayanan) -->
+                                                    <script>
+                                                        var avg_values = <?= json_encode($rating_spkp) ?>;
+
+                                                        var chart_data = [];
+                                                        var percentages = [];
+                                                        for (var i = 1; i <= 6; i++) {
+                                                            chart_data.push(avg_values[i]['total']);
+                                                            percentages.push(avg_values[i]['percentage']);
+                                                        }
+
+                                                        var $barChart = document.getElementById('barChartSPKP').getContext('2d');
+
+                                                        var barChart = new Chart($barChart, {
+                                                            type: 'bar',
+                                                            data: {
+                                                                labels: ['Bintang 1', 'Bintang 2', 'Bintang 3', 'Bintang 4', 'Bintang 5', 'Bintang 6'],
+                                                                datasets: [{
+                                                                    label: 'Total Bintang',
+                                                                    backgroundColor: '#FFD700',
+                                                                    borderColor: '#FFD700',
+                                                                    borderWidth: 1,
+                                                                    data: chart_data
+                                                                }, {
+                                                                    label: 'Persentase',
+                                                                    backgroundColor: '#007bff',
+                                                                    borderColor: '#007bff',
+                                                                    borderWidth: 1,
+                                                                    data: percentages
+                                                                }]
+                                                            },
+                                                            options: {
+                                                                maintainAspectRatio: false,
+                                                                tooltips: {
+                                                                    mode: 'index',
+                                                                    intersect: false,
+                                                                    callbacks: {
+                                                                        label: function(tooltipItem, data) {
+                                                                            var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+                                                                            var value = tooltipItem.yLabel;
+                                                                            if (datasetLabel === 'Persentase') {
+                                                                                value += '%'; // Menambahkan simbol "%" untuk persentase
+                                                                            }
+                                                                            return datasetLabel + ': ' + value;
+                                                                        }
+                                                                    }
+                                                                },
+                                                                hover: {
+                                                                    mode: 'index',
+                                                                    intersect: true
+                                                                },
+                                                                legend: {
+                                                                    display: true,
+                                                                    labels: {
+                                                                        fontColor: 'black'
+                                                                    }
+                                                                },
+                                                                title: {
+                                                                    display: false,
+                                                                    // text: 'Grafik Rating Survei'
+                                                                },
+                                                                scales: {
+                                                                    yAxes: [{
+                                                                        ticks: {
+                                                                            beginAtZero: true,
+                                                                            fontColor: 'black',
+                                                                            fontSize: 12,
+                                                                            // fontStyle: 'bold'
+                                                                        },
+                                                                    }],
+                                                                    xAxes: [{
+                                                                        ticks: {
+                                                                            fontColor: 'black',
+                                                                            fontSize: 12,
+                                                                            fontStyle: 'bold'
+                                                                        },
+                                                                    }]
                                                                 }
                                                             }
-                                                        },
-                                                        hover: {
-                                                            mode: 'index',
-                                                            intersect: true
-                                                        },
-                                                        legend: {
-                                                            display: true,
-                                                            labels: {
-                                                                fontColor: 'black'
-                                                            }
-                                                        },
-                                                        title: {
-                                                            display: false,
-                                                            text: 'Grafik Rating Survei'
-                                                        },
-                                                        scales: {
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                    beginAtZero: true,
-                                                                    fontColor: 'black',
-                                                                    fontSize: 12,
-                                                                    // fontStyle: 'bold'
-                                                                },
-                                                            }],
-                                                            xAxes: [{
-                                                                ticks: {
-                                                                    fontColor: 'black',
-                                                                    fontSize: 12,
-                                                                    fontStyle: 'bold'
-                                                                },
-                                                            }]
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 mt-3">
+                                        <div class="card shadow-lg">
+                                            <div class="card-body">
+                                                <h5 class="text-center"><strong>Grafik Per-Bintang <br> Survey Persepsi Anti Korupsi (SPAK)</strong></h5>
+                                                <div class="position-relative">
+                                                    <canvas id="barChartSPAK" height="275"></canvas>
+                                                    <!-- Bar grafik SPAK (Survey Persepsi Anti Korupsi) -->
+                                                    <script>
+                                                        var avg_values = <?= json_encode($rating_antikorupsi) ?>;
+
+                                                        var chart_data = [];
+                                                        var percentages = [];
+                                                        for (var i = 1; i <= 6; i++) {
+                                                            chart_data.push(avg_values[i]['total']);
+                                                            percentages.push(avg_values[i]['percentage']);
                                                         }
-                                                    }
-                                                });
-                                            </script>
+
+                                                        var $barChart = document.getElementById('barChartSPAK').getContext('2d');
+
+                                                        var barChart = new Chart($barChart, {
+                                                            type: 'bar',
+                                                            data: {
+                                                                labels: ['Bintang 1', 'Bintang 2', 'Bintang 3', 'Bintang 4', 'Bintang 5', 'Bintang 6'],
+                                                                datasets: [{
+                                                                    label: 'Total Bintang',
+                                                                    backgroundColor: '#FFD700',
+                                                                    borderColor: '#FFD700',
+                                                                    borderWidth: 1,
+                                                                    data: chart_data
+                                                                }, {
+                                                                    label: 'Persentase',
+                                                                    backgroundColor: '#e9724d',
+                                                                    borderColor: '#e9724d',
+                                                                    borderWidth: 1,
+                                                                    data: percentages
+                                                                }]
+                                                            },
+                                                            options: {
+                                                                maintainAspectRatio: false,
+                                                                tooltips: {
+                                                                    mode: 'index',
+                                                                    intersect: false,
+                                                                    callbacks: {
+                                                                        label: function(tooltipItem, data) {
+                                                                            var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+                                                                            var value = tooltipItem.yLabel;
+                                                                            if (datasetLabel === 'Persentase') {
+                                                                                value += '%'; // Menambahkan simbol "%" untuk persentase
+                                                                            }
+                                                                            return datasetLabel + ': ' + value;
+                                                                        }
+                                                                    }
+                                                                },
+                                                                hover: {
+                                                                    mode: 'index',
+                                                                    intersect: true
+                                                                },
+                                                                legend: {
+                                                                    display: true,
+                                                                    labels: {
+                                                                        fontColor: 'black'
+                                                                    }
+                                                                },
+                                                                title: {
+                                                                    display: false,
+                                                                    text: 'Grafik Rating Survei'
+                                                                },
+                                                                scales: {
+                                                                    yAxes: [{
+                                                                        ticks: {
+                                                                            beginAtZero: true,
+                                                                            fontColor: 'black',
+                                                                            fontSize: 12,
+                                                                            // fontStyle: 'bold'
+                                                                        },
+                                                                    }],
+                                                                    xAxes: [{
+                                                                        ticks: {
+                                                                            fontColor: 'black',
+                                                                            fontSize: 12,
+                                                                            fontStyle: 'bold'
+                                                                        },
+                                                                    }]
+                                                                }
+                                                            }
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

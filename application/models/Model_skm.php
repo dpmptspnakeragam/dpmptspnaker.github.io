@@ -6,6 +6,8 @@ class Model_skm extends CI_model
     {
         $this->db->select('*');
         $this->db->from('skm');
+        $this->db->order_by('date', 'desc');
+
         $query = $this->db->get();
         return $query;
     }
@@ -293,39 +295,18 @@ class Model_skm extends CI_model
         return $query;
     }
 
-    //--------------------------- Admin Hapus Pada Tabel SKM
+    //--------------------------- Model untuk Admin Pada Tabel SKM
+    public function get_data_by_id($id_skm)
+    {
+        $this->db->where('id_skm', $id_skm);
+        $query = $this->db->get('skm');
+        return $query->result();
+    }
+
     public function hapus_skm($id_skm)
     {
         $this->db->where('id_skm', $id_skm);
         $this->db->delete('skm');
         return $this->db->affected_rows() > 0;
     }
-
-    // public function get_data_by_id($id_skm)
-    // {
-    //     $this->db->select('skm.*, IFNULL(spak.r1, 0) AS r1, IFNULL(spak.r2, 0) AS r2, IFNULL(spak.r3, 0) AS r3, IFNULL(spak.r4, 0) AS r4, IFNULL(spak.r5, 0) AS r5, IFNULL(spkp.z1, 0) AS z1, IFNULL(spkp.z2, 0) AS z2, IFNULL(spkp.z3, 0) AS z3, IFNULL(spkp.z4, 0) AS z4, IFNULL(spkp.z5, 0) AS z5, IFNULL(spkp.z6, 0) AS z6, IFNULL(spkp.z7, 0) AS z7, IFNULL(spkp.z8, 0) AS z8');
-    //     $this->db->from('skm');
-    //     $this->db->join('spak', 'skm.id_skm = spak.id_skm', 'left');
-    //     $this->db->join('spkp', 'skm.id_skm = spkp.id_skm', 'left');
-    //     $this->db->where('skm.id_skm', $id_skm);
-    //     $query = $this->db->get();
-    //     return $query;
-    // }
-
-    // public function hapus_spak($id_skm)
-    // {
-    //     $this->db->where('id_skm', $id_skm);
-    //     $this->db->delete('spak');
-    //     return $this->db->affected_rows() > 0;
-    // }
-
-    // public function hapus_spkp($id_skm)
-
-    // {
-    //     $this->db->where('id_skm', $id_skm);
-    //     $this->db->delete('spkp');
-    //     return $this->db->affected_rows() > 0;
-    // }
-
-
 }

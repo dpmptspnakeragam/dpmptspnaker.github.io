@@ -93,22 +93,21 @@
                                 <td class="text-center align-middle"><?= $row->r3; ?></td>
                                 <td class="text-center align-middle"><?= $row->r4; ?></td>
                                 <td class="text-center align-middle"><?= $row->r5; ?></td>
-                                <td class="text-center align-middle"><?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB</td>
+                                <td class="text-center align-middle"><?= date('d-m-Y / H:i:s', strtotime($row->date)); ?></td>
                                 <td class="text-center align-middle">
-                                    <a class="btn btn-outline-danger btn-sm btn-circle" href="<?php echo base_url('admin/spkp_antikorupsi/delete/' . $row->id_spkp); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus data ini?')">
+                                    <a class="btn btn-outline-danger btn-sm btn-circle mt-1 mb-1" href="<?php echo base_url('admin/spkp_antikorupsi/delete/' . $row->id_spkp); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus data ini?')">
                                         <i class="fas fa-trash"></i>
                                     </a>
-                                    <!-- <button class="btn btn-outline-success btn-sm btn-circle" onclick="printSKM(<?= $row->id_spkp; ?>)">
+                                    <button class="btn btn-outline-success btn-sm btn-circle mt-1 mb-1" onclick="printSPKP(<?= $row->id_spkp; ?>)">
                                         <i class="fas fa-print"></i>
-                                    </button> -->
+                                    </button>
+                                    <script>
+                                        function printSPKP(id) {
+                                            // Redirect ke halaman cetak dengan ID kuesioner
+                                            window.open('<?php echo base_url('PdfController/cetak_spkp/'); ?>' + id, '_blank');
+                                        }
+                                    </script>
                                 </td>
-
-                                <script>
-                                    function printSKM(id) {
-                                        // Redirect ke halaman cetak dengan ID kuesioner
-                                        window.open('<?php echo base_url('admin/skm/cetak/'); ?>' + id, '_blank');
-                                    }
-                                </script>
 
                             </tr>
                         <?php endforeach; ?>

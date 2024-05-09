@@ -26,11 +26,4 @@ class Skm extends CI_controller
         $this->session->set_flashdata('berhasil', 'Data SKM berhasil dihapus.');
         redirect('admin/skm', 'refresh');
     }
-
-    public function cetak($id_skm)
-    {
-        $data['skm'] = $this->Model_skm->get_data_by_id($id_skm);
-
-        $this->load->view('admin/print/skm', $data, FALSE);
-    }
 }

@@ -11,10 +11,9 @@ class Skm extends CI_Controller
         $this->load->model('Model_spkp_antikorupsi');
     }
 
-
     public function index()
     {
-
+        // SKM
         $data['jumlah'] = $this->Model_skm->jmlh_data();
         $data['jmlh_lk'] = $this->Model_skm->jmlh_lk();
         $data['jmlh_pr'] = $this->Model_skm->jmlh_pr();
@@ -63,10 +62,42 @@ class Skm extends CI_Controller
 
         $sum_nrr = $nrr_u1 + $nrr_u2 + $nrr_u3 + $nrr_u4 + $nrr_u5 + $nrr_u6 + $nrr_u7 + $nrr_u8 + $nrr_u9;
         $data['ikm'] = $sum_nrr * 25;
+        // end of SKM
 
+        // ----------------------------------------- SPKP and SPAK -----------------------------------------
         $data['rating_spkp'] = $this->Model_spkp_antikorupsi->get_rating_spkp();
         $data['rating_antikorupsi'] = $this->Model_spkp_antikorupsi->get_rating_antikorupsi();
         $data['total_responden'] = $this->Model_spkp_antikorupsi->total_responden();
+
+        // Get average z and r values
+        $avg_z = $this->Model_spkp_antikorupsi->get_avg_z();
+        $avg_r = $this->Model_spkp_antikorupsi->get_avg_r();
+
+        $data['z1'] = $avg_z->avg_z1;
+        $data['z2'] = $avg_z->avg_z2;
+        $data['z3'] = $avg_z->avg_z3;
+        $data['z4'] = $avg_z->avg_z4;
+        $data['z5'] = $avg_z->avg_z5;
+        $data['z6'] = $avg_z->avg_z6;
+        $data['z7'] = $avg_z->avg_z7;
+        $data['z8'] = $avg_z->avg_z8;
+
+        $data['r1'] = $avg_r->avg_r1;
+        $data['r2'] = $avg_r->avg_r2;
+        $data['r3'] = $avg_r->avg_r3;
+        $data['r4'] = $avg_r->avg_r4;
+        $data['r5'] = $avg_r->avg_r5;
+
+        // Calculate NRR
+        $nrr_z = ($avg_z->avg_z1 + $avg_z->avg_z2 + $avg_z->avg_z3 + $avg_z->avg_z4 + $avg_z->avg_z5 + $avg_z->avg_z6 + $avg_z->avg_z7 + $avg_z->avg_z8) * 0.1111;
+        $nrr_r = ($avg_r->avg_r1 + $avg_r->avg_r2 + $avg_r->avg_r3 + $avg_r->avg_r4 + $avg_r->avg_r5) * 0.1111;
+
+        $sum_nrr = $nrr_z - $nrr_r;
+        $result = $sum_nrr * 50;
+
+        // Load view with result
+        $data['spkp_spak'] = $result;
+        // -------------------------------------- end of SPKP and SPAK --------------------------------------
 
         $this->load->view('templates/header');
         $this->load->view('view_skm',  $data);
