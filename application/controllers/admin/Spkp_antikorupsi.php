@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Dompdf\Dompdf;
+
 class Spkp_antikorupsi extends CI_Controller
 {
 
@@ -29,6 +31,27 @@ class Spkp_antikorupsi extends CI_Controller
         $this->Model_spkp_antikorupsi->hapus_spak($id_spkp);
         $this->session->set_flashdata('berhasil', 'Data SPKP dan Anti Korupsi berhasil dihapus.');
         redirect('admin/spkp_antikorupsi', 'refresh');
+    }
+
+    public function cetak($id_spkp)
+    {
+        require_once 'vendor/autoload.php';
+
+        $dompdf = new Dompdf();
+
+        $data['spkp'] = $this->Model_spkp_antikorupsi->get_data_by_id($id_spkp);
+
+        $html = $this->load->view('admin/print/spkp', $data, true);
+
+        $options = $dompdf->getOptions();
+        $options->setIsHtml5ParserEnabled(true);
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf->setOptions($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('Legal', 'portrait');
+        $dompdf->render();
+        $dompdf->stream('SPKP dan SPAK (' . $id_spkp . ').pdf', array('Attachment' => false));
     }
 }
 

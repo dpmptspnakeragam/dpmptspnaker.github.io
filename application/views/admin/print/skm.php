@@ -1,48 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Cetak Survey Kepuasan Masyarakat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cetak Surver Kepuasan Masyarakat (SKM)</title>
+
+    <link rel="shortcut icon" href="<?= base_url('assets/img/vectoragam.png'); ?>">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link media rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+        }
+
+        .divider {
+            border: 0;
+            border-style: inset;
+            border-top: 3px solid #000;
+        }
+    </style>
+
 </head>
-
-<style>
-    .divider {
-        border: 0;
-        border-style: inset;
-        border-top: 1px solid #000;
-    }
-
-    .d-block {
-        display: block;
-    }
-
-    .bold {
-        font-weight: bold;
-    }
-</style>
 
 <body>
     <!-- Header -->
-    <img src="<?= $imageSrc; ?>" alt="Logo" style="position: absolute; width: 50px; height: auto; margin-left: 30px;">
-    <table style="width: 100%;">
+    <img src="<?= base_url('assets/img/agam.png'); ?>" alt="Logo" style="position: absolute; width: 50px; height: auto; margin-left: 30px;">
+    <table class="w-100 mb-3">
         <tr>
-            <td align="center">
-                <span style="line-height: 1.3; font-weight: bold; font-size: 18px;">
-                    Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu<br>(DPMPTSP) Kabupaten Agam
-                </span>
+            <td class="text-center">
+                <h5>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu<br>(DPMPTSP) Kabupaten Agam</h5>
             </td>
         </tr>
     </table>
 
-    <div class="divider" style="margin-top: 20px;"></div>
-    <div class="divider" style="margin-top: 1px;"></div>
-    <div class="divider" style="margin-top: 1px;"></div>
+    <!-- Pembatas -->
+    <div class="divider"></div>
+
+    <div class="text-center mt-3">
+        <h6>Survey Kepuasan Masyarakat (SKM)</h6>
+    </div>
 
     <?php foreach ($skm as $row) : ?>
-        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+        <table class="table table-sm">
             <tr>
-                <td>Jenis Kelamin</td>
-                <td>:
+                <td style="border: none;">Jenis Kelamin</td>
+                <td style="border: none;">:
                     <?php if ($row->jk == 1) : ?>
                         Laki-Laki
                     <?php elseif ($row->jk == 2) : ?>
@@ -50,8 +58,8 @@
                     <?php endif ?>
                 </td>
 
-                <td>Pekerjaan</td>
-                <td>:
+                <td style="border: none;">Pekerjaan</td>
+                <td style="border: none;">:
                     <?php if ($row->pekerjaan == 1) : ?>
                         PNS
                     <?php elseif ($row->pekerjaan == 2) : ?>
@@ -68,18 +76,18 @@
                 </td>
             </tr>
             <tr>
-                <td>Umur</td>
-                <td>:
+                <td style="border: none;">Umur</td>
+                <td style="border: none;">:
                     <?= $row->umur; ?> Tahun</td>
 
-                <td>Layanan</td>
-                <td>:
+                <td style="border: none;">Layanan</td>
+                <td style="border: none;">:
                     <?= $row->layanan; ?>
                 </td>
             </tr>
             <tr>
-                <td>Pendidikan</td>
-                <td>:
+                <td style="border: none;">Pendidikan</td>
+                <td style="border: none;">:
                     <?php if ($row->pendidikan == 1) : ?>
                         SD Sederajat
                     <?php elseif ($row->pendidikan == 2) : ?>
@@ -95,25 +103,25 @@
                     <?php endif; ?>
                 </td>
 
-                <td>Tanggal Survey</td>
-                <td>:
+                <td style="border: none;">Tanggal Survey</td>
+                <td style="border: none;">:
                     <?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB
                 </td>
             </tr>
         </table>
 
-        <div style="margin-top: 15px;" class="bold">
-            <span>Jawaban Responden Tentang Pelayanan Publik:</span>
+        <div class="text-center mt-3">
+            <h6>Jawaban Responden Tentang Pelayanan Publik</h6>
         </div>
         <table class="table table-sm">
             <tr>
-                <td class="d-block">1. </td>
-                <td>Bagaimana pendapat Saudara tentang kesesuaian persyaratan pelayanan dengan jenis pelayanannya?</td>
+                <td style="border: none;">1. </td>
+                <td style="border: none;">Bagaimana pendapat Saudara tentang kesesuaian persyaratan pelayanan dengan jenis pelayanannya?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u1 == 4) : ?>
                             Sangat Sesuai
                         <?php elseif ($row->u1 == 3) : ?>
@@ -125,17 +133,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td class="d-block">2. </td>
-                <td>Bagaimana pemahaman Saudara tentang kemudahan prosedur pelayanan di unit ini?</td>
+                <td style="border: none;">2. </td>
+                <td style="border: none;">Bagaimana pemahaman Saudara tentang kemudahan prosedur pelayanan di unit ini?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u2 == 4) : ?>
                             Sangat Mudah
                         <?php elseif ($row->u2 == 3) : ?>
@@ -147,17 +154,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td class="d-block">3. </td>
-                <td>Bagaimana pemahaman Saudara tentang kecepatan waktu dalam memberikan pelayanan?</td>
+                <td style="border: none;">3. </td>
+                <td style="border: none;">Bagaimana pemahaman Saudara tentang kecepatan waktu dalam memberikan pelayanan?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u3 == 4) : ?>
                             Sangat Cepat
                         <?php elseif ($row->u3 == 3) : ?>
@@ -169,17 +175,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td class="d-block">4. </td>
-                <td>Bagaimana pendapat Saudara tentang kewajaran biaya/tarif dalam pelayanan?</td>
+                <td style="border: none;">4. </td>
+                <td style="border: none;">Bagaimana pendapat Saudara tentang kewajaran biaya/tarif dalam pelayanan?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u4 == 4) : ?>
                             Gratis
                         <?php elseif ($row->u4 == 3) : ?>
@@ -191,17 +196,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td class="d-block">5. </td>
-                <td>Bagaimana pendapat Saudara tentang kesesuaian pelayanan yang tercantum dalam standar pelayanan dengan hasil yang diberikan?</td>
+                <td style="border: none;">5. </td>
+                <td style="border: none;">Bagaimana pendapat Saudara tentang kesesuaian pelayanan yang tercantum dalam standar pelayanan dengan hasil yang diberikan?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u5 == 4) : ?>
                             Sangat Sesuai
                         <?php elseif ($row->u5 == 3) : ?>
@@ -213,17 +217,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td class="d-block">6. </td>
-                <td>Bagaimana pendapat Saudara tentang kompetensi/kemampuan petugas dalam pelayanan?</td>
+                <td style="border: none;">6. </td>
+                <td style="border: none;">Bagaimana pendapat Saudara tentang kompetensi/kemampuan petugas dalam pelayanan?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u6 == 4) : ?>
                             Sangat Kompeten
                         <?php elseif ($row->u6 == 3) : ?>
@@ -235,17 +238,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td class="d-block">7. </td>
-                <td>Bagaimana pendapat Saudara tentang perilaku petugas dalam pelayanan terkait kesopanan dan keramahan?</td>
+                <td style="border: none;">7. </td>
+                <td style="border: none;">Bagaimana pendapat Saudara tentang perilaku petugas dalam pelayanan terkait kesopanan dan keramahan?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u7 == 4) : ?>
                             Sangat Sopan & Ramah
                         <?php elseif ($row->u7 == 3) : ?>
@@ -257,17 +259,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td class="d-block">8. </td>
-                <td>Bagaimana pendapat Saudara tentang penanganan pengaduan pengguna layanan?</td>
+                <td style="border: none;">8. </td>
+                <td style="border: none;">Bagaimana pendapat Saudara tentang penanganan pengaduan pengguna layanan?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u8 == 4) : ?>
                             Dikelola Dengan Baik
                         <?php elseif ($row->u8 == 3) : ?>
@@ -279,17 +280,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
             <tr>
-                <td>9. </td>
-                <td>Bagaimana pendapat Saudara tentang kualitas sarana dan prasarana?</td>
+                <td style="border: none;">9. </td>
+                <td style="border: none;">Bagaimana pendapat Saudara tentang kualitas sarana dan prasarana?</td>
             </tr>
             <tr>
-                <td></td>
-                <td>Jawaban:
-                    <span class="bold">
+                <td style="border: none;"></td>
+                <td style="border: none;">Jawaban:
+                    <span class="font-weight-bold">
                         <?php if ($row->u9 == 4) : ?>
                             Sangat Baik
                         <?php elseif ($row->u9 == 3) : ?>
@@ -301,11 +301,16 @@
                         <?php endif; ?>
                     </span>
                 </td>
-                <td> </td>
             </tr>
 
         </table>
     <?php endforeach; ?>
+
+    <!-- Bootstrap JS (for optional functionalities) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

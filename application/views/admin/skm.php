@@ -105,7 +105,7 @@
                                     <script>
                                         function printSKM(id) {
                                             // Redirect ke halaman cetak dengan ID kuesioner
-                                            window.open('<?php echo base_url('PdfController/cetak/'); ?>' + id, '_blank');
+                                            window.open('<?php echo base_url('admin/skm/cetak/'); ?>' + id, '_blank');
                                         }
                                     </script>
                                 </td>

@@ -104,7 +104,7 @@
                                     <script>
                                         function printSPKP(id) {
                                             // Redirect ke halaman cetak dengan ID kuesioner
-                                            window.open('<?php echo base_url('PdfController/cetak_spkp/'); ?>' + id, '_blank');
+                                            window.open('<?php echo base_url('admin/spkp_antikorupsi/cetak/'); ?>' + id, '_blank');
                                         }
                                     </script>
                                 </td>
