@@ -88,10 +88,10 @@
                         </a>
                         <div class="collapse" id="collapse2">
                             <ul>
-                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin">Grafik Izin Diterbtkan</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin">Grafik Izin Terbit</a></li>
+                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin_tahun">Grafik Izin Terbit (Tahun)</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_investasi">Grafik Realisasi Investasi</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_skm">Grafik SKM</a></li>
-                                <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izinbulan">Grafik Izin Diterbitkan /Tahun</a></li>
                                 <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_nib">Grafik NIB</a></li>
                             </ul>
                         </div>

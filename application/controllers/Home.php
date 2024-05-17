@@ -9,6 +9,24 @@ class Home extends CI_Controller
 		parent::__construct();
 		$this->load->library('curl');
 		$this->API = "https://sicantikws.layanan.go.id/api/TemplateData/keluaran/24218.json";
+
+		$this->load->model('Model_informasi');
+		$this->load->model('Model_investasi');
+		$this->load->model('Model_grafik');
+		$this->load->model('Model_runningteks');
+		$this->load->model('Model_banner');
+		$this->load->model('Model_grafik_investasi');
+		$this->load->model('Model_grafik_skm');
+		$this->load->model('Model_grafik_izin_tahun');
+		$this->load->model('Model_potensi_investasi');
+		$this->load->model('Model_sarpras');
+		$this->load->model('Model_tanah_ulayat');
+		$this->load->model('Model_grafik_nib');
+		$this->load->model('Model_pengaturan');
+		$this->load->model('Model_kadis');
+
+		$this->load->model('Model_pegawai');
+		$this->load->model('Model_pengaduan');
 	}
 
 	public function index()
@@ -30,6 +48,7 @@ class Home extends CI_Controller
 		else {
 			$this->db->query("UPDATE visitor SET hits=hits+1, online='" . $waktu . "' WHERE ip='" . $ip . "' AND date='" . $date . "'");
 		}
+
 		$pengunjunghariini  = $this->db->query("SELECT * FROM visitor WHERE date='" . $date . "' GROUP BY ip")->num_rows(); // Hitung jumlah pengunjung
 		$dbpengunjung = $this->db->query("SELECT COUNT(hits) as hits FROM visitor")->row();
 		$totalpengunjung = isset($dbpengunjung->hits) ? ($dbpengunjung->hits) : 0; // hitung total pengunjung
@@ -44,54 +63,45 @@ class Home extends CI_Controller
 		$dbbulanini = $this->db->query("SELECT COUNT(hits) as hits FROM visitor WHERE MONTH(date) = MONTH(CURRENT_DATE()) and YEAR(date) = YEAR(CURRENT_DATE())")->row();
 		$bulanini = isset($dbbulanini->hits) ? ($dbbulanini->hits) : 0;
 
-		$data['pengunjunghariini'] = $pengunjunghariini;
-		$data['totalpengunjung'] = $totalpengunjung;
-		$data['pengunjungonline'] = $pengunjungonline;
-		$data['pengunjung2020'] = $pengunjung2020;
-		$data['pengunjung2021'] = $pengunjung2021;
-		$data['pengunjungbulanlalu'] = $bulanlalu;
-		$data['pengunjungbulanini'] = $bulanini;
+		$data = [
+			'pengunjunghariini' 	=> $pengunjunghariini,
+			'totalpengunjung' 		=> $totalpengunjung,
+			'pengunjungonline' 		=> $pengunjungonline,
+			'pengunjung2020' 		=> $pengunjung2020,
+			'pengunjung2021' 		=> $pengunjung2021,
+			'pengunjungbulanlalu' 	=> $bulanlalu,
+			'pengunjungbulanini' 	=> $bulanini,
 
-		$this->load->model('Model_informasi');
-		$this->load->model('Model_investasi');
-		$this->load->model('Model_pegawai');
-		$this->load->model('Model_grafik');
-		$this->load->model('Model_runningteks');
-		$this->load->model('Model_banner');
-		$this->load->model('Model_grafik_investasi');
-		$this->load->model('Model_grafik_skm');
-		$this->load->model('Model_grafik_izinbulan');
-		$this->load->model('Model_potensi_investasi');
-		$this->load->model('Model_sarpras');
-		$this->load->model('Model_tanah_ulayat');
-		$this->load->model('Model_grafik_nib');
-		$this->load->model('Model_pengaturan');
-		$this->load->model('Model_kadis');
-		$data['periode_grafik'] = $this->Model_grafik->tampil_data_periode();
-		$data['periode_grafik_investasi'] = $this->Model_grafik_investasi->tampil_data_periode();
-		$data['periode_grafik_skm'] = $this->Model_grafik_skm->tampil_data_periode();
-		$data['periode_grafik_izinbulan'] = $this->Model_grafik_izinbulan->tampil_data_periode();
-		$data['periode_grafik_oss'] = $this->Model_grafik_nib->tampil_data_periode();
-		$data['banner'] = $this->Model_banner->tampil_data();
-		$data['teks'] = $this->Model_runningteks->tampil_data();
-		$data['grafik'] = $this->Model_grafik->tampil_data();
-		$data['grafik_investasi'] = $this->Model_grafik_investasi->tampil_data();
-		$data['grafik_skm'] = $this->Model_grafik_skm->tampil_data();
-		$data['grafik_bulan'] = $this->Model_grafik_izinbulan->tampil_data();
-		$data['berita'] = $this->Model_informasi->informasi();
-		$data['investasi'] = $this->Model_investasi->tampil_data();
-		$data['potensi_investasi'] = $this->Model_potensi_investasi->tampil_data();
-		$data['kabid'] = $this->Model_pegawai->tampil_kabid();
-		$data['pegawai'] = $this->Model_pegawai->tampil_pegawai();
-		$data['sarpras'] = $this->Model_sarpras->tampil_data();
-		$data['idmax'] = $this->Model_informasi->idmax();
-		$data['ulayat'] = $this->Model_tanah_ulayat->tampil_kecamatan();
-		$data['grafik_nib'] = $this->Model_grafik_nib->tampil_data_nib();
-		$data['grafik_risiko'] = $this->Model_grafik_nib->tampil_data_risiko();
-		$data['grafik_kecamatan'] = $this->Model_grafik_nib->tampil_data_kecamatan();
-		$data['grafik_kbli'] = $this->Model_grafik_nib->tampil_data_kbli();
-		$data['pengaturan'] = $this->Model_pengaturan->tampil_data();
-		$data['kadis'] = $this->Model_kadis->tampil_kadis();
+			'periode_grafik' 			=> $this->Model_grafik->tampil_data_periode(),
+			'periode_grafik_investasi' 	=> $this->Model_grafik_investasi->tampil_data_periode(),
+			'periode_grafik_skm' 		=> $this->Model_grafik_skm->tampil_data_periode(),
+
+			'grafik_tahun'		 		=> $this->Model_grafik_izin_tahun->tampil_data(),
+			'tahun_fields'		 	=> $this->Model_grafik_izin_tahun->tampil_data_tahun(),
+
+			'periode_grafik_oss'	=> $this->Model_grafik_nib->tampil_data_periode(),
+			'banner'				=> $this->Model_banner->tampil_data(),
+			'teks' 					=> $this->Model_runningteks->tampil_data(),
+			'grafik' 				=> $this->Model_grafik->tampil_data(),
+			'grafik_investasi' 		=> $this->Model_grafik_investasi->tampil_data(),
+			'grafik_skm'			=> $this->Model_grafik_skm->tampil_data(),
+			'berita' 				=> $this->Model_informasi->informasi(),
+			'investasi' 			=> $this->Model_investasi->tampil_data(),
+			'potensi_investasi' 	=> $this->Model_potensi_investasi->tampil_data(),
+			'kabid' 				=> $this->Model_pegawai->tampil_kabid(),
+			'pegawai' 				=> $this->Model_pegawai->tampil_pegawai(),
+			'sarpras' 				=> $this->Model_sarpras->tampil_data(),
+			'idmax' 				=> $this->Model_informasi->idmax(),
+			'ulayat' 				=> $this->Model_tanah_ulayat->tampil_kecamatan(),
+			'grafik_nib' 			=> $this->Model_grafik_nib->tampil_data_nib(),
+			'grafik_risiko' 		=> $this->Model_grafik_nib->tampil_data_risiko(),
+			'grafik_kecamatan' 		=> $this->Model_grafik_nib->tampil_data_kecamatan(),
+			'grafik_kbli' 			=> $this->Model_grafik_nib->tampil_data_kbli(),
+			'pengaturan' 			=> $this->Model_pengaturan->tampil_data(),
+			'kadis' 				=> $this->Model_kadis->tampil_kadis(),
+		];
+
+		// $data['grafik_tahun'] = $this->Model_grafik_izin_tahun->tampil_data();
 		$this->load->view('templates/header');
 		$this->load->view('home', $data);
 		$this->load->view('modal/modal_pelayanan');
@@ -119,7 +129,6 @@ class Home extends CI_Controller
 	public function view_pegawai()
 	{
 		$id_kabid = $_GET['id_kabid'];
-		$this->load->model('Model_pegawai');
 		$data['view_pegawai'] = $this->Model_pegawai->view_pegawai($id_kabid);
 		$this->load->view('templates/header');
 		$this->load->view('view_pegawai', $data);
@@ -134,7 +143,6 @@ class Home extends CI_Controller
 
 	public function tracking_pengaduan()
 	{
-		$this->load->model('Model_pengaduan');
 		$no_pengaduan = $_GET['no_pengaduan'];
 		$pengaduan = $this->Model_pengaduan->getPengaduan($no_pengaduan);
 		echo json_encode($pengaduan, TRUE);

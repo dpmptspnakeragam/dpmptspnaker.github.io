@@ -342,46 +342,45 @@
 					<a href="<?= base_url(); ?>skm" class="pilih-profil border-white text-white">Lakukan Survey</a>
 				</div>
 			</div>
-			<div class="col-12 text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik Survey Kepuasan Masyarakat</h5>
-				<h6 class="text-center"> Periode
-					<?php
-					$no = 1;
-					foreach ($periode_grafik_skm->result() as $graph) {
-					?>
-						<?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
-					<?php } ?>
-				</h6>
+
+			<div class="card col-lg-12 text-center text-light bg-dark isi-investasi p-3">
+
+				<div class="card-header text-center border-bottom">
+					<h5>Grafik Survey Kepuasan Masyarakat</h5>
+				</div>
+
 				<canvas id="myChart3"></canvas>
-				<p style="font-size:12px;">
-					<small>Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang) : 65,00 - 76,60 | D (Sangat Kurang) : 25,00 - 64,99</small>
-				</p>
+
+				<hr style="border: none; height: 1px; background-color: white;">
+
+				<span class="small">Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang) : 65,00 - 76,60 | D (Sangat Kurang) : 25,00 - 64,99</span>
 				<?php
-				$tahun_skm = "";
-				$total = null;
-				$total2 = null;
+				$labels = [];
+				$data_semester1 = [];
+				$data_semester2 = [];
+				$colors_semester1 = []; // Warna untuk Semester I
+				$colors_semester2 = []; // Warna untuk Semester II
 				foreach ($grafik_skm->result() as $item) {
-					$nama = $item->tahun;
-					$tahun_skm .= "'$nama'" . ", ";
-					$jum = $item->nilai;
-					$total .= "$jum" . ", ";
-					$jum2 = $item->nilai2;
-					$total2 .= "$jum2" . ", ";
+					$labels[] = $item->tahun;
+					$data_semester1[] = number_format($item->nilai, 2, '.', ''); // Mengatur tampilan angka menjadi dua angka di belakang koma
+					$data_semester2[] = number_format($item->nilai2, 2, '.', ''); // Mengatur tampilan angka menjadi dua angka di belakang koma
 				}
+				// Menghasilkan warna secara dinamis untuk Semester I dan II
+				$colors_semester1 = "rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.8)";
+				$colors_semester2 = "rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.8)";
 				?>
 				<script>
-					var tahun = new Date().getFullYear();
 					var ctx = document.getElementById('myChart3').getContext('2d');
 					var data = {
-						labels: [<?php echo $tahun_skm; ?>],
+						labels: <?php echo json_encode($labels); ?>,
 						datasets: [{
 							label: "Semester I",
-							backgroundColor: '#0037B3',
-							data: [<?php echo $total; ?>]
+							backgroundColor: "<?php echo $colors_semester1; ?>",
+							data: <?php echo json_encode($data_semester1); ?>
 						}, {
 							label: "Semester II",
-							backgroundColor: '#70BAFF',
-							data: [<?php echo $total2; ?>]
+							backgroundColor: "<?php echo $colors_semester2; ?>",
+							data: <?php echo json_encode($data_semester2); ?>
 						}]
 					};
 					var chart = new Chart(ctx, {
@@ -393,12 +392,12 @@
 									fontColor: 'white'
 								}
 							},
-							"hover": {
-								"animationDuration": 0
+							hover: {
+								animationDuration: 0
 							},
-							"animation": {
-								"duration": 1,
-								"onComplete": function() {
+							animation: {
+								duration: 1,
+								onComplete: function() {
 									var chartInstance = this.chart,
 										ctx = chartInstance.ctx;
 
@@ -424,17 +423,20 @@
 								xAxes: [{
 									ticks: {
 										fontColor: 'white'
+									},
+									gridLines: {
+										display: true,
+										color: 'rgba(255, 255, 255, 0.2)'
 									}
 								}],
 								yAxes: [{
-									gridLines: {
-										zeroLineColor: 'grey',
-										color: 'grey'
-									},
 									ticks: {
-										max: Math.max(...data.datasets[0].data) + 50,
 										beginAtZero: true,
 										fontColor: 'white'
+									},
+									gridLines: {
+										display: true,
+										color: 'rgba(255, 255, 255, 0.2)'
 									}
 								}]
 							}
@@ -442,10 +444,12 @@
 					});
 				</script>
 			</div>
+
 			<!-- <div class="col-lg-5 col form-pengaduan">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScGlxCpQhHCl0rdvbMeAIqebo-vU34xk7-7VR6M4saB_Ly7iQ/viewform?embedded=true" width="100%" height="500px" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
       </div> -->
 		</div>
+	</div>
 </section>
 <!-- close skm -->
 
@@ -458,613 +462,641 @@
 				<hr class="garis-judul">
 			</div>
 		</div>
-		<div class="row p-3">
-			<div class="col-lg-6 col text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik Izin Diterbitkan</h5>
-				<h6 class="text-center"> Periode
-					<?php
-					$no = 1;
-					foreach ($periode_grafik->result() as $graph) {
-					?>
-						<?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
-					<?php } ?>
-				</h6>
-				<canvas id="myChart"></canvas>
-				<?php
-				$nama_izin = "";
-				$total = null;
-				foreach ($grafik->result() as $item) {
-					$nama = $item->izin;
-					$nama_izin .= "'$nama'" . ", ";
-					$jum = $item->jumlah;
-					$total .= "$jum" . ", ";
-				}
-				?>
-				<script>
-					var tahun = new Date().getFullYear();
-					var ctx = document.getElementById('myChart').getContext('2d');
-					var data = {
-						labels: [<?php echo $nama_izin; ?>],
-						datasets: [{
-							label: "Jumlah",
-							backgroundColor: '#db162f',
-							data: [<?php echo $total; ?>]
-						}]
-					};
-					var chart = new Chart(ctx, {
-						showTooltips: false,
-						type: 'bar',
-						data: data,
-						options: {
-							legend: {
-								labels: {
-									fontColor: 'white'
-								}
-							},
-							"hover": {
-								"animationDuration": 0
-							},
-							"animation": {
-								"duration": 1,
-								"onComplete": function() {
-									var chartInstance = this.chart,
-										ctx = chartInstance.ctx;
 
-									ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-									ctx.textAlign = 'center';
-									ctx.textBaseline = 'bottom';
+		<div class="card bg-dark text-light mb-3">
+			<div class="card-body">
+				<div class="row">
 
-									this.data.datasets.forEach(function(dataset, i) {
-										var meta = chartInstance.controller.getDatasetMeta(i);
-										meta.data.forEach(function(bar, index) {
-											var data = dataset.data[index];
-											ctx.fillText(data, bar._model.x, bar._model.y - 5);
-										});
-									});
-								}
-							},
-							scales: {
-								xAxes: [{
-									ticks: {
-										fontColor: 'white'
-									}
-								}],
-								yAxes: [{
-									gridLines: {
-										zeroLineColor: 'grey',
-										color: 'grey'
-									},
-									ticks: {
-										max: Math.max(...data.datasets[0].data) + 10,
-										beginAtZero: true,
-										fontColor: 'white'
-									}
-								}]
-							}
-						}
-					});
-				</script>
-			</div>
-			<div class="col-lg-6 text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik Realisasi Investasi (Rp. M)</h5>
-				<h6 class="text-center"> Periode
-					<?php
-					$no = 1;
-					foreach ($periode_grafik_investasi->result() as $graph) {
-					?>
-						<?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
-					<?php } ?>
-				</h6>
-				<canvas id="myChart2"></canvas>
-				<?php
-				$tahun_investasi = "";
-				$total = null;
-				$total2 = null;
-				foreach ($grafik_investasi->result() as $item) {
-					$nama = $item->tahun;
-					$tahun_investasi .= "'$nama'" . ", ";
-					$jum = $item->nilai;
-					$total .= "$jum" . ", ";
-					$jum2 = $item->nilai2;
-					$total2 .= "$jum2" . ", ";
-				}
-				?>
-				<script>
-					var tahun = new Date().getFullYear();
-					var ctx = document.getElementById('myChart2').getContext('2d');
-					var data = {
-						labels: [<?php echo $tahun_investasi; ?>],
-						datasets: [{
-							label: "Target",
-							backgroundColor: '#f5542e',
-							data: [<?php echo $total; ?>]
-						}, {
-							label: "Realisasi",
-							backgroundColor: '#008b6e',
-							data: [<?php echo $total2; ?>]
-						}]
-					};
-					var chart = new Chart(ctx, {
-						type: 'bar',
-						data: data,
-						options: {
-							legend: {
-								labels: {
-									fontColor: 'white'
-								}
-							},
-							"hover": {
-								"animationDuration": 0
-							},
-							"animation": {
-								"duration": 1,
-								"onComplete": function() {
-									var chartInstance = this.chart,
-										ctx = chartInstance.ctx;
+					<div class="col-lg-6 col-12 text-center isi-investasi">
 
-									ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-									ctx.textAlign = 'center';
-									ctx.textBaseline = 'bottom';
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Grafik Izin Diterbitkan</h5>
+						<hr style="border: 1px solid; background-color: white;">
 
-									this.data.datasets.forEach(function(dataset, i) {
-										var meta = chartInstance.controller.getDatasetMeta(i);
-										meta.data.forEach(function(bar, index) {
-											var data = dataset.data[index];
-											ctx.fillText(data, bar._model.x, bar._model.y - 5);
-										});
-									});
-								}
-							},
-							tooltips: {
-								mode: 'index',
-								intersect: true
-							},
-							responsive: true,
-							scales: {
-								xAxes: [{
-									ticks: {
-										fontColor: 'white'
-									}
-								}],
-								yAxes: [{
-									gridLines: {
-										zeroLineColor: 'grey',
-										color: 'grey'
-									},
-									ticks: {
-										max: Math.max(...data.datasets[0].data) + 650,
-										beginAtZero: true,
-										fontColor: 'white'
-									}
-								}]
-							}
-						}
-					});
-				</script>
-			</div>
-
-			<div class="col-lg-12 col-12 col text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik Izin Diterbitkan /Tahun</h5>
-				<!----<h6 class="text-center"> Periode
-          <?php
-			$no = 1;
-			foreach ($periode_grafik_izinbulan->result() as $graph) {
-			?>
-            <?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
-          <?php } ?>
-        </h6>--->
-				<canvas id="myChart4"></canvas>
-				<?php
-				$nama_izinbulan = "";
-				$totalbulan = null;
-				$totalbulan2 = null;
-				$totalbulan3 = null;
-				$totalbulan4 = null;
-				foreach ($grafik_bulan->result() as $item) {
-					$nama = $item->izin;
-					$nama_izinbulan .= "'$nama'" . ", ";
-					$jum = $item->thn2020;
-					$totalbulan .= "$jum" . ", ";
-					$jum2 = $item->thn2021;
-					$totalbulan2 .= "$jum2" . ", ";
-					$jum3 = $item->thn2022;
-					$totalbulan3 .= "$jum3" . ", ";
-					$jum4 = $item->thn2023;
-					$totalbulan4 .= "$jum4" . ", ";
-				}
-				?>
-				<script>
-					var tahun = new Date().getFullYear();
-					var ctx = document.getElementById('myChart4').getContext('2d');
-					var data = {
-						labels: [<?php echo $nama_izinbulan; ?>],
-						datasets: [{
-							label: "Tahun 2020",
-							backgroundColor: '#BBE2F2',
-							data: [<?php echo $totalbulan; ?>]
-						}, {
-							label: "Tahun 2021",
-							backgroundColor: '#34A6BF',
-							data: [<?php echo $totalbulan2; ?>]
-						}, {
-							label: "Tahun 2022",
-							backgroundColor: '#F2C094',
-							data: [<?php echo $totalbulan3; ?>]
-						}, {
-							label: "Tahun 2023",
-							backgroundColor: '#D90404',
-							data: [<?php echo $totalbulan4; ?>]
-						}]
-					};
-					var chart = new Chart(ctx, {
-						type: 'bar',
-						data: data,
-						options: {
-							legend: {
-								labels: {
-									fontColor: 'white'
-								}
-							},
-							"hover": {
-								"animationDuration": 0
-							},
-							"animation": {
-								"duration": 1,
-								"onComplete": function() {
-									var chartInstance = this.chart,
-										ctx = chartInstance.ctx;
-
-									ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-									ctx.textAlign = 'center';
-									ctx.textBaseline = 'bottom';
-
-									this.data.datasets.forEach(function(dataset, i) {
-										var meta = chartInstance.controller.getDatasetMeta(i);
-										meta.data.forEach(function(bar, index) {
-											var data = dataset.data[index];
-											ctx.fillText(data, bar._model.x, bar._model.y - 5);
-										});
-									});
-								}
-							},
-							tooltips: {
-								mode: 'index',
-								intersect: true
-							},
-							responsive: true,
-							scales: {
-								xAxes: [{
-									ticks: {
-										fontColor: 'white'
-									}
-								}],
-								yAxes: [{
-									ticks: {
-										beginAtZero: true,
-										fontColor: 'white'
-									}
-								}]
-							}
-						}
-					});
-				</script>
-				<hr>
-				<h3>Grafik OSS RBA<h3>
 						<h6 class="text-center"> Periode
 							<?php
 							$no = 1;
-							foreach ($periode_grafik_oss->result() as $graph) {
+							foreach ($periode_grafik->result() as $graph) {
 							?>
 								<?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
 							<?php } ?>
 						</h6>
-			</div>
-			<div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik NIB Diterbitkan</h5>
-				<canvas id="grafiknib"></canvas>
-				<?php
-				$nama_nib = "";
-				$total = null;
-				foreach ($grafik_nib->result() as $item) {
-					$nama = $item->nib;
-					$nama_nib .= "'$nama'" . ", ";
-					$jum = $item->jumlah;
-					$total .= "$jum" . ", ";
-				}
-				?>
-				<script>
-					var kanvasnib = document.getElementById("grafiknib").getContext("2d");
-
-					Chart.defaults.global.defaultFontFamily = "Lato";
-					Chart.defaults.global.defaultFontSize = 12;
-
-					var nilai = {
-						labels: [<?php echo $nama_nib; ?>],
-						datasets: [{
-							label: "Jumlah",
-							data: [<?php echo $total; ?>],
-							backgroundColor: ['#8bfd43', '#fdfd43', '#8bfd43', '#fdfd43']
-						}]
-					};
-
-					var chartOptions = {
-						legend: {
-							display: false,
-							position: 'top',
-							labels: {
-								boxWidth: 10,
-								fontColor: 'white'
-							}
-						},
-						"hover": {
-							"animationDuration": 0
-						},
-						"animation": {
-							"duration": 1,
-							"onComplete": function() {
-								var chartInstance = this.chart,
-									ctx = chartInstance.ctx;
-
-								ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-								ctx.textAlign = 'center';
-								ctx.textBaseline = 'bottom';
-
-								this.data.datasets.forEach(function(dataset, i) {
-									var meta = chartInstance.controller.getDatasetMeta(i);
-									meta.data.forEach(function(bar, index) {
-										var data = dataset.data[index];
-										ctx.fillText(data, bar._model.x, bar._model.y - 5);
-									});
-								});
-							}
-						},
-						scales: {
-							xAxes: [{
-								ticks: {
-									fontColor: 'white'
-								}
-							}],
-							yAxes: [{
-								ticks: {
-									beginAtZero: true,
-									fontColor: 'white'
-								}
-							}]
+						<canvas id="myChart"></canvas>
+						<?php
+						$nama_izin = "";
+						$total = null;
+						foreach ($grafik->result() as $item) {
+							$nama = $item->izin;
+							$nama_izin .= "'$nama'" . ", ";
+							$jum = $item->jumlah;
+							$total .= "$jum" . ", ";
 						}
-					};
+						?>
+						<script>
+							var tahun = new Date().getFullYear();
+							var ctx = document.getElementById('myChart').getContext('2d');
+							var data = {
+								labels: [<?php echo $nama_izin; ?>],
+								datasets: [{
+									label: "Jumlah",
+									backgroundColor: '#db162f',
+									data: [<?php echo $total; ?>]
+								}]
+							};
+							var chart = new Chart(ctx, {
+								showTooltips: false,
+								type: 'bar',
+								data: data,
+								options: {
+									legend: {
+										labels: {
+											fontColor: 'white'
+										}
+									},
+									"hover": {
+										"animationDuration": 0
+									},
+									"animation": {
+										"duration": 1,
+										"onComplete": function() {
+											var chartInstance = this.chart,
+												ctx = chartInstance.ctx;
 
-					var lineChart = new Chart(kanvasnib, {
-						type: 'bar',
-						data: nilai,
-						options: chartOptions
-					});
-				</script>
-			</div>
-			<div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik Sebaran Proyek Bedasarkan Risiko</h5>
-				<div class="chart-container" style="width:70%; margin:auto;">
-					<canvas id="grafikrisiko" style="width:50% !important"></canvas>
-				</div>
-				<?php
-				$nama_risiko = "";
-				$total = null;
-				foreach ($grafik_risiko->result() as $item) {
-					$nama = $item->risiko;
-					$nama_risiko .= "'$nama'" . ", ";
-					$jum = $item->jumlah;
-					$total .= "$jum" . ", ";
-				}
-				?>
-				<script>
-					var kanvasrisiko = $("#grafikrisiko");
+											ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+											ctx.textAlign = 'center';
+											ctx.textBaseline = 'bottom';
 
-					var nilai = {
-						labels: [<?php echo $nama_risiko; ?>],
-						datasets: [{
-							label: "Jumlah",
-							data: [<?php echo $total; ?>],
-							backgroundColor: ['#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
-						}]
-					};
-
-					var chartOptions = {
-						responsive: true,
-						legend: {
-							display: true,
-							position: 'top',
-							labels: {
-								boxWidth: 10,
-								fontColor: 'white'
-							}
-						}
-					};
-
-					var lineChart = new Chart(kanvasrisiko, {
-						plugins: ["ChartDataLabels"],
-						type: 'doughnut',
-						data: nilai,
-						options: chartOptions
-					});
-				</script>
-			</div>
-			<div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik Sebaran Proyek Per Kecamatan Usaha</h5>
-				<canvas id="grafikkecamatan" width="100%"></canvas>
-				<?php
-				$nama_kecamatan = "";
-				$total = null;
-				foreach ($grafik_kecamatan->result() as $item) {
-					$nama = $item->kecamatan;
-					$nama_kecamatan .= "'$nama'" . ", ";
-					$jum = $item->jumlah;
-					$total .= "$jum" . ", ";
-				}
-				?>
-				<script>
-					var kanvaskecamatan = document.getElementById("grafikkecamatan").getContext("2d");
-
-					Chart.defaults.global.defaultFontFamily = "Lato";
-					Chart.defaults.global.defaultFontSize = 12;
-
-					var nilai = {
-						labels: [<?php echo $nama_kecamatan; ?>],
-						datasets: [{
-							label: "Jumlah",
-							data: [<?php echo $total; ?>],
-							backgroundColor: ['#8bfd43', '#8bfd43', '#8bfd43', '#8bfd43', '#fdfd43', '#fdfd43', '#fdfd43', '#fdfd43', '#fe9643', '#fe9643', '#fe9643', '#fe9643', '#ff4442', '#ff4442', '#ff4442', '#ff4442']
-						}]
-					};
-
-					var chartOptions = {
-						indexAxis: 'y',
-						legend: {
-							display: false,
-							position: 'top',
-							labels: {
-								boxWidth: 10,
-								fontColor: 'white'
-							}
-						},
-						"hover": {
-							"animationDuration": 0
-						},
-						"animation": {
-							"duration": 1,
-							"onComplete": function() {
-								var chartInstance = this.chart,
-									ctx = chartInstance.ctx;
-
-								ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-								ctx.textAlign = 'center';
-								ctx.textBaseline = 'bottom';
-
-								this.data.datasets.forEach(function(dataset, i) {
-									var meta = chartInstance.controller.getDatasetMeta(i);
-									meta.data.forEach(function(bar, index) {
-										var data = dataset.data[index];
-										ctx.fillText(data, bar._model.x, bar._model.y - 5);
-									});
-								});
-							}
-						},
-						scales: {
-							xAxes: [{
-								ticks: {
-									min: 0, // Edit the value according to what you need
-									fontColor: 'white'
-								}
-							}],
-							yAxes: [{
-								stacked: true,
-								ticks: {
-									fontColor: 'white'
-								}
-							}]
-						}
-					};
-
-					var lineChart = new Chart(kanvaskecamatan, {
-						type: 'horizontalBar',
-						data: nilai,
-						options: chartOptions
-					});
-				</script>
-			</div>
-			<div class="col-lg-6 col-12 text-center text-light bg-dark isi-investasi p-3">
-				<h5>Grafik Top 5 KBLI</h5>
-				<canvas id="grafikkbli" width="100%"></canvas>
-				<?php
-				$nama_kbli = "";
-				$total = null;
-				foreach ($grafik_kbli->result() as $item) {
-					$kbli = $item->kbli;
-					$nama_kbli .= "'$kbli'" . ", ";
-					$jum = $item->jumlah;
-					$total .= "$jum" . ", ";
-				}
-				?>
-				<script>
-					var kanvaskbli = document.getElementById("grafikkbli").getContext("2d");
-
-					Chart.defaults.global.defaultFontFamily = "Lato";
-					Chart.defaults.global.defaultFontSize = 12;
-
-					var nilai = {
-						labels: [<?php echo $nama_kbli; ?>],
-						datasets: [{
-							label: "Jumlah",
-							data: [<?php echo $total; ?>],
-							backgroundColor: ['#42ccff', '#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
-						}]
-					};
-
-					var chartOptions = {
-						indexAxis: 'y',
-						legend: {
-							display: false,
-							position: 'top',
-							labels: {
-								boxWidth: 10,
-								fontColor: 'white'
-							}
-						},
-						scales: {
-							xAxes: [{
-								ticks: {
-									min: 0, // Edit the value according to what you need
-									fontColor: 'white'
-								}
-							}],
-							yAxes: [{
-								stacked: true,
-								ticks: {
-									mirror: true,
-									fontColor: 'white'
-								}
-							}]
-						},
-						events: false,
-						showTooltips: true,
-						animation: {
-							duration: 500,
-							easing: "easeOutQuart",
-							onComplete: function() {
-								var ctx = this.chart.ctx;
-								ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
-								ctx.textAlign = 'left';
-								ctx.textBaseline = 'bottom';
-								this.data.datasets.forEach(function(dataset) {
-									console.log(dataset);
-									for (var i = 0; i < dataset.data.length; i++) {
-										var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
-											scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
-										left = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.left;
-										offset = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.longestLabelWidth;
-										ctx.fillStyle = '#000';
-										var y_pos = model.y - 5;
-										var label = model.label;
-										// Make sure data value does not get overflown and hidden
-										// when the bar's value is too close to max value of scale
-										// Note: The y value is reverse, it counts from top down
-										if ((scale_max - model.y) / scale_max >= 0.93)
-											y_pos = model.y + 20;
-										// ctx.fillText(dataset.data[i], model.x, y_pos);
-										ctx.fillText(label, left + 10, model.y + 8);
+											this.data.datasets.forEach(function(dataset, i) {
+												var meta = chartInstance.controller.getDatasetMeta(i);
+												meta.data.forEach(function(bar, index) {
+													var data = dataset.data[index];
+													ctx.fillText(data, bar._model.x, bar._model.y - 5);
+												});
+											});
+										}
+									},
+									scales: {
+										xAxes: [{
+											ticks: {
+												fontColor: 'white'
+											}
+										}],
+										yAxes: [{
+											gridLines: {
+												zeroLineColor: 'grey',
+												color: 'grey'
+											},
+											ticks: {
+												max: Math.max(...data.datasets[0].data) + 10,
+												beginAtZero: true,
+												fontColor: 'white'
+											}
+										}]
 									}
-								});
-							}
-						}
-					};
+								}
+							});
+						</script>
+					</div>
 
-					var lineChart = new Chart(kanvaskbli, {
-						type: 'horizontalBar',
-						data: nilai,
-						options: chartOptions
-					});
-				</script>
+					<div class="col-lg-6 col-12 text-center isi-investasi">
+
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Grafik Realisasi Investasi (Rp. M)</h5>
+						<hr style="border: 1px solid; background-color: white;">
+
+						<h6 class="text-center"> Periode
+							<?php
+							$no = 1;
+							foreach ($periode_grafik_investasi->result() as $graph) {
+							?>
+								<?= date("Y", strtotime($graph->tgl_awal)); ?> s/d <?= date("Y", strtotime($graph->tgl_akhir)); ?>
+							<?php } ?>
+						</h6>
+						<canvas id="myChart2"></canvas>
+						<?php
+						$tahun_investasi = "";
+						$total = null;
+						$total2 = null;
+						foreach ($grafik_investasi->result() as $item) {
+							$nama = $item->tahun;
+							$tahun_investasi .= "'$nama'" . ", ";
+							$jum = $item->nilai;
+							$total .= "$jum" . ", ";
+							$jum2 = $item->nilai2;
+							$total2 .= "$jum2" . ", ";
+						}
+						?>
+						<script>
+							var tahun = new Date().getFullYear();
+							var ctx = document.getElementById('myChart2').getContext('2d');
+							var data = {
+								labels: [<?php echo $tahun_investasi; ?>],
+								datasets: [{
+									label: "Target",
+									backgroundColor: '#f5542e',
+									data: [<?php echo $total; ?>]
+								}, {
+									label: "Realisasi",
+									backgroundColor: '#008b6e',
+									data: [<?php echo $total2; ?>]
+								}]
+							};
+							var chart = new Chart(ctx, {
+								type: 'bar',
+								data: data,
+								options: {
+									legend: {
+										labels: {
+											fontColor: 'white'
+										}
+									},
+									"hover": {
+										"animationDuration": 0
+									},
+									"animation": {
+										"duration": 1,
+										"onComplete": function() {
+											var chartInstance = this.chart,
+												ctx = chartInstance.ctx;
+
+											ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+											ctx.textAlign = 'center';
+											ctx.textBaseline = 'bottom';
+
+											this.data.datasets.forEach(function(dataset, i) {
+												var meta = chartInstance.controller.getDatasetMeta(i);
+												meta.data.forEach(function(bar, index) {
+													var data = dataset.data[index];
+													ctx.fillText(data, bar._model.x, bar._model.y - 5);
+												});
+											});
+										}
+									},
+									tooltips: {
+										mode: 'index',
+										intersect: true
+									},
+									responsive: true,
+									scales: {
+										xAxes: [{
+											ticks: {
+												fontColor: 'white'
+											}
+										}],
+										yAxes: [{
+											gridLines: {
+												zeroLineColor: 'grey',
+												color: 'grey'
+											},
+											ticks: {
+												max: Math.max(...data.datasets[0].data) + 650,
+												beginAtZero: true,
+												fontColor: 'white'
+											}
+										}]
+									}
+								}
+							});
+						</script>
+					</div>
+
+					<div class="col-lg-12 text-center text-light bg-dark isi-investasi">
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Grafik Izin Diterbitkan (Tahun)</h5>
+						<hr style="border: 1px solid; background-color: white;">
+						<canvas id="myChart4"></canvas>
+						<?php
+						$datasets = [];
+						$labels = [];
+						foreach ($grafik_tahun as $item) {
+							$labels[] = $item->izin; // Pastikan 'izin' adalah properti yang benar dalam data grafik
+						}
+						foreach ($tahun_fields as $field) {
+							$data_values = [];
+							foreach ($grafik_tahun as $item) {
+								$data_values[] = $item->{$field->Field};
+							}
+							$datasets[] = [
+								'label' => "Tahun " . str_replace('thn', '', $field->Field),
+								'backgroundColor' => '#' . substr(md5(rand()), 0, 6),
+								'data' => $data_values
+							];
+						}
+						?>
+						<script>
+							var ctx = document.getElementById('myChart4').getContext('2d');
+							var data = {
+								labels: <?php echo json_encode($labels); ?>,
+								datasets: <?php echo json_encode($datasets); ?>
+							};
+							var chart = new Chart(ctx, {
+								type: 'bar',
+								data: data,
+								options: {
+									legend: {
+										labels: {
+											fontColor: 'white'
+										}
+									},
+									hover: {
+										animationDuration: 0
+									},
+									animation: {
+										duration: 1,
+										onComplete: function() {
+											var chartInstance = this.chart,
+												ctx = chartInstance.ctx;
+
+											ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+											ctx.textAlign = 'center';
+											ctx.textBaseline = 'bottom';
+
+											this.data.datasets.forEach(function(dataset, i) {
+												var meta = chartInstance.controller.getDatasetMeta(i);
+												meta.data.forEach(function(bar, index) {
+													var data = dataset.data[index];
+													ctx.fillText(data, bar._model.x, bar._model.y - 5);
+												});
+											});
+										}
+									},
+									tooltips: {
+										mode: 'index',
+										intersect: true
+									},
+									responsive: true,
+									scales: {
+										xAxes: [{
+											ticks: {
+												fontColor: 'white'
+											},
+											gridLines: {
+												display: true, // Tampilkan garis x
+												color: 'rgba(255, 255, 255, 0.2)' // Warna garis x
+											},
+										}],
+										yAxes: [{
+											ticks: {
+												beginAtZero: true,
+												fontColor: 'white'
+											},
+											gridLines: {
+												display: true, // Tampilkan garis y
+												color: 'rgba(255, 255, 255, 0.2)' // Warna garis y
+											}
+										}]
+									}
+								}
+							});
+						</script>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="card-header text-center border-bottom border-top">
+				<h5 class="mt-2">Grafik OSS RBA</h5>
+			</div>
+			<div class="text-center mt-3">
+				<span>Periode <br>
+					<?php foreach ($periode_grafik_oss->result() as $graph) : ?>
+						<?= longdate_indo_nohari($graph->tgl_awal); ?> s/d <?= longdate_indo_nohari($graph->tgl_akhir); ?>
+					<?php endforeach; ?>
+				</span>
+			</div>
+			<div class="card-body">
+				<div class="row">
+
+					<div class="col-lg-6 col-12 text-center isi-investasi">
+
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Grafik NIB Diterbitkan</h5>
+						<hr style="border: 1px solid; background-color: white;">
+
+						<canvas id="grafiknib"></canvas>
+						<?php
+						$nama_nib = "";
+						$total = null;
+						foreach ($grafik_nib->result() as $item) {
+							$nama = $item->nib;
+							$nama_nib .= "'$nama'" . ", ";
+							$jum = $item->jumlah;
+							$total .= "$jum" . ", ";
+						}
+						?>
+						<script>
+							var kanvasnib = document.getElementById("grafiknib").getContext("2d");
+
+							Chart.defaults.global.defaultFontFamily = "Lato";
+							Chart.defaults.global.defaultFontSize = 12;
+
+							var nilai = {
+								labels: [<?php echo $nama_nib; ?>],
+								datasets: [{
+									label: "Jumlah",
+									data: [<?php echo $total; ?>],
+									backgroundColor: ['#8bfd43', '#fdfd43', '#8bfd43', '#fdfd43']
+								}]
+							};
+
+							var chartOptions = {
+								legend: {
+									display: false,
+									position: 'top',
+									labels: {
+										boxWidth: 10,
+										fontColor: 'white'
+									}
+								},
+								"hover": {
+									"animationDuration": 0
+								},
+								"animation": {
+									"duration": 1,
+									"onComplete": function() {
+										var chartInstance = this.chart,
+											ctx = chartInstance.ctx;
+
+										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+										ctx.textAlign = 'center';
+										ctx.textBaseline = 'bottom';
+
+										this.data.datasets.forEach(function(dataset, i) {
+											var meta = chartInstance.controller.getDatasetMeta(i);
+											meta.data.forEach(function(bar, index) {
+												var data = dataset.data[index];
+												ctx.fillText(data, bar._model.x, bar._model.y - 5);
+											});
+										});
+									}
+								},
+								scales: {
+									xAxes: [{
+										ticks: {
+											fontColor: 'white'
+										}
+									}],
+									yAxes: [{
+										ticks: {
+											beginAtZero: true,
+											fontColor: 'white'
+										}
+									}]
+								}
+							};
+
+							var lineChart = new Chart(kanvasnib, {
+								type: 'bar',
+								data: nilai,
+								options: chartOptions
+							});
+						</script>
+					</div>
+
+					<div class="col-lg-6 col-12 text-center isi-investasi">
+
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Grafik Sebaran Proyek Bedasarkan Risiko</h5>
+						<hr style="border: 1px solid; background-color: white;">
+
+						<div class="chart-container" style="width:70%; margin:auto;">
+							<canvas id="grafikrisiko" style="width:50% !important"></canvas>
+						</div>
+						<?php
+						$nama_risiko = "";
+						$total = null;
+						foreach ($grafik_risiko->result() as $item) {
+							$nama = $item->risiko;
+							$nama_risiko .= "'$nama'" . ", ";
+							$jum = $item->jumlah;
+							$total .= "$jum" . ", ";
+						}
+						?>
+						<script>
+							var kanvasrisiko = $("#grafikrisiko");
+
+							var nilai = {
+								labels: [<?php echo $nama_risiko; ?>],
+								datasets: [{
+									label: "Jumlah",
+									data: [<?php echo $total; ?>],
+									backgroundColor: ['#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
+								}]
+							};
+
+							var chartOptions = {
+								responsive: true,
+								legend: {
+									display: true,
+									position: 'top',
+									labels: {
+										boxWidth: 10,
+										fontColor: 'white'
+									}
+								}
+							};
+
+							var lineChart = new Chart(kanvasrisiko, {
+								plugins: ["ChartDataLabels"],
+								type: 'doughnut',
+								data: nilai,
+								options: chartOptions
+							});
+						</script>
+					</div>
+
+					<div class="col-lg-6 col-12 text-center isi-investasi">
+
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Grafik Sebaran Proyek Per Kecamatan Usaha</h5>
+						<hr style="border: 1px solid; background-color: white;">
+
+						<canvas id="grafikkecamatan" width="100%"></canvas>
+						<?php
+						$nama_kecamatan = "";
+						$total = null;
+						foreach ($grafik_kecamatan->result() as $item) {
+							$nama = $item->kecamatan;
+							$nama_kecamatan .= "'$nama'" . ", ";
+							$jum = $item->jumlah;
+							$total .= "$jum" . ", ";
+						}
+						?>
+						<script>
+							var kanvaskecamatan = document.getElementById("grafikkecamatan").getContext("2d");
+
+							Chart.defaults.global.defaultFontFamily = "Lato";
+							Chart.defaults.global.defaultFontSize = 12;
+
+							var nilai = {
+								labels: [<?php echo $nama_kecamatan; ?>],
+								datasets: [{
+									label: "Jumlah",
+									data: [<?php echo $total; ?>],
+									backgroundColor: ['#8bfd43', '#8bfd43', '#8bfd43', '#8bfd43', '#fdfd43', '#fdfd43', '#fdfd43', '#fdfd43', '#fe9643', '#fe9643', '#fe9643', '#fe9643', '#ff4442', '#ff4442', '#ff4442', '#ff4442']
+								}]
+							};
+
+							var chartOptions = {
+								indexAxis: 'y',
+								legend: {
+									display: false,
+									position: 'top',
+									labels: {
+										boxWidth: 10,
+										fontColor: 'white'
+									}
+								},
+								"hover": {
+									"animationDuration": 0
+								},
+								"animation": {
+									"duration": 1,
+									"onComplete": function() {
+										var chartInstance = this.chart,
+											ctx = chartInstance.ctx;
+
+										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+										ctx.textAlign = 'center';
+										ctx.textBaseline = 'bottom';
+
+										this.data.datasets.forEach(function(dataset, i) {
+											var meta = chartInstance.controller.getDatasetMeta(i);
+											meta.data.forEach(function(bar, index) {
+												var data = dataset.data[index];
+												ctx.fillText(data, bar._model.x, bar._model.y - 5);
+											});
+										});
+									}
+								},
+								scales: {
+									xAxes: [{
+										ticks: {
+											min: 0, // Edit the value according to what you need
+											fontColor: 'white'
+										}
+									}],
+									yAxes: [{
+										stacked: true,
+										ticks: {
+											fontColor: 'white'
+										}
+									}]
+								}
+							};
+
+							var lineChart = new Chart(kanvaskecamatan, {
+								type: 'horizontalBar',
+								data: nilai,
+								options: chartOptions
+							});
+						</script>
+					</div>
+
+					<div class="col-lg-6 col-12 text-center isi-investasi">
+
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Grafik Top 5 KBLI</h5>
+						<hr style="border: 1px solid; background-color: white;">
+
+						<canvas id="grafikkbli" width="100%"></canvas>
+						<?php
+						$nama_kbli = "";
+						$total = null;
+						foreach ($grafik_kbli->result() as $item) {
+							$kbli = $item->kbli;
+							$nama_kbli .= "'$kbli'" . ", ";
+							$jum = $item->jumlah;
+							$total .= "$jum" . ", ";
+						}
+						?>
+						<script>
+							var kanvaskbli = document.getElementById("grafikkbli").getContext("2d");
+
+							Chart.defaults.global.defaultFontFamily = "Lato";
+							Chart.defaults.global.defaultFontSize = 12;
+
+							var nilai = {
+								labels: [<?php echo $nama_kbli; ?>],
+								datasets: [{
+									label: "Jumlah",
+									data: [<?php echo $total; ?>],
+									backgroundColor: ['#42ccff', '#8bfd43', '#fdfd43', '#fe9643', '#ff4442']
+								}]
+							};
+
+							var chartOptions = {
+								indexAxis: 'y',
+								legend: {
+									display: false,
+									position: 'top',
+									labels: {
+										boxWidth: 10,
+										fontColor: 'white'
+									}
+								},
+								scales: {
+									xAxes: [{
+										ticks: {
+											min: 0, // Edit the value according to what you need
+											fontColor: 'white'
+										}
+									}],
+									yAxes: [{
+										stacked: true,
+										ticks: {
+											mirror: true,
+											fontColor: 'white'
+										}
+									}]
+								},
+								events: false,
+								showTooltips: true,
+								animation: {
+									duration: 500,
+									easing: "easeOutQuart",
+									onComplete: function() {
+										var ctx = this.chart.ctx;
+										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+										ctx.textAlign = 'left';
+										ctx.textBaseline = 'bottom';
+										this.data.datasets.forEach(function(dataset) {
+											console.log(dataset);
+											for (var i = 0; i < dataset.data.length; i++) {
+												var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
+													scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+												left = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.left;
+												offset = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.longestLabelWidth;
+												ctx.fillStyle = '#000';
+												var y_pos = model.y - 5;
+												var label = model.label;
+												// Make sure data value does not get overflown and hidden
+												// when the bar's value is too close to max value of scale
+												// Note: The y value is reverse, it counts from top down
+												if ((scale_max - model.y) / scale_max >= 0.93)
+													y_pos = model.y + 20;
+												// ctx.fillText(dataset.data[i], model.x, y_pos);
+												ctx.fillText(label, left + 10, model.y + 8);
+											}
+										});
+									}
+								}
+							};
+
+							var lineChart = new Chart(kanvaskbli, {
+								type: 'horizontalBar',
+								data: nilai,
+								options: chartOptions
+							});
+						</script>
+					</div>
+
+				</div>
 			</div>
 
 		</div>
+
 	</div>
 </section>
 <!-- close grafik -->

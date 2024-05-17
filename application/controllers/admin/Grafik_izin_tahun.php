@@ -1,0 +1,125 @@
+<?php
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class Grafik_izin_tahun extends CI_controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('username') == "") {
+            redirect('login');
+        }
+
+        // load models
+        $this->load->model('Model_grafik_izin_tahun');
+    }
+
+    public function index()
+    {
+        $data = [
+            'idmax' => $this->Model_grafik_izin_tahun->idmax(),
+            'grafik' => $this->Model_grafik_izin_tahun->tampil_data(),
+            'tahun_fields' => $this->Model_grafik_izin_tahun->tampil_data_tahun()
+        ];
+
+        $this->load->view('templates/header_admin');
+        $this->load->view('templates/navbar_admin');
+        $this->load->view('admin/grafik_izin_tahun', $data);
+
+        // load modal
+        $this->load->view('modal/modal_tambah_grafik_izin_tahun');
+        $this->load->view('edit/edit_grafik_izin_tahun', $data);
+        // end of load modal
+
+        $this->load->view('templates/footer_admin');
+    }
+
+    public function tambah()
+    {
+        $izin = $this->input->post('izin', true);
+        $id = $this->input->post('id', true);
+
+        // Ambil semua tahun yang ada di database
+        $tahun_fields = $this->Model_grafik_izin_tahun->tampil_data_tahun();
+
+        $data = [
+            'id_grafik' => $id,
+            'izin' => $izin
+        ];
+
+        // Loop melalui setiap tahun dan tambahkan ke data array
+        foreach ($tahun_fields as $field) {
+            $year = str_replace('thn', '', $field->Field);
+            $data['thn' . $year] = $this->input->post('thn' . $year, true);
+        }
+
+        $this->Model_grafik_izin_tahun->input($data);
+        $this->session->set_flashdata("berhasil", "Tambah data <b>$izin</b> berhasil !");
+        redirect('admin/grafik_izin_tahun');
+    }
+
+
+    public function ubah()
+    {
+        $id = $this->input->post('id', true);
+        $izin = $this->input->post('izin', true);
+
+        // Ambil semua tahun yang ada di database
+        $tahun_fields = $this->Model_grafik_izin_tahun->tampil_data_tahun();
+
+        $data = [
+            'id_grafik' => $id,
+            'izin' => $izin
+        ];
+
+        // Loop melalui setiap tahun dan tambahkan ke data array
+        foreach ($tahun_fields as $field) {
+            $year = str_replace('thn', '', $field->Field);
+            $data['thn' . $year] = $this->input->post('thn' . $year, true);
+        }
+
+        $this->Model_grafik_izin_tahun->update($data, $id);
+        $this->session->set_flashdata("berhasil", "Ubah data <b>$izin</b> berhasil !");
+        redirect('admin/grafik_izin_tahun');
+    }
+
+
+    public function hapus($id)
+    {
+        $row = $this->db->get_where('grafik_izin_tahun', ['id_grafik' => $id])->row();
+
+        if ($row) {
+            $this->Model_grafik_izin_tahun->delete($id);
+            $this->session->set_flashdata("berhasil", "Hapus data <b>{$row->izin}</b> berhasil !");
+        } else {
+            $this->session->set_flashdata("gagal", "Data tidak ditemukan atau sudah dihapus.");
+        }
+
+        redirect('admin/grafik_izin_tahun');
+    }
+
+
+    public function tambah_field_tahun()
+    {
+        $tahun = $this->input->post('tahun');
+
+        if ($tahun) {
+            $field_name = 'thn' . $tahun;
+            $this->Model_grafik_izin_tahun->add_tahun($field_name);
+        }
+        $this->session->set_flashdata("berhasil", "Tahun <b>$tahun</b> berhasil ditambahkan!");
+        redirect('admin/grafik_izin_tahun');
+    }
+
+    public function hapus_field_tahun()
+    {
+        $tahun = $this->input->post('tahun');
+
+        if ($tahun) {
+            $field_name = 'thn' . $tahun;
+            $this->Model_grafik_izin_tahun->delete_tahun($field_name);
+        }
+        $this->session->set_flashdata("berhasil", "Hapus data <b>$tahun</b> berhasil !");
+        redirect('admin/grafik_izin_tahun');
+    }
+}
