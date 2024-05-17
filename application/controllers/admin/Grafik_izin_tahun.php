@@ -101,25 +101,61 @@ class Grafik_izin_tahun extends CI_controller
 
     public function tambah_field_tahun()
     {
-        $tahun = $this->input->post('tahun');
+        $tahun = $this->input->post('tahun', true);
 
         if ($tahun) {
             $field_name = 'thn' . $tahun;
+
+            // Cek apakah tahun sudah ada di database
+            $tahun_fields = $this->Model_grafik_izin_tahun->tampil_data_tahun();
+            foreach ($tahun_fields as $field) {
+                $year = str_replace('thn', '', $field->Field);
+                if ($year == $tahun) {
+                    $this->session->set_flashdata("gagal", "Tahun <b>$tahun</b> sudah ada!");
+                    redirect('admin/grafik_izin_tahun');
+                    return;
+                }
+            }
+
+            // Jika tahun belum ada, tambahkan field tahun baru
             $this->Model_grafik_izin_tahun->add_tahun($field_name);
+            $this->session->set_flashdata("berhasil", "Tahun <b>$tahun</b> berhasil ditambahkan!");
+        } else {
+            $this->session->set_flashdata("gagal", "Tahun tidak boleh kosong!");
         }
-        $this->session->set_flashdata("berhasil", "Tahun <b>$tahun</b> berhasil ditambahkan!");
+
         redirect('admin/grafik_izin_tahun');
     }
 
+
     public function hapus_field_tahun()
     {
-        $tahun = $this->input->post('tahun');
+        $tahun = $this->input->post('tahun', true);
 
         if ($tahun) {
             $field_name = 'thn' . $tahun;
-            $this->Model_grafik_izin_tahun->delete_tahun($field_name);
+
+            // Cek apakah tahun sudah ada
+            $tahun_fields = $this->Model_grafik_izin_tahun->tampil_data_tahun();
+            $exists = false;
+            foreach ($tahun_fields as $field) {
+                if ($field->Field == $field_name) {
+                    $exists = true;
+                    break;
+                }
+            }
+
+            if ($exists) {
+                // Hapus field tahun dari database
+                $this->Model_grafik_izin_tahun->delete_tahun($field_name);
+                $this->session->set_flashdata("berhasil", "Tahun <b>$tahun</b> berhasil dihapus!");
+            } else {
+                $this->session->set_flashdata("gagal", "Tahun <b>$tahun</b> tidak ditemukan!");
+            }
+        } else {
+            $this->session->set_flashdata("gagal", "Tahun tidak boleh kosong!");
         }
-        $this->session->set_flashdata("berhasil", "Hapus data <b>$tahun</b> berhasil !");
+
         redirect('admin/grafik_izin_tahun');
     }
 }

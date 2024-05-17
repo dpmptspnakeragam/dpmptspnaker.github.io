@@ -14,12 +14,6 @@ class Model_grafik_izin_tahun extends CI_model
         return $query->result();
     }
 
-    public function delete_tahun($field_name)
-    {
-        $this->load->dbforge();
-        $this->dbforge->drop_column('grafik_izin_tahun', $field_name);
-    }
-
     public function idmax()
     {
         $this->db->select_max('id_grafik', 'idmax');
@@ -57,5 +51,11 @@ class Model_grafik_izin_tahun extends CI_model
             )
         );
         $this->dbforge->add_column('grafik_izin_tahun', $fields);
+    }
+
+    public function delete_tahun($field_name)
+    {
+        $this->load->dbforge();
+        $this->dbforge->drop_column('grafik_izin_tahun', $field_name);
     }
 }

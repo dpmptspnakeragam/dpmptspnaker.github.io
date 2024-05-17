@@ -432,7 +432,8 @@
 								yAxes: [{
 									ticks: {
 										beginAtZero: true,
-										fontColor: 'white'
+										fontColor: 'white',
+										suggestedMax: 100
 									},
 									gridLines: {
 										display: true,
@@ -669,7 +670,7 @@
 						$datasets = [];
 						$labels = [];
 						foreach ($grafik_tahun as $item) {
-							$labels[] = $item->izin; // Pastikan 'izin' adalah properti yang benar dalam data grafik
+							$labels[] = $item->izin;
 						}
 						foreach ($tahun_fields as $field) {
 							$data_values = [];

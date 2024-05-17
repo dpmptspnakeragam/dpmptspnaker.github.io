@@ -43,7 +43,7 @@
 
                     <form class="form-inline mt-3" action="<?php echo base_url('admin/grafik_izin_tahun/hapus_field_tahun'); ?>" method="post">
                         <div class="form-group">
-                            <select name="tahun" class="form-control form-control-sm mr-2">
+                            <select name="tahun" class="form-control form-control-sm mr-2" required>
                                 <option selected disabled>Pilih Hapus</option>
                                 <?php foreach ($tahun_fields as $tahun) : ?>
                                     <option value="<?= str_replace('thn', '', $tahun->Field); ?>"><?= str_replace('thn', '', $tahun->Field); ?></option>
