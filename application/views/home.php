@@ -221,13 +221,13 @@
 				</p>
 				<div class="row isi-pelayanan text-center">
 					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/fpp.png" alt="gambarsp" width="100%">Formulir & Persyaratan Perizinan</a>
-					</div>
-					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
 						<a href="#" class="pilih-pelayanan" data-toggle="modal" data-target="#StandarPelayanan" data-pdf-url="<?= base_url('assets/fileupload/Standar_Pelayanan.pdf'); ?>" data-download-url="<?= base_url('assets/fileupload/Standar_Pelayanan.pdf'); ?>">
 							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sp.jpg" alt="gambarsp" width="100%">
 							Standar Pelayanan
 						</a>
+					</div>
+					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+						<a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/fpp.png" alt="gambarsp" width="100%">Formulir & Persyaratan Perizinan</a>
 					</div>
 					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
 						<a href="https://sicantik.go.id/#/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%">SiCantik</a>
@@ -1363,14 +1363,16 @@
 </script>
 
 
-<marquee class=" layer-1 fixed-bottom bg-dark text-light text-center">
+<marquee class="layer-1 fixed-bottom bg-dark text-light text-center">
 	<span width="100%">
-		<?php foreach ($teks->result() as $running) {
-		?>
-			<img class="ml-3 mr-3" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="15px"> <?php echo $running->teks; ?>
-		<?php } ?>
+		<?php for ($i = 0; $i < 10; $i++) : ?>
+			<?php foreach ($teks->result() as $running) : ?>
+				<img class="ml-3 mr-3" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam" width="15px"> <?php echo $running->teks; ?>
+			<?php endforeach; ?>
+		<?php endfor; ?>
 	</span>
 </marquee>
+
 <!--End of Tawk.to Script-->
 <script>
 	$('.carousel-item', '.multi-item-carousel').each(function() {
