@@ -1,7 +1,7 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Standar_Pelayanan extends CI_Controller
+class Standar_Pelayanan extends CI_controller
 {
 
     public function __construct()
