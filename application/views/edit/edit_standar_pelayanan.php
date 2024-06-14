@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('admin/Standar_Pelayanan/update'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('admin/standar_pelayanan/update'); ?>" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <input type="hidden" name="id_sp" value="<?= $pdf->id_sp; ?>">
                     <div class="form-group">

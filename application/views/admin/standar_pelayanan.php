@@ -50,7 +50,7 @@
                             <?php endif; ?>
                             <br><br>
                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalUpdateSP"><i class="fa fa-edit"></i> Edit</button>
-                            <a href="<?= base_url('admin/Standar_Pelayanan/delete/' . $pdf->id_sp); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="fa fa-trash"></i> Delete</a>
+                            <a href="<?= base_url('admin/standar_pelayanan/delete/' . $pdf->id_sp); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="fa fa-trash"></i> Delete</a>
                         </div>
                     </div>
                 <?php else : ?>
