@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Standar_Pelayanan extends CI_controller
+class Standar_pelayanan extends CI_controller
 {
 
     public function __construct()
@@ -53,7 +53,7 @@ class Standar_Pelayanan extends CI_controller
                 $this->session->set_flashdata('gagal', $this->upload->display_errors());
             }
         }
-        redirect('admin/Standar_Pelayanan');
+        redirect('admin/standar_pelayanan');
     }
 
 
@@ -89,7 +89,7 @@ class Standar_Pelayanan extends CI_controller
                 $this->session->set_flashdata('gagal', $this->upload->display_errors());
             }
         }
-        redirect('admin/Standar_Pelayanan');
+        redirect('admin/standar_pelayanan');
     }
 
 
@@ -111,8 +111,8 @@ class Standar_Pelayanan extends CI_controller
         } else {
             $this->session->set_flashdata('gagal', 'PDF tidak ditemukan');
         }
-        redirect('admin/Standar_Pelayanan');
+        redirect('admin/standar_pelayanan');
     }
 }
 
-/* End of file Standar_Pelayanan.php */
+/* End of file standar_pelayanan.php */
