@@ -25,7 +25,6 @@ class Standar_Pelayanan extends CI_controller
 
         // load modal tambah dan edit
         $this->load->view('modal/modal_tambah_standar_pelayanan');
-
         $this->load->view('edit/edit_standar_pelayanan', $data, FALSE);
     }
 
