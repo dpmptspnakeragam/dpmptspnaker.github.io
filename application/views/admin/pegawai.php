@@ -76,6 +76,7 @@
                     </table>
                 </div>
                 <!--end: Accordion -->
+<<<<<<< HEAD
 
                 <!-- <h3 class="text-center">Pejabat DPMPTSP Kabupaten Agam</h3>
                 <hr> -->
@@ -119,6 +120,8 @@
                 </div> -->
                 <!--end: Accordion -->
 
+=======
+>>>>>>> 7808f97247d040ca8eac40ef381726bc753960db
             </div>
         </div>
     </div>
