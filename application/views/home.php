@@ -1124,15 +1124,22 @@
 			</div>
 			<div class="col-lg-6 text-left">
 				<p>
-					<i class="icon-home">
-					</i>
-					<strong>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu
-					</strong>
+					<i class="icon-home"></i>
+					<strong>Dinas Penanaman Modal Pelayanan Terpadu Satu Pintu</strong>
 					<br>
-					<i class="fa fa-map-pin">
-					</i> Jl.Veteran No.1 Padang Baru,
-					Lubuk Basung Kabupaten Agam
+					<i class="fa fa-map-pin"></i>
+					Jl.Veteran No.1 Padang Baru, Lubuk Basung Kabupaten Agam
 				</p>
+				<p>
+					<i class="icon-home"></i>
+					<strong>Kantor Pelayanan Bersama</strong>
+					<br>
+					<i class="fa fa-map-pin"></i>
+					Jl. Perwira, Belakang Balok, Kota Bukittinggi
+				</p>
+
+				<!-- <div class="bg-white mb-3" style="height: 1px ;"></div> -->
+
 				<p>
 					<i class="fa fa-clock">
 					</i> Jam Operasional :

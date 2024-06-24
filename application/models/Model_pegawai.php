@@ -7,7 +7,7 @@ class Model_pegawai extends CI_model
         $this->db->select('*');
         $this->db->from('pegawai');
         $this->db->join('kabid', 'pegawai.id_kabid = kabid.id_kabid');
-        $this->db->order_by('id_pegawai', 'ASC');
+        $this->db->order_by('no_urut', 'ASC');
         $query = $this->db->get();
         return $query;
     }
@@ -35,6 +35,11 @@ class Model_pegawai extends CI_model
         $this->db->from('pegawai');
         $query = $this->db->get();
         return $query;
+    }
+
+    public function get_total_count()
+    {
+        return $this->db->count_all('pegawai');
     }
 
     public function input($data)

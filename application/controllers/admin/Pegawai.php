@@ -15,6 +15,7 @@ class Pegawai extends CI_controller
         $data['kabid'] = $this->Model_pegawai->tampil_kabid();
         $data['pegawai'] = $this->Model_pegawai->tampil_pegawai();
         $data['idmax'] = $this->Model_pegawai->idmax();
+        $data['no_urut'] = $this->Model_pegawai->get_total_count() + 1;
         $this->load->view('templates/header_admin');
         $this->load->view('templates/navbar_admin');
         $this->load->view('admin/pegawai', $data);
@@ -27,6 +28,7 @@ class Pegawai extends CI_controller
     public function tambah()
     {
         $id_pegawai = $this->input->post('id_pegawai', true);
+        $no_urut = $this->input->post('no_urut', true);
         $id_kabid = $this->input->post('id_kabid', true);
         $nama = $this->input->post('nama', true);
         $gambar = $_FILES['gambar']['name'];
@@ -49,6 +51,7 @@ class Pegawai extends CI_controller
         }
         $data = array(
             'id_pegawai' => $id_pegawai,
+            'no_urut' => $no_urut,
             'id_kabid' => $id_kabid,
             'nama' => $nama,
             'nip' => $nip,
@@ -66,6 +69,7 @@ class Pegawai extends CI_controller
     public function ubah_pegawai()
     {
         $id_pegawai = $this->input->post('id_pegawai', true);
+        $no_urut = $this->input->post('no_urut', true);
         $id_kabid = $this->input->post('id_kabid', true);
         $nama = $this->input->post('nama', true);
         $gambar = $_FILES['gambar']['name'];
@@ -89,6 +93,7 @@ class Pegawai extends CI_controller
         }
         $data = array(
             'id_pegawai' => $id_pegawai,
+            'no_urut' => $no_urut,
             'id_kabid' => $id_kabid,
             'nama' => $nama,
             'nip' => $nip,

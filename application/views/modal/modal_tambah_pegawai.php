@@ -17,9 +17,12 @@
                         </div>
                     <?php } ?>
                     <div class="form-group">
+                        <label for="no_urut">No</label>
+                        <input id="no_urut" class="form-control" name="no_urut" placeholder="Nomor Urut" value="<?= isset($no_urut) ? $no_urut : '' ?>" required>
+                    </div>
+                    <div class="form-group">
                         <label for="pelatihan">Nama</label>
                         <input class="form-control" name="nama" placeholder="Nama Pegawai" required>
-
                     </div>
                     <div class="form-group">
                         <label for="persyaratan">NIP</label>
