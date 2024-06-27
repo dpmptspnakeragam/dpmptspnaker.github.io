@@ -1110,7 +1110,7 @@
 
 <!-- kontak -->
 <section class="kontak" id="kontak">
-	<div class="container text-center">
+	<div class="container-fluid text-center">
 		<div class="row">
 			<div class="col-lg-12 mt-4 ">
 				<h1 class="judul-kontak"><b>Kontak</b></h1>
@@ -1288,8 +1288,10 @@
 					<p class="text-left text-light mt-4"><a href="#" class="closeButton"><i class="ikon fa fa-times-circle"></i></a></p>
 					<?php foreach ($banner->result() as $row) : ?>
 						<div class="form-group mt-4">
-							<strong class="d-flex justify-content-center align-items-center text-light"><?= $row->teks; ?></strong>
-							<img width="100%" class="banner img-responsive" src="<?= base_url('assets/imgupload/' . $row->gambar); ?>" alt="Gambar Banner" />
+							<strong class="text-light d-flex justify-content-center align-items-center"><?= $row->teks; ?></strong>
+							<div class="d-flex justify-content-center align-items-center">
+								<img width="80%" class="banner img-responsive" src="<?= base_url('assets/imgupload/' . $row->gambar); ?>" alt="Gambar Banner" />
+							</div>
 						</div>
 					<?php endforeach ?>
 				</div>
