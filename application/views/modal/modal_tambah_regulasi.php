@@ -7,8 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form role="form" action="<?= base_url(); ?>admin/regulasi/tambah" method="post" enctype="multipart/form-data">
+            <form role="form" action="<?= base_url(); ?>admin/regulasi/tambah" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
                     <?php foreach ($idmax->result() as $row) {
                     ?>
                         <div hidden class="form-group">
@@ -28,13 +28,13 @@
                     </div>
                     <div class="form-group">
                         <label for="formulir">Dokumen</label>
-                        <input type="file" name="file">
+                        <input type="file" class="form-control border-0" name="file">
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                </div>
             </form>
         </div>
     </div>
