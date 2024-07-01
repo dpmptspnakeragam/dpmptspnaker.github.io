@@ -9,34 +9,31 @@
                 </button>
             </div>
             <div class="modal-body">
-                <iframe id="pdfPreview" src="" style="width:100%; height:500px;" frameborder="0"></iframe>
-                <p id="noPdfMessage" class="text-center text-danger mt-3" style="display:none;">PDF tidak tersedia.</p>
-            </div>
-            <div class="modal-footer">
-                <a id="downloadButton" href="#" class="btn btn-primary" download style="display:none;">Download PDF</a> <!-- Tombol download defaultnya diatur tidak muncul -->
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <?php if (!empty($pdf)) : ?>
+                    <?php foreach ($pdf as $file) : ?>
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><?= $file->title; ?></h5>
+                                <?php if (file_exists('./assets/fileupload/' . $file->file_name)) : ?>
+                                    <embed src="<?= base_url('assets/fileupload/' . $file->file_name); ?>" type="application/pdf" width="100%" height="500px" />
+                                <?php else : ?>
+                                    <p>File PDF tidak tersedia.</p>
+                                <?php endif; ?>
+                            </div>
+                            <?php if (file_exists('./assets/fileupload/' . $file->file_name)) : ?>
+                                <div class="card-footer text-center">
+                                    <a href="<?= base_url('assets/fileupload/' . $file->file_name); ?>" class="btn btn-primary" download>Download File</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <div class="alert alert-warning" role="alert">
+                        Data PDF tidak ditemukan.
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('#StandarPelayanan').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var pdfUrl = button.data('pdf-url');
-            var modal = $(this);
-
-            if (pdfUrl) {
-                modal.find('#pdfPreview').attr('src', pdfUrl);
-                modal.find('#downloadButton').attr('href', pdfUrl);
-                modal.find('#downloadButton').show();
-                modal.find('#noPdfMessage').hide(); // Sembunyikan pesan jika PDF tersedia
-            } else {
-                modal.find('#pdfPreview').hide(); // Sembunyikan preview jika PDF tidak tersedia
-                modal.find('#downloadButton').hide();
-                modal.find('#noPdfMessage').show(); // Tampilkan pesan jika PDF tidak tersedia
-            }
-        });
-    });
-</script>

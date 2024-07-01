@@ -10,13 +10,20 @@
             </div>
             <form action="<?= base_url('admin/standar_pelayanan/tambah'); ?>" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
+                    <?php foreach ($idmax->result() as $row) {
+                    ?>
+                        <div hidden class="form-group">
+                            <label>Id</label>
+                            <input type="text" class="form-control" id="id" name="id" value="<?= $row->idmax + 1; ?>">
+                        </div>
+                    <?php } ?>
                     <div class="form-group">
                         <label for="title">Nama File</label>
                         <input type="text" class="form-control" id="title" name="title" required>
                     </div>
                     <div class="form-group">
-                        <label for="pdf_file">PDF File</label>
-                        <input type="file" class="form-control" id="pdf_file" name="pdf_file" required>
+                        <label for="file_name">Upload File</label>
+                        <input type="file" class="form-control" id="file_name" name="file_name" required>
                     </div>
                 </div>
                 <div class="modal-footer">

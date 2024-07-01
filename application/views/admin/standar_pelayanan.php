@@ -32,27 +32,29 @@
                             </button>
                         </div>
                     <?php endif; ?>
-
                     <?php if (empty($pdf)) : ?>
                         <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalTambahSP"><i class="fa fa-plus fa-fw"></i> Tambah Data</button>
                     <?php endif; ?>
 
                 </div><br>
+
                 <!-- start: Display PDF -->
                 <?php if (!empty($pdf)) : ?>
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Nama File: <?= $pdf->title; ?></h5>
-                            <?php if (file_exists('./assets/fileupload/' . $pdf->title)) : ?>
-                                <embed src="<?= base_url('assets/fileupload/' . $pdf->title); ?>" type="application/pdf" width="100%" height="500px" />
-                            <?php else : ?>
-                                <p>File PDF tidak tersedia.</p>
-                            <?php endif; ?>
-                            <br><br>
-                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalUpdateSP"><i class="fa fa-edit"></i> Edit</button>
-                            <a href="<?= base_url('admin/standar_pelayanan/delete/' . $pdf->id_sp); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="fa fa-trash"></i> Delete</a>
+                    <?php foreach ($pdf as $file) : ?>
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><?= $file->title; ?></h5>
+                                <?php if (file_exists('./assets/fileupload/' . $file->file_name)) : ?>
+                                    <embed src="<?= base_url('assets/fileupload/' . $file->file_name); ?>" type="application/pdf" width="100%" height="500px" />
+                                <?php else : ?>
+                                    <p>File PDF tidak tersedia.</p>
+                                <?php endif; ?>
+                                <br><br>
+                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalUpdateSP<?= $file->id_sp; ?>"><i class="fa fa-edit"></i> Edit</button>
+                                <a href="<?= base_url('admin/standar_pelayanan/delete/' . $file->id_sp); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="fa fa-trash"></i> Delete</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
                 <?php else : ?>
                     <div class="alert alert-warning" role="alert">
                         Data PDF tidak ditemukan.

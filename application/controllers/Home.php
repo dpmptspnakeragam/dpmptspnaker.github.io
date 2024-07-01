@@ -27,6 +27,8 @@ class Home extends CI_Controller
 
 		$this->load->model('Model_pegawai');
 		$this->load->model('Model_pengaduan');
+
+		$this->load->model('Model_standar_pelayanan');
 	}
 
 	public function index()
@@ -64,6 +66,8 @@ class Home extends CI_Controller
 		$bulanini = isset($dbbulanini->hits) ? ($dbbulanini->hits) : 0;
 
 		$data = [
+
+
 			'pengunjunghariini' 	=> $pengunjunghariini,
 			'totalpengunjung' 		=> $totalpengunjung,
 			'pengunjungonline' 		=> $pengunjungonline,
@@ -99,6 +103,9 @@ class Home extends CI_Controller
 			'grafik_kbli' 			=> $this->Model_grafik_nib->tampil_data_kbli(),
 			'pengaturan' 			=> $this->Model_pengaturan->tampil_data(),
 			'kadis' 				=> $this->Model_kadis->tampil_kadis(),
+
+
+			'pdf' 					=> $this->Model_standar_pelayanan->tampil_data(),
 		];
 
 		// $data['grafik_tahun'] = $this->Model_grafik_izin_tahun->tampil_data();
