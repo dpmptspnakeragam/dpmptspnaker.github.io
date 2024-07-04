@@ -1,5 +1,5 @@
 <div class="modal fade" id="ModalTambahGrafikSkm" tabindex="-1" role="dialog" aria-labelledby="ModalTambahgrafikLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-light">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Grafik Survaey Kepuasan Masyarakat</h5>

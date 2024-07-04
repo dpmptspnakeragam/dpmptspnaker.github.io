@@ -304,8 +304,6 @@
 </section>
 <!-- close Investasi -->
 
-
-
 <!-- Pengaduan -->
 <section class="pengaduan" id="pengaduan">
 	<div class="container-fluid">
@@ -349,107 +347,133 @@
 				</div>
 			</div>
 
-			<div class="card col-lg-12 text-center text-light bg-dark isi-investasi p-3">
-
-				<div class="card-header text-center border-bottom">
-					<h5>Grafik Survey Kepuasan Masyarakat</h5>
-				</div>
-
-				<canvas id="myChart3"></canvas>
-
-				<hr style="border: none; height: 1px; background-color: white;">
-
-				<span class="small">Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang) : 65,00 - 76,60 | D (Sangat Kurang) : 25,00 - 64,99</span>
-				<?php
-				$labels = [];
-				$data_semester1 = [];
-				$data_semester2 = [];
-				$colors_semester1 = []; // Warna untuk Semester I
-				$colors_semester2 = []; // Warna untuk Semester II
-				foreach ($grafik_skm->result() as $item) {
-					$labels[] = $item->tahun;
-					$data_semester1[] = number_format($item->nilai, 2, '.', ''); // Mengatur tampilan angka menjadi dua angka di belakang koma
-					$data_semester2[] = number_format($item->nilai2, 2, '.', ''); // Mengatur tampilan angka menjadi dua angka di belakang koma
-				}
-				// Menghasilkan warna secara dinamis untuk Semester I dan II
-				$colors_semester1 = "rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.8)";
-				$colors_semester2 = "rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.8)";
-				?>
-				<script>
-					var ctx = document.getElementById('myChart3').getContext('2d');
-					var data = {
-						labels: <?php echo json_encode($labels); ?>,
-						datasets: [{
-							label: "Semester I",
-							backgroundColor: "<?php echo $colors_semester1; ?>",
-							data: <?php echo json_encode($data_semester1); ?>
-						}, {
-							label: "Semester II",
-							backgroundColor: "<?php echo $colors_semester2; ?>",
-							data: <?php echo json_encode($data_semester2); ?>
-						}]
-					};
-					var chart = new Chart(ctx, {
-						type: 'bar',
-						data: data,
-						options: {
-							legend: {
-								labels: {
-									fontColor: 'white'
-								}
-							},
-							hover: {
-								animationDuration: 0
-							},
-							animation: {
-								duration: 1,
-								onComplete: function() {
-									var chartInstance = this.chart,
-										ctx = chartInstance.ctx;
-
-									ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-									ctx.textAlign = 'center';
-									ctx.textBaseline = 'bottom';
-
-									this.data.datasets.forEach(function(dataset, i) {
-										var meta = chartInstance.controller.getDatasetMeta(i);
-										meta.data.forEach(function(bar, index) {
-											var data = dataset.data[index];
-											ctx.fillText(data, bar._model.x, bar._model.y - 5);
-										});
-									});
-								}
-							},
-							tooltips: {
-								mode: 'index',
-								intersect: true
-							},
-							responsive: true,
-							scales: {
-								xAxes: [{
-									ticks: {
+			<div class="card col-12 text-center text-light bg-dark isi-investasi p-3">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<div class="bg-dark">
+							<hr style="border: 1px solid; background-color: white;">
+							<h5>Grafik Survey Kepuasan Masyarakat</h5>
+							<hr style="border: 1px solid; background-color: white;">
+							<canvas id="myChart3"></canvas>
+							<span class="small">Keterangan : A (Sangat Baik) : 88,31 - 100,00 | B (Baik) : 76,61 - 88,30 | C (Kurang) : 65,00 - 76,60 | D (Sangat Kurang) : 25,00 - 64,99</span>
+						</div>
+					</div>
+					<?php
+					$labels = [];
+					$data_semester1 = [];
+					$data_semester2 = [];
+					$colors_semester1 = []; // Warna untuk Semester I
+					$colors_semester2 = []; // Warna untuk Semester II
+					foreach ($grafik_skm->result() as $item) {
+						$labels[] = $item->tahun;
+						$data_semester1[] = number_format($item->nilai, 2, '.', ''); // Mengatur tampilan angka menjadi dua angka di belakang koma
+						$data_semester2[] = number_format($item->nilai2, 2, '.', ''); // Mengatur tampilan angka menjadi dua angka di belakang koma
+					}
+					// Menghasilkan warna secara dinamis untuk Semester I dan II
+					$colors_semester1 = "rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.8)";
+					$colors_semester2 = "rgba(" . rand(0, 255) . ", " . rand(0, 255) . ", " . rand(0, 255) . ", 0.8)";
+					?>
+					<script>
+						var ctx = document.getElementById('myChart3').getContext('2d');
+						var data = {
+							labels: <?php echo json_encode($labels); ?>,
+							datasets: [{
+								label: "Semester I",
+								backgroundColor: "<?php echo $colors_semester1; ?>",
+								data: <?php echo json_encode($data_semester1); ?>
+							}, {
+								label: "Semester II",
+								backgroundColor: "<?php echo $colors_semester2; ?>",
+								data: <?php echo json_encode($data_semester2); ?>
+							}]
+						};
+						var chart = new Chart(ctx, {
+							type: 'bar',
+							data: data,
+							options: {
+								legend: {
+									labels: {
 										fontColor: 'white'
-									},
-									gridLines: {
-										display: true,
-										color: 'rgba(255, 255, 255, 0.2)'
 									}
-								}],
-								yAxes: [{
-									ticks: {
-										beginAtZero: true,
-										fontColor: 'white',
-										suggestedMax: 100
-									},
-									gridLines: {
-										display: true,
-										color: 'rgba(255, 255, 255, 0.2)'
+								},
+								hover: {
+									animationDuration: 0
+								},
+								animation: {
+									duration: 1,
+									onComplete: function() {
+										var chartInstance = this.chart,
+											ctx = chartInstance.ctx;
+
+										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+										ctx.textAlign = 'center';
+										ctx.textBaseline = 'bottom';
+
+										this.data.datasets.forEach(function(dataset, i) {
+											var meta = chartInstance.controller.getDatasetMeta(i);
+											meta.data.forEach(function(bar, index) {
+												var data = dataset.data[index];
+												ctx.fillText(data, bar._model.x, bar._model.y - 5);
+											});
+										});
 									}
-								}]
+								},
+								tooltips: {
+									mode: 'index',
+									intersect: true
+								},
+								responsive: true,
+								scales: {
+									xAxes: [{
+										ticks: {
+											fontColor: 'white'
+										},
+										gridLines: {
+											display: true,
+											color: 'rgba(255, 255, 255, 0.2)'
+										}
+									}],
+									yAxes: [{
+										ticks: {
+											beginAtZero: true,
+											fontColor: 'white',
+											suggestedMax: 100
+										},
+										gridLines: {
+											display: true,
+											color: 'rgba(255, 255, 255, 0.2)'
+										}
+									}]
+								}
 							}
-						}
-					});
-				</script>
+						});
+					</script>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<hr style="border: 1px solid; background-color: white;">
+						<h5>Indeks Kepuasan Masyarakat (IKM)</h5>
+						<hr style="border: 1px solid; background-color: white;">
+						<div id="carouselIKM" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner shadow-lg" style="height: 100%;">
+								<?php foreach ($skm_gambar as $index => $data) : ?>
+									<div class="carousel-item <?= $index == 0 ? 'active' : ''; ?>">
+										<a href="<?= base_url('assets/imgupload/' . $data['file_name']); ?>" target="_blank">
+											<img src="<?= base_url('assets/imgupload/' . $data['file_name']); ?>" class="d-block w-100" alt="Gambar IKM">
+										</a>
+									</div>
+								<?php endforeach; ?>
+								<a class="carousel-control-prev" href="#carouselIKM" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#carouselIKM" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<!-- <div class="col-lg-5 col form-pengaduan">
