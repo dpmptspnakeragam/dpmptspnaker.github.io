@@ -1,6 +1,6 @@
 <?php foreach ($skm_gambar as $row) { ?>
     <div class="modal fade" id="EditIKM<?= $row['id_skm_gambar']; ?>" role="dialog" aria-labelledby="ModalTambahGrafikLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-warning text-dark">
                     <h5 class="modal-title" id="exampleModalLabel">Edit Gambar</h5>
@@ -14,11 +14,11 @@
                             <input type="text" class="form-control hidden" id="id" name="id" value="<?= $row['id_skm_gambar']; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="title">Nama File</label>
-                            <input id="title" class="form-control" name="title" placeholder="Masukan Nama File" value="<?= $row['title']; ?>" required>
+                            <label for="title">Judul</label>
+                            <input id="title" class="form-control" name="title" placeholder="Masukan Judul" value="<?= $row['title']; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="file_upload">Upload Gambar</label>
+                            <label for="file_upload">Change Gambar</label>
                             <input type="file" class="form-control-file" id="file_upload" name="file_upload">
                         </div>
                     </div>

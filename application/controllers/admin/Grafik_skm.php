@@ -131,9 +131,9 @@ class Grafik_skm extends CI_controller
 
             $this->Model_skm_gambar->insertGambar($data);
 
-            $this->session->set_flashdata("berhasil", "Tambah data <b>$title</b> berhasil!");
+            $this->session->set_flashdata("berhasil", "Berhasil menambahkan <b>$title</b>!");
         } else {
-            $this->session->set_flashdata("gagal", "Gagal menambah <b>$title</b>!");
+            $this->session->set_flashdata("gagal", "Gagal menambahkan <b>$title</b>!");
         }
 
         redirect('admin/grafik_skm');
@@ -176,7 +176,7 @@ class Grafik_skm extends CI_controller
 
             $this->Model_skm_gambar->updateGambar($id, $data);
 
-            $this->session->set_flashdata("berhasil", "Tambah data <b>$title</b> berhasil!");
+            $this->session->set_flashdata("berhasil", "Berhasil mengubah <b>$title</b>!");
         } else {
             // Jika tidak ada file yang diunggah, hanya update title
             $data = [
@@ -204,7 +204,7 @@ class Grafik_skm extends CI_controller
         // Hapus data dari database
         $this->Model_skm_gambar->deleteGambar($id);
 
-        $this->session->set_flashdata("berhasil", "Hapus data <b>" . $gambar['title'] . "</b> berhasil!");
+        $this->session->set_flashdata("berhasil", "Berhasil menghapus <b>" . $gambar['title'] . "</b>!");
 
         redirect('admin/grafik_skm');
     }

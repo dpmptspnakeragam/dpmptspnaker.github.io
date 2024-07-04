@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-lg-12 mb-3">
                 <h3 class="text-center">Grafik Survey Kepuasan Masyarakat</h3>
                 <h5 class="text-center">Periode
                     <?php
@@ -42,9 +42,13 @@
                         </div>
                     <?php endif; ?>
                     <button href="" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalTambahGrafikSkm"><i class="fa fa-plus fa-fw"></i>Tambah Data</button>
-                </div><br>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="col-lg-12">
                 <div class="row">
-                    <!-- start: Accordion -->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-3">
                         <div class="card table-responsive shadow-sm">
                             <table class="card-header table table-striped table-borderless table-hover">
@@ -79,7 +83,6 @@
                             </table>
                         </div>
                     </div>
-                    <!--end: Accordion -->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-3">
                         <div class="card shadow-sm">
                             <div class="card-header text-center bg-dark text-white">
@@ -151,7 +154,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-12 mb-3">
+            <div class="col-lg-12">
                 <div class="card table-responsive shadow-sm">
                     <div class="card-header text-center">
                         <span>Indeks Kepuasan Masyarakat (IKM)</span>
@@ -162,7 +165,7 @@
                             <thead class="bg-dark text-light">
                                 <tr>
                                     <th class="text-center">No.</th>
-                                    <th class="text-center">Nama File</th>
+                                    <th class="text-center">Judul</th>
                                     <th class="text-center">Preview</th>
                                     <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
                                 </tr>

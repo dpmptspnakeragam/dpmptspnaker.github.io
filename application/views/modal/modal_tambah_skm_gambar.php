@@ -16,8 +16,8 @@
                         </div>
                     <?php } ?>
                     <div class="form-group">
-                        <label for="title">Nama File</label>
-                        <input id="title" class="form-control" name="title" placeholder="Masukan Nama File" required>
+                        <label for="title">Judul</label>
+                        <input id="title" class="form-control" name="title" placeholder="Masukan Judul" required>
                     </div>
                     <div class="form-group">
                         <label for="file_upload">Upload Gambar</label>
