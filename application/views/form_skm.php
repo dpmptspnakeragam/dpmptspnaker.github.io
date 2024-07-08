@@ -1,12 +1,10 @@
 <body class="layout-top-nav layout-navbar-fixed bg-dark" style="height: auto;" id="page-top">
-    <!-- Navigation-->
     <nav class="main-header navbar navbar-expand-md navbar-dark fixed-top navbar-white" style="background-color: maroon;">
         <div class="container">
             <a href="<?= base_url('skm/form'); ?>" class="navbar-brand">
                 <span class="brand-text font-weight-light font-weight-bold"><i class="fas fa-file"></i> Form Survey Kepuasan Masyarakat (SKM)</span>
             </a>
 
-            <!-- Right navbar links -->
             <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                 <li class="nav-item">
                     <a class="nav-link mt-2" data-widget="control-sidebar" data-slide="true" href="<?= base_url('skm'); ?>" role="button">
@@ -16,10 +14,8 @@
             </ul>
         </div>
     </nav>
-    <!-- /.navbar -->
 
     <div class="content-wrapper mb-3">
-        <!-- Content Header (Page header) -->
         <div class="container">
             <div class="row">
                 <div class="col-sm-12" style="margin-top: 33px;">
@@ -28,13 +24,11 @@
                 </div>
             </div>
         </div>
-        <!-- /.content-header -->
 
         <!-- Main content -->
         <div class="content">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-
                     <div class="col-12 mb-2">
                         <div class="card">
                             <div class="card-header text-center">
@@ -56,10 +50,24 @@
                                             <?php foreach ($idmax_skm->result() as $row) : ?>
                                                 <div class="form-group" hidden>
                                                     <label class=" control-label">Id</label>
-                                                    <input type="text" class="form-control" id="id" name="id_spkp" value="<?= $row->idmax_skm + 1; ?>">
+                                                    <input type="text" class="form-control" id="id" name="id_skm" value="<?= $row->idmax_skm + 1; ?>">
                                                 </div>
                                             <?php endforeach; ?>
 
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="nama">Nama Lengkap</label>
+                                                        <input class="form-control" type="text" name="nama" id="nama" placeholder="Masukan Nama Lengkap" value="<?= set_value('nama'); ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="no_hp">Nomor Telepon</label>
+                                                        <input class="form-control" type="number" name="no_hp" id="no_hp" placeholder="Masukan Nomor Telepon" value="<?= set_value('no_hp'); ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -72,15 +80,17 @@
                                                         <small class="text-danger"><?= form_error('jk'); ?></small>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="persyaratan">Usia</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" name="umur" placeholder="Masukan Usia" aria-label="Username" aria-describedby="basic-addon1" value="<?= set_value('umur'); ?>">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="basic-addon1">Tahun</span>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="persyaratan">Usia</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" name="umur" placeholder="Masukan Usia" aria-label="Username" aria-describedby="basic-addon1" value="<?= set_value('umur'); ?>">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="basic-addon1">Tahun</span>
+                                                            </div>
                                                         </div>
+                                                        <small class="text-danger"><?= form_error('umur'); ?></small>
                                                     </div>
-                                                    <small class="text-danger"><?= form_error('umur'); ?></small>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -122,9 +132,9 @@
                                                 <small>Contoh: <span class="font-italic font-weight-bold">PBG, SIP Bidan, Izin Penelitian, dll.</span></small>
                                             </div>
 
-                                            <hr style="border-top: 1px solid #000;">
-                                            <p class="text-center"> PENDAPAT RESPONDEN TENTANG PELAYANAN PUBLIK </P>
-                                            <hr style="border-top: 1px solid #000;">
+                                            <hr>
+                                            <p class="text-center"> PENDAPAT ANDA TENTANG PELAYANAN PUBLIK </P>
+                                            <hr>
 
                                             <div class="form-group">
                                                 <label for="U1">1. Bagaimana pendapat Saudara tentang kesesuaian persyaratan pelayanan dengan jenis pelayanannya ?</label>
@@ -225,11 +235,218 @@
                                                 </select>
                                                 <small class="text-danger"><?= form_error('u9'); ?></small>
                                             </div>
+
                                             <div class="form-group" hidden>
                                                 <input type="hidden" class="form-control" name="date" value="<?= date("Y-m-d H:i:s"); ?>">
                                             </div>
 
-                                            <hr style="border-top: 1px solid #000;">
+                                            <hr>
+                                            <p class="text-center"> PENDAPAT ANDA TENTANG PERSEPSI KUALITAS PELAYANAN (SPKP) </p>
+                                            <hr>
+
+                                            <?php foreach ($idmax_rating->result() as $row) : ?>
+                                                <div class="form-group" hidden>
+                                                    <label class="control-label">Id</label>
+                                                    <input type="text" class="form-control" id="id" name="id_spkp" value="<?= $row->idmax_rating + 1; ?>">
+                                                </div>
+                                            <?php endforeach; ?>
+
+                                            <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1-6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
+                                            <div class="form-group mt-2">
+                                                <span>1. Informasi pelayanan pada unit layanan ini tersedia melalui media sosial elektronik maupun non elektronik.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z1">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z1'); ?></small>
+                                                <input type="hidden" name="rating_z1" value="<?= set_value('rating_z1'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>2. Persyaratan pelayanan yang diinformasikan sesuai dengan persyaratan yang ditetapkan unit layanan ini.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z2">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z2'); ?></small>
+                                                <input type="hidden" name="rating_z2" value="<?= set_value('rating_z2'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>3. Prosedur/Alur pelayanan yang ditetapkan unit layanan ini mudah diikuti/dilakukan.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z3">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z3'); ?></small>
+                                                <input type="hidden" name="rating_z3" value="<?= set_value('rating_z3'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>4. Jangka waktu penyelesaian pelayanan yang diterima Bapak/Ibu sesuai dengan yang ditetapkan unit layanan ini.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z4">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z4'); ?></small>
+                                                <input type="hidden" name="rating_z4" value="<?= set_value('rating_z4'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>5. Tarif/Biaya pelayanan yang dibayarkan pada unit layanan ini sesuai dengan tarif/biaya yang ditetapkan.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z5">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z5'); ?></small>
+                                                <input type="hidden" name="rating_z5" value="<?= set_value('rating_z5'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>6. Sarana prasarana pendukung pelayanan/sistem pelayanan online yang disediakan unit layanan ini memberikan kenyamanan/mudah digunakan.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z6">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z6'); ?></small>
+                                                <input type="hidden" name="rating_z6" value="<?= set_value('rating_z6'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>7. Petugas pelayanan/sistem pelayanan online pada unit layanan ini merespon keperluan Bapak/Ibu dengan cepat.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z7">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z7'); ?></small>
+                                                <input type="hidden" name="rating_z7" value="<?= set_value('rating_z7'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>8. Layanan konsultasi dan pengaduan yang disediakan unit layanan ini mudah digunakan/diakses.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_z8">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_z8'); ?></small>
+                                                <input type="hidden" name="rating_z8" value="<?= set_value('rating_z8'); ?>">
+                                            </div>
+
+                                            <hr>
+                                            <p class="text-center"> PENDAPAT ANDA TENTANG PERSEPSI ANTI KORUPSI </p>
+                                            <hr>
+
+                                            <?php foreach ($idmax_spak->result() as $row) : ?>
+                                                <div class="form-group" hidden>
+                                                    <label class="control-label">Id</label>
+                                                    <input type="text" class="form-control" id="id" name="id_spak" value="<?= $row->idmax_spak + 1; ?>">
+                                                </div>
+                                            <?php endforeach; ?>
+
+                                            <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1 - 6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
+                                            <div class="form-group mt-2">
+                                                <span>1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_r1">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_r1'); ?></small>
+                                                <input type="hidden" name="rating_r1" value="<?= set_value('rating_r1'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>2. Tidak ada pelayanan diluar prosedur/kecurangan pelayanan pada unit layanan ini.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_r2">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_r2'); ?></small>
+                                                <input type="hidden" name="rating_r2" value="<?= set_value('rating_r2'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>3. Tidak ada penerimaan imbalan uang/barang/fasilitas diluar ketentuan yang berlaku pada unit layanan ini.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_r3">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_r3'); ?></small>
+                                                <input type="hidden" name="rating_r3" value="<?= set_value('rating_r3'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="overflow-auto">4. Tidak ada pungutan liar (pungli) pada unit layanan ini.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_r4">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_r4'); ?></small>
+                                                <input type="hidden" name="rating_r4" value="<?= set_value('rating_r4'); ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <span>5. Tidak ada percaloan/perantara tidak resmi pada unit layanan ini.</span>
+                                                <br>
+                                                <div class="stars" data-rating="rating_r5">
+                                                    <i class="far fa-star" data-value="1"></i>
+                                                    <i class="far fa-star" data-value="2"></i>
+                                                    <i class="far fa-star" data-value="3"></i>
+                                                    <i class="far fa-star" data-value="4"></i>
+                                                    <i class="far fa-star" data-value="5"></i>
+                                                    <i class="far fa-star" data-value="6"></i>
+                                                </div>
+                                                <small class="text-danger"><?= form_error('rating_r5'); ?></small>
+                                                <input type="hidden" name="rating_r5" value="<?= set_value('rating_r5'); ?>">
+                                            </div>
 
                                             <div class="modal-footer border-0">
                                                 <a href="<?= base_url('skm'); ?>" class="btn btn-secondary">Batal</a>
@@ -241,232 +458,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.col-md-12 -->
-
-                    <div class="col-12 mt-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <form role="form" action="<?= base_url('skm/tambah_rating'); ?>" method="post">
-
-                                    <?php foreach ($idmax_rating->result() as $row) : ?>
-                                        <div class="form-group" hidden>
-                                            <label class=" control-label">Id</label>
-                                            <input type="text" class="form-control" id="id" name="id_spkp" value="<?= $row->idmax_rating + 1; ?>">
-                                        </div>
-                                    <?php endforeach; ?>
-
-                                    <p class="text-center"> PENDAPAT RESPONDEN TENTANG PERSEPSI KUALITAS PELAYANAN (SPKP) </p>
-                                    <hr style="border-top: 1px solid #000;">
-
-                                    <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1-6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
-                                    <div class="form-group mt-2">
-                                        <span>1. Informasi pelayanan pada unit layanan ini tersedia melalui media sosial elektronik maupun non elektronik.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z1">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z1'); ?></small>
-                                        <input type="hidden" name="rating_z1" value="<?= set_value('rating_z1'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>2. Persyaratan pelayanan yang diinformasikan sesuai dengan persyaratan yang ditetapkan unit layanan ini.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z2">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z2'); ?></small>
-                                        <input type="hidden" name="rating_z2" value="<?= set_value('rating_z2'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>3. Prosedur/Alur pelayanan yang ditetapkan unit layanan ini mudah diikuti/dilakukan.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z3">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z3'); ?></small>
-                                        <input type="hidden" name="rating_z3" value="<?= set_value('rating_z3'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>4. Jangka waktu penyelesaian pelayanan yang diterima Bapak/Ibu sesuai dengan yang ditetapkan unit layanan ini.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z4">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z4'); ?></small>
-                                        <input type="hidden" name="rating_z4" value="<?= set_value('rating_z4'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>5. Tarif/Biaya pelayanan yang dibayarkan pada unit layanan ini sesuai dengan tarif/biaya yang ditetapkan.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z5">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z5'); ?></small>
-                                        <input type="hidden" name="rating_z5" value="<?= set_value('rating_z5'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>6. Sarana prasarana pendukung pelayanan/sistem pelayanan online yang disediakan unit layanan ini memberikan kenyamanan/mudah digunakan.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z6">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z6'); ?></small>
-                                        <input type="hidden" name="rating_z6" value="<?= set_value('rating_z6'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>7. Petugas pelayanan/sistem pelayanan online pada unit layanan ini merespon keperluan Bapak/Ibu dengan cepat.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z7">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z7'); ?></small>
-                                        <input type="hidden" name="rating_z7" value="<?= set_value('rating_z7'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>8. Layanan konsultasi dan pengaduan yang disediakan unit layanan ini mudah digunakan/diakses.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_z8">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_z8'); ?></small>
-                                        <input type="hidden" name="rating_z8" value="<?= set_value('rating_z8'); ?>">
-                                    </div>
-
-                                    <hr style="border-top: 1px solid #000;">
-                                    <p class="text-center"> PENDAPAT RESPONDEN TENTANG PERSEPSI ANTI KORUPSI </p>
-                                    <hr style="border-top: 1px solid #000;">
-
-                                    <small class="font-italic font-weight-bold">Berikan nilai bintang antara 1 - 6 pada setiap pernyataan, dimana semakin banyak bintang menunjukan bahwa Bapak/Ibu semakin setuju bahwa kualitas pelayanan pada unit layanan ini semakin baik:</small>
-                                    <div class="form-group mt-2">
-                                        <span>1. Tidak ada deskriminasi pelayanan pada unit layanan ini.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_r1">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_r1'); ?></small>
-                                        <input type="hidden" name="rating_r1" value="<?= set_value('rating_r1'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>2. Tidak ada pelayanan diluar prosedur/kecurangan pelayanan pada unit layanan ini.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_r2">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_r2'); ?></small>
-                                        <input type="hidden" name="rating_r2" value="<?= set_value('rating_r2'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>3. Tidak ada penerimaan imbalan uang/barang/fasilitas diluar ketentuan yang berlaku pada unit layanan ini.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_r3">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_r3'); ?></small>
-                                        <input type="hidden" name="rating_r3" value="<?= set_value('rating_r3'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span class="overflow-auto">4. Tidak ada pungutan liar (pungli) pada unit layanan ini.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_r4">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_r4'); ?></small>
-                                        <input type="hidden" name="rating_r4" value="<?= set_value('rating_r4'); ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <span>5. Tidak ada percaloan/perantara tidak resmi pada unit layanan ini.</span>
-                                        <br>
-                                        <div class="stars" data-rating="rating_r5">
-                                            <i class="far fa-star" data-value="1"></i>
-                                            <i class="far fa-star" data-value="2"></i>
-                                            <i class="far fa-star" data-value="3"></i>
-                                            <i class="far fa-star" data-value="4"></i>
-                                            <i class="far fa-star" data-value="5"></i>
-                                            <i class="far fa-star" data-value="6"></i>
-                                        </div>
-                                        <small class="text-danger"><?= form_error('rating_r5'); ?></small>
-                                        <input type="hidden" name="rating_r5" value="<?= set_value('rating_r5'); ?>">
-                                    </div>
-                                    <div class="form-group" hidden>
-                                        <input type="hidden" class="form-control" name="date" value="<?= date("Y-m-d H:i:s"); ?>">
-                                    </div>
-
-                                    <hr style="border-top: 1px solid #000;">
-
-                                    <div class="modal-footer border-0">
-                                        <a href="<?= base_url('skm'); ?>" class="btn btn-secondary">Batal</a>
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Kirim</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-md-12 -->
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
         </div>
-        <!-- /.content -->
     </div>
-
 </body>

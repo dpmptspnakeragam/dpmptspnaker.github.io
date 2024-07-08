@@ -110,6 +110,7 @@ class Skm extends CI_Controller
         // $data['ppid'] = $this->Model_ppid->tampil_data();
         $data['idmax_skm'] = $this->Model_skm->idmax_skm();
         $data['idmax_rating'] = $this->Model_skm->idmax_rating();
+        $data['idmax_spak'] = $this->Model_skm->idmax_spak();
         $this->load->view('templates/header');
         $this->load->view('form_skm', $data);
         $this->load->view('templates/footer');
@@ -143,17 +144,6 @@ class Skm extends CI_Controller
             ['field' => 'u7', 'label' => 'pendapat nomor 7 diatas', 'rules' => 'required'],
             ['field' => 'u8', 'label' => 'pendapat nomor 8 diatas', 'rules' => 'required'],
             ['field' => 'u9', 'label' => 'pendapat nomor 9 diatas', 'rules' => 'required'],
-        ];
-        foreach ($validation_rules as $rule) {
-            $this->form_validation->set_rules($rule['field'], $rule['label'], $rule['rules'], [
-                'required' => 'Pilih %s!'
-            ]);
-        }
-    }
-
-    private function _rules_rating()
-    {
-        $validation_rules = [
             ['field' => 'rating_r1', 'label' => 'bintang dari pernyataan nomor 1 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
             ['field' => 'rating_r2', 'label' => 'bintang dari pernyataan nomor 2 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
             ['field' => 'rating_r3', 'label' => 'bintang dari pernyataan nomor 3 diatas', 'rules' => 'required|greater_than[0]|less_than[7]'],
@@ -182,91 +172,62 @@ class Skm extends CI_Controller
 
         if ($this->form_validation->run() == TRUE) {
 
-            date_default_timezone_set('Asia/Jakarta');
-            $date = date("Y-m-d H:i:s");
-
-            $input_skm = array(
+            $input_skm = [
                 'id_skm'        => $this->input->post('id_skm'),
-                'jk'            => $this->input->post('jk', true),
-                'umur'          => $this->input->post('umur', true),
-                'pendidikan'    => $this->input->post('pendidikan', true),
-                'pekerjaan'     => $this->input->post('pekerjaan', true),
-                'layanan'       => $this->input->post('layanan', true),
-                'u1'            => $this->input->post('u1', true),
-                'u2'            => $this->input->post('u2', true),
-                'u3'            => $this->input->post('u3', true),
-                'u4'            => $this->input->post('u4', true),
-                'u5'            => $this->input->post('u5', true),
-                'u6'            => $this->input->post('u6', true),
-                'u7'            => $this->input->post('u7', true),
-                'u8'            => $this->input->post('u8', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'u9'            => $this->input->post('u9', true),
-                'date'          => $date
-            );
-
+                'nama'          => $this->input->post('nama'),
+                'no_hp'         => $this->input->post('no_hp'),
+                'jk'            => $this->input->post('jk'),
+                'umur'          => $this->input->post('umur'),
+                'pendidikan'    => $this->input->post('pendidikan'),
+                'pekerjaan'     => $this->input->post('pekerjaan'),
+                'layanan'       => $this->input->post('layanan'),
+                'u1'            => $this->input->post('u1'),
+                'u2'            => $this->input->post('u2'),
+                'u3'            => $this->input->post('u3'),
+                'u4'            => $this->input->post('u4'),
+                'u5'            => $this->input->post('u5'),
+                'u6'            => $this->input->post('u6'),
+                'u7'            => $this->input->post('u7'),
+                'u8'            => $this->input->post('u8'),
+                'u9'            => $this->input->post('u9'),
+                'date'          => $this->input->post('date')
+            ];
             $data_skm = $this->security->xss_clean($input_skm);
             $this->Model_skm->simpan_skm($data_skm);
 
+            $input_spkp = [
+                'id_spkp'       => $this->input->post('id_spkp'),
+                'date'          => $this->input->post('date'),
+                'z1'            => $this->input->post('rating_z1'),
+                'z2'            => $this->input->post('rating_z2'),
+                'z3'            => $this->input->post('rating_z3'),
+                'z4'            => $this->input->post('rating_z4'),
+                'z5'            => $this->input->post('rating_z5'),
+                'z6'            => $this->input->post('rating_z6'),
+                'z7'            => $this->input->post('rating_z7'),
+                'z8'            => $this->input->post('rating_z8'),
+            ];
+            $data_spkp = $this->security->xss_clean($input_spkp);
+            $this->Model_skm->simpan_spkp($data_spkp);
 
-            $this->session->set_flashdata("berhasil", "Pengisian kuesioner berhasil. Terima kasih");
-            redirect('skm');
-        } else {
-            $data['idmax_skm'] = $this->Model_skm->idmax_skm();
-            $data['idmax_rating'] = $this->Model_skm->idmax_rating();
-            $this->load->view('templates/header');
-            $this->load->view('form_skm', $data);
-            $this->load->view('templates/footer');
-        }
-    }
-    public function tambah_rating()
-    {
-        $this->_rules_rating();
-
-        if ($this->form_validation->run() == TRUE) {
-
-            $input_spak = array(
-                'id_spak' => $this->input->post('id_spkp'),
-                'id_spkp' => $this->input->post('id_spkp'),
-                'r1' => $this->input->post('rating_r1', true),
-                'r2' => $this->input->post('rating_r2', true),
-                'r3' => $this->input->post('rating_r3', true),
-                'r4' => $this->input->post('rating_r4', true),
-                'r5' => $this->input->post('rating_r5', true),
-            );
+            $input_spak = [
+                'id_spak'       => $this->input->post('id_spak'),
+                'id_spkp'       => $this->input->post('id_spkp'),
+                'r1'            => $this->input->post('rating_r1'),
+                'r2'            => $this->input->post('rating_r2'),
+                'r3'            => $this->input->post('rating_r3'),
+                'r4'            => $this->input->post('rating_r4'),
+                'r5'            => $this->input->post('rating_r5'),
+            ];
             $data_spak = $this->security->xss_clean($input_spak);
             $this->Model_skm->simpan_spak($data_spak);
 
-            date_default_timezone_set('Asia/Jakarta');
-            $date = date("Y-m-d H:i:s");
-
-            $inputspkp = array(
-                'id_spkp' => $this->input->post('id_spkp'),
-                'z1' => $this->input->post('rating_z1', true),
-                'z2' => $this->input->post('rating_z2', true),
-                'z3' => $this->input->post('rating_z3', true),
-                'z4' => $this->input->post('rating_z4', true),
-                'z5' => $this->input->post('rating_z5', true),
-                'z6' => $this->input->post('rating_z6', true),
-                'z7' => $this->input->post('rating_z7', true),
-                'z8' => $this->input->post('rating_z8', true),
-                'date' => $date
-            );
-            $data_spkp = $this->security->xss_clean($inputspkp);
-            $this->Model_skm->simpan_spkp($data_spkp);
-
-            $this->session->set_flashdata("berhasil", "Pengisian kuesioner berhasil. Terima kasih");
+            $this->session->set_flashdata('berhasil', 'Pengisian konsioner berhasil. Terima kasih');
             redirect('skm');
         } else {
             $data['idmax_skm'] = $this->Model_skm->idmax_skm();
             $data['idmax_rating'] = $this->Model_skm->idmax_rating();
+            $data['idmax_spak'] = $this->Model_skm->idmax_spak();
             $this->load->view('templates/header');
             $this->load->view('form_skm', $data);
             $this->load->view('templates/footer');

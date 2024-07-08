@@ -54,6 +54,14 @@ class Model_skm extends CI_model
         return $query;
     }
 
+    public function idmax_spak()
+    {
+        $this->db->select_max('id_spak', 'idmax_spak');
+        $this->db->from('spak');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function simpan_skm($data_skm)
     {
         $this->db->insert('skm', $data_skm);

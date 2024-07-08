@@ -1208,7 +1208,7 @@
 					</li>
 				</ul>
 				<p>
-					<img class="" src="<?= base_url(); ?>assets/img/logo_dpmptspwarna.png" alt="logodpmptsp" width="50%"></a>
+					<img class="" src="<?= base_url('assets/img/logo_dpmptspwarna.png'); ?>" alt="logodpmptsp" width="50%"></a>
 				</p>
 			</div>
 			<div class="col-lg-6 mb-3 text-left">

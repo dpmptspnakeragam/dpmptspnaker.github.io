@@ -33,11 +33,12 @@
                     </div>
                 <?php endif; ?>
 
-                <!-- start: Accordion -->
                 <table class="table table-sm table-responsive table-bordered table-striped table-hover" id="TabelData1">
                     <thead class="bg-dark text-light">
                         <tr>
                             <th class="text-center align-middle" rowspan="2">No.</th>
+                            <th class="text-center align-middle" rowspan="2">Nama</th>
+                            <th class="text-center align-middle" rowspan="2">Telepon</th>
                             <th class="text-center align-middle" rowspan="2">Jenis Kelamin</th>
                             <th class="text-center align-middle" rowspan="2">Umur</th>
                             <th class="text-center align-middle" rowspan="2">Pendidikan</th>
@@ -81,6 +82,8 @@
                             <tr class="odd gradeX">
                                 <td class="text-center align-middle"><?= $no++; ?></td>
                                 <td class="text-center align-middle"><?= $row->jk; ?></td>
+                                <td class="text-center align-middle"><?= $row->nama; ?></td>
+                                <td class="text-center align-middle"><?= $row->no_hp; ?></td>
                                 <td class="text-center align-middle"><?= $row->umur; ?></td>
                                 <td class="text-center align-middle"><?= $row->pendidikan; ?></td>
                                 <td class="text-center align-middle"><?= $row->pekerjaan; ?></td>
@@ -113,10 +116,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <!--end: Accordion -->
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </main>

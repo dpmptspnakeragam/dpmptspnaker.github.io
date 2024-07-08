@@ -1,5 +1,6 @@
  <div class="col-12 footer text-center pt-1 pb-3">
-   <p>Copyright 2020 - <?= date("Y"); ?> &copy; DPMPTSP Kabupaten Agam - All Right Reserved</p>
+   <!-- <p class="mb-0">Version: 1.0.2</p> -->
+   <p>Copyright &copy; 2020 - <?= date("Y"); ?> Powered by Web Programmer DPMPTSP Kabupaten Agam</p>
  </div>
 
 
