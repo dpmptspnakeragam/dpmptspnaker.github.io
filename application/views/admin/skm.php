@@ -81,9 +81,9 @@
                         foreach ($skm->result() as $row) : ?>
                             <tr class="odd gradeX">
                                 <td class="text-center align-middle"><?= $no++; ?></td>
-                                <td class="text-center align-middle"><?= $row->jk; ?></td>
                                 <td class="text-center align-middle"><?= $row->nama; ?></td>
                                 <td class="text-center align-middle"><?= $row->no_hp; ?></td>
+                                <td class="text-center align-middle"><?= $row->jk; ?></td>
                                 <td class="text-center align-middle"><?= $row->umur; ?></td>
                                 <td class="text-center align-middle"><?= $row->pendidikan; ?></td>
                                 <td class="text-center align-middle"><?= $row->pekerjaan; ?></td>
