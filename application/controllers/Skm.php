@@ -168,6 +168,10 @@ class Skm extends CI_Controller
     // ------------------ User
     public function tambah_skm()
     {
+        date_default_timezone_set('Asia/Jakarta');
+        $date = new DateTime();
+        $formatted_date = $date->format('Y-m-d H:i:s');
+
         $this->_rules_skm();
 
         if ($this->form_validation->run() == TRUE) {
@@ -190,14 +194,14 @@ class Skm extends CI_Controller
                 'u7'            => $this->input->post('u7'),
                 'u8'            => $this->input->post('u8'),
                 'u9'            => $this->input->post('u9'),
-                'date'          => $this->input->post('date')
+                'date'          => $formatted_date
             ];
             $data_skm = $this->security->xss_clean($input_skm);
             $this->Model_skm->simpan_skm($data_skm);
 
             $input_spkp = [
                 'id_spkp'       => $this->input->post('id_spkp'),
-                'date'          => $this->input->post('date'),
+                'date'          => $formatted_date,
                 'z1'            => $this->input->post('rating_z1'),
                 'z2'            => $this->input->post('rating_z2'),
                 'z3'            => $this->input->post('rating_z3'),
