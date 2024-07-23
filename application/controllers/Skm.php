@@ -217,6 +217,7 @@ class Skm extends CI_Controller
             $input_spak = [
                 'id_spak'       => $this->input->post('id_spak'),
                 'id_spkp'       => $this->input->post('id_spkp'),
+                'id_skm'        => $this->input->post('id_skm'),
                 'r1'            => $this->input->post('rating_r1'),
                 'r2'            => $this->input->post('rating_r2'),
                 'r3'            => $this->input->post('rating_r3'),

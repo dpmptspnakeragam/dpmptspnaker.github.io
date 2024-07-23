@@ -56,7 +56,9 @@
 
                 <td style="border: none;">Telepon</td>
                 <td style="border: none;">:
-                    <?= $row->no_hp; ?>
+                    <?php if (is_numeric($row->no_hp) && $row->no_hp != 0) : ?>
+                        <?= $row->no_hp; ?>
+                    <?php endif; ?>
                 </td>
             </tr>
 

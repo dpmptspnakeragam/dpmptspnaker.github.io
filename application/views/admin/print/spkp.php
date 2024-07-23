@@ -14,6 +14,11 @@
 
 
     <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+        }
+
         .divider {
             border: 0;
             border-style: inset;
@@ -37,8 +42,89 @@
     <!-- Pembatas -->
     <div class="divider"></div>
 
+    <div class="text-center mt-3">
+        <h6></h6>
+    </div>
 
     <?php foreach ($spkp as $row) : ?>
+        <table class="table table-sm">
+            <tr>
+                <td style="border: none;">Nama</td>
+                <td style="border: none;">:
+                    <?= $row->nama; ?>
+                </td>
+
+                <td style="border: none;">Telepon</td>
+                <td style="border: none;">:
+                    <?php if (is_numeric($row->no_hp) && $row->no_hp != 0) : ?>
+                        <?= $row->no_hp; ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+
+            <tr>
+
+                <td style="border: none;">Jenis Kelamin</td>
+                <td style="border: none;">:
+                    <?php if ($row->jk == 1) : ?>
+                        Laki-Laki
+                    <?php elseif ($row->jk == 2) : ?>
+                        Perempuan
+                    <?php endif ?>
+                </td>
+
+                <td style="border: none;">Pekerjaan</td>
+                <td style="border: none;">:
+                    <?php if ($row->pekerjaan == 1) : ?>
+                        PNS
+                    <?php elseif ($row->pekerjaan == 2) : ?>
+                        TNI
+                    <?php elseif ($row->pekerjaan == 3) : ?>
+                        POLRI
+                    <?php elseif ($row->pekerjaan == 4) : ?>
+                        Swasta
+                    <?php elseif ($row->pekerjaan == 5) : ?>
+                        Wirausaha
+                    <?php elseif ($row->pekerjaan == 6) : ?>
+                        Lainnya
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: none;">Umur</td>
+                <td style="border: none;">:
+                    <?= $row->umur; ?> Tahun</td>
+
+                <td style="border: none;">Layanan</td>
+                <td style="border: none;">:
+                    <?= $row->layanan; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: none;">Pendidikan</td>
+                <td style="border: none;">:
+                    <?php if ($row->pendidikan == 1) : ?>
+                        SD Sederajat
+                    <?php elseif ($row->pendidikan == 2) : ?>
+                        SLTP Sederajat
+                    <?php elseif ($row->pendidikan == 3) : ?>
+                        SLTA Sederajat
+                    <?php elseif ($row->pendidikan == 4) : ?>
+                        D3
+                    <?php elseif ($row->pendidikan == 5) : ?>
+                        S1
+                    <?php elseif ($row->pendidikan == 6) : ?>
+                        S2
+                    <?php endif; ?>
+                </td>
+
+                <td style="border: none;">Tanggal Survey</td>
+                <td style="border: none;">:
+                    <?= date('d-m-Y / H:i', strtotime($row->date)); ?> WIB
+                </td>
+            </tr>
+        </table>
+
         <div class="text-center mt-3">
             <h6>Jawaban Responden Tentang Persepsi Kualitas Pelayanan (SPKP)</h6>
         </div>
