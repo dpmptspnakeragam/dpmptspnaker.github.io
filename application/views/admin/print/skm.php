@@ -49,6 +49,19 @@
     <?php foreach ($skm as $row) : ?>
         <table class="table table-sm">
             <tr>
+                <td style="border: none;">Nama</td>
+                <td style="border: none;">:
+                    <?= $row->nama; ?>
+                </td>
+
+                <td style="border: none;">Telepon</td>
+                <td style="border: none;">:
+                    <?= $row->no_hp; ?>
+                </td>
+            </tr>
+
+            <tr>
+
                 <td style="border: none;">Jenis Kelamin</td>
                 <td style="border: none;">:
                     <?php if ($row->jk == 1) : ?>
