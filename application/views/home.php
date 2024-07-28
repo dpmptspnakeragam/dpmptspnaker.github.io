@@ -1026,11 +1026,9 @@
 					</div>
 
 					<div class="col-lg-6 col-12 text-center isi-investasi">
-
 						<hr style="border: 1px solid; background-color: white;">
 						<h5>Grafik Top 5 KBLI</h5>
 						<hr style="border: 1px solid; background-color: white;">
-
 						<canvas id="grafikkbli" width="100%"></canvas>
 						<?php
 						$nama_kbli = "";
@@ -1077,42 +1075,46 @@
 									yAxes: [{
 										stacked: true,
 										ticks: {
-											mirror: true,
+											mirror: false,
 											fontColor: 'white'
 										}
 									}]
 								},
-								events: false,
-								showTooltips: true,
-								animation: {
-									duration: 500,
-									easing: "easeOutQuart",
-									onComplete: function() {
-										var ctx = this.chart.ctx;
-										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
-										ctx.textAlign = 'left';
-										ctx.textBaseline = 'bottom';
-										this.data.datasets.forEach(function(dataset) {
-											console.log(dataset);
-											for (var i = 0; i < dataset.data.length; i++) {
-												var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model,
-													scale_max = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
-												left = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.left;
-												offset = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._xScale.longestLabelWidth;
-												ctx.fillStyle = '#000';
-												var y_pos = model.y - 5;
-												var label = model.label;
-												// Make sure data value does not get overflown and hidden
-												// when the bar's value is too close to max value of scale
-												// Note: The y value is reverse, it counts from top down
-												if ((scale_max - model.y) / scale_max >= 0.93)
-													y_pos = model.y + 20;
-												// ctx.fillText(dataset.data[i], model.x, y_pos);
-												ctx.fillText(label, left + 10, model.y + 8);
+								tooltips: {
+									enabled: true,
+									callbacks: {
+										label: function(tooltipItem, data) {
+											var label = data.datasets[tooltipItem.datasetIndex].label || '';
+											if (label) {
+												label += ': ';
 											}
+											label += tooltipItem.xLabel;
+											return label;
+										}
+									}
+								},
+								"hover": {
+									"animationDuration": 0
+								},
+								"animation": {
+									"duration": 1,
+									"onComplete": function() {
+										var chartInstance = this.chart,
+											ctx = chartInstance.ctx;
+
+										ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+										ctx.textAlign = 'center';
+										ctx.textBaseline = 'bottom';
+
+										this.data.datasets.forEach(function(dataset, i) {
+											var meta = chartInstance.controller.getDatasetMeta(i);
+											meta.data.forEach(function(bar, index) {
+												var data = dataset.data[index];
+												ctx.fillText(data, bar._model.x, bar._model.y - 5);
+											});
 										});
 									}
-								}
+								},
 							};
 
 							var lineChart = new Chart(kanvaskbli, {
@@ -1122,6 +1124,7 @@
 							});
 						</script>
 					</div>
+
 
 				</div>
 			</div>

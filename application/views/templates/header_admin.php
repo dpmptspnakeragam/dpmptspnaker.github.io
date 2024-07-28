@@ -2,7 +2,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DPMPTSP-Naker Kab. Agam</title>
+    <title>DPMPTSP Kab. Agam</title>
 
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/logoagam.png">
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/vectoragam.png">
