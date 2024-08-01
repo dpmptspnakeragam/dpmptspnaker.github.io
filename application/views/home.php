@@ -323,10 +323,113 @@
 
 			</div>
 			<div class="col-lg-5 col-sm-6 form-pengaduan">
-				<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc8Jd_iY0No3oCuuqGXBMD0kz4g4Uexw0yJLUobFRZJNCFO6A/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+				<div class="card shadow ">
+					<div class="card-header">
+						<p class="h2">Formulir Pengaduan Online DPMPTSP Kab. Agam</p>
+					</div>
+
+					<?= form_open('home/kirim_pengaduan'); ?>
+					<div class="card-body" style="max-height: 52vh; overflow-y: auto;">
+
+						<?php if ($this->session->flashdata('gagal')) : ?>
+							<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								<?= $this->session->flashdata('gagal'); ?>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						<?php endif; ?>
+						<?php if ($this->session->flashdata('berhasil')) : ?>
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+								<?= $this->session->flashdata('berhasil'); ?>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						<?php endif; ?>
+
+						<div class="form-group">
+							<label for="nama">Nama</label>
+							<div class="input-group">
+								<input name="nama" type="text" class="form-control" placeholder="Masukan Nama" value="<?= set_value('nama'); ?>">
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-user-tag"></span>
+									</div>
+								</div>
+							</div>
+							<small class="text-danger"><?= form_error('nama'); ?></small>
+						</div>
+						<div class="form-group">
+							<label for="alamat">Alamat</label>
+							<div class="input-group">
+								<input name="alamat" type="text" class="form-control" placeholder="Masukan Alamat" value="<?= set_value('alamat'); ?>">
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-map-marker"></span>
+									</div>
+								</div>
+							</div>
+							<small class="text-danger"><?= form_error('alamat'); ?></small>
+						</div>
+						<div class="form-group">
+							<label for="hp">Nomor WhatsApp</label>
+							<div class="input-group">
+								<input name="hp" type="number" class="form-control" placeholder="Masukan Nomor Whatsapp" value="<?= set_value('hp'); ?>">
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fab fa-whatsapp"></span>
+									</div>
+								</div>
+							</div>
+							<small class="text-danger"><?= form_error('hp'); ?></small>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<div class="input-group">
+								<input name="email" type="email" class="form-control" placeholder="Masukan Email" value="<?= set_value('email'); ?>">
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-envelope"></span>
+									</div>
+								</div>
+							</div>
+							<small class="text-danger"><?= form_error('email'); ?></small>
+						</div>
+						<div class="form-group">
+							<label for="lokasi_kejadian">Lokasi Kejadian</label>
+							<div class="input-group">
+								<input name="lokasi_kejadian" type="text" class="form-control" placeholder="Masukan Lokasi Kejadian" value="<?= set_value('lokasi_kejadian'); ?>">
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-map-marked-alt"></span>
+									</div>
+								</div>
+							</div>
+							<small class="text-danger"><?= form_error('lokasi_kejadian'); ?></small>
+						</div>
+						<div class="form-group">
+							<label for="materi_pengaduan">Uraian Pengaduan</label>
+							<div class="input-group">
+								<textarea name="materi_pengaduan" id="materi_pengaduan" class="form-control" cols="20" rows="3" placeholder="Masukan Uraian Pengaduan"></textarea>
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-list-ol"></span>
+									</div>
+								</div>
+							</div>
+							<small class="text-danger"><?= form_error('materi_pengaduan'); ?></small>
+						</div>
+					</div>
+					<div class="card-footer">
+						<button type="submit" class="btn btn-primary">Kirim</button>
+					</div>
+					<?= form_close(); ?>
+				</div>
 			</div>
 		</div>
 	</div>
+
 </section>
 <!-- close pengaduan -->
 

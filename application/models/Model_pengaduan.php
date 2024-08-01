@@ -43,4 +43,10 @@ class Model_pengaduan extends CI_model
     }
     //-----pengaduan-----//
 
+    // Insert Data di Home atau Section Pengaduan
+    public function insert_pengaduan($data)
+    {
+        // Insert data into the 'pengaduan' table
+        return $this->db->insert('pengaduan', $data);
+    }
 }
