@@ -199,9 +199,6 @@ class Home extends CI_Controller
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
-			// Mengirim email
-			$this->load->library('email');
-
 			// Konfigurasi email
 			$config = array(
 				'protocol'  => 'smtp',
