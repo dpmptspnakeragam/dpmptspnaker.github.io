@@ -213,6 +213,8 @@ class Home extends CI_Controller
 				'smtp_crypto' => 'ssl'
 			);
 
+			$this->load->library('email', $config);
+
 			$this->email->initialize($config);
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
