@@ -183,13 +183,15 @@ class Home extends CI_Controller
 		$date = new DateTime();
 		$formatted_date = $date->format('Y-m-d H:i:s');
 
+		$SendToEmail = $this->input->post('email');
+
 		if ($this->form_validation->run() == TRUE) {
 			$input = [
 				'no_pengaduan'      => $unique_id,
 				'nama'              => $this->input->post('nama'),
 				'alamat'            => $this->input->post('alamat'),
 				'hp'                => $this->input->post('hp'),
-				'email'             => $this->input->post('email'),
+				'email'             => $SendToEmail,
 				'jenis_pengaduan'   => 'Online',
 				'lokasi_kejadian'   => $this->input->post('lokasi_kejadian'),
 				'waktu_kejadian'    => $formatted_date,
@@ -199,25 +201,26 @@ class Home extends CI_Controller
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
+
+
 			// Konfigurasi email
 			$config = array(
 				'protocol'  => 'smtp',
 				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
-				'smtp_port' => 465,
+				'smtp_port' => 587,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',
 				'mailtype'  => 'html',
 				'charset'   => 'iso-8859-1',
 				'wordwrap'  => TRUE,
-				'newline'   => "\r\n",
-				'smtp_crypto' => 'ssl'
 			);
 
 			$this->load->library('email', $config);
 
 			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
-			$this->email->to($this->input->post('email'));
+			$this->email->to($SendToEmail);
 			$this->email->subject('Pengaduan Berhasil Dikirim');
 			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di https://dpmptsp.agamkab.go.id#pengaduan untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
 
