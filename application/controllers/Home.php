@@ -203,18 +203,18 @@ class Home extends CI_Controller
 
 			// Konfigurasi email
 			$config = array(
-				'protocol' => 'smtp',
-				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
-				'smtp_port' => 587,
+				'protocol'  => 'smtp',
+				'smtp_host' => 'ssl://mail.dpmptsp.agamkab.go.id',
+				'smtp_port' => 465,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',
 				'mailtype'  => 'html',
 				'charset'   => 'iso-8859-1',
 				'wordwrap'  => TRUE,
+				'newline'   => "\r\n"
 			);
 
 			$this->email->initialize($config);
-			$this->email->set_newline("\r\n");
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
