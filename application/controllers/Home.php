@@ -8,6 +8,8 @@ class Home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('curl');
+		$this->load->library('email');
+
 		$this->API = "https://sicantikws.layanan.go.id/api/TemplateData/keluaran/24218.json";
 
 		$this->load->model('Model_informasi');
@@ -185,20 +187,7 @@ class Home extends CI_Controller
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
-			$config = array(
-				'protocol'  => 'smtp',
-				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
-				'smtp_port' => 465,
-				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
-				'smtp_pass' => 'p_ptsp@99agam',
-				'mailtype'  => 'html',
-				'charset'   => 'iso-8859-1',
-				'wordwrap'  => TRUE,
-				'newline'   => "\r\n",
-				'smtp_crypto' => 'ssl'  // Use 'tls' if port 465
-			);
-
-			$this->email->initialize($config);
+			// Set up email settings
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
@@ -218,7 +207,7 @@ class Home extends CI_Controller
 			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
 		}
 
-		// Ensure no output before redirect
+		// Redirect after processing
 		redirect('#pengaduan');
 	}
 }
