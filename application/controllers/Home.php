@@ -184,18 +184,18 @@ class Home extends CI_Controller
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
-			$config = [
-				'protocol' => 'smtp',
+			$config = array(
+				'protocol'  => 'smtp',
 				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
 				'smtp_port' => 587,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',
-				'mailtype' => 'html',
-				'charset' => 'iso-8859-1',
-				'wordwrap' => TRUE,
-				'newline' => "\r\n",
-				'smtp_crypto' => 'tls'
-			];
+				'mailtype'  => 'html',
+				'charset'   => 'iso-8859-1',
+				'wordwrap'  => TRUE,
+				'newline'   => "\r\n",
+				'smtp_crypto' => 'tls'  // Gunakan 'ssl' jika port 465
+			);
 
 			$this->email->initialize($config);
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
