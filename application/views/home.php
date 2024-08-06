@@ -351,7 +351,7 @@
 						<div class="form-group">
 							<label for="nama">Nama</label>
 							<div class="input-group">
-								<input name="nama" type="text" class="form-control" placeholder="Masukan Nama" value="<?= set_value('nama'); ?>">
+								<input name="nama" type="text" class="form-control" placeholder="Masukan Nama" value="<?= set_value('nama'); ?>" required>
 								<div class="input-group-append">
 									<div class="input-group-text">
 										<span class="fas fa-user-tag"></span>
@@ -363,7 +363,7 @@
 						<div class="form-group">
 							<label for="alamat">Alamat</label>
 							<div class="input-group">
-								<input name="alamat" type="text" class="form-control" placeholder="Masukan Alamat" value="<?= set_value('alamat'); ?>">
+								<input name="alamat" type="text" class="form-control" placeholder="Masukan Alamat" value="<?= set_value('alamat'); ?>" required>
 								<div class="input-group-append">
 									<div class="input-group-text">
 										<span class="fas fa-map-marker"></span>
@@ -375,7 +375,7 @@
 						<div class="form-group">
 							<label for="hp">Nomor WhatsApp</label>
 							<div class="input-group">
-								<input name="hp" type="number" class="form-control" placeholder="Masukan Nomor Whatsapp" value="<?= set_value('hp'); ?>">
+								<input name="hp" type="number" class="form-control" placeholder="Masukan Nomor Whatsapp" value="<?= set_value('hp'); ?>" required>
 								<div class="input-group-append">
 									<div class="input-group-text">
 										<span class="fab fa-whatsapp"></span>
@@ -387,7 +387,7 @@
 						<div class="form-group">
 							<label for="email">Email</label>
 							<div class="input-group">
-								<input name="email" type="email" class="form-control" placeholder="Masukan Email" value="<?= set_value('email'); ?>">
+								<input name="email" type="email" class="form-control" placeholder="Masukan Email" value="<?= set_value('email'); ?>" required>
 								<div class="input-group-append">
 									<div class="input-group-text">
 										<span class="fas fa-envelope"></span>
@@ -399,7 +399,7 @@
 						<div class="form-group">
 							<label for="lokasi_kejadian">Lokasi Kejadian</label>
 							<div class="input-group">
-								<input name="lokasi_kejadian" type="text" class="form-control" placeholder="Masukan Lokasi Kejadian" value="<?= set_value('lokasi_kejadian'); ?>">
+								<input name="lokasi_kejadian" type="text" class="form-control" placeholder="Masukan Lokasi Kejadian" required value="<?= set_value('lokasi_kejadian'); ?>">
 								<div class="input-group-append">
 									<div class="input-group-text">
 										<span class="fas fa-map-marked-alt"></span>
@@ -411,7 +411,7 @@
 						<div class="form-group">
 							<label for="materi_pengaduan">Uraian Pengaduan</label>
 							<div class="input-group">
-								<textarea name="materi_pengaduan" id="materi_pengaduan" class="form-control" cols="20" rows="3" placeholder="Masukan Uraian Pengaduan"><?= set_value('materi_pengaduan'); ?></textarea>
+								<textarea name="materi_pengaduan" id="materi_pengaduan" class="form-control" cols="20" rows="3" placeholder="Masukan Uraian Pengaduan" required><?= set_value('materi_pengaduan'); ?></textarea>
 							</div>
 							<small class="text-danger"><?= form_error('materi_pengaduan'); ?></small>
 						</div>

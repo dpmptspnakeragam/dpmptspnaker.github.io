@@ -183,13 +183,15 @@ class Home extends CI_Controller
 		$date = new DateTime();
 		$formatted_date = $date->format('Y-m-d H:i:s');
 
+		$email = $this->input->post('email');
+
 		if ($this->form_validation->run() == TRUE) {
 			$input = [
 				'no_pengaduan'      => $unique_id,
 				'nama'              => $this->input->post('nama'),
 				'alamat'            => $this->input->post('alamat'),
 				'hp'                => $this->input->post('hp'),
-				'email'             => $this->input->post('email'),
+				'email'             => $email,
 				'jenis_pengaduan'   => 'Online',
 				'lokasi_kejadian'   => $this->input->post('lokasi_kejadian'),
 				'waktu_kejadian'    => $formatted_date,
@@ -215,7 +217,7 @@ class Home extends CI_Controller
 
 			$this->email->initialize($config);
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
-			$this->email->to($this->input->post('email'));
+			$this->email->to($email);
 			$this->email->subject('Pengaduan Berhasil Dikirim');
 			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di https://dpmptsp.agamkab.go.id#pengaduan untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
 
