@@ -157,6 +157,7 @@ class Home extends CI_Controller
 
 	public function kirim_pengaduan()
 	{
+		// Validate form inputs
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required');
@@ -187,14 +188,14 @@ class Home extends CI_Controller
 			$config = array(
 				'protocol'  => 'smtp',
 				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
-				'smtp_port' => 587,
+				'smtp_port' => 465,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',
 				'mailtype'  => 'html',
 				'charset'   => 'iso-8859-1',
 				'wordwrap'  => TRUE,
 				'newline'   => "\r\n",
-				'smtp_crypto' => 'tls'  // Gunakan 'ssl' jika port 465
+				'smtp_crypto' => 'ssl'  // Use 'tls' if port 465
 			);
 
 			$this->email->initialize($config);
@@ -217,9 +218,7 @@ class Home extends CI_Controller
 			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
 		}
 
-		// Gunakan output buffering untuk menangani kesalahan header
-		ob_start();
+		// Ensure no output before redirect
 		redirect('#pengaduan');
-		ob_end_clean();
 	}
 }
