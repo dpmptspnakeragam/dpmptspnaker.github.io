@@ -209,7 +209,8 @@ class Home extends CI_Controller
 				'mailtype'  => 'html',
 				'charset'   => 'iso-8859-1',
 				'wordwrap'  => TRUE,
-				'newline'   => "\r\n"
+				'newline'   => "\r\n",
+				'smtp_crypto' => 'tls'
 			);
 
 			$this->email->initialize($config);
@@ -218,11 +219,15 @@ class Home extends CI_Controller
 			$this->email->subject('Pengaduan Berhasil Dikirim');
 			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di https://dpmptsp.agamkab.go.id#pengaduan untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
 
-			if ($this->email->send()) {
-				$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk mengetahui informasi Nomor Pengaduan. Terima kasih!!');
-			} else {
+			try {
+				if ($this->email->send()) {
+					$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk mengetahui informasi Nomor Pengaduan. Terima kasih!!');
+				} else {
+					throw new Exception('Email tidak terkirim: ' . $this->email->print_debugger());
+				}
+			} catch (Exception $e) {
+				log_message('error', $e->getMessage());
 				$this->session->set_flashdata('gagal', 'Pengaduan berhasil disimpan tetapi email gagal dikirim.');
-				log_message('error', 'Email error: ' . $this->email->print_debugger());
 			}
 		} else {
 			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
