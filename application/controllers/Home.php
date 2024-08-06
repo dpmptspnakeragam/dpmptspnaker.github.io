@@ -199,13 +199,10 @@ class Home extends CI_Controller
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
-			// Mengirim email
-			$this->load->library('email');
-
 			// Konfigurasi email
 			$config = array(
 				'protocol'  => 'smtp',
-				'smtp_host' => 'ssl://mail.dpmptsp.agamkab.go.id',
+				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
 				'smtp_port' => 587,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',
