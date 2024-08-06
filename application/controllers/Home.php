@@ -204,10 +204,10 @@ class Home extends CI_Controller
 			// Konfigurasi email
 			$config = array(
 				'protocol' => 'smtp',
-				'smtp_host' => 'ssl://smtp.googlemail.com',
-				'smtp_port' => 465,
-				'smtp_user' => 'dpmptspagam@gmail.com',
-				'smtp_pass' => 'xaaz ljrg urbe dhai',
+				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
+				'smtp_port' => 587,
+				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
+				'smtp_pass' => 'p_ptsp@99agam',
 				'mailtype'  => 'html',
 				'charset'   => 'iso-8859-1',
 				'wordwrap'  => TRUE,
@@ -215,7 +215,7 @@ class Home extends CI_Controller
 
 			$this->email->initialize($config);
 			$this->email->set_newline("\r\n");
-			$this->email->from('dpmptspagam@gmail.com', 'DPMPTSP Kabupaten Agam');
+			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
 			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di https://dpmptsp.agamkab.go.id#pengaduan untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
