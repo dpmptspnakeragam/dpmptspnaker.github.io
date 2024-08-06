@@ -159,7 +159,7 @@ class Home extends CI_Controller
 
 	public function kirim_pengaduan()
 	{
-		// Validate form inputs
+		// Validasi input form
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required');
@@ -171,6 +171,8 @@ class Home extends CI_Controller
 			$unique_id = strtoupper(substr(bin2hex(random_bytes(3)), 0, 5));
 			$date = new DateTime();
 			$formatted_date = $date->format('Y-m-d H:i:s');
+
+			// Input data
 			$input = [
 				'no_pengaduan' => $unique_id,
 				'nama' => $this->input->post('nama'),
@@ -184,15 +186,17 @@ class Home extends CI_Controller
 				'status' => 'Proses'
 			];
 
+			// Bersihkan data input
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
-			// Set up email settings
+			// Set up pengaturan email
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
-			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di https://dpmptsp.agamkab.go.id#pengaduan untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
+			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di <a href='https://dpmptsp.agamkab.go.id#pengaduan'>https://dpmptsp.agamkab.go.id#pengaduan</a> untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
 
+			// Kirim email
 			try {
 				if ($this->email->send()) {
 					$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk mengetahui informasi Nomor Pengaduan. Terima kasih!!');
@@ -207,7 +211,7 @@ class Home extends CI_Controller
 			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
 		}
 
-		// Redirect after processing
-		redirect('#pengaduan');
+		// Redirect setelah proses
+		redirect('pengaduan'); // Pastikan URL yang benar
 	}
 }
