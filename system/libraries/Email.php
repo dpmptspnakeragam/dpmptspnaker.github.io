@@ -78,28 +78,28 @@ class CI_Email
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= 'mail.dpmptsp.agamkab.go.id';
+	public $smtp_host	= '';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var	string
 	 */
-	public $smtp_user	= 'pengaduan@dpmptsp.agamkab.go.id';
+	public $smtp_user	= '';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var	string
 	 */
-	public $smtp_pass	= 'p_ptsp@99agam';
+	public $smtp_pass	= '';
 
 	/**
 	 * SMTP Server port
 	 *
 	 * @var	int
 	 */
-	public $smtp_port	= 587;
+	public $smtp_port	= 25;
 
 	/**
 	 * SMTP connection timeout in seconds

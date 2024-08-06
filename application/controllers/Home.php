@@ -157,82 +157,69 @@ class Home extends CI_Controller
 
 	public function kirim_pengaduan()
 	{
-		// Setting rules untuk validasi form
-		$this->form_validation->set_rules('nama', 'Nama', 'required', [
-			'required' => 'Masukan %s!'
-		]);
-		$this->form_validation->set_rules('alamat', 'Alamat', 'required', [
-			'required' => 'Masukan %s!'
-		]);
-		$this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required', [
-			'required' => 'Masukan %s!'
-		]);
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email', [
-			'required' => 'Masukan %s!',
-			'valid_email' => 'Masukan alamat email yang valid!'
-		]);
-		$this->form_validation->set_rules('lokasi_kejadian', 'Lokasi Kejadian', 'required', [
-			'required' => 'Masukan %s!'
-		]);
-		$this->form_validation->set_rules('materi_pengaduan', 'Uraian Pengaduan', 'required', [
-			'required' => 'Masukan %s!'
-		]);
-
-		date_default_timezone_set('Asia/Jakarta');
-		$unique_id = strtoupper(substr(bin2hex(random_bytes(3)), 0, 5));
-		$date = new DateTime();
-		$formatted_date = $date->format('Y-m-d H:i:s');
-
-		$SendToEmail = $this->input->post('email');
+		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('lokasi_kejadian', 'Lokasi Kejadian', 'required');
+		$this->form_validation->set_rules('materi_pengaduan', 'Uraian Pengaduan', 'required');
 
 		if ($this->form_validation->run() == TRUE) {
+			$unique_id = strtoupper(substr(bin2hex(random_bytes(3)), 0, 5));
+			$date = new DateTime();
+			$formatted_date = $date->format('Y-m-d H:i:s');
 			$input = [
-				'no_pengaduan'      => $unique_id,
-				'nama'              => $this->input->post('nama'),
-				'alamat'            => $this->input->post('alamat'),
-				'hp'                => $this->input->post('hp'),
-				'email'             => $SendToEmail,
-				'jenis_pengaduan'   => 'Online',
-				'lokasi_kejadian'   => $this->input->post('lokasi_kejadian'),
-				'waktu_kejadian'    => $formatted_date,
-				'materi_pengaduan'  => $this->input->post('materi_pengaduan'),
-				'status'            => 'Proses'
+				'no_pengaduan' => $unique_id,
+				'nama' => $this->input->post('nama'),
+				'alamat' => $this->input->post('alamat'),
+				'hp' => $this->input->post('hp'),
+				'email' => $this->input->post('email'),
+				'jenis_pengaduan' => 'Online',
+				'lokasi_kejadian' => $this->input->post('lokasi_kejadian'),
+				'waktu_kejadian' => $formatted_date,
+				'materi_pengaduan' => $this->input->post('materi_pengaduan'),
+				'status' => 'Proses'
 			];
+
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
-
-
-			// Konfigurasi email
-			$config = array(
-				'protocol'  => 'smtp',
+			$config = [
+				'protocol' => 'smtp',
 				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
 				'smtp_port' => 587,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',
-				'mailtype'  => 'html',
-				'charset'   => 'iso-8859-1',
-				'wordwrap'  => TRUE,
-			);
-
-			$this->load->library('email', $config);
+				'mailtype' => 'html',
+				'charset' => 'iso-8859-1',
+				'wordwrap' => TRUE,
+				'newline' => "\r\n",
+				'smtp_crypto' => 'tls'
+			];
 
 			$this->email->initialize($config);
-			$this->email->set_newline("\r\n");
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
-			$this->email->to($SendToEmail);
+			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
 			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di https://dpmptsp.agamkab.go.id#pengaduan untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
 
-			if ($this->email->send()) {
-				$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk mengetahui informasi Nomor Pengaduan. Terima kasih!!');
-			} else {
+			try {
+				if ($this->email->send()) {
+					$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk mengetahui informasi Nomor Pengaduan. Terima kasih!!');
+				} else {
+					throw new Exception('Email tidak terkirim: ' . $this->email->print_debugger());
+				}
+			} catch (Exception $e) {
+				log_message('error', $e->getMessage());
 				$this->session->set_flashdata('gagal', 'Pengaduan berhasil disimpan tetapi email gagal dikirim.');
-				log_message('error', 'Email error: ' . $this->email->print_debugger());
 			}
 		} else {
 			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
 		}
+
+		// Gunakan output buffering untuk menangani kesalahan header
+		ob_start();
 		redirect('#pengaduan');
+		ob_end_clean();
 	}
 }
