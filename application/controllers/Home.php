@@ -204,8 +204,8 @@ class Home extends CI_Controller
 			// Konfigurasi email
 			$config = array(
 				'protocol'  => 'smtp',
-				'smtp_host' => 'ssl://mail.dpmptsp.agamkab.go.id',
-				'smtp_port' => 465,
+				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
+				'smtp_port' => 587,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',
 				'mailtype'  => 'html',
