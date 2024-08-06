@@ -157,24 +157,25 @@ class Home extends CI_Controller
 
 	public function kirim_pengaduan()
 	{
+		// Setting rules untuk validasi form
 		$this->form_validation->set_rules('nama', 'Nama', 'required', [
-			'required' => 'Masukan %s!',
+			'required' => 'Masukan %s!'
 		]);
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', [
-			'required' => 'Masukan %s!',
+			'required' => 'Masukan %s!'
 		]);
 		$this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required', [
-			'required' => 'Masukan %s!',
+			'required' => 'Masukan %s!'
 		]);
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email', [
 			'required' => 'Masukan %s!',
-			'valid_email' => 'Masukan alamat email yang valid!',
+			'valid_email' => 'Masukan alamat email yang valid!'
 		]);
 		$this->form_validation->set_rules('lokasi_kejadian', 'Lokasi Kejadian', 'required', [
-			'required' => 'Masukan %s!',
+			'required' => 'Masukan %s!'
 		]);
 		$this->form_validation->set_rules('materi_pengaduan', 'Uraian Pengaduan', 'required', [
-			'required' => 'Masukan %s!',
+			'required' => 'Masukan %s!'
 		]);
 
 		date_default_timezone_set('Asia/Jakarta');
@@ -204,7 +205,7 @@ class Home extends CI_Controller
 			// Konfigurasi email
 			$config = array(
 				'protocol'  => 'smtp',
-				'smtp_host' => 'mail.dpmptsp.agamkab.go.id',
+				'smtp_host' => 'ssl://mail.dpmptsp.agamkab.go.id',
 				'smtp_port' => 587,
 				'smtp_user' => 'pengaduan@dpmptsp.agamkab.go.id',
 				'smtp_pass' => 'p_ptsp@99agam',

@@ -329,7 +329,7 @@
 					</div>
 
 					<?= form_open('home/kirim_pengaduan'); ?>
-					<div class="card-body" style="max-height: 52vh; overflow-y: auto;">
+					<div class="card-body" style="max-height: 62vh; overflow-y: auto;">
 
 						<?php if ($this->session->flashdata('gagal')) : ?>
 							<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -411,20 +411,14 @@
 						<div class="form-group">
 							<label for="materi_pengaduan">Uraian Pengaduan</label>
 							<div class="input-group">
-								<textarea name="materi_pengaduan" id="materi_pengaduan" class="form-control" cols="20" rows="3" placeholder="Masukan Uraian Pengaduan"></textarea>
-								<div class="input-group-append">
-									<div class="input-group-text">
-										<span class="fas fa-list-ol"></span>
-									</div>
-								</div>
+								<textarea name="materi_pengaduan" id="materi_pengaduan" class="form-control" cols="20" rows="3" placeholder="Masukan Uraian Pengaduan"><?= set_value('materi_pengaduan'); ?></textarea>
 							</div>
 							<small class="text-danger"><?= form_error('materi_pengaduan'); ?></small>
 						</div>
-					</div>
-					<div class="card-footer">
-						<button type="submit" class="btn btn-primary">Kirim</button>
+						<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-check"></i> Kirim Pengaduan</button>
 					</div>
 					<?= form_close(); ?>
+
 				</div>
 			</div>
 		</div>
