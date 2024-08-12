@@ -157,9 +157,9 @@ class Home extends CI_Controller
 		echo json_encode($pengaduan, TRUE);
 	}
 
-	// pengiriman email
 	public function kirim_pengaduan()
 	{
+		// Validasi input form
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required');
@@ -191,23 +191,27 @@ class Home extends CI_Controller
 			$this->Model_pengaduan->insert_pengaduan($data);
 
 			// Set up pengaturan email
-			$this->email->from('dpmptspagam@gmail.com', 'DPMPTSP Kabupaten Agam');
+			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
-			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan. Silakan melakukan tracking di <a href='https://dpmptsp.agamkab.go.id#pengaduan'>https://dpmptsp.agamkab.go.id#pengaduan</a> untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
+			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di <a href='https://dpmptsp.agamkab.go.id#pengaduan'>https://dpmptsp.agamkab.go.id#pengaduan</a> untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
 
 			// Kirim email
-			if ($this->email->send()) {
-				$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk informasi Nomor Pengaduan. Terima kasih!');
-			} else {
-				$error = $this->email->print_debugger(['headers']);
-				log_message('error', 'Email gagal dikirim: ' . $error);
+			try {
+				if ($this->email->send()) {
+					$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk mengetahui informasi Nomor Pengaduan. Terima kasih!!');
+				} else {
+					throw new Exception('Email tidak terkirim: ' . $this->email->print_debugger());
+				}
+			} catch (Exception $e) {
+				log_message('error', $e->getMessage());
 				$this->session->set_flashdata('gagal', 'Pengaduan berhasil disimpan tetapi email gagal dikirim.');
 			}
 		} else {
-			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!');
+			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
 		}
 
-		redirect('#pengaduan');
+		// Redirect setelah proses
+		redirect('#pengaduan'); // Pastikan URL yang benar
 	}
 }
