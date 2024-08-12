@@ -191,7 +191,7 @@ class Home extends CI_Controller
 			$this->Model_pengaduan->insert_pengaduan($data);
 
 			// Set up pengaturan email
-			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
+			$this->email->from('dpmptspagam@gmail.com', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
 			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan. Silakan melakukan tracking di <a href='https://dpmptsp.agamkab.go.id#pengaduan'>https://dpmptsp.agamkab.go.id#pengaduan</a> untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
