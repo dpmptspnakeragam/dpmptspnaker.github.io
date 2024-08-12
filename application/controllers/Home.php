@@ -157,9 +157,9 @@ class Home extends CI_Controller
 		echo json_encode($pengaduan, TRUE);
 	}
 
+	// pengiriman email
 	public function kirim_pengaduan()
 	{
-		// Validasi input form
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required');
