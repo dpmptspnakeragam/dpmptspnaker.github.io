@@ -185,13 +185,19 @@ class Home extends CI_Controller
 				'status' => 'Proses'
 			];
 
+			// Sanitize the input data
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
+			// Send email
 			$this->email->from('pengaduan@dpmptsp.agamkab.go.id', 'DPMPTSP Kabupaten Agam');
 			$this->email->to($this->input->post('email'));
 			$this->email->subject('Pengaduan Berhasil Dikirim');
-			$this->email->message("Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, silahkan melakukan tracking di <a href='https://dpmptsp.agamkab.go.id#pengaduan'>https://dpmptsp.agamkab.go.id#pengaduan</a> untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
+			$this->email->message("
+            Pengaduan Anda dengan nomor <b>$unique_id</b> telah berhasil disimpan, 
+            silahkan melakukan tracking di 
+            <a href='https://dpmptsp.agamkab.go.id#pengaduan'>https://dpmptsp.agamkab.go.id#pengaduan</a> 
+            untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
 
 			try {
 				if ($this->email->send()) {
@@ -206,6 +212,7 @@ class Home extends CI_Controller
 		} else {
 			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
 		}
+
 		redirect('#pengaduan');
 	}
 }
