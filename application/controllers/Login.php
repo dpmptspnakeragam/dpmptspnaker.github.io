@@ -13,9 +13,8 @@ class Login extends CI_controller
         $this->load->view('templates/header');
         $this->load->view('login');
     }
-}
 
-public function cek_login()
+    public function cek_login()
     {
         $this->form_validation->set_rules('usrname', 'Username', 'required');
         $this->form_validation->set_rules('pssword', 'Password', 'required');
@@ -57,3 +56,4 @@ public function cek_login()
             }
         }
     }
+}
