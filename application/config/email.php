@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 $config = array(
-    'protocol'          => 'smtp',
+    'protocol'          => 'sendmail',
     'smtp_host'         => 'mail.dpmptsp.agamkab.go.id',
     'smtp_port'         => 587,
     'smtp_user'         => 'pengaduan@dpmptsp.agamkab.go.id',
