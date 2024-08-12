@@ -212,6 +212,10 @@ class Home extends CI_Controller
 		}
 
 		// Redirect setelah proses
-		redirect('pengaduan'); // Pastikan URL yang benar
+<<<<<<< HEAD
+		redirect('#pengaduan');
+=======
+		redirect('#pengaduan'); // Pastikan URL yang benar
+>>>>>>> 222c498eb60c3cef1cd482cf2698673188325e6a
 	}
 }

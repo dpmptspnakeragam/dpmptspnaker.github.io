@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 $config = array(
     'mailpath'          => '/usr/sbin/sendmail',
-    'protocol'          => 'sendmail',
+    'protocol'          => 'smtp',
     'smtp_host'         => 'mail.dpmptsp.agamkab.go.id',
     'smtp_port'         => 587,  // Port for TLS
     'smtp_user'         => 'pengaduan@dpmptsp.agamkab.go.id',
