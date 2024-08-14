@@ -39,6 +39,11 @@
    document.addEventListener('DOMContentLoaded', function() {
      var alerts = document.querySelectorAll('.alert');
      alerts.forEach(function(alert) {
+       // Skip alerts that should not be automatically dismissed
+       if (alert.classList.contains('persistent-alert')) {
+         return;
+       }
+
        var alertKey = alert.getAttribute('data-alert-key');
        setTimeout(function() {
          alert.parentNode.removeChild(alert); // Menghapus elemen alert dari DOM
@@ -53,7 +58,7 @@
              <?= $this->session->set_flashdata('berhasil', ''); ?>
            }
          <?php endif; ?>
-       }, 9000);
+       }, 6000);
      });
    });
  </script>

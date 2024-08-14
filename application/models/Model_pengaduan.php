@@ -19,9 +19,9 @@ class Model_pengaduan extends CI_model
         return $query;
     }
 
-    public function input($data)
+    public function insert_pengaduan($data)
     {
-        $this->db->insert('pengaduan', $data);
+        return $this->db->insert('pengaduan', $data);
     }
 
     public function update($data, $id)
@@ -43,10 +43,5 @@ class Model_pengaduan extends CI_model
     }
     //-----pengaduan-----//
 
-    // Insert Data di Home atau Section Pengaduan
-    public function insert_pengaduan($data)
-    {
-        // Insert data into the 'pengaduan' table
-        return $this->db->insert('pengaduan', $data);
-    }
+
 }

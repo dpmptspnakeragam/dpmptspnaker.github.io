@@ -198,21 +198,20 @@ class Home extends CI_Controller
             silahkan melakukan tracking di 
             <a href='https://dpmptsp.agamkab.go.id#pengaduan'>https://dpmptsp.agamkab.go.id#pengaduan</a> 
             untuk mengetahui <b>Proses Pengaduan</b>. Terima kasih.");
-
-			try {
-				if ($this->email->send()) {
-					$this->session->set_flashdata('berhasil', 'Pengaduan berhasil disimpan dan cek email untuk mengetahui informasi Nomor Pengaduan. Terima kasih!!');
-				} else {
-					throw new Exception('Email tidak terkirim: ' . $this->email->print_debugger());
-				}
-			} catch (Exception $e) {
-				log_message('error', $e->getMessage());
-				$this->session->set_flashdata('gagal', 'Pengaduan berhasil disimpan tetapi email gagal dikirim.');
-			}
+			$this->session->set_flashdata('berhasil_pengaduan', "Pengaduan berhasil disimpan dengan Nomor <b>$unique_id</b>. Lakukan Tracking Pengaduan untuk mengetahui informasi lebih lanjut. Terima kasih!!");
 		} else {
-			$this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
+			$this->session->set_flashdata('error_pengaduan', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
 		}
 
 		redirect('#pengaduan');
+	}
+
+	public function clear_flashdata()
+	{
+		$alertKey = $this->input->post('alert_key');
+
+		if ($alertKey) {
+			$this->session->set_flashdata($alertKey, null);
+		}
 	}
 }

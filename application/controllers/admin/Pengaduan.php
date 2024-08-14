@@ -9,11 +9,11 @@ class Pengaduan extends CI_controller
         if ($this->session->userdata('username') == "") {
             redirect('login');
         }
+        $this->load->model('Model_pengaduan');
     }
 
     public function index()
     {
-        $this->load->model('Model_pengaduan');
         $data['pengaduan'] = $this->Model_pengaduan->tampil_data();
         $this->load->view('templates/header_admin');
         $this->load->view('templates/navbar_admin');
@@ -25,32 +25,41 @@ class Pengaduan extends CI_controller
 
     public function tambah()
     {
-        $no_pengaduan = $this->input->post('no_pengaduan', true);
-        $nama = $this->input->post('nama', true);
-        $alamat = $this->input->post('alamat', true);
-        $hp = $this->input->post('hp', true);
-        $email = $this->input->post('email', true);
-        $jenis_pengaduan = $this->input->post('jenis_pengaduan', true);
-        $lokasi_kejadian = $this->input->post('lokasi_kejadian', true);
-        $waktu_kejadian = $this->input->post('waktu_kejadian', true);
-        $materi_pengaduan = $this->input->post('materi_pengaduan', true);
-        $status = $this->input->post('status', true);
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('hp', 'Nomor WhatsApp', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('jenis_pengaduan', 'Jenis Pengaduan', 'required');
+        $this->form_validation->set_rules('lokasi_kejadian', 'Lokasi Kejadian', 'required');
+        $this->form_validation->set_rules('waktu_kejadian', 'Waktu Kejadian', 'required');
+        $this->form_validation->set_rules('status', 'Status Pengaduan', 'required');
+        $this->form_validation->set_rules('materi_pengaduan', 'Uraian Pengaduan', 'required');
 
-        $data = array(
-            'no_pengaduan' => $no_pengaduan,
-            'nama' => $nama,
-            'alamat' => $alamat,
-            'hp' => $hp,
-            'email' => $email,
-            'jenis_pengaduan' => $jenis_pengaduan,
-            'lokasi_kejadian' => $lokasi_kejadian,
-            'waktu_kejadian' => $waktu_kejadian,
-            'materi_pengaduan' => $materi_pengaduan,
-            'status' => $status
-        );
-        $this->load->model('Model_pengaduan');
-        $this->Model_pengaduan->input($data);
-        $this->session->set_flashdata("berhasil", "Tambah data <b>$nama</b> berhasil !");
+        if ($this->form_validation->run() == TRUE) {
+
+            $no_pengaduan = $this->input->post('no_pengaduan');
+
+            $input = [
+                'no_pengaduan' => $no_pengaduan,
+                'nama' => $this->input->post('nama'),
+                'alamat' => $this->input->post('alamat'),
+                'hp' => $this->input->post('hp'),
+                'email' => $this->input->post('email'),
+                'jenis_pengaduan' => $this->input->post('jenis_pengaduan'),
+                'lokasi_kejadian' => $this->input->post('lokasi_kejadian'),
+                'waktu_kejadian' => $this->input->post('waktu_kejadian'),
+                'materi_pengaduan' => $this->input->post('materi_pengaduan'),
+                'status' => $this->input->post('status')
+            ];
+
+            $data = $this->security->xss_clean($input);
+            $this->Model_pengaduan->insert_pengaduan($data);
+
+            $this->session->set_flashdata('berhasil', "Pengaduan berhasil disimpan dengan Nomor <b>$no_pengaduan</b>. Tracking sudah bisa dilakukan, Terimakasih!!");
+        } else {
+            $this->session->set_flashdata('gagal', 'Pengaduan gagal disimpan. Perhatikan semua inputan!!');
+        }
+
         redirect('admin/pengaduan');
     }
 

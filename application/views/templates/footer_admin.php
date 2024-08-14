@@ -52,7 +52,7 @@
                         <?= $this->session->set_flashdata('berhasil', ''); ?>
                     }
                 <?php endif; ?>
-            }, 5000); // Menghapus setelah 5 detik (5000 milidetik)
+            }, 7000); // Menghapus setelah 5 detik (5000 milidetik)
         });
     });
 </script>

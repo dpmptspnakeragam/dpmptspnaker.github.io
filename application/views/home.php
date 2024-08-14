@@ -331,22 +331,42 @@
 					<?= form_open('home/kirim_pengaduan'); ?>
 					<div class="card-body" style="max-height: 62vh; overflow-y: auto;">
 
-						<?php if ($this->session->flashdata('gagal')) : ?>
-							<div class="alert alert-danger alert-dismissible fade show" role="alert">
-								<?= $this->session->flashdata('gagal'); ?>
+						<?php if ($this->session->flashdata('error_pengaduan')) : ?>
+							<div class="alert alert-danger alert-dismissible fade show persistent-alert" role="alert" data-alert-key="error_pengaduan">
+								<?= $this->session->flashdata('error_pengaduan'); ?>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 						<?php endif; ?>
-						<?php if ($this->session->flashdata('berhasil')) : ?>
-							<div class="alert alert-success alert-dismissible fade show" role="alert">
-								<?= $this->session->flashdata('berhasil'); ?>
+
+						<?php if ($this->session->flashdata('berhasil_pengaduan')) : ?>
+							<div class="alert alert-success alert-dismissible fade show persistent-alert" role="alert" data-alert-key="berhasil_pengaduan">
+								<?= $this->session->flashdata('berhasil_pengaduan'); ?>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 						<?php endif; ?>
+
+						<!-- Hapus Alert dengan klik tombol x (Close) -->
+						<script>
+							document.addEventListener('DOMContentLoaded', function() {
+								var alerts = document.querySelectorAll('.alert.persistent-alert');
+
+								alerts.forEach(function(alert) {
+									alert.querySelector('.close').addEventListener('click', function() {
+										var alertKey = alert.getAttribute('data-alert-key');
+
+										// Use AJAX to clear the flashdata
+										var xhr = new XMLHttpRequest();
+										xhr.open('POST', '<?= base_url('Home/clear_flashdata'); ?>', true);
+										xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+										xhr.send('alert_key=' + alertKey);
+									});
+								});
+							});
+						</script>
 
 						<div class="form-group">
 							<label for="nama">Nama</label>
