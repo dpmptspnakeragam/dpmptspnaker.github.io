@@ -6,16 +6,17 @@
 			<div class="col-lg-6 col-12">
 				<div class="posisi-agam">
 					<img class="mb-4 mr-1 jumbotronimg agam" src="<?= base_url(); ?>assets/img/agam.png" alt="logoagam">
-					<!---<img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam">--->
+					<!-- <img class="mb-4 ml-2 jumbotronimg hut" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="logoagam"> -->
 				</div>
 				<h1 class="jumbotronteks welcome">SELAMAT DATANG</h1>
 				<h1 class="jumbotronteks nama"><strong>DINAS PENANAMAN MODAL <br> PELAYANAN TERPADU SATU PINTU <br> KABUPATEN AGAM</strong></h1>
 			</div>
-			<!---<div class="col-lg-6 col-12">
-        <div class="inline">
-          <img class="jumbotronimg" src="<?= base_url(); ?>assets/img/kantor_vector.png" alt="kantor" width="100%">
-        </div>
-      </div>--->
+			<!-- <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center text-center">
+				<div class="inline">
+					<h1 class="jumbotronteks nama"><b>DIRGAHAYU REPUBLIK INDONESIA KE-</b></h1>
+					<img class="jumbotronimg" src="<?= base_url(); ?>assets/img/hut_ri_77.png" alt="kantor" width="100%">
+				</div>
+			</div> -->
 		</div>
 	</div>
 </div>
@@ -227,32 +228,43 @@
 						</a>
 					</div>
 					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/fpp.png" alt="gambarsp" width="100%">Formulir & Persyaratan Perizinan</a>
+						<a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalPelayanan">
+							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/fpp.png" alt="Logo SP" width="100%">Formulir & Persyaratan Perizinan
+						</a>
 					</div>
 					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="https://sicantik.go.id/#/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sicantikcloud.jpg" alt="gambarsicantikcloud" width="100%">SiCantik</a>
+						<a href="https://sicantik.go.id/sign-in" class="pilih-pelayanan" target="_blank">
+							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url('assets/img/sicantikcloud.png'); ?>" alt="Logo SiCantik Cloud" width="100%">SiCantik
+						</a>
 					</div>
 					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="https://ui-login.oss.go.id/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="gambaross" width="100%">OSS</a>
-					</div>
-					<!---<div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-            <a href="https://account.kemnaker.go.id/auth/login" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sisnaker.jpg" alt="gambarsicantikcloud" width="100%">SISNAKER KEMNAKER</a>
-          </div>--->
-					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="https://www.lapor.go.id/" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lp.jpg" alt="gambarsicantikcloud" width="100%">Lapor.go.id</a>
+						<a href="https://ui-login.oss.go.id/login" class="pilih-pelayanan" target="_blank">
+							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/oss.jpg" alt="Logo OSS RBA" width="100%">OSS RBA
+						</a>
 					</div>
 					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.jpg" alt="gambarsicantikcloud" width="100%">Tracking SiCantik</a>
+						<a href="https://www.lapor.go.id/" class="pilih-pelayanan" target="_blank">
+							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/lp.jpg" alt="Logo Lapor" width="100%">Lapor.go.id
+						</a>
+					</div>
+					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+						<a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalTracking">
+							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/trackingsicantik.png" alt="Logo Tracking SiCantik Cloud" width="100%">Tracking SiCantik
+						</a>
+					</div>
+					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+						<a href="https://simbg.pu.go.id/" class="pilih-pelayanan" target="_blank">
+							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simbg.png" alt="logo SIMBG" width="100%">SIMBG
+						</a>
+					</div>
+					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
+						<a href="https://simtaru.agamkab.go.id/" class="pilih-pelayanan" target="_blank">
+							<img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simtaru.png" alt="Logo SIMTARU AGAM" width="100%">SIMTARU
+						</a>
 					</div>
 					<!----<div class="col col-sm-12 col-md-3 col-lg-3 col-6 display-4 mb-3">
-            <a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalRetribusi"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sr.jpg" alt="gambarsimulasiretribusi" width="100%">Simulasi Retribusi</a>
-          </div>--->
-					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="https://simbg.pu.go.id" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simbg.png" alt="gambarsimbgcloud" width="100%">SIMBG</a>
-					</div>
-					<div class="col col-sm-12 col-md-4 col-lg-4 col-6 display-4 mb-3">
-						<a href="https://simtaru.agamkab.go.id/" class="pilih-pelayanan"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/simtaru.png" alt="gambarsimtarucloud" width="100%">SIMTARU</a>
-					</div>
+			<a href="" class="pilih-pelayanan" data-toggle="modal" data-target="#ModalRetribusi"><img id="img-layanan" class="mb-2 img-layanan" src="<?= base_url(); ?>assets/img/sr.jpg" alt="gambarsimulasiretribusi" width="100%">Simulasi Retribusi</a>
+		  </div>--->
 				</div>
 			</div>
 		</div>

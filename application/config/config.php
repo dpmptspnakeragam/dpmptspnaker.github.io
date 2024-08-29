@@ -23,8 +23,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = "https://dpmptsp.agamkab.go.id";
+// Local
+// $config['base_url'] = "http://localhost/dpmptsp/";
 
+// Deploy
+$config['base_url'] = "https://dpmptsp.agamkab.go.id";
 /*
 |--------------------------------------------------------------------------
 | Index File
