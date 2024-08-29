@@ -27,7 +27,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 // $config['base_url'] = "http://localhost/dpmptsp/";
 
 // Deploy
-$config['base_url'] = "https://dpmptsp.agamkab.go.id";
+$config['base_url'] = "https://dpmptsp.agamkab.go.id/";
 /*
 |--------------------------------------------------------------------------
 | Index File
