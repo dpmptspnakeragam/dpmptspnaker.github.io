@@ -1,9 +1,13 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)$ index.php/$1 [L]
-</IfModule>
+# Pengalihan dari www ke non-www (dpmptsp.agamkab.go.id)
+RewriteEngine On
+# Jika URL mengandung www, alihkan ke non-www
+RewriteCond %{HTTP_HOST} ^www\.dpmptsp\.agamkab\.go\.id [NC]
+RewriteRule ^(.*)$ https://dpmptsp.agamkab.go.id/$1 [L,R=301]
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
 
 ## EXPIRES CACHING ##
 <IfModule mod_expires.c>
