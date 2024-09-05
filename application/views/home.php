@@ -213,7 +213,7 @@
 					<img style="width:100%;" class="shadow mb-3 isi-pelayanan intro-pelayanan" src="<?= base_url(); ?>assets/imgupload/<?= $row->maklumat; ?>" alt="Maklumat Pelayanan">
 				<?php } ?>
 			</div>
-			<div class="col-lg-8 col-12 text-justify">
+			<div class="col-lg-8 col-md-8 col-12 text-justify">
 				<p class="isi-pelayanan intro-pelayanan">
 					Kami membuka Layanan Perizinan dan Non Perizinan melalui tatap muka maupun online. Untuk tatap muka secara langsung
 					silahkan kunjungi kantor kami dengan alamat yang tertera pada menu Kontak. Untuk pelayanan melalui online silahkan
@@ -286,11 +286,11 @@
 			</div>
 		</div>
 		<div class="row pb-5">
-			<div class="col-lg-12 col-sm-6 col-xs-12">
+			<div class="col-12">
 				<p class="penjelasan-investasi">Peta dibawah merupakan Peta Penyebaran Potensi Investasi yang berada di Kabupaten Agam. </p>
 				<iframe class="peta-investasi shadow" width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="PETA POTENSI INVESTASI KABUPATEN AGAM" src="//www.arcgis.com/apps/Embed/index.html?webmap=ae83c5f68ead4e8a894d82b536186438&extent=99.4542,-0.6519,100.8906,0.1131&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=legend&disable_scroll=true&theme=light"></iframe>
 			</div>
-			<div class="col-lg-4 col">
+			<div class="col-lg-4">
 				<p class="penjelasan-investasi">Untuk lebih detail mengenai Potensi Investasi di Kabupaten Agam, silahkan klik tombol dibawah ini :
 				</p>
 				<div class="display-4">
@@ -317,7 +317,7 @@
 <!-- close Investasi -->
 
 <!-- Pengaduan -->
-<section class="pengaduan" id="pengaduan">
+<section class="pengaduan bg-white" id="pengaduan">
 	<div class="container-fluid">
 		<div class="row text-center">
 			<div class="col-lg-12 mt-4 ">
@@ -325,23 +325,21 @@
 				<hr class="garis-judul">
 			</div>
 		</div>
-		<div class="row pl-4 pr-4 pb-2">
-			<div class="col-lg-7 col-sm-12 mt-4 mb-1">
-				<img class="shadow mekanisme-pengaduan mb-4" src="<?= base_url(); ?>assets/img/mekanisme_pengaduan.jpg" alt="gambar" width="100%">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12">
+				<img class="shadow mekanisme-pengaduan mb-4" src="<?= base_url(); ?>assets/img/mekanisme_penanganan_pengaduan.png" alt="gambar" width="100%">
 				<h4><strong>Info Kontak Pengaduan</strong></h4>
-				<p>Masril, S.IP - 082385822706</p>
-				<p>Email : dpmptspagam@gmail.com</p>
-				<a href="" class="pilih-profil" data-toggle="modal" data-target="#ModalTrackingPengaduan"><i class="ikon fa fa-search" aria-hidden="true"></i> Tracking Pengaduan</a>
-
+				<p class="mt-0 mb-0">Masril, S.IP - <b>082385822706</b></p>
+				<p class="mt-0">Email : dpmptspagam@gmail.com</p>
 			</div>
-			<div class="col-lg-5 col-sm-6 form-pengaduan">
-				<div class="card shadow ">
+			<div class="col-lg-6 col-md-6 col-sm-12 form-pengaduan mb-4">
+				<div class="card shadow">
 					<div class="card-header">
 						<p class="h2">Formulir Pengaduan Online DPMPTSP Kab. Agam</p>
 					</div>
 
 					<?= form_open('home/kirim_pengaduan'); ?>
-					<div class="card-body" style="max-height: 62vh; overflow-y: auto;">
+					<div class="card-body" style="max-height: 65vh; overflow-y: auto;">
 
 						<?php if ($this->session->flashdata('error_pengaduan')) : ?>
 							<div class="alert alert-danger alert-dismissible fade show persistent-alert" role="alert" data-alert-key="error_pengaduan">
@@ -450,8 +448,10 @@
 						<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-check"></i> Kirim Pengaduan</button>
 					</div>
 					<?= form_close(); ?>
-
 				</div>
+			</div>
+			<div class="col-lg-12 col-sm-12 mb-4">
+				<button type="button" class="pilih-profil border-none" data-toggle="modal" data-target="#ModalTrackingPengaduan"><i class="ikon fa fa-search" aria-hidden="true"></i> Tracking Pengaduan</button>
 			</div>
 		</div>
 	</div>
@@ -478,7 +478,7 @@
 
 			<div class="card col-12 text-center text-light bg-dark isi-investasi p-3">
 				<div class="row">
-					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-6">
 						<div class="bg-dark">
 							<hr style="border: 1px solid; background-color: white;">
 							<h5>Grafik Survey Kepuasan Masyarakat</h5>
@@ -578,7 +578,7 @@
 						});
 					</script>
 
-					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-6">
 						<hr style="border: 1px solid; background-color: white;">
 						<h5>Indeks Kepuasan Masyarakat (IKM)</h5>
 						<hr style="border: 1px solid; background-color: white;">

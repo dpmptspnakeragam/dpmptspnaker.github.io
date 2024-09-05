@@ -855,9 +855,9 @@ video {
 	transform: translate(0, 0);
 }
 
-.form-pengaduan {
+/* .form-pengaduan {
 	margin-bottom: 50px;
-}
+} */
 
 .pengaduan .tombol-pp:hover {
 	background-color: white;
