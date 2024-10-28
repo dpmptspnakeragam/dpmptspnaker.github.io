@@ -17,27 +17,25 @@
             justify-content: center;
             align-items: center;
             background-color: maroon;
-            background-image: url('assets/img/maintenance4.png');
+            background-image: url('assets/img/maintenance.png');
             background-size: cover;
-            /* Membuat gambar memenuhi seluruh layar */
             background-repeat: no-repeat;
-            /* Mencegah pengulangan gambar */
             background-position: center;
-            /* Memposisikan gambar di tengah */
         }
 
         .container {
-            max-width: 500px;
-            padding: 40px;
+            max-width: 90%;
+            /* Menggunakan persentase agar lebih responsif */
+            padding: 20px;
             border-radius: 8px;
-            margin-top: 180px;
-            margin-right: 100px;
-            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+            background: rgba(0, 0, 0, 0.5);
+            /* Menambahkan latar belakang semi-transparan untuk konten */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
 
         .spinner {
-            border: 8px solid rgba(0, 0, 0, 0.1);
+            border: 8px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             border-top: 8px solid yellow;
             width: 80px;
@@ -85,11 +83,16 @@
         /* Media Query untuk Responsif */
         @media (max-width: 600px) {
             .container {
-                padding: 20px;
+                padding: 15px;
+                max-width: 95%;
             }
 
             h1 {
-                font-size: 1.8em;
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
             }
 
             p {
