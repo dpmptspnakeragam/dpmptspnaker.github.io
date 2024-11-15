@@ -233,7 +233,7 @@
                                                     chatContainer.appendChild(messageElement);
 
                                                     // Hanya memutar suara jika ini bukan pemuatan awal
-                                                    if (!isAdmin && new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad) {
+                                                    if (new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad) {
                                                         playNotificationSound();
                                                     }
                                                 });

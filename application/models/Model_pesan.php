@@ -55,6 +55,7 @@ class Model_pesan extends CI_Model
         return $groupedMessages;
     }
 
+
     public function get_messages_by_ip($ipAddress, $lastMessageId)
     {
         $this->db->select('*');
@@ -94,6 +95,7 @@ class Model_pesan extends CI_Model
                 'user_type' => 'admin',
                 'message' => $reply_message,
                 'is_read' => 1,
+                'ip_address' => $this->input->ip_address(),
                 'date' => date("Y-m-d"),
                 'created_at' => date("Y-m-d H:i:s")
             ];
