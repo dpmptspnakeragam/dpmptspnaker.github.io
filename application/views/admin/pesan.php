@@ -126,7 +126,7 @@
                                     }
 
                                     // Jalankan polling setiap 5 detik
-                                    setInterval(checkNewMessages, 3000);
+                                    setInterval(checkNewMessages, 5000);
                                 </script>
 
                                 <script>
