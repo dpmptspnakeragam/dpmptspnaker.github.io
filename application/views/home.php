@@ -1495,10 +1495,10 @@
 
 <!-- ----------------------------- Tombol Chat (Floating Chat Button) ----------------------------- -->
 <!-- Tombol Chat untuk Membuka Modal -->
-<!-- <div id="chat-button">
+<div id="chat-button">
 	<span id="chat-text">Hubungi Kami</span>
 	<img src="<?= base_url(); ?>assets/img/logo-chat.png" alt="Chat Icon">
-</div> -->
+</div>
 
 <!-- Modal Chat (Bootstrap) -->
 <div class="modal fade" id="chat-modal" data-backdrop="static" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
@@ -1511,115 +1511,7 @@
 				</button>
 			</div>
 			<div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
-				<script>
-					let lastMessageId = 0;
-					const chatButton = document.getElementById('chat-button');
-					const chatBody = document.getElementById('chat-body');
 
-					chatButton.addEventListener('click', function() {
-						const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
-						chatModal.show();
-						loadNewMessages();
-						if (checkWelcomeMessageLimit()) {
-							const welcomeMessage = document.createElement('div');
-							welcomeMessage.className = 'chat-message admin-message';
-							welcomeMessage.innerHTML = `Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).`;
-							chatBody.appendChild(welcomeMessage);
-							chatBody.scrollTop = chatBody.scrollHeight;
-						}
-					});
-
-					function sendMessage() {
-						const message = document.getElementById('message-input').value.trim();
-						const imageFile = document.getElementById('image-input').files[0];
-						if (message === '' && !imageFile) {
-							alert('Silakan masukkan pesan atau pilih gambar yang akan dikirim.');
-							return;
-						}
-
-						// Mendapatkan alamat IP dan lokasi pengguna
-						fetch('https://ip-api.com/json') // API untuk mendapatkan informasi IP
-							.then(response => response.json())
-							.then(locationData => {
-								const location = `${locationData.city}, ${locationData.country}`;
-								const formData = new FormData();
-								formData.append('message', message);
-								formData.append('location', location); // Menambahkan lokasi pengguna
-								if (imageFile) formData.append('image', imageFile);
-
-								fetch('<?= base_url('pesan/save_message'); ?>', {
-										method: 'POST',
-										body: formData
-									})
-									.then(response => response.json())
-									.then(data => {
-										if (data.status === 'success') {
-											document.getElementById('message-input').value = '';
-											document.getElementById('image-input').value = '';
-											loadNewMessages();
-										} else {
-											alert(data.message);
-										}
-									})
-									.catch(error => {
-										alert('Terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.');
-									});
-							})
-							.catch(error => {
-								console.error('Error getting IP location:', error);
-							});
-					}
-
-					function loadNewMessages() {
-						fetch('<?= base_url('pesan/load_messages'); ?>?last_id=' + lastMessageId)
-							.then(response => response.json())
-							.then(messages => {
-								if (messages.length > 0) {
-									let newMessageAdded = false;
-									messages.forEach(message => {
-										const messageDiv = document.createElement('div');
-										messageDiv.className = `chat-message ${message.user_type}-message`;
-
-										const avatarSrc = message.user_type === 'admin' ?
-											'<?= base_url('assets/img/admin-avatar.png'); ?>' :
-											'<?= base_url('assets/img/user-avatar.png'); ?>';
-
-										const messageDate = new Date(message.created_at);
-										const formattedDate = messageDate.toLocaleString('id-ID', {
-											day: '2-digit',
-											month: 'short',
-											year: 'numeric',
-											hour: '2-digit',
-											minute: '2-digit',
-											hour12: false
-										});
-
-										messageDiv.innerHTML = `
-                    					    <img src="${avatarSrc}" alt="${message.user_type === 'admin' ? 'Admin' : 'User'} Avatar" class="chat-avatar">
-                    					    <div>
-                    					        <div>${message.message}</div>
-                    					        ${message.image_url ? `<img src="${message.image_url}" alt="Image" class="chat-image">` : ''}
-                    					        <small class="message-date">${formattedDate}</small>
-                    					    </div>
-                    					`;
-
-										chatBody.appendChild(messageDiv);
-										lastMessageId = Math.max(lastMessageId, message.id);
-										newMessageAdded = true;
-									});
-
-									// Only scroll if a new message was added
-									if (newMessageAdded) {
-										chatBody.scrollTop = chatBody.scrollHeight;
-									}
-								}
-							})
-							.catch(error => console.error('Gagal memuat pesan:', error));
-					}
-
-					// Call loadNewMessages at regular intervals
-					setInterval(loadNewMessages, 1000);
-				</script>
 			</div>
 			<div class="modal-footer">
 				<input type="file" id="image-input" class="form-control border-0" accept="image/*">
@@ -1631,10 +1523,139 @@
 </div>
 
 <!-- JavaScript for Chat Modal -->
+<script>
+	let lastMessageId = 0;
+	let isSending = false; // Tambahkan variabel ini untuk mencegah pengiriman ganda
+	const chatButton = document.getElementById('chat-button');
+	const chatBody = document.getElementById('chat-body');
+	let intervalId;
+
+	chatButton.addEventListener('click', function() {
+		const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
+		chatModal.show();
+		loadNewMessages();
+		if (checkWelcomeMessageLimit()) {
+			const welcomeMessage = document.createElement('div');
+			welcomeMessage.className = 'chat-message admin-message';
+			welcomeMessage.innerHTML = `Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).`;
+			chatBody.appendChild(welcomeMessage);
+			chatBody.scrollTop = chatBody.scrollHeight;
+		}
+	});
+
+	function sendMessage() {
+		if (isSending) return; // Cegah pengiriman jika proses sebelumnya belum selesai
+
+		const message = document.getElementById('message-input').value.trim();
+		const imageFile = document.getElementById('image-input').files[0];
+		const sendButton = document.querySelector('.btn');
+
+		if (message === '' && !imageFile) {
+			alert('Silakan masukkan pesan atau pilih gambar yang akan dikirim.');
+			return;
+		}
+
+		isSending = true; // Set status pengiriman menjadi true
+		sendButton.disabled = true;
+		sendButton.innerHTML = 'Mengirim...';
+
+		fetch('https://ip-api.com/json')
+			.then(response => response.json())
+			.then(locationData => {
+				const location = `${locationData.city}, ${locationData.country}`;
+				const formData = new FormData();
+				formData.append('message', message);
+				formData.append('location', location);
+				if (imageFile) formData.append('image', imageFile);
+
+				fetch('<?= base_url('pesan/save_message'); ?>', {
+						method: 'POST',
+						body: formData
+					})
+					.then(response => response.json())
+					.then(data => {
+						if (data.status === 'success') {
+							document.getElementById('message-input').value = '';
+							document.getElementById('image-input').value = '';
+							loadNewMessages();
+						} else {
+							alert(data.message);
+						}
+					})
+					.catch(error => {
+						alert('Terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.');
+					})
+					.finally(() => {
+						isSending = false; // Reset status pengiriman
+						sendButton.disabled = false;
+						sendButton.innerHTML = 'Kirim';
+					});
+			})
+			.catch(error => {
+				console.error('Error getting IP location:', error);
+				isSending = false;
+				sendButton.disabled = false;
+				sendButton.innerHTML = 'Kirim';
+			});
+	}
+
+	function loadNewMessages() {
+		fetch('<?= base_url('pesan/load_messages'); ?>?last_id=' + lastMessageId)
+			.then(response => response.json())
+			.then(messages => {
+				if (messages.length > 0) {
+					let newMessageAdded = false;
+					messages.forEach(message => {
+						const messageDiv = document.createElement('div');
+						messageDiv.className = `chat-message ${message.user_type}-message`;
+
+						const avatarSrc = message.user_type === 'admin' ?
+							'<?= base_url('assets/img/admin-avatar.png'); ?>' :
+							'<?= base_url('assets/img/user-avatar.png'); ?>';
+
+						const messageDate = new Date(message.created_at);
+						const formattedDate = messageDate.toLocaleString('id-ID', {
+							day: '2-digit',
+							month: 'short',
+							year: 'numeric',
+							hour: '2-digit',
+							minute: '2-digit',
+							hour12: false
+						});
+
+						messageDiv.innerHTML = `
+						    <img src="${avatarSrc}" alt="${message.user_type === 'admin' ? 'Admin' : 'User'} Avatar" class="chat-avatar">
+						    <div>
+						        <div>${message.message}</div>
+						        ${message.image_url ? `<img src="${message.image_url}" alt="Image" class="chat-image">` : ''}
+						        <small class="message-date ${message.user_type === 'admin' ? 'admin-date' : 'user-date'}">
+						            ${formattedDate}
+						        </small>
+						    </div>
+						`;
+
+						chatBody.appendChild(messageDiv);
+						lastMessageId = Math.max(lastMessageId, message.id);
+						newMessageAdded = true;
+					});
+
+					if (newMessageAdded) {
+						chatBody.scrollTop = chatBody.scrollHeight;
+					}
+				}
+			})
+			.catch(error => console.error('Gagal memuat pesan:', error));
+	}
+
+	// Atur interval untuk pemuatan pesan baru
+	if (intervalId) clearInterval(intervalId); // Pastikan hanya ada satu interval aktif
+	intervalId = setInterval(loadNewMessages, 5000);
+</script>
+
 
 
 <!--Script Tawk.to-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	var Tawk_API = Tawk_API || {},
 		Tawk_LoadStart = new Date();
 	(function() {
@@ -1646,7 +1667,7 @@
 		s1.setAttribute('crossorigin', '*');
 		s0.parentNode.insertBefore(s1, s0);
 	})();
-</script>
+</script> -->
 
 <script type="text/javascript">
 	function showPopUpBanner() {

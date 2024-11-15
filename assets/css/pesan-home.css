@@ -84,7 +84,6 @@
     align-self: flex-end;
     flex-direction: row-reverse;
     margin-left: auto;
-    text-align: right;
 }
 
 .admin-message {
@@ -123,7 +122,15 @@
     border-color: maroon;
 }
 
-.message-date {
+.message-date.admin-date {
+    font-size: 10px;
+    color: gray;
+    text-align: left;
+    margin-top: 5px;
+    display: block;
+}
+
+.message-date.user-date {
     font-size: 10px;
     color: gray;
     text-align: right;

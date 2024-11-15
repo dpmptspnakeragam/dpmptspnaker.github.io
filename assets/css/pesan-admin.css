@@ -35,7 +35,6 @@
     margin-left: 100px;
     align-self: flex-end;
     justify-content: space-between;
-    text-align: right;
 }
 
 .admin-message .chat-avatar {
@@ -55,12 +54,22 @@
     width: 100%;
 }
 
-.message-date {
+#chat-body .user-message .message-date {
+    font-size: 10px;
+    color: gray;
+    text-align: left;
+    /* Tanggal di kanan untuk user */
+    margin-top: 5px;
+}
+
+#chat-body .admin-message .message-date {
     font-size: 10px;
     color: gray;
     text-align: right;
+    /* Tanggal di kiri untuk admin */
     margin-top: 5px;
 }
+
 
 .message-image {
     margin-top: 5px;

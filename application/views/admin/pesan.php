@@ -25,7 +25,7 @@
                             <th class="text-center align-middle">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-body">
                         <?php foreach ($messagesByIp as $ip => $messages): ?>
                             <tr>
                                 <td class="text-center">
@@ -67,13 +67,84 @@
                             <div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
                                 <!-- Pesan akan dimuat di sini -->
                                 <script>
+                                    let lastTimestamp = Math.floor(Date.now() / 1000); // Timestamp saat ini (UNIX time)
+                                    const audio = new Audio('assets/sounds/notification.mp3'); // Suara notifikasi
+                                    let isTabActive = true;
+
+                                    // Monitor apakah tab aktif atau tidak
+                                    document.addEventListener("visibilitychange", () => {
+                                        isTabActive = !document.hidden;
+                                    });
+
+                                    // Fungsi untuk memeriksa pesan baru
+                                    function checkNewMessages() {
+                                        $.ajax({
+                                            url: '<?= base_url("admin/pesan/load_table_data") ?>',
+                                            method: 'GET',
+                                            data: {
+                                                timestamp: lastTimestamp
+                                            },
+                                            success: function(response) {
+                                                const data = JSON.parse(response);
+
+                                                // Jika ada pesan baru
+                                                if (data.newMessages) {
+                                                    // Update timestamp terakhir
+                                                    lastTimestamp = data.latestTimestamp;
+
+                                                    // Mainkan suara notifikasi
+                                                    if (!isTabActive) {
+                                                        audio.play();
+                                                        showWebNotification(data.messages);
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    }
+
+                                    // Fungsi untuk menampilkan Web Notification
+                                    function showWebNotification(messages) {
+                                        if (Notification.permission === "granted") {
+                                            messages.forEach((message) => {
+                                                const notification = new Notification("Pesan Baru dari User", {
+                                                    body: message.message,
+                                                    icon: 'assets/img/user-avatar.png' // URL gambar ikon notifikasi
+                                                });
+
+                                                // Arahkan ke halaman pesan saat notifikasi diklik
+                                                notification.onclick = function() {
+                                                    window.focus();
+                                                    window.location.href = '<?= base_url("admin/pesan") ?>';
+                                                };
+                                            });
+                                        }
+                                    }
+
+                                    // Meminta izin untuk notifikasi jika belum diberikan
+                                    if (Notification.permission !== "granted") {
+                                        Notification.requestPermission();
+                                    }
+
+                                    // Jalankan polling setiap 5 detik
+                                    setInterval(checkNewMessages, 3000);
+                                </script>
+
+                                <script>
                                     let lastMessageId = 0;
                                     let currentIp = '';
                                     let pollingInterval;
+                                    let isFirstLoad = true;
+
+                                    function playNotificationSound() {
+                                        const audio = new Audio('<?= base_url("assets/sounds/notification.mp3"); ?>');
+                                        audio.play();
+                                    }
 
                                     function openChat(ip) {
                                         currentIp = ip;
                                         document.getElementById('chat-body').innerHTML = '';
+                                        lastMessageId = 0; // Reset lastMessageId untuk memuat ulang dari awal
+                                        isFirstLoad = true; // Tandai sebagai pemuatan awal
                                         loadNewMessages(ip);
                                         startPolling();
                                     }
@@ -85,11 +156,14 @@
                                     function sendMessage() {
                                         const messageInput = document.getElementById('message-input');
                                         const message = messageInput.value.trim();
+                                        const sendButton = document.querySelector('.btn');
 
                                         if (message === "") {
                                             alert("Pesan tidak boleh kosong.");
                                             return;
                                         }
+
+                                        sendButton.disabled = true;
 
                                         const formData = new FormData();
                                         formData.append('message_id', lastMessageId);
@@ -108,6 +182,12 @@
                                                 } else {
                                                     alert("Gagal mengirim balasan. Silakan coba lagi.");
                                                 }
+                                            })
+                                            .catch(error => {
+                                                alert("Terjadi kesalahan saat mengirim balasan.");
+                                            })
+                                            .finally(() => {
+                                                sendButton.disabled = false;
                                             });
                                     }
 
@@ -118,7 +198,6 @@
                                                 const chatContainer = document.getElementById(chatContainerId);
                                                 if (!chatContainer) return;
 
-                                                // Menyimpan tinggi scroll sebelum pesan baru ditambahkan
                                                 const initialScrollHeight = chatContainer.scrollHeight;
 
                                                 messages.forEach(msg => {
@@ -130,7 +209,6 @@
                                                         '<?= base_url("assets/img/admin-avatar.png"); ?>' :
                                                         '<?= base_url("assets/img/user-avatar.png"); ?>';
 
-                                                    // Format pesan dengan teks, gambar, dan tanggal
                                                     let messageContent = `<div class="message-text">${msg.message}`;
 
                                                     if (msg.image_url) {
@@ -153,30 +231,39 @@
 
                                                     messageElement.innerHTML = messageContent;
                                                     chatContainer.appendChild(messageElement);
+
+                                                    // Hanya memutar suara jika ini bukan pemuatan awal
+                                                    if (!isAdmin && new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad) {
+                                                        playNotificationSound();
+                                                    }
                                                 });
 
                                                 if (messages.length > 0) {
                                                     lastMessageId = messages[messages.length - 1].id;
                                                     const newScrollHeight = chatContainer.scrollHeight;
 
-                                                    // Hanya scroll jika ada pesan baru yang ditambahkan
                                                     if (newScrollHeight > initialScrollHeight) {
                                                         chatContainer.scrollTop = newScrollHeight;
                                                     }
                                                 }
+
+                                                // Set pemuatan awal menjadi false setelah data pertama selesai dimuat
+                                                isFirstLoad = false;
                                             });
                                     }
 
                                     function startPolling() {
                                         pollingInterval = setInterval(() => {
                                             loadNewMessages(currentIp);
-                                        }, 1000);
+                                        }, 5000);
                                     }
 
                                     function stopPolling() {
                                         clearInterval(pollingInterval);
                                     }
+                                </script>
 
+                                <script>
                                     function markAllAsRead(ip) {
                                         $.ajax({
                                             url: '<?= site_url("admin/pesan/mark_all_as_read") ?>',
@@ -188,7 +275,6 @@
                                             success: function(response) {
                                                 if (response.status === 'success') {
                                                     alert('Berhasil membaca semua pesan untuk IP ini.');
-
                                                     location.reload();
                                                 } else {
                                                     alert('Terjadi kesalahan saat menandai pesan sebagai telah dibaca.');
