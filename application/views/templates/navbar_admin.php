@@ -130,6 +130,12 @@
                                 </ul>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url(); ?>admin/pesan">
+                                <span data-feather="message-circle"></span>
+                                Pesan
+                            </a>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>
