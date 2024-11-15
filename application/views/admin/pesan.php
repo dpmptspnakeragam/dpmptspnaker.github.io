@@ -66,68 +66,7 @@
                             </div>
                             <div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
                                 <!-- Pesan akan dimuat di sini -->
-                                <script>
-                                    let lastTimestamp = Math.floor(Date.now() / 1000); // Timestamp saat ini (UNIX time)
-                                    const audio = new Audio('assets/sounds/notification.mp3'); // Suara notifikasi
-                                    let isTabActive = true;
 
-                                    // Monitor apakah tab aktif atau tidak
-                                    document.addEventListener("visibilitychange", () => {
-                                        isTabActive = !document.hidden;
-                                    });
-
-                                    // Fungsi untuk memeriksa pesan baru
-                                    function checkNewMessages() {
-                                        $.ajax({
-                                            url: '<?= base_url("admin/pesan/load_table_data") ?>',
-                                            method: 'GET',
-                                            data: {
-                                                timestamp: lastTimestamp
-                                            },
-                                            success: function(response) {
-                                                const data = JSON.parse(response);
-
-                                                // Jika ada pesan baru
-                                                if (data.newMessages) {
-                                                    // Update timestamp terakhir
-                                                    lastTimestamp = data.latestTimestamp;
-
-                                                    // Mainkan suara notifikasi
-                                                    if (!isTabActive) {
-                                                        audio.play();
-                                                        showWebNotification(data.messages);
-                                                    }
-                                                }
-                                            }
-                                        });
-                                    }
-
-                                    // Fungsi untuk menampilkan Web Notification
-                                    function showWebNotification(messages) {
-                                        if (Notification.permission === "granted") {
-                                            messages.forEach((message) => {
-                                                const notification = new Notification("Pesan Baru dari User", {
-                                                    body: message.message,
-                                                    icon: 'assets/img/user-avatar.png' // URL gambar ikon notifikasi
-                                                });
-
-                                                // Arahkan ke halaman pesan saat notifikasi diklik
-                                                notification.onclick = function() {
-                                                    window.focus();
-                                                    window.location.href = '<?= base_url("admin/pesan") ?>';
-                                                };
-                                            });
-                                        }
-                                    }
-
-                                    // Meminta izin untuk notifikasi jika belum diberikan
-                                    if (Notification.permission !== "granted") {
-                                        Notification.requestPermission();
-                                    }
-
-                                    // Jalankan polling setiap 5 detik
-                                    setInterval(checkNewMessages, 5000);
-                                </script>
 
                                 <script>
                                     let lastMessageId = 0;

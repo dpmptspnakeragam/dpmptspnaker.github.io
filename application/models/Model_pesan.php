@@ -140,13 +140,4 @@ class Model_pesan extends CI_Model
         // Hapus semua pesan dari database berdasarkan IP
         return $this->db->where('ip_address', $ip)->delete('pesan');
     }
-
-    public function get_new_messages($timestamp)
-    {
-        $this->db->select('*');
-        $this->db->from('pesan');
-        $this->db->where('UNIX_TIMESTAMP(created_at) >', $timestamp);
-        $this->db->order_by('created_at', 'DESC');
-        return $this->db->get()->result_array();
-    }
 }

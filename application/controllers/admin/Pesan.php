@@ -84,19 +84,4 @@ class Pesan extends CI_Controller
             echo json_encode(['status' => 'error']);
         }
     }
-
-    public function load_table_data()
-    {
-        $timestamp = $this->input->get('timestamp'); // Mendapatkan timestamp terakhir
-        $this->load->model('Model_pesan');
-
-        // Mengambil pesan baru berdasarkan timestamp
-        $newMessages = $this->Model_pesan->get_new_messages($timestamp);
-
-        echo json_encode([
-            'newMessages' => !empty($newMessages),
-            'messages' => $newMessages,
-            'latestTimestamp' => time() // Mengembalikan timestamp terbaru
-        ]);
-    }
 }
