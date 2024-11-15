@@ -38,13 +38,15 @@ class Model_pesan extends CI_Model
     // Admin
     public function get_messages_grouped_by_ip()
     {
+        // Hanya memilih pesan yang dikirim oleh user (bukan admin)
         $this->db->select('*');
         $this->db->from('pesan');
+        $this->db->where('user_type', 'user'); // Sesuaikan nama kolom jika berbeda
         $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get();
         $messages = $query->result_array();
 
-        // Group messages by IP address
+        // Mengelompokkan pesan berdasarkan alamat IP
         $groupedMessages = [];
         foreach ($messages as $message) {
             $groupedMessages[$message['ip_address']][] = $message;
