@@ -33,16 +33,15 @@ class Pesan extends CI_Controller
         $ipAddress = $this->input->get('ip');
         $lastMessageId = $this->input->get('last_id', true);
 
-        // Validasi atau periksa apakah lastMessageId ada dan lebih besar dari 0
-        if (!$lastMessageId) {
-            $lastMessageId = 0; // Default jika tidak ada lastMessageId yang diberikan
-        }
+        // Debug untuk memastikan parameter yang diterima benar
+        log_message('debug', 'IP Address: ' . $ipAddress . ' Last Message ID: ' . $lastMessageId);
 
+        // Pastikan data yang diambil sesuai
         $messages = $this->Model_pesan->get_messages_by_ip($ipAddress, $lastMessageId);
+        log_message('debug', 'Messages: ' . print_r($messages, true));
 
-        echo json_encode($messages); // Mengembalikan pesan dalam format JSON
+        echo json_encode($messages);
     }
-
 
     // Method to reply to a user's message
     public function reply_message()

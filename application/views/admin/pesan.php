@@ -195,6 +195,7 @@
                                         fetch(`<?= base_url('admin/pesan/load_messages?ip=') ?>${ip}&last_id=${lastMessageId}`)
                                             .then(response => response.json())
                                             .then(messages => {
+                                                console.log(messages); // Periksa apakah pesan yang diterima sudah sesuai
                                                 const chatContainer = document.getElementById(chatContainerId);
                                                 if (!chatContainer) return;
 
@@ -205,8 +206,7 @@
                                                     const isAdmin = msg.user_type === 'admin';
                                                     messageElement.classList.add(isAdmin ? 'admin-message' : 'user-message');
 
-                                                    const avatarUrl = isAdmin ? '<?= base_url("assets/img/admin-avatar.png"); ?>' :
-                                                        '<?= base_url("assets/img/user-avatar.png"); ?>';
+                                                    const avatarUrl = isAdmin ? '<?= base_url("assets/img/admin-avatar.png"); ?>' : '<?= base_url("assets/img/user-avatar.png"); ?>';
 
                                                     let messageContent = `<div class="message-text">${msg.message}`;
 
