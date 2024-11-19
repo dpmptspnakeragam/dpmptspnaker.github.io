@@ -231,8 +231,8 @@
                                                     messageElement.innerHTML = messageContent;
                                                     chatContainer.appendChild(messageElement);
 
-                                                    // Play notification sound for new messages only (skip initial load)
-                                                    if (new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad) {
+                                                    // Play notification sound for new messages from user only (skip for admin messages)
+                                                    if (new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad && !isAdmin) {
                                                         playNotificationSound();
                                                     }
                                                 });

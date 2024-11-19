@@ -1511,7 +1511,7 @@
 				</button>
 			</div>
 			<div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
-
+				<!-- Pesan Selamat Datang akan muncul di sini -->
 			</div>
 			<div class="modal-footer">
 				<input type="file" id="image-input" class="form-control border-0" accept="image/*">
@@ -1534,12 +1534,23 @@
 		const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
 		chatModal.show();
 		loadNewMessages();
-		if (checkWelcomeMessageLimit()) {
+
+		// Ambil tanggal hari ini dalam format YYYY-MM-DD
+		const today = new Date().toISOString().split('T')[0];
+
+		// Cek apakah pesan sambutan sudah ditampilkan hari ini
+		const lastShownDate = localStorage.getItem('welcomeMessageDate');
+
+		// Jika pesan sambutan belum ditampilkan hari ini, tampilkan pesan
+		if (lastShownDate !== today) {
 			const welcomeMessage = document.createElement('div');
 			welcomeMessage.className = 'chat-message admin-message';
 			welcomeMessage.innerHTML = `Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).`;
 			chatBody.appendChild(welcomeMessage);
 			chatBody.scrollTop = chatBody.scrollHeight;
+
+			// Simpan tanggal hari ini ke localStorage
+			localStorage.setItem('welcomeMessageDate', today);
 		}
 	});
 
@@ -1651,7 +1662,6 @@
 	if (intervalId) clearInterval(intervalId); // Pastikan hanya ada satu interval aktif
 	intervalId = setInterval(loadNewMessages, 5000);
 </script>
-
 
 
 <!--Script Tawk.to-->
