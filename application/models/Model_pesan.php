@@ -72,7 +72,6 @@ class Model_pesan extends CI_Model
         return $query->result_array(); // Return the messages
     }
 
-
     public function reply_message($message_id, $reply_message)
     {
         log_message('debug', "Attempting to reply to message ID: $message_id");
@@ -86,6 +85,20 @@ class Model_pesan extends CI_Model
             return false;
         }
 
+        // Mengambil IP Address dari pesan asli user
+        $this->db->select('ip_address');
+        $this->db->from('pesan');
+        $this->db->where('id', $message_id);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $userIp = $query->row()->ip_address; // Mendapatkan ip_address dari pesan asli user
+        } else {
+            log_message('error', "Message ID: $message_id not found in the database.");
+            return false;
+        }
+
+        // Memperbarui pesan admin balasan
         $data = [
             'admin_reply' => $reply_message,
             'is_read' => 1,
@@ -97,16 +110,18 @@ class Model_pesan extends CI_Model
         if ($this->db->affected_rows() > 0) {
             log_message('debug', "Updated message ID: $message_id successfully.");
 
+            // Menyimpan balasan pesan dari admin ke database, menyimpan IP user (bukan IP admin)
             $reply_data = [
                 'user_type' => 'admin',
                 'message' => $reply_message,
                 'is_read' => 1,
-                'ip_address' => $this->input->ip_address(),
+                'ip_address' => $userIp,  // Menyimpan ip_address user yang asli
                 'date' => date("Y-m-d"),
                 'created_at' => date("Y-m-d H:i:s")
             ];
 
             $this->db->insert('pesan', $reply_data);
+
             if ($this->db->affected_rows() > 0) {
                 log_message('debug', "Inserted reply message successfully.");
                 return true;
