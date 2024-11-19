@@ -40,14 +40,14 @@
                                 </td>
                                 <td class="text-center">
                                     <?php if ($messages[0]['is_read'] == 1): ?>
-                                        <span class="text-success">Replied</span>
+                                        <span class="text-primary">Dibaca</span>
                                     <?php else: ?>
-                                        <span class="text-danger">Not Replied</span>
+                                        <span class="text-danger">Belum Dibaca</span>
                                     <?php endif; ?>
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $ip ?>')"><i class="fas fa-search"></i> Lihat Pesan</button>
-                                    <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button>
+                                    <!-- <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button> -->
                                     <button class="btn btn-outline-danger btn-sm" onclick="deleteMessagesAndImagesByIp('<?= $ip ?>')"><i class="fas fa-trash"></i> Hapus</button>
                                 </td>
                             </tr>
@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
 
-                <div class="modal fade" id="chatModal" data-backdrop="static" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+                <div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -263,7 +263,7 @@
                                     }
                                 </script>
 
-                                <script>
+                                <!-- <script>
                                     function markAllAsRead(ip) {
                                         $.ajax({
                                             url: '<?= site_url("admin/pesan/mark_all_as_read") ?>',
@@ -285,7 +285,7 @@
                                             }
                                         });
                                     }
-                                </script>
+                                </script> -->
 
                                 <script>
                                     function deleteMessagesAndImagesByIp(ip) {
@@ -312,6 +312,7 @@
                                         }
                                     }
                                 </script>
+
                             </div>
                             <div class="modal-footer">
                                 <textarea id="message-input" placeholder="Tulis balasan..." class="form-control"></textarea>

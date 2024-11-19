@@ -36,6 +36,9 @@ class Pesan extends CI_Controller
         // Debug untuk memastikan parameter yang diterima benar
         log_message('debug', 'IP Address: ' . $ipAddress . ' Last Message ID: ' . $lastMessageId);
 
+        $this->load->model('Model_pesan');
+        $this->Model_pesan->mark_as_read_by_ip($ipAddress);
+
         // Pastikan data yang diambil sesuai
         $messages = $this->Model_pesan->get_messages_by_ip($ipAddress, $lastMessageId);
         log_message('debug', 'Messages: ' . print_r($messages, true));
@@ -60,35 +63,16 @@ class Pesan extends CI_Controller
         }
     }
 
-    public function mark_all_as_read()
-    {
-        $ip = $this->input->post('ip'); // Get the IP address from the request
+    // public function mark_all_as_read()
+    // {
+    //     $ip = $this->input->post('ip'); // Get the IP address from the request
 
-        if ($this->Model_pesan->mark_all_as_read_by_ip($ip)) {
-            echo json_encode(['status' => 'success']);
-        } else {
-            echo json_encode(['status' => 'error']);
-        }
-    }
-
-    public function fetch_messages_overview()
-    {
-        // Ambil data terbaru dari database
-        $messagesByIp = $this->ChatModel->getMessageOverview(); // Sesuaikan metode ini
-
-        // Kirimkan data sebagai JSON
-        return $this->response->setJSON(['messagesByIp' => $messagesByIp]);
-    }
-
-    public function delete_messages_and_images_by_ip()
-    {
-        $ip = $this->input->post('ip');
-        if ($this->Model_pesan->deleteMessagesAndImagesByIp($ip)) {
-            echo json_encode(['status' => 'success']);
-        } else {
-            echo json_encode(['status' => 'error']);
-        }
-    }
+    //     if ($this->Model_pesan->mark_all_as_read_by_ip($ip)) {
+    //         echo json_encode(['status' => 'success']);
+    //     } else {
+    //         echo json_encode(['status' => 'error']);
+    //     }
+    // }
 
     public function load_table_data()
     {
@@ -103,5 +87,15 @@ class Pesan extends CI_Controller
             'messages' => $newMessages,
             'latestTimestamp' => time() // Mengembalikan timestamp terbaru
         ]);
+    }
+
+    public function delete_messages_and_images_by_ip()
+    {
+        $ip = $this->input->post('ip');
+        if ($this->Model_pesan->deleteMessagesAndImagesByIp($ip)) {
+            echo json_encode(['status' => 'success']);
+        } else {
+            echo json_encode(['status' => 'error']);
+        }
     }
 }

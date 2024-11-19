@@ -61,21 +61,27 @@ class Model_pesan extends CI_Model
         return $groupedMessages;
     }
 
-
     public function get_messages_by_ip($ipAddress, $lastMessageId)
     {
         $this->db->select('*');
         $this->db->from('pesan');
         $this->db->where('ip_address', $ipAddress);
 
-        // Ensure lastMessageId is being used correctly to fetch messages after the last one
+        // Pastikan hanya pesan setelah ID tertentu yang diambil
         if ($lastMessageId > 0) {
             $this->db->where('id >', $lastMessageId);
         }
 
-        $this->db->order_by('created_at', 'ASC'); // Ensure the messages are ordered by date
+        $this->db->order_by('created_at', 'ASC'); // Urutkan berdasarkan tanggal
         $query = $this->db->get();
-        return $query->result_array(); // Return the messages
+
+        return $query->result_array(); // Kembalikan pesan
+    }
+
+    public function mark_as_read_by_ip($ipAddress)
+    {
+        $this->db->where('ip_address', $ipAddress);
+        $this->db->update('pesan', ['is_read' => 1]); // Tandai sebagai dibaca
     }
 
     public function reply_message($message_id, $reply_message)
@@ -150,6 +156,15 @@ class Model_pesan extends CI_Model
         return $this->db->affected_rows() > 0;
     }
 
+    public function get_new_messages($timestamp)
+    {
+        $this->db->select('*');
+        $this->db->from('pesan');
+        $this->db->where('UNIX_TIMESTAMP(created_at) >', $timestamp);
+        $this->db->order_by('created_at', 'DESC');
+        return $this->db->get()->result_array();
+    }
+
     public function deleteMessagesAndImagesByIp($ip)
     {
         // Ambil URL gambar yang terkait dengan pesan dari IP tertentu
@@ -169,14 +184,5 @@ class Model_pesan extends CI_Model
 
         // Hapus semua pesan dari database berdasarkan IP
         return $this->db->where('ip_address', $ip)->delete('pesan');
-    }
-
-    public function get_new_messages($timestamp)
-    {
-        $this->db->select('*');
-        $this->db->from('pesan');
-        $this->db->where('UNIX_TIMESTAMP(created_at) >', $timestamp);
-        $this->db->order_by('created_at', 'DESC');
-        return $this->db->get()->result_array();
     }
 }
