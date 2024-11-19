@@ -62,15 +62,16 @@ class Model_pesan extends CI_Model
         $this->db->from('pesan');
         $this->db->where('ip_address', $ipAddress);
 
-        // Pastikan lastMessageId digunakan untuk memfilter pesan setelah ID terakhir
+        // Ensure lastMessageId is being used correctly to fetch messages after the last one
         if ($lastMessageId > 0) {
             $this->db->where('id >', $lastMessageId);
         }
 
-        $this->db->order_by('created_at', 'ASC'); // Mengurutkan pesan berdasarkan waktu
+        $this->db->order_by('created_at', 'ASC'); // Ensure the messages are ordered by date
         $query = $this->db->get();
-        return $query->result_array(); // Mengembalikan hasil query
+        return $query->result_array(); // Return the messages
     }
+
 
     public function reply_message($message_id, $reply_message)
     {

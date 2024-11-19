@@ -195,7 +195,7 @@
                                         fetch(`<?= base_url('admin/pesan/load_messages?ip=') ?>${ip}&last_id=${lastMessageId}`)
                                             .then(response => response.json())
                                             .then(messages => {
-                                                console.log(messages); // Periksa apakah pesan yang diterima sudah sesuai
+                                                console.log(messages); // Debugging to check if new messages (including reply) are received
                                                 const chatContainer = document.getElementById(chatContainerId);
                                                 if (!chatContainer) return;
 
@@ -231,23 +231,23 @@
                                                     messageElement.innerHTML = messageContent;
                                                     chatContainer.appendChild(messageElement);
 
-                                                    // Hanya memutar suara jika ini bukan pemuatan awal
+                                                    // Play notification sound for new messages only (skip initial load)
                                                     if (new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad) {
                                                         playNotificationSound();
                                                     }
                                                 });
 
                                                 if (messages.length > 0) {
-                                                    lastMessageId = messages[messages.length - 1].id; // Update lastMessageId ke ID pesan terakhir
+                                                    lastMessageId = messages[messages.length - 1].id; // Update lastMessageId to the ID of the latest message
                                                     const newScrollHeight = chatContainer.scrollHeight;
 
-                                                    // Mengatur scroll chat ke bawah hanya jika ada pesan baru
+                                                    // Scroll to the bottom if new messages are added
                                                     if (newScrollHeight > initialScrollHeight) {
                                                         chatContainer.scrollTop = newScrollHeight;
                                                     }
                                                 }
 
-                                                // Set pemuatan awal menjadi false setelah data pertama selesai dimuat
+                                                // Mark initial load as completed
                                                 isFirstLoad = false;
                                             });
                                     }
