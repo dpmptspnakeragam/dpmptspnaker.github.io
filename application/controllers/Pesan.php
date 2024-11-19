@@ -11,8 +11,6 @@ class Pesan extends CI_Controller
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('message', 'Message', 'trim|xss_clean');
-        // Hapus validasi untuk lokasi, karena kita akan mengambilnya berdasarkan IP pengguna
-        // $this->form_validation->set_rules('location', 'Location', 'trim|xss_clean'); 
 
         if ($this->form_validation->run() == false) {
             echo json_encode(['status' => 'error', 'message' => validation_errors()]);
@@ -29,12 +27,18 @@ class Pesan extends CI_Controller
         // Upload gambar jika ada
         $config['upload_path'] = './assets/fileupload/chat/';
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = 2048;
+        $config['max_size'] = 22528; // Maksimal 22 MB (22 * 1024 KB)
 
         $this->load->library('upload', $config);
 
         $image_url = null;
         if (!empty($_FILES['image']['name'])) {
+            // Periksa ukuran file sebelum upload
+            if ($_FILES['image']['size'] > (22 * 1024 * 1024)) { // Ukuran dalam byte
+                echo json_encode(['status' => 'error', 'message' => 'Ukuran file tidak boleh lebih dari 22 MB.']);
+                return;
+            }
+
             if ($this->upload->do_upload('image')) {
                 $uploadData = $this->upload->data();
                 $image_info = getimagesize($_FILES['image']['tmp_name']);
@@ -59,6 +63,7 @@ class Pesan extends CI_Controller
         $result = $this->Model_pesan->insert_message($user_type, $message, $image_url, $location); // Pass lokasi ke model
         echo json_encode(['status' => $result ? 'success' : 'error']);
     }
+
 
     private function get_location_by_ip($ip)
     {
