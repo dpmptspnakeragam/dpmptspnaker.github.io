@@ -29,9 +29,15 @@ class Model_pesan extends CI_Model
 
     public function get_messages($last_id)
     {
+        // Mendapatkan ip_address pengguna aktif
+        $user_ip = $this->input->ip_address();
+
+        // Memfilter pesan berdasarkan id yang lebih besar dari last_id dan ip_address
         $this->db->where('id >', $last_id);
+        $this->db->where('ip_address', $user_ip);  // Filter berdasarkan ip_address
         $this->db->order_by('created_at', 'ASC');
         $query = $this->db->get('pesan');
+
         return $query->result();
     }
 

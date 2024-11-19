@@ -1624,15 +1624,15 @@
 						});
 
 						messageDiv.innerHTML = `
-						    <img src="${avatarSrc}" alt="${message.user_type === 'admin' ? 'Admin' : 'User'} Avatar" class="chat-avatar">
-						    <div>
-						        <div>${message.message}</div>
-						        ${message.image_url ? `<img src="${message.image_url}" alt="Image" class="chat-image">` : ''}
-						        <small class="message-date ${message.user_type === 'admin' ? 'admin-date' : 'user-date'}">
-						            ${formattedDate}
-						        </small>
-						    </div>
-						`;
+                        <img src="${avatarSrc}" alt="${message.user_type === 'admin' ? 'Admin' : 'User'} Avatar" class="chat-avatar">
+                        <div>
+                            <div>${message.message}</div>
+                            ${message.image_url ? `<img src="${message.image_url}" alt="Image" class="chat-image">` : ''}
+                            <small class="message-date ${message.user_type === 'admin' ? 'admin-date' : 'user-date'}">
+                                ${formattedDate}
+                            </small>
+                        </div>
+                    `;
 
 						chatBody.appendChild(messageDiv);
 						lastMessageId = Math.max(lastMessageId, message.id);
