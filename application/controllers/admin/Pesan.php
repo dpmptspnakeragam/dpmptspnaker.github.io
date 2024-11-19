@@ -4,24 +4,18 @@ class Pesan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // Ensure the user is logged in
         if ($this->session->userdata('username') == "") {
             redirect('login');
         }
-        // Load the Model_pesan to interact with the database
         $this->load->model('Model_pesan');
     }
 
-    // Display the admin chat page
     public function index()
     {
-        // Get unread messages grouped by IP address
         $messagesByIp = $this->Model_pesan->get_messages_grouped_by_ip();
 
-        // Pass data to the view for rendering
         $data['messagesByIp'] = $messagesByIp;
 
-        // Load views
         $this->load->view('templates/header_admin');
         $this->load->view('templates/navbar_admin');
         $this->load->view('admin/pesan', $data);
@@ -38,16 +32,13 @@ class Pesan extends CI_Controller
         echo json_encode($messages);
     }
 
-    // Method to reply to a user's message
     public function reply_message()
     {
-        $message_id = $this->input->post('message_id'); // The message ID to reply to
-        $reply_message = $this->input->post('reply_message'); // The admin's reply message
+        $message_id = $this->input->post('message_id');
+        $reply_message = $this->input->post('reply_message');
 
-        // Call the model's reply_message method to send the reply
         $isReplied = $this->Model_pesan->reply_message($message_id, $reply_message);
 
-        // Return a response based on the result of the reply
         if ($isReplied) {
             echo json_encode(['status' => 'success']);
         } else {
@@ -57,7 +48,7 @@ class Pesan extends CI_Controller
 
     public function mark_all_as_read()
     {
-        $ip = $this->input->post('ip'); // Get the IP address from the request
+        $ip = $this->input->post('ip');
 
         if ($this->Model_pesan->mark_all_as_read_by_ip($ip)) {
             echo json_encode(['status' => 'success']);
@@ -68,10 +59,7 @@ class Pesan extends CI_Controller
 
     public function fetch_messages_overview()
     {
-        // Ambil data terbaru dari database
-        $messagesByIp = $this->ChatModel->getMessageOverview(); // Sesuaikan metode ini
-
-        // Kirimkan data sebagai JSON
+        $messagesByIp = $this->ChatModel->getMessageOverview();
         return $this->response->setJSON(['messagesByIp' => $messagesByIp]);
     }
 
@@ -87,16 +75,15 @@ class Pesan extends CI_Controller
 
     public function load_table_data()
     {
-        $timestamp = $this->input->get('timestamp'); // Mendapatkan timestamp terakhir
+        $timestamp = $this->input->get('timestamp');
         $this->load->model('Model_pesan');
 
-        // Mengambil pesan baru berdasarkan timestamp
         $newMessages = $this->Model_pesan->get_new_messages($timestamp);
 
         echo json_encode([
             'newMessages' => !empty($newMessages),
             'messages' => $newMessages,
-            'latestTimestamp' => time() // Mengembalikan timestamp terbaru
+            'latestTimestamp' => time()
         ]);
     }
 }

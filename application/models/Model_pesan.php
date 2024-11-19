@@ -56,13 +56,12 @@ class Model_pesan extends CI_Model
 
     public function get_messages_by_ip($ipAddress, $lastMessageId)
     {
-        $this->db->select('*');
-        $this->db->from('pesan');
         $this->db->where('ip_address', $ipAddress);
-        $this->db->where('id >', $lastMessageId);
+        if ($lastMessageId > 0) {
+            $this->db->where('id >', $lastMessageId);
+        }
         $this->db->order_by('created_at', 'ASC');
-        $query = $this->db->get();
-        return $query->result_array();
+        return $this->db->get('pesan')->result_array();
     }
 
     public function reply_message($message_id, $reply_message)

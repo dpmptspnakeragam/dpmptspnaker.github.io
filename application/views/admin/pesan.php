@@ -191,64 +191,37 @@
                                             });
                                     }
 
-                                    function loadNewMessages(ip, chatContainerId = 'chat-body') {
+                                    function loadNewMessages(ip) {
                                         fetch(`<?= base_url('admin/pesan/load_messages?ip=') ?>${ip}&last_id=${lastMessageId}`)
                                             .then(response => response.json())
                                             .then(messages => {
-                                                const chatContainer = document.getElementById(chatContainerId);
+                                                const chatContainer = document.getElementById('chat-body');
                                                 if (!chatContainer) return;
 
-                                                const initialScrollHeight = chatContainer.scrollHeight;
-
                                                 messages.forEach(msg => {
+                                                    const isAdmin = msg.user_type === 'admin'; // Pastikan ada field `user_type` di tabel messages
                                                     const messageElement = document.createElement('div');
-                                                    const isAdmin = msg.user_type === 'admin';
                                                     messageElement.classList.add(isAdmin ? 'admin-message' : 'user-message');
 
                                                     const avatarUrl = isAdmin ?
                                                         '<?= base_url("assets/img/admin-avatar.png"); ?>' :
                                                         '<?= base_url("assets/img/user-avatar.png"); ?>';
 
-                                                    let messageContent = `<div class="message-text">${msg.message}`;
-
-                                                    if (msg.image_url) {
-                                                        const imageUrl = `${msg.image_url}`;
-                                                        messageContent += `<div class="message-image"><img src="${imageUrl}" alt="Sent Image" style="max-width: 100px; height: auto;"></div>`;
-                                                    }
-
-                                                    const formattedDate = new Date(msg.created_at).toLocaleString('id-ID', {
-                                                        day: '2-digit',
-                                                        month: 'short',
-                                                        year: 'numeric',
-                                                        hour: '2-digit',
-                                                        minute: '2-digit'
-                                                    });
-                                                    messageContent += `<div class="message-date">${formattedDate}</div></div>`;
-
-                                                    messageContent = isAdmin ?
-                                                        `${messageContent}<img src="${avatarUrl}" alt="Admin Avatar" class="chat-avatar">` :
-                                                        `<img src="${avatarUrl}" alt="User Avatar" class="chat-avatar">${messageContent}`;
-
-                                                    messageElement.innerHTML = messageContent;
+                                                    messageElement.innerHTML = `
+                                                        <div class="chat-row ${isAdmin ? 'admin' : 'user'}">
+                                                            <img class="chat-avatar" src="${avatarUrl}" alt="Avatar">
+                                                            <div class="chat-text">
+                                                                <p>${msg.message}</p>
+                                                                <span class="chat-time">${new Date(msg.created_at).toLocaleString('id-ID')}</span>
+                                                            </div>
+                                                        </div>
+                                                    `;
                                                     chatContainer.appendChild(messageElement);
-
-                                                    // Hanya memutar suara jika ini bukan pemuatan awal
-                                                    if (new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad) {
-                                                        playNotificationSound();
-                                                    }
                                                 });
 
-                                                if (messages.length > 0) {
-                                                    lastMessageId = messages[messages.length - 1].id;
-                                                    const newScrollHeight = chatContainer.scrollHeight;
-
-                                                    if (newScrollHeight > initialScrollHeight) {
-                                                        chatContainer.scrollTop = newScrollHeight;
-                                                    }
-                                                }
-
-                                                // Set pemuatan awal menjadi false setelah data pertama selesai dimuat
-                                                isFirstLoad = false;
+                                                // Scroll ke bawah jika ada pesan baru
+                                                chatContainer.scrollTop = chatContainer.scrollHeight;
+                                                lastMessageId = messages[messages.length - 1]?.id || lastMessageId;
                                             });
                                     }
 
