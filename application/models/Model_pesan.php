@@ -32,6 +32,7 @@ class Model_pesan extends CI_Model
     {
         $this->db->where('id >', $last_id);
         $this->db->where('device_id', $device_id);
+        $this->db->order_by('id', 'ASC');
         $this->db->order_by('created_at', 'ASC');
         $query = $this->db->get('pesan');
 
@@ -58,22 +59,25 @@ class Model_pesan extends CI_Model
         return $groupedMessages;
     }
 
-    public function get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId)
+    public function get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId = 0)
     {
-        $this->db->select('*');
-        $this->db->from('pesan');
-        $this->db->where('ip_address', $ipAddress);
-        $this->db->where('device_id', $deviceId);  // Tambahkan filter berdasarkan device_id
-
-        // Pastikan hanya pesan setelah ID tertentu yang diambil
-        if ($lastMessageId > 0) {
-            $this->db->where('id >', $lastMessageId);
+        if (empty($ipAddress) || empty($deviceId)) {
+            return []; // Validasi jika data kosong
         }
 
-        $this->db->order_by('created_at', 'ASC'); // Urutkan berdasarkan tanggal
+        $this->db->select('*')
+            ->from('pesan')
+            ->where('ip_address', $ipAddress)
+            ->where('device_id', $deviceId);
+
+        if ($lastMessageId > 0) {
+            $this->db->where('id >', intval($lastMessageId));
+        }
+
+        $this->db->order_by('id', 'ASC'); // Urutkan berdasarkan ID agar lebih konsisten
         $query = $this->db->get();
 
-        return $query->result_array(); // Kembalikan pesan
+        return $query->result_array();
     }
 
     public function mark_as_read_by_ip($ipAddress)
@@ -84,8 +88,6 @@ class Model_pesan extends CI_Model
 
     public function reply_message($message_id, $reply_message, $device_id, $ip)
     {
-        log_message('debug', "Replying to message ID: $message_id");
-
         // Mulai transaksi
         $this->db->trans_start();
 
@@ -96,14 +98,12 @@ class Model_pesan extends CI_Model
             ->get();
 
         if ($query->num_rows() === 0) {
-            log_message('error', "Message ID: $message_id not found.");
             return false;
         }
 
         $originalMessage = $query->row();
 
         if ($originalMessage->device_id !== $device_id || $originalMessage->ip_address !== $ip) {
-            log_message('error', "Device ID or IP mismatch for message ID: $message_id");
             return false;
         }
 
@@ -112,7 +112,6 @@ class Model_pesan extends CI_Model
             ->update('pesan', ['admin_reply' => $reply_message, 'is_read' => 1]);
 
         if ($this->db->affected_rows() === 0) {
-            log_message('error', "Failed to update message ID: $message_id");
             return false;
         }
 
@@ -130,7 +129,6 @@ class Model_pesan extends CI_Model
         $this->db->insert('pesan', $reply_data);
 
         if ($this->db->affected_rows() === 0) {
-            log_message('error', "Failed to insert reply message.");
             return false;
         }
 
@@ -138,11 +136,9 @@ class Model_pesan extends CI_Model
         $this->db->trans_complete();
 
         if ($this->db->trans_status() === false) {
-            log_message('error', "Transaction failed for reply_message.");
             return false;
         }
 
-        log_message('debug', "Reply message ID: $message_id successfully processed.");
         return true;
     }
 

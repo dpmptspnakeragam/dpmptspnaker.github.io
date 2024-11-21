@@ -20,7 +20,7 @@
                     <thead class="bg-dark text-light">
                         <tr>
                             <th class="text-center align-middle">IP Address</th>
-                            <th class="text-center align-middle">Device ID</th>
+                            <!-- <th class="text-center align-middle">Device ID</th> -->
                             <th class="text-center align-middle">Lokasi</th>
                             <th class="text-center align-middle">Status</th>
                             <th class="text-center align-middle">Aksi</th>
@@ -32,13 +32,13 @@
                                 <td class="text-center">
                                     <?= $ip ?>
                                 </td>
-                                <td class="text-center">
+                                <!-- <td class="text-center">
                                     <?php
                                     // Menampilkan Device ID dari pesan pertama
                                     $device_id = isset($messages[0]['device_id']) ? $messages[0]['device_id'] : 'Device ID Tidak Tersedia';
                                     echo $device_id;
                                     ?>
-                                </td>
+                                </td> -->
                                 <td class="text-center">
                                     <?php
                                     // Menampilkan lokasi dari pesan pertama (biasanya lokasi pertama relevan untuk semua pesan dengan IP yang sama)
@@ -74,213 +74,7 @@
                             </div>
                             <div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
                                 <!-- Pesan akan dimuat di sini -->
-                                <script>
-                                    let lastTimestamp = Math.floor(Date.now() / 1000); // Timestamp saat ini (UNIX time)
-                                    const audio = new Audio('assets/sounds/notification.mp3'); // Suara notifikasi
-                                    let isTabActive = true;
 
-                                    // Monitor apakah tab aktif atau tidak
-                                    document.addEventListener("visibilitychange", () => {
-                                        isTabActive = !document.hidden;
-                                    });
-
-                                    // Fungsi untuk memeriksa pesan baru
-                                    function checkNewMessages() {
-                                        $.ajax({
-                                            url: '<?= base_url("admin/pesan/load_table_data") ?>',
-                                            method: 'GET',
-                                            data: {
-                                                timestamp: lastTimestamp
-                                            },
-                                            success: function(response) {
-                                                const data = JSON.parse(response);
-
-                                                // Jika ada pesan baru
-                                                if (data.newMessages) {
-                                                    // Update timestamp terakhir
-                                                    lastTimestamp = data.latestTimestamp;
-
-                                                    // Mainkan suara notifikasi
-                                                    if (!isTabActive) {
-                                                        audio.play();
-                                                        showWebNotification(data.messages);
-                                                    }
-                                                }
-                                            }
-                                        });
-                                    }
-
-                                    // Fungsi untuk menampilkan Web Notification
-                                    function showWebNotification(messages) {
-                                        if (Notification.permission === "granted") {
-                                            messages.forEach((message) => {
-                                                const notification = new Notification("Pesan Baru dari User", {
-                                                    body: message.message,
-                                                    icon: 'assets/img/user-avatar.png' // URL gambar ikon notifikasi
-                                                });
-
-                                                // Arahkan ke halaman pesan saat notifikasi diklik
-                                                notification.onclick = function() {
-                                                    window.focus();
-                                                    window.location.href = '<?= base_url("admin/pesan") ?>';
-                                                };
-                                            });
-                                        }
-                                    }
-
-                                    // Meminta izin untuk notifikasi jika belum diberikan
-                                    if (Notification.permission !== "granted") {
-                                        Notification.requestPermission();
-                                    }
-
-                                    // Jalankan polling setiap 5 detik
-                                    setInterval(checkNewMessages, 5000);
-                                </script>
-
-                                <script>
-                                    let lastMessageId = 0;
-                                    let currentIp = '';
-                                    let currentDeviceId = ''; // Menyimpan device_id yang sedang aktif
-                                    let pollingInterval;
-                                    let isFirstLoad = true;
-
-                                    function playNotificationSound() {
-                                        const audio = new Audio('<?= base_url("assets/sounds/notification.mp3"); ?>');
-                                        audio.play();
-                                    }
-
-                                    function openChat(ip, deviceId) {
-                                        currentIp = ip;
-                                        currentDeviceId = deviceId; // Simpan device_id pengguna yang sedang dibalas
-                                        document.getElementById('chat-body').innerHTML = '';
-                                        lastMessageId = 0; // Reset lastMessageId untuk memuat ulang dari awal
-                                        isFirstLoad = true; // Tandai sebagai pemuatan awal
-                                        loadNewMessages(ip, deviceId); // Menambahkan device_id ke dalam pemanggilan
-                                        startPolling();
-                                    }
-
-                                    function closeChat() {
-                                        stopPolling();
-                                    }
-
-                                    function sendMessage() {
-                                        if (!currentDeviceId) {
-                                            alert("Device ID tidak ditemukan. Silakan pilih pengguna untuk dibalas.");
-                                            return;
-                                        }
-
-                                        const messageInput = document.getElementById('message-input');
-                                        const message = messageInput.value.trim();
-                                        const sendButton = document.querySelector('.btn');
-
-                                        if (message === "") {
-                                            alert("Pesan tidak boleh kosong.");
-                                            return;
-                                        }
-
-                                        sendButton.disabled = true;
-
-                                        const formData = new FormData();
-                                        formData.append('message_id', lastMessageId); // ID pesan yang akan dibalas
-                                        formData.append('reply_message', message); // Isi pesan balasan
-                                        formData.append('device_id', currentDeviceId); // Device ID
-                                        formData.append('ip', currentIp); // IP pengguna
-
-                                        fetch('<?= site_url('admin/pesan/reply_message'); ?>', {
-                                                method: 'POST',
-                                                body: formData
-                                            })
-                                            .then(response => response.json())
-                                            .then(data => {
-                                                if (data.status === 'success') {
-                                                    messageInput.value = ''; // Bersihkan input
-                                                    loadNewMessages(currentIp, currentDeviceId); // Refresh pesan berdasarkan IP dan device_id
-                                                } else {
-                                                    alert(data.message || "Gagal mengirim balasan. Silakan coba lagi.");
-                                                }
-                                            })
-                                            .catch(() => {
-                                                alert("Terjadi kesalahan saat mengirim balasan.");
-                                            })
-                                            .finally(() => {
-                                                sendButton.disabled = false; // Aktifkan tombol kembali
-                                            });
-                                    }
-
-                                    function loadNewMessages(ip, deviceId, chatContainerId = 'chat-body') {
-                                        fetch(`<?= base_url('admin/pesan/load_messages?ip=') ?>${ip}&device_id=${deviceId}&last_id=${lastMessageId}`)
-                                            .then(response => response.json())
-                                            .then(messages => {
-                                                console.log(messages); // Debugging untuk memeriksa apakah pesan baru diterima dengan benar
-                                                const chatContainer = document.getElementById(chatContainerId);
-                                                if (!chatContainer) return;
-
-                                                const initialScrollHeight = chatContainer.scrollHeight;
-
-                                                // Pastikan pesan ditambahkan dengan urutan yang benar berdasarkan created_at
-                                                messages.sort((a, b) => new Date(a.created_at) - new Date(b.created_at)); // Mengurutkan berdasarkan waktu
-
-                                                messages.forEach(msg => {
-                                                    const messageElement = document.createElement('div');
-                                                    const isAdmin = msg.user_type === 'admin';
-                                                    messageElement.classList.add(isAdmin ? 'admin-message' : 'user-message');
-
-                                                    const avatarUrl = isAdmin ? '<?= base_url("assets/img/admin-avatar.png"); ?>' : '<?= base_url("assets/img/user-avatar.png"); ?>';
-
-                                                    let messageContent = `<div class="message-text">${msg.message}`;
-
-                                                    if (msg.image_url) {
-                                                        const imageUrl = `${msg.image_url}`;
-                                                        messageContent += `<div class="message-image"><img src="${imageUrl}" alt="Sent Image" style="max-width: 100px; height: auto;"></div>`;
-                                                    }
-
-                                                    const formattedDate = new Date(msg.created_at).toLocaleString('id-ID', {
-                                                        day: '2-digit',
-                                                        month: 'short',
-                                                        year: 'numeric',
-                                                        hour: '2-digit',
-                                                        minute: '2-digit'
-                                                    });
-                                                    messageContent += `<div class="message-date">${formattedDate}</div></div>`;
-
-                                                    messageContent = isAdmin ?
-                                                        `${messageContent}<img src="${avatarUrl}" alt="Admin Avatar" class="chat-avatar">` :
-                                                        `<img src="${avatarUrl}" alt="User Avatar" class="chat-avatar">${messageContent}`;
-
-                                                    messageElement.innerHTML = messageContent;
-                                                    chatContainer.appendChild(messageElement);
-
-                                                    // Play notification sound for new messages from user only (skip for admin messages)
-                                                    if (new Date(msg.created_at).getTime() > lastMessageId && !isFirstLoad && !isAdmin) {
-                                                        playNotificationSound();
-                                                    }
-                                                });
-
-                                                if (messages.length > 0) {
-                                                    lastMessageId = messages[messages.length - 1].id; // Update lastMessageId to the ID of the latest message
-                                                    const newScrollHeight = chatContainer.scrollHeight;
-
-                                                    // Scroll to the bottom if new messages are added
-                                                    if (newScrollHeight > initialScrollHeight) {
-                                                        chatContainer.scrollTop = newScrollHeight;
-                                                    }
-                                                }
-
-                                                // Mark initial load as completed
-                                                isFirstLoad = false;
-                                            });
-                                    }
-
-                                    function startPolling() {
-                                        pollingInterval = setInterval(() => {
-                                            loadNewMessages(currentIp, currentDeviceId); // Pastikan polling juga mengirimkan device_id
-                                        }, 5000);
-                                    }
-
-                                    function stopPolling() {
-                                        clearInterval(pollingInterval);
-                                    }
-                                </script>
 
                                 <!-- <script>
                                     function markAllAsRead(ip) {
@@ -306,31 +100,7 @@
                                     }
                                 </script> -->
 
-                                <script>
-                                    function deleteMessagesAndImagesByIp(ip) {
-                                        if (confirm("Apakah Anda yakin ingin menghapus semua pesan dan gambar untuk IP ini?")) {
-                                            $.ajax({
-                                                url: '<?= site_url("admin/pesan/delete_messages_and_images_by_ip") ?>',
-                                                type: 'POST',
-                                                data: {
-                                                    ip: ip
-                                                },
-                                                dataType: 'json',
-                                                success: function(response) {
-                                                    if (response.status === 'success') {
-                                                        alert('Pesan dan gambar berhasil dihapus.');
-                                                        location.reload();
-                                                    } else {
-                                                        alert('Gagal menghapus pesan dan gambar.');
-                                                    }
-                                                },
-                                                error: function() {
-                                                    alert('Terjadi kesalahan saat menghapus pesan dan gambar.');
-                                                }
-                                            });
-                                        }
-                                    }
-                                </script>
+
 
                             </div>
                             <div class="modal-footer">
@@ -344,3 +114,207 @@
         </div>
     </div>
 </main>
+
+<script>
+    // Inisialisasi variabel global
+    let lastTimestamp = Math.floor(Date.now() / 1000); // Timestamp saat ini (UNIX time)
+    let isTabActive = true;
+    let lastMessageId = 0;
+    let currentIp = '';
+    let currentDeviceId = '';
+    let pollingInterval;
+    let isFirstLoad = true;
+
+    // Objek suara notifikasi
+    const audio = new Audio('assets/sounds/notification.mp3');
+
+    // Monitor apakah tab aktif atau tidak
+    document.addEventListener("visibilitychange", () => {
+        isTabActive = !document.hidden;
+    });
+
+    // Fungsi untuk memeriksa pesan baru
+    function checkNewMessages() {
+        $.ajax({
+            url: '<?= base_url("admin/pesan/load_table_data") ?>',
+            method: 'GET',
+            data: {
+                timestamp: lastTimestamp
+            },
+            success: function(response) {
+                const data = JSON.parse(response);
+                if (data.newMessages) {
+                    lastTimestamp = data.latestTimestamp;
+                    if (!isTabActive) {
+                        audio.play();
+                        showWebNotification(data.messages);
+                    }
+                }
+            }
+        });
+    }
+
+    // Fungsi untuk menampilkan Web Notification
+    function showWebNotification(messages) {
+        if (Notification.permission === "granted") {
+            messages.forEach(message => {
+                const notification = new Notification("Pesan Baru dari User", {
+                    body: message.message,
+                    icon: 'assets/img/user-avatar.png'
+                });
+                notification.onclick = function() {
+                    window.focus();
+                    window.location.href = '<?= base_url("admin/pesan") ?>';
+                };
+            });
+        }
+    }
+
+    // Meminta izin untuk notifikasi jika belum diberikan
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+
+    // Fungsi untuk membuka obrolan
+    function openChat(ip, deviceId) {
+        currentIp = ip;
+        currentDeviceId = deviceId;
+        document.getElementById('chat-body').innerHTML = '';
+        lastMessageId = 0;
+        isFirstLoad = true;
+        loadNewMessages(ip, deviceId);
+        startPolling();
+    }
+
+    // Fungsi untuk menutup obrolan
+    function closeChat() {
+        stopPolling();
+    }
+
+    // Fungsi untuk mengirim pesan
+    function sendMessage() {
+        if (!currentDeviceId) {
+            alert("Device ID tidak ditemukan. Silakan pilih pengguna untuk dibalas.");
+            return;
+        }
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value.trim();
+        const sendButton = document.querySelector('.btn');
+        if (message === "") {
+            alert("Pesan tidak boleh kosong.");
+            return;
+        }
+        sendButton.disabled = true;
+        const formData = new FormData();
+        formData.append('message_id', lastMessageId);
+        formData.append('reply_message', message);
+        formData.append('device_id', currentDeviceId);
+        formData.append('ip', currentIp);
+        fetch('<?= site_url('admin/pesan/reply_message'); ?>', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    messageInput.value = '';
+                    loadNewMessages(currentIp, currentDeviceId);
+                } else {
+                    alert(data.message || "Gagal mengirim balasan.");
+                }
+            })
+            .catch(() => {
+                alert("Terjadi kesalahan saat mengirim balasan.");
+            })
+            .finally(() => {
+                sendButton.disabled = false;
+            });
+    }
+
+    // Fungsi untuk memuat pesan baru
+    function loadNewMessages(ip, deviceId, chatContainerId = 'chat-body') {
+        fetch(`<?= base_url('admin/pesan/load_messages?ip=') ?>${ip}&device_id=${deviceId}&last_id=${lastMessageId}`)
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'success' && result.messages.length > 0) {
+                    const chatContainer = document.getElementById(chatContainerId);
+                    if (!chatContainer) return;
+                    const initialScrollHeight = chatContainer.scrollHeight;
+                    result.messages.sort((a, b) => a.id - b.id);
+                    result.messages.forEach(msg => {
+                        const messageElement = document.createElement('div');
+                        const isAdmin = msg.user_type === 'admin';
+                        messageElement.classList.add(isAdmin ? 'admin-message' : 'user-message');
+                        const avatarUrl = isAdmin ? '<?= base_url("assets/img/admin-avatar.png"); ?>' : '<?= base_url("assets/img/user-avatar.png"); ?>';
+                        let messageContent = `<div class="message-text">${msg.message}`;
+                        if (msg.image_url) {
+                            const imageUrl = msg.image_url;
+                            messageContent += `<div class="message-image"><img src="${imageUrl}" alt="Sent Image" style="max-width: 100px;"></div>`;
+                        }
+                        const formattedDate = new Date(msg.created_at).toLocaleString('id-ID', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        messageContent += `<div class="message-date">${formattedDate}</div></div>`;
+                        messageContent = isAdmin ? `${messageContent}<img src="${avatarUrl}" alt="Admin Avatar" class="chat-avatar">` : `<img src="${avatarUrl}" alt="User Avatar" class="chat-avatar">${messageContent}`;
+                        messageElement.innerHTML = messageContent;
+                        chatContainer.appendChild(messageElement);
+                        if (!isAdmin) audio.play();
+                    });
+                    if (result.messages.length > 0) {
+                        lastMessageId = result.messages[result.messages.length - 1].id;
+                        const newScrollHeight = chatContainer.scrollHeight;
+                        if (newScrollHeight > initialScrollHeight) {
+                            chatContainer.scrollTop = newScrollHeight;
+                        }
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error loading messages:', error);
+            });
+    }
+
+    // Fungsi untuk memulai polling
+    function startPolling() {
+        pollingInterval = setInterval(() => {
+            loadNewMessages(currentIp, currentDeviceId);
+        }, 5000);
+    }
+
+    // Fungsi untuk menghentikan polling
+    function stopPolling() {
+        clearInterval(pollingInterval);
+    }
+
+    // Fungsi untuk menghapus pesan dan gambar berdasarkan IP
+    function deleteMessagesAndImagesByIp(ip) {
+        if (confirm("Apakah Anda yakin ingin menghapus semua pesan dan gambar untuk IP ini?")) {
+            $.ajax({
+                url: '<?= site_url("admin/pesan/delete_messages_and_images_by_ip") ?>',
+                type: 'POST',
+                data: {
+                    ip: ip
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        alert('Pesan dan gambar berhasil dihapus.');
+                        location.reload();
+                    } else {
+                        alert('Gagal menghapus pesan dan gambar.');
+                    }
+                },
+                error: function() {
+                    alert('Terjadi kesalahan saat menghapus pesan dan gambar.');
+                }
+            });
+        }
+    }
+
+    // Mulai polling pesan baru setiap 5 detik
+    setInterval(checkNewMessages, 5000);
+</script>

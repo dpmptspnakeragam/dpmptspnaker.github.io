@@ -32,12 +32,11 @@ class Pesan extends CI_Controller
     {
         $ipAddress = $this->input->get('ip');
         $deviceId = $this->input->get('device_id');
-        $lastMessageId = $this->input->get('last_id', true);
+        $lastMessageId = intval($this->input->get('last_id', true) ?? 0);
 
-        log_message('debug', 'IP Address: ' . $ipAddress . ' Device ID: ' . $deviceId . ' Last Message ID: ' . $lastMessageId);
-
-        if (empty($lastMessageId)) {
-            $lastMessageId = 0;
+        if (empty($ipAddress) || empty($deviceId)) {
+            echo json_encode(['status' => 'error', 'message' => 'IP Address atau Device ID tidak valid']);
+            return;
         }
 
         $this->load->model('Model_pesan');
@@ -45,9 +44,12 @@ class Pesan extends CI_Controller
 
         $messages = $this->Model_pesan->get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId);
 
-        log_message('debug', 'Messages: ' . print_r($messages, true));
+        if (empty($messages)) {
+            echo json_encode(['status' => 'success', 'messages' => [], 'message' => 'Tidak ada pesan baru']);
+            return;
+        }
 
-        echo json_encode($messages);
+        echo json_encode(['status' => 'success', 'messages' => $messages]);
     }
 
     // Method to reply to a user's message
@@ -58,10 +60,7 @@ class Pesan extends CI_Controller
         $device_id = $this->input->post('device_id');
         $ip = $this->input->post('ip');
 
-        log_message('debug', "Received data: message_id=$message_id, device_id=$device_id, ip=$ip");
-
         if (empty($message_id) || empty($reply_message) || empty($device_id) || empty($ip)) {
-            log_message('error', "Incomplete parameters received.");
             echo json_encode(['status' => 'error', 'message' => 'Parameter tidak lengkap.']);
             return;
         }
