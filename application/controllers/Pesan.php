@@ -11,6 +11,8 @@ class Pesan extends CI_Controller
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('message', 'Message', 'trim|xss_clean');
+        $this->form_validation->set_rules('device_id', 'Device ID', 'trim|required|xss_clean');
+
 
         if ($this->form_validation->run() == false) {
             echo json_encode(['status' => 'error', 'message' => validation_errors()]);
@@ -18,6 +20,7 @@ class Pesan extends CI_Controller
         }
 
         $message = $this->input->post('message', true); // Menggunakan xss_clean untuk menghindari XSS
+        $device_id = $this->input->post('device_id', true);
         $user_type = 'user';
 
         // Mendapatkan IP pengguna untuk mencari lokasi
@@ -60,7 +63,7 @@ class Pesan extends CI_Controller
         }
 
         // Panggil model untuk menyimpan pesan dan lokasi
-        $result = $this->Model_pesan->insert_message($user_type, $message, $image_url, $location); // Pass lokasi ke model
+        $result = $this->Model_pesan->insert_message($user_type, $message, $image_url, $location, $device_id); // Pass lokasi ke model
         echo json_encode(['status' => $result ? 'success' : 'error']);
     }
 
@@ -87,7 +90,14 @@ class Pesan extends CI_Controller
     public function load_messages()
     {
         $last_id = $this->input->get('last_id');
-        $messages = $this->Model_pesan->get_messages($last_id);
+        $device_id = $this->input->get('device_id');
+
+        if (empty($device_id)) {
+            echo json_encode([]);
+            return;
+        }
+
+        $messages = $this->Model_pesan->get_messages($last_id, $device_id);
         echo json_encode($messages);
     }
 }

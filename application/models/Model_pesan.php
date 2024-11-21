@@ -2,7 +2,7 @@
 class Model_pesan extends CI_Model
 {
     // User
-    public function insert_message($user_type, $message, $image_url = null, $location = null)
+    public function insert_message($user_type, $message, $image_url = null, $location = null, $device_id = null)
     {
         if (empty($message) && !$image_url) {
             return false;
@@ -19,6 +19,7 @@ class Model_pesan extends CI_Model
             'is_read' => 0,
             'ip_address' => $this->input->ip_address(),
             'location' => $location ? $this->db->escape_str($location) : null, // Menyimpan lokasi
+            'device_id' => $this->db->escape_str($device_id),
             'date' => date("Y-m-d H:i:s"),
             'created_at' => date("Y-m-d H:i:s")
         ];
@@ -27,14 +28,10 @@ class Model_pesan extends CI_Model
         return $this->db->insert('pesan', $data);
     }
 
-    public function get_messages($last_id)
+    public function get_messages($last_id, $device_id)
     {
-        // Mendapatkan ip_address pengguna aktif
-        $user_ip = $this->input->ip_address();
-
-        // Memfilter pesan berdasarkan id yang lebih besar dari last_id dan ip_address
         $this->db->where('id >', $last_id);
-        $this->db->where('ip_address', $user_ip);  // Filter berdasarkan ip_address
+        $this->db->where('device_id', $device_id);
         $this->db->order_by('created_at', 'ASC');
         $query = $this->db->get('pesan');
 
@@ -61,11 +58,12 @@ class Model_pesan extends CI_Model
         return $groupedMessages;
     }
 
-    public function get_messages_by_ip($ipAddress, $lastMessageId)
+    public function get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId)
     {
         $this->db->select('*');
         $this->db->from('pesan');
         $this->db->where('ip_address', $ipAddress);
+        $this->db->where('device_id', $deviceId);  // Tambahkan filter berdasarkan device_id
 
         // Pastikan hanya pesan setelah ID tertentu yang diambil
         if ($lastMessageId > 0) {
@@ -84,67 +82,68 @@ class Model_pesan extends CI_Model
         $this->db->update('pesan', ['is_read' => 1]); // Tandai sebagai dibaca
     }
 
-    public function reply_message($message_id, $reply_message)
+    public function reply_message($message_id, $reply_message, $device_id, $ip)
     {
-        log_message('debug', "Attempting to reply to message ID: $message_id");
+        log_message('debug', "Replying to message ID: $message_id");
 
-        // Set timezone to Indonesia (Jakarta)
-        date_default_timezone_set('Asia/Jakarta');
+        // Mulai transaksi
+        $this->db->trans_start();
 
-        // Validate message ID and reply message
-        if (empty($message_id) || empty($reply_message)) {
-            log_message('error', "Invalid input: message_id or reply_message is empty.");
+        // Validasi data pesan asli
+        $query = $this->db->select('device_id, ip_address')
+            ->from('pesan')
+            ->where('id', $message_id)
+            ->get();
+
+        if ($query->num_rows() === 0) {
+            log_message('error', "Message ID: $message_id not found.");
             return false;
         }
 
-        // Mengambil IP Address dari pesan asli user
-        $this->db->select('ip_address');
-        $this->db->from('pesan');
-        $this->db->where('id', $message_id);
-        $query = $this->db->get();
+        $originalMessage = $query->row();
 
-        if ($query->num_rows() > 0) {
-            $userIp = $query->row()->ip_address; // Mendapatkan ip_address dari pesan asli user
-        } else {
-            log_message('error', "Message ID: $message_id not found in the database.");
+        if ($originalMessage->device_id !== $device_id || $originalMessage->ip_address !== $ip) {
+            log_message('error', "Device ID or IP mismatch for message ID: $message_id");
             return false;
         }
 
-        // Memperbarui pesan admin balasan
-        $data = [
-            'admin_reply' => $reply_message,
+        // Update pesan dengan balasan
+        $this->db->where('id', $message_id)
+            ->update('pesan', ['admin_reply' => $reply_message, 'is_read' => 1]);
+
+        if ($this->db->affected_rows() === 0) {
+            log_message('error', "Failed to update message ID: $message_id");
+            return false;
+        }
+
+        // Tambahkan balasan sebagai pesan baru
+        $reply_data = [
+            'device_id' => $device_id,
+            'ip_address' => $ip,
+            'user_type' => 'admin',
+            'message' => $reply_message,
             'is_read' => 1,
+            'date' => date("Y-m-d"),
+            'created_at' => date("Y-m-d H:i:s"),
         ];
 
-        $this->db->where('id', $message_id);
-        $this->db->update('pesan', $data);
+        $this->db->insert('pesan', $reply_data);
 
-        if ($this->db->affected_rows() > 0) {
-            log_message('debug', "Updated message ID: $message_id successfully.");
-
-            // Menyimpan balasan pesan dari admin ke database, menyimpan IP user (bukan IP admin)
-            $reply_data = [
-                'user_type' => 'admin',
-                'message' => $reply_message,
-                'is_read' => 1,
-                'ip_address' => $userIp,  // Menyimpan ip_address user yang asli
-                'date' => date("Y-m-d"),
-                'created_at' => date("Y-m-d H:i:s")
-            ];
-
-            $this->db->insert('pesan', $reply_data);
-
-            if ($this->db->affected_rows() > 0) {
-                log_message('debug', "Inserted reply message successfully.");
-                return true;
-            } else {
-                log_message('error', "Failed to insert reply message.");
-            }
-        } else {
-            log_message('error', "Failed to update original message ID: $message_id");
+        if ($this->db->affected_rows() === 0) {
+            log_message('error', "Failed to insert reply message.");
+            return false;
         }
 
-        return false;
+        // Selesaikan transaksi
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === false) {
+            log_message('error', "Transaction failed for reply_message.");
+            return false;
+        }
+
+        log_message('debug', "Reply message ID: $message_id successfully processed.");
+        return true;
     }
 
     public function mark_all_as_read_by_ip($ip)

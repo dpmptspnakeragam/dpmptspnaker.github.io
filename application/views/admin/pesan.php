@@ -20,6 +20,7 @@
                     <thead class="bg-dark text-light">
                         <tr>
                             <th class="text-center align-middle">IP Address</th>
+                            <th class="text-center align-middle">Device ID</th>
                             <th class="text-center align-middle">Lokasi</th>
                             <th class="text-center align-middle">Status</th>
                             <th class="text-center align-middle">Aksi</th>
@@ -30,6 +31,13 @@
                             <tr>
                                 <td class="text-center">
                                     <?= $ip ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php
+                                    // Menampilkan Device ID dari pesan pertama
+                                    $device_id = isset($messages[0]['device_id']) ? $messages[0]['device_id'] : 'Device ID Tidak Tersedia';
+                                    echo $device_id;
+                                    ?>
                                 </td>
                                 <td class="text-center">
                                     <?php
@@ -46,7 +54,7 @@
                                     <?php endif; ?>
                                 </td>
                                 <td class="text-center">
-                                    <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $ip ?>')"><i class="fas fa-search"></i> Lihat Pesan</button>
+                                    <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $ip ?>', '<?= $device_id ?>')"><i class="fas fa-search"></i> Lihat Pesan</button>
                                     <!-- <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button> -->
                                     <button class="btn btn-outline-danger btn-sm" onclick="deleteMessagesAndImagesByIp('<?= $ip ?>')"><i class="fas fa-trash"></i> Hapus</button>
                                 </td>
@@ -132,6 +140,7 @@
                                 <script>
                                     let lastMessageId = 0;
                                     let currentIp = '';
+                                    let currentDeviceId = ''; // Menyimpan device_id yang sedang aktif
                                     let pollingInterval;
                                     let isFirstLoad = true;
 
@@ -140,12 +149,13 @@
                                         audio.play();
                                     }
 
-                                    function openChat(ip) {
+                                    function openChat(ip, deviceId) {
                                         currentIp = ip;
+                                        currentDeviceId = deviceId; // Simpan device_id pengguna yang sedang dibalas
                                         document.getElementById('chat-body').innerHTML = '';
                                         lastMessageId = 0; // Reset lastMessageId untuk memuat ulang dari awal
                                         isFirstLoad = true; // Tandai sebagai pemuatan awal
-                                        loadNewMessages(ip);
+                                        loadNewMessages(ip, deviceId); // Menambahkan device_id ke dalam pemanggilan
                                         startPolling();
                                     }
 
@@ -154,6 +164,11 @@
                                     }
 
                                     function sendMessage() {
+                                        if (!currentDeviceId) {
+                                            alert("Device ID tidak ditemukan. Silakan pilih pengguna untuk dibalas.");
+                                            return;
+                                        }
+
                                         const messageInput = document.getElementById('message-input');
                                         const message = messageInput.value.trim();
                                         const sendButton = document.querySelector('.btn');
@@ -166,40 +181,44 @@
                                         sendButton.disabled = true;
 
                                         const formData = new FormData();
-                                        formData.append('message_id', lastMessageId);
-                                        formData.append('reply_message', message);
-                                        formData.append('ip', currentIp);
+                                        formData.append('message_id', lastMessageId); // ID pesan yang akan dibalas
+                                        formData.append('reply_message', message); // Isi pesan balasan
+                                        formData.append('device_id', currentDeviceId); // Device ID
+                                        formData.append('ip', currentIp); // IP pengguna
 
-                                        fetch('<?= base_url('admin/pesan/reply_message'); ?>', {
+                                        fetch('<?= site_url('admin/pesan/reply_message'); ?>', {
                                                 method: 'POST',
                                                 body: formData
                                             })
                                             .then(response => response.json())
                                             .then(data => {
                                                 if (data.status === 'success') {
-                                                    messageInput.value = '';
-                                                    loadNewMessages(currentIp);
+                                                    messageInput.value = ''; // Bersihkan input
+                                                    loadNewMessages(currentIp, currentDeviceId); // Refresh pesan berdasarkan IP dan device_id
                                                 } else {
-                                                    alert("Gagal mengirim balasan. Silakan coba lagi.");
+                                                    alert(data.message || "Gagal mengirim balasan. Silakan coba lagi.");
                                                 }
                                             })
-                                            .catch(error => {
+                                            .catch(() => {
                                                 alert("Terjadi kesalahan saat mengirim balasan.");
                                             })
                                             .finally(() => {
-                                                sendButton.disabled = false;
+                                                sendButton.disabled = false; // Aktifkan tombol kembali
                                             });
                                     }
 
-                                    function loadNewMessages(ip, chatContainerId = 'chat-body') {
-                                        fetch(`<?= base_url('admin/pesan/load_messages?ip=') ?>${ip}&last_id=${lastMessageId}`)
+                                    function loadNewMessages(ip, deviceId, chatContainerId = 'chat-body') {
+                                        fetch(`<?= base_url('admin/pesan/load_messages?ip=') ?>${ip}&device_id=${deviceId}&last_id=${lastMessageId}`)
                                             .then(response => response.json())
                                             .then(messages => {
-                                                console.log(messages); // Debugging to check if new messages (including reply) are received
+                                                console.log(messages); // Debugging untuk memeriksa apakah pesan baru diterima dengan benar
                                                 const chatContainer = document.getElementById(chatContainerId);
                                                 if (!chatContainer) return;
 
                                                 const initialScrollHeight = chatContainer.scrollHeight;
+
+                                                // Pastikan pesan ditambahkan dengan urutan yang benar berdasarkan created_at
+                                                messages.sort((a, b) => new Date(a.created_at) - new Date(b.created_at)); // Mengurutkan berdasarkan waktu
 
                                                 messages.forEach(msg => {
                                                     const messageElement = document.createElement('div');
@@ -254,7 +273,7 @@
 
                                     function startPolling() {
                                         pollingInterval = setInterval(() => {
-                                            loadNewMessages(currentIp);
+                                            loadNewMessages(currentIp, currentDeviceId); // Pastikan polling juga mengirimkan device_id
                                         }, 5000);
                                     }
 

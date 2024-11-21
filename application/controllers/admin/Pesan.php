@@ -31,16 +31,20 @@ class Pesan extends CI_Controller
     public function load_messages()
     {
         $ipAddress = $this->input->get('ip');
+        $deviceId = $this->input->get('device_id');
         $lastMessageId = $this->input->get('last_id', true);
 
-        // Debug untuk memastikan parameter yang diterima benar
-        log_message('debug', 'IP Address: ' . $ipAddress . ' Last Message ID: ' . $lastMessageId);
+        log_message('debug', 'IP Address: ' . $ipAddress . ' Device ID: ' . $deviceId . ' Last Message ID: ' . $lastMessageId);
+
+        if (empty($lastMessageId)) {
+            $lastMessageId = 0;
+        }
 
         $this->load->model('Model_pesan');
         $this->Model_pesan->mark_as_read_by_ip($ipAddress);
 
-        // Pastikan data yang diambil sesuai
-        $messages = $this->Model_pesan->get_messages_by_ip($ipAddress, $lastMessageId);
+        $messages = $this->Model_pesan->get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId);
+
         log_message('debug', 'Messages: ' . print_r($messages, true));
 
         echo json_encode($messages);
@@ -49,17 +53,25 @@ class Pesan extends CI_Controller
     // Method to reply to a user's message
     public function reply_message()
     {
-        $message_id = $this->input->post('message_id'); // The message ID to reply to
-        $reply_message = $this->input->post('reply_message'); // The admin's reply message
+        $message_id = $this->input->post('message_id');
+        $reply_message = $this->input->post('reply_message');
+        $device_id = $this->input->post('device_id');
+        $ip = $this->input->post('ip');
 
-        // Call the model's reply_message method to send the reply
-        $isReplied = $this->Model_pesan->reply_message($message_id, $reply_message);
+        log_message('debug', "Received data: message_id=$message_id, device_id=$device_id, ip=$ip");
 
-        // Return a response based on the result of the reply
+        if (empty($message_id) || empty($reply_message) || empty($device_id) || empty($ip)) {
+            log_message('error', "Incomplete parameters received.");
+            echo json_encode(['status' => 'error', 'message' => 'Parameter tidak lengkap.']);
+            return;
+        }
+
+        $isReplied = $this->Model_pesan->reply_message($message_id, $reply_message, $device_id, $ip);
+
         if ($isReplied) {
-            echo json_encode(['status' => 'success']);
+            echo json_encode(['status' => 'success', 'message' => 'Pesan berhasil dikirim.']);
         } else {
-            echo json_encode(['status' => 'error']);
+            echo json_encode(['status' => 'error', 'message' => 'Gagal mengirim pesan. Periksa log untuk detail.']);
         }
     }
 
