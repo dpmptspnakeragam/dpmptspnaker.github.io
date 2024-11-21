@@ -74,17 +74,6 @@ class Pesan extends CI_Controller
         }
     }
 
-    // public function mark_all_as_read()
-    // {
-    //     $ip = $this->input->post('ip'); // Get the IP address from the request
-
-    //     if ($this->Model_pesan->mark_all_as_read_by_ip($ip)) {
-    //         echo json_encode(['status' => 'success']);
-    //     } else {
-    //         echo json_encode(['status' => 'error']);
-    //     }
-    // }
-
     public function load_table_data()
     {
         $timestamp = $this->input->get('timestamp'); // Mendapatkan timestamp terakhir
@@ -109,4 +98,15 @@ class Pesan extends CI_Controller
             echo json_encode(['status' => 'error']);
         }
     }
+
+    // public function mark_all_as_read()
+    // {
+    //     $ip = $this->input->post('ip'); // Get the IP address from the request
+
+    //     if ($this->Model_pesan->mark_all_as_read_by_ip($ip)) {
+    //         echo json_encode(['status' => 'success']);
+    //     } else {
+    //         echo json_encode(['status' => 'error']);
+    //     }
+    // }
 }

@@ -1495,10 +1495,10 @@
 
 <!-- ----------------------------- Tombol Chat (Floating Chat Button) ----------------------------- -->
 <!-- Tombol Chat untuk Membuka Modal -->
-<div id="chat-button">
+<!-- <div id="chat-button">
 	<span id="chat-text">Hubungi Kami</span>
 	<img src="<?= base_url(); ?>assets/img/logo-chat.png" alt="Chat Icon">
-</div>
+</div> -->
 
 <!-- Modal Chat (Bootstrap) -->
 <div class="modal fade" id="chat-modal" data-backdrop="static" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
@@ -1678,7 +1678,7 @@
 
 
 <!--Script Tawk.to-->
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	var Tawk_API = Tawk_API || {},
 		Tawk_LoadStart = new Date();
 	(function() {
@@ -1690,7 +1690,7 @@
 		s1.setAttribute('crossorigin', '*');
 		s0.parentNode.insertBefore(s1, s0);
 	})();
-</script> -->
+</script>
 
 <script type="text/javascript">
 	function showPopUpBanner() {

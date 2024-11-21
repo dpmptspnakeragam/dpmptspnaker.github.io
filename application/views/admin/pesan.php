@@ -74,34 +74,6 @@
                             </div>
                             <div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
                                 <!-- Pesan akan dimuat di sini -->
-
-
-                                <!-- <script>
-                                    function markAllAsRead(ip) {
-                                        $.ajax({
-                                            url: '<?= site_url("admin/pesan/mark_all_as_read") ?>',
-                                            type: 'POST',
-                                            data: {
-                                                ip: ip
-                                            },
-                                            dataType: 'json',
-                                            success: function(response) {
-                                                if (response.status === 'success') {
-                                                    alert('Berhasil membaca semua pesan untuk IP ini.');
-                                                    location.reload();
-                                                } else {
-                                                    alert('Terjadi kesalahan saat menandai pesan sebagai telah dibaca.');
-                                                }
-                                            },
-                                            error: function() {
-                                                alert('Ada masalah dengan permintaan tersebut.');
-                                            }
-                                        });
-                                    }
-                                </script> -->
-
-
-
                             </div>
                             <div class="modal-footer">
                                 <textarea id="message-input" placeholder="Tulis balasan..." class="form-control"></textarea>
@@ -318,3 +290,27 @@
     // Mulai polling pesan baru setiap 5 detik
     setInterval(checkNewMessages, 5000);
 </script>
+
+<!-- <script>
+    function markAllAsRead(ip) {
+        $.ajax({
+            url: '<?= site_url("admin/pesan/mark_all_as_read") ?>',
+            type: 'POST',
+            data: {
+                ip: ip
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Berhasil membaca semua pesan untuk IP ini.');
+                    location.reload();
+                } else {
+                    alert('Terjadi kesalahan saat menandai pesan sebagai telah dibaca.');
+                }
+            },
+            error: function() {
+                alert('Ada masalah dengan permintaan tersebut.');
+            }
+        });
+    }
+</script> -->
