@@ -1525,98 +1525,12 @@
 <!-- JavaScript for Chat Modal -->
 <script>
 	let lastMessageId = 0;
-	let isSending = false; // Tambahkan variabel ini untuk mencegah pengiriman ganda
+	let isSending = false; // Menghindari pengiriman ganda
 	const chatButton = document.getElementById('chat-button');
 	const chatBody = document.getElementById('chat-body');
 	let intervalId;
 
-	chatButton.addEventListener('click', function() {
-		const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
-		chatModal.show();
-		loadNewMessages();
-
-		// Ambil tanggal hari ini dalam format YYYY-MM-DD
-		const today = new Date().toISOString().split('T')[0];
-
-		// Cek apakah pesan sambutan sudah ditampilkan hari ini
-		const lastShownDate = localStorage.getItem('welcomeMessageDate');
-
-		// Jika pesan sambutan belum ditampilkan hari ini, tampilkan pesan
-		if (lastShownDate !== today) {
-			const welcomeMessage = document.createElement('div');
-			welcomeMessage.className = 'chat-message admin-message';
-			welcomeMessage.innerHTML = `Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).`;
-			chatBody.appendChild(welcomeMessage);
-			chatBody.scrollTop = chatBody.scrollHeight;
-
-			// Simpan tanggal hari ini ke localStorage
-			localStorage.setItem('welcomeMessageDate', today);
-		}
-	});
-
-	function sendMessage() {
-		if (isSending) return; // Cegah pengiriman jika proses sebelumnya belum selesai
-
-		const message = document.getElementById('message-input').value.trim();
-		const imageFile = document.getElementById('image-input').files[0];
-		const sendButton = document.querySelector('.btn');
-
-		if (message === '' && !imageFile) {
-			alert('Silakan masukkan pesan atau pilih gambar yang akan dikirim.');
-			return;
-		}
-
-		isSending = true; // Set status pengiriman menjadi true
-		sendButton.disabled = true;
-		sendButton.innerHTML = 'Mengirim...';
-
-		let device_id = localStorage.getItem('device_id');
-		if (!device_id) {
-			device_id = crypto.randomUUID();
-			localStorage.setItem('device_id', device_id);
-		}
-
-		fetch('https://ip-api.com/json')
-			.then(response => response.json())
-			.then(locationData => {
-				const location = `${locationData.city}, ${locationData.country}`;
-				const formData = new FormData();
-				formData.append('message', message);
-				formData.append('location', location);
-				formData.append('device_id', device_id);
-				if (imageFile) formData.append('image', imageFile);
-
-				fetch('<?= base_url('pesan/save_message'); ?>', {
-						method: 'POST',
-						body: formData
-					})
-					.then(response => response.json())
-					.then(data => {
-						if (data.status === 'success') {
-							document.getElementById('message-input').value = '';
-							document.getElementById('image-input').value = '';
-							loadNewMessages();
-						} else {
-							alert(data.message);
-						}
-					})
-					.catch(error => {
-						alert('Terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.');
-					})
-					.finally(() => {
-						isSending = false; // Reset status pengiriman
-						sendButton.disabled = false;
-						sendButton.innerHTML = 'Kirim';
-					});
-			})
-			.catch(error => {
-				console.error('Error getting IP location:', error);
-				isSending = false;
-				sendButton.disabled = false;
-				sendButton.innerHTML = 'Kirim';
-			});
-	}
-
+	// Fungsi untuk memuat pesan baru
 	function loadNewMessages() {
 		let device_id = localStorage.getItem('device_id');
 		if (!device_id) {
@@ -1671,7 +1585,111 @@
 			.catch(error => console.error('Gagal memuat pesan:', error));
 	}
 
-	// Atur interval untuk pemuatan pesan baru
+	// Fungsi untuk mengirim pesan
+	function sendMessage() {
+		if (isSending) return; // Mencegah pengiriman ganda
+
+		const message = document.getElementById('message-input').value.trim();
+		const imageFile = document.getElementById('image-input').files[0];
+		const sendButton = document.querySelector('.btn');
+
+		if (message === '' && !imageFile) {
+			alert('Silakan masukkan pesan atau pilih gambar yang akan dikirim.');
+			return;
+		}
+
+		isSending = true; // Mengatur status pengiriman
+		sendButton.disabled = true;
+		sendButton.innerHTML = 'Mengirim...';
+
+		let device_id = localStorage.getItem('device_id');
+		if (!device_id) {
+			device_id = crypto.randomUUID();
+			localStorage.setItem('device_id', device_id);
+		}
+
+		fetch('https://ip-api.com/json')
+			.then(response => response.json())
+			.then(locationData => {
+				const location = `${locationData.city}, ${locationData.country}`;
+				const formData = new FormData();
+				formData.append('message', message);
+				formData.append('location', location);
+				formData.append('device_id', device_id);
+				if (imageFile) formData.append('image', imageFile);
+
+				fetch('<?= base_url('pesan/save_message'); ?>', {
+						method: 'POST',
+						body: formData
+					})
+					.then(response => response.json())
+					.then(data => {
+						if (data.status === 'success') {
+							document.getElementById('message-input').value = '';
+							document.getElementById('image-input').value = '';
+							loadNewMessages();
+						} else {
+							alert(data.message);
+						}
+					})
+					.catch(error => {
+						alert('Terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.');
+					})
+					.finally(() => {
+						isSending = false; // Reset status pengiriman
+						sendButton.disabled = false;
+						sendButton.innerHTML = 'Kirim';
+					});
+			})
+			.catch(error => {
+				console.error('Error getting IP location:', error);
+				isSending = false;
+				sendButton.disabled = false;
+				sendButton.innerHTML = 'Kirim';
+			});
+	}
+
+	// Fungsi untuk menampilkan pesan sambutan otomatis
+	function showWelcomeMessage() {
+		// Ambil timestamp dari localStorage
+		const lastShownTimestamp = localStorage.getItem('welcomeMessageTimestamp');
+		const now = new Date().getTime();
+
+		// Cek apakah sudah lebih dari 1 jam
+		const oneHour = 60 * 60 * 1000; // 1 jam dalam milidetik
+		if (!lastShownTimestamp || now - lastShownTimestamp >= oneHour) {
+			// Buat pesan sambutan
+			const welcomeMessage = document.createElement('div');
+			welcomeMessage.className = 'chat-message admin-message';
+			welcomeMessage.innerHTML = `
+            Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).
+            Jika pesan sedang berlangsung, diharapkan tetap dihalaman ini, Terimakasih :)`;
+
+			// Menambahkan pesan di bawah pesan terakhir
+			const lastMessage = chatBody.lastElementChild; // Ambil elemen pesan terakhir
+			if (lastMessage) {
+				chatBody.insertBefore(welcomeMessage, lastMessage.nextSibling); // Sisipkan setelah pesan terakhir
+			} else {
+				chatBody.appendChild(welcomeMessage); // Jika tidak ada pesan sebelumnya, tambahkan ke bawah
+			}
+
+			// Scroll ke bawah
+			chatBody.scrollTop = chatBody.scrollHeight;
+
+			// Simpan timestamp saat pesan sambutan ditampilkan
+			localStorage.setItem('welcomeMessageTimestamp', now);
+		}
+	}
+
+	// Event Listener untuk membuka modal dan memuat pesan baru
+	chatButton.addEventListener('click', function() {
+		const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
+		chatModal.show();
+		loadNewMessages();
+		showWelcomeMessage(); // Menampilkan pesan sambutan otomatis
+	});
+
+	// Atur interval untuk memuat pesan baru secara otomatis
 	if (intervalId) clearInterval(intervalId); // Pastikan hanya ada satu interval aktif
 	intervalId = setInterval(loadNewMessages, 5000);
 </script>

@@ -115,6 +115,9 @@ class Model_pesan extends CI_Model
             return false;
         }
 
+        // Set timezone to Indonesia (Jakarta)
+        date_default_timezone_set('Asia/Jakarta');
+
         // Tambahkan balasan sebagai pesan baru
         $reply_data = [
             'device_id' => $device_id,
