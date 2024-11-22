@@ -59,7 +59,7 @@ class Model_pesan extends CI_Model
         return $groupedMessages;
     }
 
-    public function get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId = 0)
+    public function get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId = 0, $userType = null)
     {
         if (empty($ipAddress) || empty($deviceId)) {
             return []; // Validasi jika data kosong
@@ -72,6 +72,10 @@ class Model_pesan extends CI_Model
 
         if ($lastMessageId > 0) {
             $this->db->where('id >', intval($lastMessageId));
+        }
+
+        if (!empty($userType)) {
+            $this->db->where('user_type', $userType); // Tambahkan filter berdasarkan user_type
         }
 
         $this->db->order_by('id', 'ASC'); // Urutkan berdasarkan ID agar lebih konsisten

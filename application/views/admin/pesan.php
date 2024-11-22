@@ -229,18 +229,27 @@
                 if (result.status === 'success' && result.messages.length > 0) {
                     const chatContainer = document.getElementById(chatContainerId);
                     if (!chatContainer) return;
+
                     const initialScrollHeight = chatContainer.scrollHeight;
                     result.messages.sort((a, b) => a.id - b.id);
+
                     result.messages.forEach(msg => {
-                        const messageElement = document.createElement('div');
                         const isAdmin = msg.user_type === 'admin';
-                        messageElement.classList.add(isAdmin ? 'admin-message' : 'user-message');
-                        const avatarUrl = isAdmin ? '<?= base_url("assets/img/admin-avatar.png"); ?>' : '<?= base_url("assets/img/user-avatar.png"); ?>';
+
+                        // Buat elemen pesan
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add(isAdmin ? 'admin-message' : 'user-message'); // Sesuaikan kelas berdasarkan pengirim
+
+                        const avatarUrl = isAdmin ?
+                            '<?= base_url("assets/img/admin-avatar.png"); ?>' :
+                            '<?= base_url("assets/img/user-avatar.png"); ?>';
                         let messageContent = `<div class="message-text">${msg.message}`;
+
                         if (msg.image_url) {
                             const imageUrl = msg.image_url;
                             messageContent += `<div class="message-image"><img src="${imageUrl}" alt="Sent Image" style="max-width: 100px;"></div>`;
                         }
+
                         const formattedDate = new Date(msg.created_at).toLocaleString('id-ID', {
                             day: '2-digit',
                             month: 'short',
@@ -249,15 +258,23 @@
                             minute: '2-digit'
                         });
                         messageContent += `<div class="message-date">${formattedDate}</div></div>`;
-                        messageContent = isAdmin ? `${messageContent}<img src="${avatarUrl}" alt="Admin Avatar" class="chat-avatar">` : `<img src="${avatarUrl}" alt="User Avatar" class="chat-avatar">${messageContent}`;
+                        messageContent = isAdmin ?
+                            `${messageContent}<img src="${avatarUrl}" alt="Admin Avatar" class="chat-avatar">` :
+                            `<img src="${avatarUrl}" alt="User Avatar" class="chat-avatar">${messageContent}`;
                         messageElement.innerHTML = messageContent;
                         chatContainer.appendChild(messageElement);
 
                         // Putar suara hanya untuk pesan user yang belum dibaca
-                        if (!isAdmin && !msg.is_read) {
-                            audio.play();
+                        if (!isAdmin && !msg.is_read && msg.user_type !== 'admin') {
+                            audio.play(); // Putar suara hanya untuk pesan dari user
+                        }
+
+                        // Abaikan notifikasi untuk pesan admin
+                        if (isAdmin) {
+                            msg.is_notified = false;
                         }
                     });
+
                     if (result.messages.length > 0) {
                         lastMessageId = result.messages[result.messages.length - 1].id;
                         const newScrollHeight = chatContainer.scrollHeight;
