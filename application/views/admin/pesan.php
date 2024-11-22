@@ -98,7 +98,7 @@
     let isFirstLoad = true;
 
     // Objek suara notifikasi
-    const audio = new Audio('assets/sounds/notification.mp3');
+    const audio = new Audio('../assets/sounds/notification.mp3');
 
     // Monitor apakah tab aktif atau tidak
     document.addEventListener("visibilitychange", () => {
@@ -118,6 +118,7 @@
                 if (data.newMessages) {
                     lastTimestamp = data.latestTimestamp;
                     if (!isTabActive) {
+                        // Jika tab tidak aktif, putar suara notifikasi dan tampilkan web notification
                         audio.play();
                         showWebNotification(data.messages);
                     }
@@ -135,11 +136,28 @@
                     icon: 'assets/img/user-avatar.png'
                 });
                 notification.onclick = function() {
+                    // Saat klik notifikasi, anggap pesan sudah dibaca dan hentikan suara
+                    markMessageAsRead(message.id);
                     window.focus();
                     window.location.href = '<?= base_url("admin/pesan") ?>';
                 };
             });
         }
+    }
+
+    // Fungsi untuk menandai pesan sebagai sudah dibaca
+    function markMessageAsRead(messageId) {
+        $.ajax({
+            url: '<?= base_url("admin/pesan/mark_as_read") ?>',
+            method: 'POST',
+            data: {
+                message_id: messageId
+            },
+            success: function(response) {
+                // Jika berhasil menandai sebagai dibaca, tidak perlu memutar suara lagi
+                console.log('Pesan berhasil ditandai sebagai dibaca');
+            }
+        });
     }
 
     // Meminta izin untuk notifikasi jika belum diberikan
@@ -234,7 +252,11 @@
                         messageContent = isAdmin ? `${messageContent}<img src="${avatarUrl}" alt="Admin Avatar" class="chat-avatar">` : `<img src="${avatarUrl}" alt="User Avatar" class="chat-avatar">${messageContent}`;
                         messageElement.innerHTML = messageContent;
                         chatContainer.appendChild(messageElement);
-                        if (!isAdmin) audio.play();
+
+                        // Putar suara hanya untuk pesan user yang belum dibaca
+                        if (!isAdmin && !msg.is_read) {
+                            audio.play();
+                        }
                     });
                     if (result.messages.length > 0) {
                         lastMessageId = result.messages[result.messages.length - 1].id;
@@ -290,6 +312,7 @@
     // Mulai polling pesan baru setiap 5 detik
     setInterval(checkNewMessages, 5000);
 </script>
+
 
 <!-- <script>
     function markAllAsRead(ip) {
