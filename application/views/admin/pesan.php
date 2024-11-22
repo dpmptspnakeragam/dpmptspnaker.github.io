@@ -20,28 +20,23 @@
                     <thead class="bg-dark text-light">
                         <tr>
                             <th class="text-center align-middle">IP Address</th>
-                            <!-- <th class="text-center align-middle">Device ID</th> -->
+                            <th class="text-center align-middle">Device ID</th>
                             <th class="text-center align-middle">Lokasi</th>
                             <th class="text-center align-middle">Status</th>
                             <th class="text-center align-middle">Aksi</th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        <?php foreach ($messagesByIp as $ip => $messages): ?>
+                        <?php foreach ($messagesByIp as $key => $messages): ?>
+                            <?php
+                            // Mengambil IP dan device_id dari kunci grup
+                            list($ip, $device_id) = explode('_', $key);
+                            ?>
                             <tr>
-                                <td class="text-center">
-                                    <?= $ip ?>
-                                </td>
-                                <!-- <td class="text-center">
-                                    <?php
-                                    // Menampilkan Device ID dari pesan pertama
-                                    $device_id = isset($messages[0]['device_id']) ? $messages[0]['device_id'] : 'Device ID Tidak Tersedia';
-                                    echo $device_id;
-                                    ?>
-                                </td> -->
+                                <td class="text-center"><?= $ip ?></td>
+                                <td class="text-center"><?= $device_id ?></td> <!-- Menampilkan device_id -->
                                 <td class="text-center">
                                     <?php
-                                    // Menampilkan lokasi dari pesan pertama (biasanya lokasi pertama relevan untuk semua pesan dengan IP yang sama)
                                     $location = isset($messages[0]['location']) ? $messages[0]['location'] : 'Lokasi Tidak Diketahui';
                                     echo $location;
                                     ?>
@@ -55,8 +50,8 @@
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $ip ?>', '<?= $device_id ?>')"><i class="fas fa-search"></i> Lihat Pesan</button>
+                                    <button class="btn btn-outline-danger btn-sm" onclick="deleteMessagesAndImages('<?= $ip ?>', '<?= $device_id ?>')"><i class="fas fa-trash"></i> Hapus</button>
                                     <!-- <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button> -->
-                                    <button class="btn btn-outline-danger btn-sm" onclick="deleteMessagesAndImagesByIp('<?= $ip ?>')"><i class="fas fa-trash"></i> Hapus</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -297,13 +292,14 @@
     }
 
     // Fungsi untuk menghapus pesan dan gambar berdasarkan IP
-    function deleteMessagesAndImagesByIp(ip) {
-        if (confirm("Apakah Anda yakin ingin menghapus semua pesan dan gambar untuk IP ini?")) {
+    function deleteMessagesAndImages(ip, device_id) {
+        if (confirm("Apakah Anda yakin ingin menghapus pesan dan gambar untuk device ini?")) {
             $.ajax({
-                url: '<?= site_url("admin/pesan/delete_messages_and_images_by_ip") ?>',
+                url: '<?= site_url("admin/pesan/delete_messages_and_images_by_ip_and_device") ?>',
                 type: 'POST',
                 data: {
-                    ip: ip
+                    ip: ip,
+                    device_id: device_id
                 },
                 dataType: 'json',
                 success: function(response) {

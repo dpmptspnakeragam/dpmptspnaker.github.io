@@ -40,20 +40,27 @@ class Model_pesan extends CI_Model
     }
 
     // Admin
-    public function get_messages_grouped_by_ip()
+    public function get_messages_grouped_by_ip_and_device($device_id = null)
     {
-        // Hanya memilih pesan yang dikirim oleh user (bukan admin)
+        // Memilih pesan berdasarkan IP dan device_id (jika ada)
         $this->db->select('*');
         $this->db->from('pesan');
-        $this->db->where('user_type', 'user'); // Sesuaikan nama kolom jika berbeda
+
+        // Jika ada device_id yang diberikan, tambahkan filter berdasarkan device_id
+        if ($device_id) {
+            $this->db->where('device_id', $device_id);
+        }
+
         $this->db->order_by('created_at', 'DESC');
         $query = $this->db->get();
         $messages = $query->result_array();
 
-        // Mengelompokkan pesan berdasarkan alamat IP
+        // Mengelompokkan pesan berdasarkan kombinasi IP dan device_id
         $groupedMessages = [];
         foreach ($messages as $message) {
-            $groupedMessages[$message['ip_address']][] = $message;
+            // Menggunakan kombinasi IP dan device_id sebagai kunci untuk pengelompokan
+            $key = $message['ip_address'] . '_' . $message['device_id'];
+            $groupedMessages[$key][] = $message;
         }
 
         return $groupedMessages;
@@ -171,16 +178,17 @@ class Model_pesan extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function deleteMessagesAndImagesByIp($ip)
+    public function deleteMessagesAndImagesByIpAndDevice($ip, $device_id)
     {
-        // Ambil URL gambar yang terkait dengan pesan dari IP tertentu
+        // Ambil URL gambar yang terkait dengan pesan dari IP dan device_id tertentu
         $images = $this->db->select('image_url')
             ->where('ip_address', $ip)
+            ->where('device_id', $device_id)  // Pastikan hanya device_id yang sesuai yang dihapus
             ->where('image_url !=', null)
             ->get('pesan')
             ->result();
 
-        // Hapus file gambar fisik
+        // Hapus file gambar fisik yang terkait
         foreach ($images as $img) {
             $file_path = FCPATH . 'assets/fileupload/chat/' . basename($img->image_url);
             if (file_exists($file_path)) {
@@ -188,7 +196,9 @@ class Model_pesan extends CI_Model
             }
         }
 
-        // Hapus semua pesan dari database berdasarkan IP
-        return $this->db->where('ip_address', $ip)->delete('pesan');
+        // Hapus pesan yang terkait dengan IP dan device_id tertentu
+        return $this->db->where('ip_address', $ip)
+            ->where('device_id', $device_id)  // Hanya hapus pesan dengan device_id ini
+            ->delete('pesan');
     }
 }

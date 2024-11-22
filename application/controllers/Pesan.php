@@ -97,6 +97,7 @@ class Pesan extends CI_Controller
             return;
         }
 
+        // Pastikan hanya mengambil pesan untuk user type = 'user'
         $messages = $this->Model_pesan->get_messages($last_id, $device_id);
         echo json_encode($messages);
     }

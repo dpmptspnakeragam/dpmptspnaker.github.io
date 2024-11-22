@@ -15,10 +15,13 @@ class Pesan extends CI_Controller
     // Display the admin chat page
     public function index()
     {
-        // Get unread messages grouped by IP address
-        $messagesByIp = $this->Model_pesan->get_messages_grouped_by_ip();
+        // Cek jika ada device_id yang diterima dari form atau URL
+        $device_id = $this->input->get('device_id'); // Ambil dari URL query string
 
-        // Pass data to the view for rendering
+        // Dapatkan pesan yang dikelompokkan berdasarkan IP dan device_id
+        $messagesByIp = $this->Model_pesan->get_messages_grouped_by_ip_and_device($device_id);
+
+        // Pass data ke view untuk ditampilkan
         $data['messagesByIp'] = $messagesByIp;
 
         // Load views
@@ -88,10 +91,13 @@ class Pesan extends CI_Controller
         ]);
     }
 
-    public function delete_messages_and_images_by_ip()
+    public function delete_messages_and_images_by_ip_and_device()
     {
         $ip = $this->input->post('ip');
-        if ($this->Model_pesan->deleteMessagesAndImagesByIp($ip)) {
+        $device_id = $this->input->post('device_id');  // Mengambil device_id dari request POST
+
+        // Panggil model untuk menghapus pesan berdasarkan IP dan device_id
+        if ($this->Model_pesan->deleteMessagesAndImagesByIpAndDevice($ip, $device_id)) {
             echo json_encode(['status' => 'success']);
         } else {
             echo json_encode(['status' => 'error']);

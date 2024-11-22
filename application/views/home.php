@@ -1530,7 +1530,6 @@
 	const chatBody = document.getElementById('chat-body');
 	let intervalId;
 
-	// Fungsi untuk memuat pesan baru
 	function loadNewMessages() {
 		let device_id = localStorage.getItem('device_id');
 		if (!device_id) {

@@ -23,9 +23,6 @@
 
     <link href="https://getbootstrap.com/docs/4.0/examples/dashboard/" rel="canonical">
 
-    <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url() ?>/assets/js/Chart.js"></script>
-
 </head>
 
 <body>
