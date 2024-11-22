@@ -43,7 +43,7 @@ class Pesan extends CI_Controller
         }
 
         $this->load->model('Model_pesan');
-        $this->Model_pesan->mark_as_read_by_ip($ipAddress);
+        $this->Model_pesan->mark_as_read_by_ip_and_device($ipAddress, $deviceId);
 
         $messages = $this->Model_pesan->get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId);
 
@@ -53,6 +53,7 @@ class Pesan extends CI_Controller
 
         echo json_encode(['status' => 'success', 'messages' => $messages]);
     }
+
 
     // Method to reply to a user's message
     public function reply_message()

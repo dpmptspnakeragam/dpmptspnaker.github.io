@@ -42,28 +42,23 @@ class Model_pesan extends CI_Model
     // Admin
     public function get_messages_grouped_by_ip_and_device($device_id = null)
     {
-        // Memilih pesan berdasarkan IP dan device_id (jika ada)
-        $this->db->select('*');
+        $this->db->select('ip_address, device_id, MAX(created_at) AS last_chat, location, 
+                   SUM(CASE WHEN is_read = 0 THEN 1 ELSE 0 END) AS unread_count');
         $this->db->from('pesan');
 
-        // Jika ada device_id yang diberikan, tambahkan filter berdasarkan device_id
         if ($device_id) {
             $this->db->where('device_id', $device_id);
         }
 
-        $this->db->order_by('created_at', 'DESC');
+        $this->db->group_by(['ip_address', 'device_id']);
+        $this->db->order_by('last_chat', 'DESC');
+
         $query = $this->db->get();
-        $messages = $query->result_array();
 
-        // Mengelompokkan pesan berdasarkan kombinasi IP dan device_id
-        $groupedMessages = [];
-        foreach ($messages as $message) {
-            // Menggunakan kombinasi IP dan device_id sebagai kunci untuk pengelompokan
-            $key = $message['ip_address'] . '_' . $message['device_id'];
-            $groupedMessages[$key][] = $message;
-        }
+        // Debugging output
+        log_message('debug', json_encode($query->result_array()));
 
-        return $groupedMessages;
+        return $query->result_array();
     }
 
     public function get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId = 0, $userType = null)
@@ -95,9 +90,10 @@ class Model_pesan extends CI_Model
         return $query->result_array();
     }
 
-    public function mark_as_read_by_ip($ipAddress)
+    public function mark_as_read_by_ip_and_device($ipAddress, $deviceId)
     {
         $this->db->where('ip_address', $ipAddress);
+        $this->db->where('device_id', $deviceId);
         $this->db->update('pesan', ['is_read' => 1]); // Tandai sebagai dibaca
     }
 
