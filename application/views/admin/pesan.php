@@ -265,13 +265,8 @@
                         chatContainer.appendChild(messageElement);
 
                         // Putar suara hanya untuk pesan user yang belum dibaca
-                        if (!isAdmin && !msg.is_read && msg.user_type !== 'admin') {
-                            audio.play(); // Putar suara hanya untuk pesan dari user
-                        }
-
-                        // Abaikan notifikasi untuk pesan admin
-                        if (isAdmin) {
-                            msg.is_notified = false;
+                        if (!isAdmin && !msg.is_read && !msg.is_admin) {
+                            audio.play(); // Putar suara hanya untuk pesan user
                         }
                     });
 

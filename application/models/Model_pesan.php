@@ -74,8 +74,12 @@ class Model_pesan extends CI_Model
             $this->db->where('id >', intval($lastMessageId));
         }
 
-        if (!empty($userType)) {
-            $this->db->where('user_type', $userType); // Tambahkan filter berdasarkan user_type
+        if ($userType === 'user') {
+            // Hanya ambil pesan dari user
+            $this->db->where('user_type', 'user');
+        } elseif ($userType === 'admin') {
+            // Hanya ambil pesan dari admin (opsional jika diperlukan)
+            $this->db->where('user_type', 'admin');
         }
 
         $this->db->order_by('id', 'ASC'); // Urutkan berdasarkan ID agar lebih konsisten

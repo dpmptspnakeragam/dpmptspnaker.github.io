@@ -42,12 +42,10 @@ class Pesan extends CI_Controller
         $this->load->model('Model_pesan');
         $this->Model_pesan->mark_as_read_by_ip($ipAddress);
 
-        // Ambil hanya pesan dari user
         $messages = $this->Model_pesan->get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId);
 
-        if (empty($messages)) {
-            echo json_encode(['status' => 'success', 'messages' => [], 'message' => 'Tidak ada pesan baru']);
-            return;
+        foreach ($messages as &$message) {
+            $message['is_admin'] = ($message['user_type'] === 'admin'); // Tandai pesan admin
         }
 
         echo json_encode(['status' => 'success', 'messages' => $messages]);
