@@ -5,10 +5,10 @@
 
 #chat-button {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 35px;
+    right: 35px;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 #chat-text {
     position: absolute;
     top: -20px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     color: black;
     text-align: center;
@@ -60,13 +60,18 @@
 }
 
 #chat-button img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 
 #message-input {
     margin: 10px;
+}
+
+.modal-body {
+    overflow-y: auto;
+    max-height: 250px;
 }
 
 .chat-message {
@@ -84,6 +89,7 @@
     align-self: flex-end;
     flex-direction: row-reverse;
     margin-left: auto;
+    font-size: 12px;
 }
 
 .admin-message {
@@ -91,6 +97,7 @@
     align-self: flex-start;
     flex-direction: row;
     margin-right: auto;
+    font-size: 12px;
 }
 
 .chat-avatar {
@@ -123,7 +130,7 @@
 }
 
 .message-date.admin-date {
-    font-size: 10px;
+    font-size: 6px;
     color: gray;
     text-align: left;
     margin-top: 5px;
@@ -131,7 +138,7 @@
 }
 
 .message-date.user-date {
-    font-size: 10px;
+    font-size: 6px;
     color: gray;
     text-align: right;
     margin-top: 5px;

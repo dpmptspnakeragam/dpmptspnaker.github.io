@@ -1501,8 +1501,8 @@
 </div>
 
 <!-- Modal Chat (Bootstrap) -->
-<div class="modal fade" id="chat-modal" data-backdrop="static" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="chat-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered chat-modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="chatModalLabel">Chat with Admin</h5>
@@ -1510,7 +1510,7 @@
 					<span class="text-white" aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
+			<div class="modal-body" id="chat-body">
 				<!-- Pesan Selamat Datang akan muncul di sini -->
 			</div>
 			<div class="modal-footer">
@@ -1521,6 +1521,39 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	/* Tablet ke atas: modal di sisi kanan */
+	@media (min-width: 768px) {
+		.chat-modal-dialog {
+			position: fixed;
+			right: 30px;
+			/* Jarak dari sisi kanan */
+			transform: none;
+			/* Hilangkan transform */
+			width: 300px;
+			/* Lebar modal di tablet */
+		}
+	}
+
+	/* Laptop ke atas: modal tetap di sisi kanan dengan lebar lebih besar */
+	@media (min-width: 1024px) {
+		.chat-modal-dialog {
+			width: 400px;
+			/* Lebar modal di laptop */
+		}
+	}
+
+	/* Desktop hingga resolusi 4K */
+	@media (min-width: 1440px) {
+		.chat-modal-dialog {
+			width: 600px;
+			/* Lebar modal di layar besar */
+			right: 50px;
+			/* Tambahkan jarak lebih banyak di layar 4K */
+		}
+	}
+</style>
 
 <!-- JavaScript for Chat Modal -->
 <script>
@@ -1692,7 +1725,6 @@
 	if (intervalId) clearInterval(intervalId); // Pastikan hanya ada satu interval aktif
 	intervalId = setInterval(loadNewMessages, 5000);
 </script>
-
 
 <!--Script Tawk.to-->
 <!-- <script type="text/javascript">
