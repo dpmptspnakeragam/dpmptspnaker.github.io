@@ -91,6 +91,7 @@
     let currentDeviceId = '';
     let pollingInterval;
     let isFirstLoad = true;
+    let isSending = false;
 
     // Objek suara notifikasi
     const audio = new Audio('../assets/sounds/notification.mp3');
@@ -178,8 +179,12 @@
 
     // Fungsi untuk mengirim pesan
     function sendMessage() {
+        if (isSending) return; // abaikan jika sedang mengirim
+        isSending = true;
+
         if (!currentDeviceId) {
             alert("Device ID tidak ditemukan. Silakan pilih pengguna untuk dibalas.");
+            isSending = false;
             return;
         }
         const messageInput = document.getElementById('message-input');
@@ -187,14 +192,17 @@
         const sendButton = document.querySelector('.btn');
         if (message === "") {
             alert("Pesan tidak boleh kosong.");
+            isSending = false;
             return;
         }
         sendButton.disabled = true;
+
         const formData = new FormData();
         formData.append('message_id', lastMessageId);
         formData.append('reply_message', message);
         formData.append('device_id', currentDeviceId);
         formData.append('ip', currentIp);
+
         fetch('<?= site_url('admin/pesan/reply_message'); ?>', {
                 method: 'POST',
                 body: formData
@@ -213,6 +221,7 @@
             })
             .finally(() => {
                 sendButton.disabled = false;
+                isSending = false;
             });
     }
 
