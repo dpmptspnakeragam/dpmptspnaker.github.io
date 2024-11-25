@@ -1522,10 +1522,6 @@
 	</div>
 </div>
 
-<style>
-
-</style>
-
 <!-- JavaScript for Chat Modal -->
 <script>
 	let lastMessageId = 0;
