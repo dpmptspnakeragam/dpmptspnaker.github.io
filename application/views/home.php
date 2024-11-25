@@ -1747,6 +1747,9 @@
 			loadNewMessages(); // Memuat pesan dari server
 			showWelcomeMessage(); // Tambahkan pesan sambutan setiap kali modal dibuka
 		}, 500);
+
+		// Mulai interval untuk memuat pesan baru
+		intervalId = setInterval(loadNewMessages, 5000);
 	});
 
 	// Bersihkan interval ketika modal ditutup (opsional)
