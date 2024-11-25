@@ -1507,7 +1507,7 @@
 			<div class="modal-header">
 				<h5 class="modal-title" id="chatModalLabel">Chat with Admin</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeChat()">
-					<span class="text-white" aria-hidden="true">&times;</span>
+					<span class="text-white bonr" aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body" id="chat-body">
@@ -1681,49 +1681,78 @@
 			});
 	}
 
-	// Fungsi untuk menampilkan pesan sambutan otomatis
+	// Fungsi untuk menampilkan pesan sambutan di akhir chat
 	function showWelcomeMessage() {
-		// Ambil timestamp dari localStorage
-		const lastShownTimestamp = localStorage.getItem('welcomeMessageTimestamp');
-		const now = new Date().getTime();
+		const currentTime = new Date().getTime();
 
-		// Cek apakah sudah lebih dari 1 jam
-		const oneHour = 60 * 60 * 1000; // 1 jam dalam milidetik
-		if (!lastShownTimestamp || now - lastShownTimestamp >= oneHour) {
-			// Buat pesan sambutan
-			const welcomeMessage = document.createElement('div');
-			welcomeMessage.className = 'chat-message admin-message';
-			welcomeMessage.innerHTML = `
-            Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).
-            Jika pesan sedang berlangsung, diharapkan tetap dihalaman ini, Terimakasih :)`;
+		// Pesan 1
+		const welcomeMessage1 = document.createElement('div');
+		welcomeMessage1.className = 'chat-message admin-message';
+		welcomeMessage1.innerHTML = `
+        <img src="<?= base_url('assets/img/admin-avatar.png'); ?>" alt="Admin Avatar" class="chat-avatar">
+        <div>
+            <div>
+                (Pesan Otomatis) Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).
+            </div>
+            <small class="message-date admin-date">
+                ${new Date(currentTime).toLocaleString('id-ID', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                })}
+            </small>
+        </div>
+    `;
 
-			// Menambahkan pesan di bawah pesan terakhir
-			const lastMessage = chatBody.lastElementChild; // Ambil elemen pesan terakhir
-			if (lastMessage) {
-				chatBody.insertBefore(welcomeMessage, lastMessage.nextSibling); // Sisipkan setelah pesan terakhir
-			} else {
-				chatBody.appendChild(welcomeMessage); // Jika tidak ada pesan sebelumnya, tambahkan ke bawah
-			}
+		// Pesan 2
+		const welcomeMessage2 = document.createElement('div');
+		welcomeMessage2.className = 'chat-message admin-message';
+		welcomeMessage2.innerHTML = `
+        <img src="<?= base_url('assets/img/admin-avatar.png'); ?>" alt="Admin Avatar" class="chat-avatar">
+        <div>
+            <div>
+                (Pesan Otomatis) Jika pesan sedang berlangsung, diharapkan tetap di halaman ini. Terima kasih :)
+            </div>
+            <small class="message-date admin-date">
+                ${new Date(currentTime).toLocaleString('id-ID', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                })}
+            </small>
+        </div>
+    `;
 
-			// Scroll ke bawah
-			chatBody.scrollTop = chatBody.scrollHeight;
+		// Tambahkan pesan 1 dan pesan 2 di akhir chat
+		chatBody.appendChild(welcomeMessage1);
+		// chatBody.appendChild(welcomeMessage2);
 
-			// Simpan timestamp saat pesan sambutan ditampilkan
-			localStorage.setItem('welcomeMessageTimestamp', now);
-		}
+		// Scroll otomatis ke bawah agar pesan terlihat
+		chatBody.scrollTop = chatBody.scrollHeight;
 	}
 
-	// Event Listener untuk membuka modal dan memuat pesan baru
+	// Event Listener untuk membuka modal
 	chatButton.addEventListener('click', function() {
 		const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
 		chatModal.show();
-		loadNewMessages();
-		showWelcomeMessage(); // Menampilkan pesan sambutan otomatis
+
+		// Tambahkan sedikit delay untuk memastikan modal ditampilkan sepenuhnya
+		setTimeout(() => {
+			loadNewMessages(); // Memuat pesan dari server
+			showWelcomeMessage(); // Tambahkan pesan sambutan setiap kali modal dibuka
+		}, 500);
 	});
 
-	// Atur interval untuk memuat pesan baru secara otomatis
-	if (intervalId) clearInterval(intervalId); // Pastikan hanya ada satu interval aktif
-	intervalId = setInterval(loadNewMessages, 5000);
+	// Bersihkan interval ketika modal ditutup (opsional)
+	document.getElementById('chat-modal').addEventListener('hidden.bs.modal', function() {
+		if (intervalId) clearInterval(intervalId); // Hentikan interval ketika modal ditutup
+	});
 </script>
 
 <!--Script Tawk.to-->

@@ -130,7 +130,7 @@
 }
 
 .message-date.admin-date {
-    font-size: 6px;
+    font-size: 9px;
     color: gray;
     text-align: left;
     margin-top: 5px;
@@ -138,7 +138,7 @@
 }
 
 .message-date.user-date {
-    font-size: 6px;
+    font-size: 9px;
     color: gray;
     text-align: right;
     margin-top: 5px;
