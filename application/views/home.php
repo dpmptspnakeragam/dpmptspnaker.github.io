@@ -1523,36 +1523,7 @@
 </div>
 
 <style>
-	/* Tablet ke atas: modal di sisi kanan */
-	@media (min-width: 768px) {
-		.chat-modal-dialog {
-			position: fixed;
-			right: 30px;
-			/* Jarak dari sisi kanan */
-			transform: none;
-			/* Hilangkan transform */
-			width: 300px;
-			/* Lebar modal di tablet */
-		}
-	}
 
-	/* Laptop ke atas: modal tetap di sisi kanan dengan lebar lebih besar */
-	@media (min-width: 1024px) {
-		.chat-modal-dialog {
-			width: 400px;
-			/* Lebar modal di laptop */
-		}
-	}
-
-	/* Desktop hingga resolusi 4K */
-	@media (min-width: 1440px) {
-		.chat-modal-dialog {
-			width: 600px;
-			/* Lebar modal di layar besar */
-			right: 50px;
-			/* Tambahkan jarak lebih banyak di layar 4K */
-		}
-	}
 </style>
 
 <!-- JavaScript for Chat Modal -->
