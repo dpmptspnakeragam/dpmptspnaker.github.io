@@ -10,7 +10,6 @@
     <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/dashboard.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/style_admin.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/css/pesan-admin.css" rel="stylesheet">
 
     <link href="<?= base_url(); ?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/navbar.css" rel="stylesheet">
@@ -22,6 +21,9 @@
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <link href="https://getbootstrap.com/docs/4.0/examples/dashboard/" rel="canonical">
+
+    <script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/Chart.js"></script>
 
 </head>
 

@@ -1,7 +1,6 @@
 <script src="<?= base_url(); ?>assets/jquery-3.4.1.min.js"></script>
 <script src="<?= base_url(); ?>assets/popper.js"></script>
-<script src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
-<script src="<?= base_url(); ?>assets/js/Chart.js"></script>
+<script src="<?= base_url(); ?>assets/js/bootstrap.js"></script>
 <script src="<?php echo base_url() ?>/assets/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
@@ -53,7 +52,7 @@
                         <?= $this->session->set_flashdata('berhasil', ''); ?>
                     }
                 <?php endif; ?>
-            }, 7000); // Menghapus setelah 5 detik (5000 milidetik)
+            }, 5000); // Menghapus setelah 5 detik (5000 milidetik)
         });
     });
 </script>

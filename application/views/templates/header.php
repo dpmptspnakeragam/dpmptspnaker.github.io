@@ -13,7 +13,7 @@
   <link href="<?= base_url(); ?>assets/css/style.css" media rel="stylesheet">
   <link href="<?= base_url(); ?>assets/img/vectoragam.png" rel="shortcut icon">
   <link href="<?= base_url(); ?>assets/css/wa.css" media rel="stylesheet">
-  <link href="<?= base_url(); ?>assets/css/pesan-home.css" media rel="stylesheet">
+  <!-- <link href="<?= base_url(); ?>assets/css/pesan-home.css" media rel="stylesheet"> -->
 
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" media rel="stylesheet" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
