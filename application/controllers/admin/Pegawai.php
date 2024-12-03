@@ -29,7 +29,7 @@ class Pegawai extends CI_controller
     {
         $id_pegawai = $this->input->post('id_pegawai', true);
         $no_urut = $this->input->post('no_urut', true);
-        $id_kabid = $this->input->post('id_kabid', true);
+        // $id_kabid = $this->input->post('id_kabid', true);
         $nama = $this->input->post('nama', true);
         $gambar = $_FILES['gambar']['name'];
         $nip = $this->input->post('nip', true);
@@ -52,7 +52,7 @@ class Pegawai extends CI_controller
         $data = array(
             'id_pegawai' => $id_pegawai,
             'no_urut' => $no_urut,
-            'id_kabid' => $id_kabid,
+            // 'id_kabid' => $id_kabid,
             'nama' => $nama,
             'nip' => $nip,
             'jabatan' => $jabatan,
@@ -70,7 +70,7 @@ class Pegawai extends CI_controller
     {
         $id_pegawai = $this->input->post('id_pegawai', true);
         $no_urut = $this->input->post('no_urut', true);
-        $id_kabid = $this->input->post('id_kabid', true);
+        // $id_kabid = $this->input->post('id_kabid', true);
         $nama = $this->input->post('nama', true);
         $gambar = $_FILES['gambar']['name'];
         $nip = $this->input->post('nip', true);
@@ -94,7 +94,7 @@ class Pegawai extends CI_controller
         $data = array(
             'id_pegawai' => $id_pegawai,
             'no_urut' => $no_urut,
-            'id_kabid' => $id_kabid,
+            // 'id_kabid' => $id_kabid,
             'nama' => $nama,
             'nip' => $nip,
             'jabatan' => $jabatan,
