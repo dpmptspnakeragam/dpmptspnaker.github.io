@@ -28,7 +28,7 @@
                         <label for="persyaratan">NIP</label>
                         <input type="text" class="form-control" name="nip" placeholder="NIP" required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label" for="jabatan">Bidang</label>
                         <select required name="id_kabid" class="form-control">
                             <?php foreach ($kabid->result() as $row) {
@@ -36,7 +36,7 @@
                                 <option value="<?= $row->id_kabid; ?>"><?= $row->jabatan_kabid; ?></option>;
                             <?php } ?>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="persyaratan">Jabatan</label>
                         <input type="text" class="form-control" name="jabatan" placeholder="Jabatan" required>
@@ -61,8 +61,10 @@
                             <option>I/c</option>
                             <option>I/b</option>
                             <option>I/a</option>
+                            <option>CPNS</option>
+                            <option>PPPK</option>
                             <option>PTT</option>
-                            <option>Kontrak</option>
+                            <option>Tenaga Kontrak</option>
                             <option>THL</option>
                         </select>
                     </div>
