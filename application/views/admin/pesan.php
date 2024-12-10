@@ -16,47 +16,50 @@
             <div class="col-lg-12">
                 <h3 class="text-center">Pesan</h3>
                 <hr>
-                <table class="table table-sm table-responsive table-bordered table-striped table-hover" id="TabelData1">
-                    <thead class="bg-dark text-light">
-                        <tr>
-                            <th class="text-center align-middle">No</th>
-                            <th class="text-center align-middle">Last Chat</th>
-                            <th class="text-center align-middle">IP Address</th>
-                            <th class="text-center align-middle">Device ID</th>
-                            <th class="text-center align-middle">Lokasi</th>
-                            <th class="text-center align-middle">Status</th>
-                            <th class="text-center align-middle">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body">
-                        <?php $no = 1;
-                        foreach ($messagesByIp as $messages): ?>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-borderless table-hover" id="dataTables-example">
+                        <thead class="bg-dark text-light">
                             <tr>
-                                <td class="text-center align-middle"><?= $no++ ?></td>
-                                <td class="text-center align-middle"><?= date('d M Y H:i:s', strtotime($messages['last_chat'])) ?></td>
-                                <td class="text-center align-middle"><?= $messages['ip_address'] ?></td>
-                                <td class="text-center align-middle"><?= $messages['device_id'] ?></td>
-                                <td class="text-center align-middle"><?= $messages['location'] ?? 'Lokasi Tidak Diketahui' ?></td>
-                                <td class="text-center align-middle">
-                                    <?php if ($messages['unread_count'] > 0): ?>
-                                        <span class="text-danger">Belum Dibaca (<?= $messages['unread_count'] ?>)</span>
-                                    <?php else: ?>
-                                        <span class="text-primary">Dibaca</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="text-center align-middle">
-                                    <button class="btn btn-outline-primary btn-sm mt-1 mb-1" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $messages['ip_address'] ?>', '<?= $messages['device_id'] ?>')">
-                                        <i class="fas fa-search"></i> Lihat Pesan
-                                    </button>
-                                    <button class="btn btn-outline-danger btn-sm mt-1 mb-1" onclick="deleteMessagesAndImages('<?= $messages['ip_address'] ?>', '<?= $messages['device_id'] ?>')">
-                                        <i class="fas fa-trash"></i> Hapus
-                                    </button>
-                                    <!-- <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button> -->
-                                </td>
+                                <th class="text-center align-middle">No</th>
+                                <th class="text-center align-middle">Last Chat</th>
+                                <th class="text-center align-middle">IP Address</th>
+                                <th class="text-center align-middle">Device ID</th>
+                                <th class="text-center align-middle">Lokasi</th>
+                                <th class="text-center align-middle">Status</th>
+                                <th class="text-center align-middle">Aksi</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody id="table-body">
+                            <?php $no = 1;
+                            foreach ($messagesByIp as $messages): ?>
+                                <tr>
+                                    <td class="text-center align-middle"><?= $no++ ?></td>
+                                    <td class="text-center align-middle"><?= date('d M Y H:i:s', strtotime($messages['last_chat'])) ?></td>
+                                    <td class="text-center align-middle"><?= $messages['ip_address'] ?></td>
+                                    <td class="text-center align-middle"><?= $messages['device_id'] ?></td>
+                                    <td class="text-center align-middle"><?= $messages['location'] ?? 'Lokasi Tidak Diketahui' ?></td>
+                                    <td class="text-center align-middle">
+                                        <?php if ($messages['unread_count'] > 0): ?>
+                                            <span class="text-danger">Belum Dibaca (<?= $messages['unread_count'] ?>)</span>
+                                        <?php else: ?>
+                                            <span class="text-primary">Dibaca</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <button class="btn btn-outline-primary btn-sm mt-1 mb-1" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $messages['ip_address'] ?>', '<?= $messages['device_id'] ?>')">
+                                            <i class="fas fa-search"></i> Lihat Pesan
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm mt-1 mb-1" onclick="deleteMessagesAndImages('<?= $messages['ip_address'] ?>', '<?= $messages['device_id'] ?>')">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </button>
+                                        <!-- <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button> -->
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="modal fade" id="chatModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">

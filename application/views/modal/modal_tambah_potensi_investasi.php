@@ -1,5 +1,5 @@
 <div class="modal fade" id="ModalTambahPotensiInvestasi" tabindex="-1" role="dialog" aria-labelledby="ModalTambahInvestasiLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-light">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Potensi Investasi</h5>
@@ -7,8 +7,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form role="form" action="<?= base_url(); ?>admin/potensi_investasi/tambah" method="post" enctype="multipart/form-data">
+            <form role="form" action="<?= base_url(); ?>admin/potensi_investasi/tambah" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
                     <?php foreach ($idmax->result() as $row) {
                     ?>
                         <div hidden class="form-group">
@@ -17,8 +17,17 @@
                         </div>
                     <?php } ?>
                     <div class="form-group">
-                        <label for="pelatihan">Potensi Investasi</label>
-                        <input class="form-control" name="nama_investasi" placeholder="Potensi Investasi" required>
+                        <label>Peluang Investasi</label>
+                        <select class="form-control" name="nama_investasi" required>
+                            <option value="Pertanian">1. Pertanian</option>
+                            <option value="Perkebunan">2. Perkebunan</option>
+                            <option value="Holtikultura">3. Holtikultura</option>
+                            <option value="Peternakan">4. Peternakan</option>
+                            <option value="Perikanan">5. Perikanan</option>
+                            <option value="Pariwisata">6. Pariwisata</option>
+                            <option value="UMKM">7. UMKM</option>
+                            <option value="Buah-Buahan">8. Buah-Buahan</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="tahun">Deskripsi</label>
@@ -28,11 +37,11 @@
                         <label for="gambar">Gambar</label>
                         <input type="file" name="gambar">
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                </div>
             </form>
         </div>
     </div>

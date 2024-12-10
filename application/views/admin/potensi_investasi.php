@@ -39,11 +39,11 @@
                     <table class="table table-striped table-borderless table-hover" id="dataTables-example">
                         <thead class="bg-dark text-light">
                             <tr>
-                                <th class="text-center">No.</th>
-                                <th class="text-center">Potensi investasi</th>
-                                <th class="text-center">Thumbnail</th>
-                                <th class="text-center">Deskripsi</th>
-                                <th class="text-center"><i class="fa fa-cog"></i> Aksi</th>
+                                <th class="text-center align-middle">No.</th>
+                                <th class="text-center align-middle">Potensi investasi</th>
+                                <th class="text-center align-middle">Thumbnail</th>
+                                <th class="text-center align-middle">Deskripsi</th>
+                                <th class="text-center align-middle"><i class="fa fa-cog"></i> Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,7 +52,7 @@
                             foreach ($potensi_investasi->result() as $row) {
                             ?>
                                 <tr class="odd gradeX">
-                                    <td><?= $no++; ?></td>
+                                    <td class="text-center"><?= $no++; ?></td>
                                     <td><?= $row->nama_investasi; ?></td>
                                     <td><img src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" style="width:95%;" class="img-responsive"></td>
                                     <td><?= $row->deskripsi; ?></td>
