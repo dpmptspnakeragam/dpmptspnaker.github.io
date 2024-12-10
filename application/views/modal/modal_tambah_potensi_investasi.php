@@ -21,12 +21,12 @@
                         <select class="form-control" name="nama_investasi" required>
                             <option value="Pertanian">1. Pertanian</option>
                             <option value="Perkebunan">2. Perkebunan</option>
-                            <option value="Holtikultura">3. Peternakan</option>
-                            <option value="Peternakan">4. Perikanan</option>
-                            <option value="Perikanan">5. Pariwisata</option>
-                            <option value="Pariwisata">6. UMKM</option>
-                            <option value="UMKM">7. Buah-Buahan</option>
-                            <option value="Buah-Buahan">8. Holtikultura</option>
+                            <option value="Peternakan">3. Peternakan</option>
+                            <option value="Perikanan">4. Perikanan</option>
+                            <option value="Pariwisata">5. Pariwisata</option>
+                            <option value="UMKM">6. UMKM</option>
+                            <option value="Buah-Buahan">7. Buah-Buahan</option>
+                            <option value="Holtikultura">8. Holtikultura</option>
                         </select>
                     </div>
                     <div class="form-group">
