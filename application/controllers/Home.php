@@ -171,6 +171,26 @@ class Home extends CI_Controller
 			$date = new DateTime();
 			$formatted_date = $date->format('Y-m-d H:i:s');
 
+			// Default file name
+			$file_name = null;
+
+			// Proses upload file jika ada
+			if (!empty($_FILES['file_pengaduan']['name'])) {
+				$config['upload_path']   = './assets/imgupload/';
+				$config['allowed_types'] = 'jpg|jpeg|png|pdf|docx';
+				$config['max_size']      = 22000; // Max 22MB
+				$config['file_name']     = 'PENGADUAN_' . $unique_id . '_' . time();
+
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('file_pengaduan')) {
+					$file_name = $this->upload->data('file_name');
+				} else {
+					$this->session->set_flashdata('error_pengaduan', $this->upload->display_errors());
+					redirect('#pengaduan');
+				}
+			}
+
 			// Input data
 			$input = [
 				'no_pengaduan' => $unique_id,
@@ -182,10 +202,11 @@ class Home extends CI_Controller
 				'lokasi_kejadian' => $this->input->post('lokasi_kejadian'),
 				'waktu_kejadian' => $formatted_date,
 				'materi_pengaduan' => $this->input->post('materi_pengaduan'),
+				'file_pengaduan' => $file_name,
 				'status' => 'Proses'
 			];
 
-			// Sanitize the input data
+			// Sanitize and save data
 			$data = $this->security->xss_clean($input);
 			$this->Model_pengaduan->insert_pengaduan($data);
 
@@ -205,6 +226,7 @@ class Home extends CI_Controller
 
 		redirect('#pengaduan');
 	}
+
 
 	public function clear_flashdata()
 	{

@@ -338,116 +338,121 @@
 						<p class="h2">Formulir Pengaduan Online DPMPTSP Kab. Agam</p>
 					</div>
 
-					<?= form_open('home/kirim_pengaduan'); ?>
-					<div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+					<form method="post" enctype="multipart/form-data" action="<?= base_url('home/kirim_pengaduan'); ?>">
+						<div class="card-body" style="max-height: 65vh; overflow-y: auto;">
 
-						<?php if ($this->session->flashdata('error_pengaduan')) : ?>
-							<div class="alert alert-danger alert-dismissible fade show persistent-alert" role="alert" data-alert-key="error_pengaduan">
-								<?= $this->session->flashdata('error_pengaduan'); ?>
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-						<?php endif; ?>
+							<?php if ($this->session->flashdata('error_pengaduan')) : ?>
+								<div class="alert alert-danger alert-dismissible fade show persistent-alert" role="alert" data-alert-key="error_pengaduan">
+									<?= $this->session->flashdata('error_pengaduan'); ?>
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							<?php endif; ?>
 
-						<?php if ($this->session->flashdata('berhasil_pengaduan')) : ?>
-							<div class="alert alert-success alert-dismissible fade show persistent-alert" role="alert" data-alert-key="berhasil_pengaduan">
-								<?= $this->session->flashdata('berhasil_pengaduan'); ?>
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-						<?php endif; ?>
+							<?php if ($this->session->flashdata('berhasil_pengaduan')) : ?>
+								<div class="alert alert-success alert-dismissible fade show persistent-alert" role="alert" data-alert-key="berhasil_pengaduan">
+									<?= $this->session->flashdata('berhasil_pengaduan'); ?>
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							<?php endif; ?>
 
-						<!-- Hapus Alert dengan klik tombol x (Close) -->
-						<script>
-							document.addEventListener('DOMContentLoaded', function() {
-								var alerts = document.querySelectorAll('.alert.persistent-alert');
+							<!-- Hapus Alert dengan klik tombol x (Close) -->
+							<script>
+								document.addEventListener('DOMContentLoaded', function() {
+									var alerts = document.querySelectorAll('.alert.persistent-alert');
 
-								alerts.forEach(function(alert) {
-									alert.querySelector('.close').addEventListener('click', function() {
-										var alertKey = alert.getAttribute('data-alert-key');
+									alerts.forEach(function(alert) {
+										alert.querySelector('.close').addEventListener('click', function() {
+											var alertKey = alert.getAttribute('data-alert-key');
 
-										// Use AJAX to clear the flashdata
-										var xhr = new XMLHttpRequest();
-										xhr.open('POST', '<?= base_url('Home/clear_flashdata'); ?>', true);
-										xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-										xhr.send('alert_key=' + alertKey);
+											// Use AJAX to clear the flashdata
+											var xhr = new XMLHttpRequest();
+											xhr.open('POST', '<?= base_url('Home/clear_flashdata'); ?>', true);
+											xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+											xhr.send('alert_key=' + alertKey);
+										});
 									});
 								});
-							});
-						</script>
+							</script>
 
-						<div class="form-group">
-							<label for="nama">Nama</label>
-							<div class="input-group">
-								<input name="nama" type="text" class="form-control" placeholder="Masukan Nama" value="<?= set_value('nama'); ?>" required>
-								<div class="input-group-append">
-									<div class="input-group-text">
-										<span class="fas fa-user-tag"></span>
+							<div class="form-group">
+								<label for="nama">Nama</label>
+								<div class="input-group">
+									<input name="nama" type="text" class="form-control" placeholder="Masukan Nama" value="<?= set_value('nama'); ?>" required>
+									<div class="input-group-append">
+										<div class="input-group-text">
+											<span class="fas fa-user-tag"></span>
+										</div>
 									</div>
 								</div>
+								<small class="text-danger"><?= form_error('nama'); ?></small>
 							</div>
-							<small class="text-danger"><?= form_error('nama'); ?></small>
-						</div>
-						<div class="form-group">
-							<label for="alamat">Alamat</label>
-							<div class="input-group">
-								<input name="alamat" type="text" class="form-control" placeholder="Masukan Alamat" value="<?= set_value('alamat'); ?>" required>
-								<div class="input-group-append">
-									<div class="input-group-text">
-										<span class="fas fa-map-marker"></span>
+							<div class="form-group">
+								<label for="alamat">Alamat</label>
+								<div class="input-group">
+									<input name="alamat" type="text" class="form-control" placeholder="Masukan Alamat" value="<?= set_value('alamat'); ?>" required>
+									<div class="input-group-append">
+										<div class="input-group-text">
+											<span class="fas fa-map-marker"></span>
+										</div>
 									</div>
 								</div>
+								<small class="text-danger"><?= form_error('alamat'); ?></small>
 							</div>
-							<small class="text-danger"><?= form_error('alamat'); ?></small>
-						</div>
-						<div class="form-group">
-							<label for="hp">Nomor WhatsApp</label>
-							<div class="input-group">
-								<input name="hp" type="number" class="form-control" placeholder="Masukan Nomor Whatsapp" value="<?= set_value('hp'); ?>" required>
-								<div class="input-group-append">
-									<div class="input-group-text">
-										<span class="fab fa-whatsapp"></span>
+							<div class="form-group">
+								<label for="hp">Nomor WhatsApp</label>
+								<div class="input-group">
+									<input name="hp" type="number" class="form-control" placeholder="Masukan Nomor Whatsapp" value="<?= set_value('hp'); ?>" required>
+									<div class="input-group-append">
+										<div class="input-group-text">
+											<span class="fab fa-whatsapp"></span>
+										</div>
 									</div>
 								</div>
+								<small class="text-danger"><?= form_error('hp'); ?></small>
 							</div>
-							<small class="text-danger"><?= form_error('hp'); ?></small>
-						</div>
-						<div class="form-group">
-							<label for="email">Email</label>
-							<div class="input-group">
-								<input name="email" type="email" class="form-control" placeholder="Masukan Email" value="<?= set_value('email'); ?>" required>
-								<div class="input-group-append">
-									<div class="input-group-text">
-										<span class="fas fa-envelope"></span>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<div class="input-group">
+									<input name="email" type="email" class="form-control" placeholder="Masukan Email" value="<?= set_value('email'); ?>" required>
+									<div class="input-group-append">
+										<div class="input-group-text">
+											<span class="fas fa-envelope"></span>
+										</div>
 									</div>
 								</div>
+								<small class="text-danger"><?= form_error('email'); ?></small>
 							</div>
-							<small class="text-danger"><?= form_error('email'); ?></small>
-						</div>
-						<div class="form-group">
-							<label for="lokasi_kejadian">Lokasi Kejadian</label>
-							<div class="input-group">
-								<input name="lokasi_kejadian" type="text" class="form-control" placeholder="Masukan Lokasi Kejadian" required value="<?= set_value('lokasi_kejadian'); ?>">
-								<div class="input-group-append">
-									<div class="input-group-text">
-										<span class="fas fa-map-marked-alt"></span>
+							<div class="form-group">
+								<label for="lokasi_kejadian">Lokasi Kejadian</label>
+								<div class="input-group">
+									<input name="lokasi_kejadian" type="text" class="form-control" placeholder="Masukan Lokasi Kejadian" required value="<?= set_value('lokasi_kejadian'); ?>">
+									<div class="input-group-append">
+										<div class="input-group-text">
+											<span class="fas fa-map-marked-alt"></span>
+										</div>
 									</div>
 								</div>
+								<small class="text-danger"><?= form_error('lokasi_kejadian'); ?></small>
 							</div>
-							<small class="text-danger"><?= form_error('lokasi_kejadian'); ?></small>
-						</div>
-						<div class="form-group">
-							<label for="materi_pengaduan">Uraian Pengaduan</label>
-							<div class="input-group">
-								<textarea name="materi_pengaduan" id="materi_pengaduan" class="form-control" cols="20" rows="3" placeholder="Masukan Uraian Pengaduan" required><?= set_value('materi_pengaduan'); ?></textarea>
+							<div class="form-group">
+								<label for="materi_pengaduan">Uraian Pengaduan</label>
+								<div class="input-group">
+									<textarea name="materi_pengaduan" id="materi_pengaduan" class="form-control" cols="20" rows="3" placeholder="Masukan Uraian Pengaduan" required><?= set_value('materi_pengaduan'); ?></textarea>
+								</div>
+								<small class="text-danger"><?= form_error('materi_pengaduan'); ?></small>
 							</div>
-							<small class="text-danger"><?= form_error('materi_pengaduan'); ?></small>
+							<div class="form-group">
+								<label for="file_pengaduan">Upload File (Opsional)</label>
+								<input type="file" name="file_pengaduan" id="file_pengaduan" class="form-control border-0">
+								<small>File Upload Berupa: (<b>jpg</b>, <b>jpeg</b>, <b>png</b>, <b>pdf</b>, <b>docx</b>)</small>
+							</div>
+							<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-check"></i> Kirim Pengaduan</button>
 						</div>
-						<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-check"></i> Kirim Pengaduan</button>
-					</div>
-					<?= form_close(); ?>
+					</form>
 				</div>
 			</div>
 			<div class="col-lg-12 col-sm-12 mb-4">

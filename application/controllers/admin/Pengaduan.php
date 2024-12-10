@@ -98,13 +98,33 @@ class Pengaduan extends CI_controller
 
     public function hapus($id)
     {
+        // Dapatkan data pengaduan berdasarkan ID
         $this->db->where('id_pengaduan', $id);
         $query = $this->db->get('pengaduan');
         $row = $query->row();
 
-        $this->load->model('Model_pengaduan');
-        $this->Model_pengaduan->delete($id);
-        $this->session->set_flashdata("gagal", "Hapus data <b>$row->nama</b> berhasil !");
+        // Pastikan data ditemukan
+        if ($row) {
+            // Lokasi file
+            $file_path = FCPATH . 'assets/imgupload/' . $row->file_pengaduan;
+
+            // Hapus file jika ada
+            if (file_exists($file_path) && is_file($file_path)) {
+                unlink($file_path); // Hapus file dari server
+            }
+
+            // Hapus data dari database
+            $this->load->model('Model_pengaduan');
+            $this->Model_pengaduan->delete($id);
+
+            // Set pesan sukses
+            $this->session->set_flashdata("gagal", "Hapus data <b>$row->nama</b> berhasil!");
+        } else {
+            // Set pesan error jika data tidak ditemukan
+            $this->session->set_flashdata("gagal", "Data dengan ID <b>$id</b> tidak ditemukan!");
+        }
+
+        // Redirect ke halaman pengaduan
         redirect('admin/pengaduan');
     }
 }
