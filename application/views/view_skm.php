@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <a href="<?= base_url(); ?>skm/form" class="btn btn-success">Lakukan Survey</a>
+                                        <a href="<?= base_url(); ?>skm/form" class="btn btn-primary">Isi Survey Disini</a>
                                     </div>
                                 </div>
                                 <hr>
