@@ -78,10 +78,10 @@
                                 <div class="row">
                                     <div class="col-12 text-center mb-2">
                                         <form action="<?= base_url('skm/form'); ?>">
-                                            <button type="submit" class="btn btn-block btn-outline-maroon">
+                                            <button type="submit" class="btn-survey">
                                                 <i class="fa fa-list-ol mt-1" aria-hidden="true" style="font-size: 23px;"></i>
                                                 <br>
-                                                Isi Survery Disini
+                                                Isi Survey Disini
                                             </button>
                                         </form>
                                     </div>

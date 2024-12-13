@@ -1242,6 +1242,24 @@ video {
 		padding: 6px;
 	}
 
+	.btn-survey {
+		padding: 6px;
+		text-decoration: none;
+		color: maroon;
+		display: inline-block;
+		width: 100%;
+		transition-duration: 0.5s;
+		border: 2px solid;
+	}
+
+	.btn-survey:hover {
+		background-color: maroon;
+		color: white;
+		transition-duration: 0.5s;
+		border-radius: 50px;
+		padding: 6px;
+	}
+
 	/*tutup pelayanan*/
 
 	/*naker*/
@@ -1284,21 +1302,4 @@ video {
 		width: 350px;
 		transition-duration: 0.5s;
 	}
-}
-
-.btn-outline-maroon {
-	padding: 6px;
-	text-decoration: none;
-	color: maroon;
-	transition-duration: 0.5s;
-	border: 2px solid;
-	border-radius: 50px;
-}
-
-.btn-outline-maroon:hover {
-	background-color: maroon;
-	color: white;
-	transition-duration: 0.5s;
-	border-radius: 50px;
-	padding: 6px;
 }

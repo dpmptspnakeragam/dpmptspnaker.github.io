@@ -153,14 +153,20 @@
 }
 
 .btn-outline-maroon {
+    padding: 6px;
+    text-decoration: none;
     color: maroon;
-    border-color: maroon;
+    transition-duration: 0.5s;
+    border: 2px solid;
+    border-radius: 50px;
 }
 
 .btn-outline-maroon:hover {
-    color: white;
     background-color: maroon;
-    border-color: maroon;
+    color: white;
+    transition-duration: 0.5s;
+    border-radius: 50px;
+    padding: 6px;
 }
 
 .message-date.admin-date {

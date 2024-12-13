@@ -450,7 +450,7 @@
 								<input type="file" name="file_pengaduan" id="file_pengaduan" class="form-control border-0">
 								<small>File Upload Berupa: (<b>jpg</b>, <b>jpeg</b>, <b>png</b>, <b>pdf</b>, <b>docx</b>)</small>
 							</div>
-							<button type="submit" class="btn btn-primary btn-block"><i class="fas fa-check"></i> Kirim Pengaduan</button>
+							<button type="submit" class="btn-tracking"><i class="fas fa-check"></i> Kirim Pengaduan</button>
 						</div>
 					</form>
 				</div>
