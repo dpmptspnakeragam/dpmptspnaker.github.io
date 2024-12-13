@@ -1,6 +1,6 @@
 <body class="layout-top-nav layout-navbar-fixed bg-dark" style="height: auto;" id="page-top">
     <nav class="main-header navbar navbar-expand-md navbar-dark fixed-top navbar-white" style="background-color: maroon;">
-        <div class="container">
+        <div class="container-fluid">
             <a href="<?= base_url('skm/form'); ?>" class="navbar-brand">
                 <span class="brand-text font-weight-light font-weight-bold"><i class="fas fa-file"></i> Form Survey Kepuasan Masyarakat (SKM)</span>
             </a>

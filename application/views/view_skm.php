@@ -76,8 +76,22 @@
                                     <?php endif; ?>
                                 </div>
                                 <div class="row">
+                                    <div class="col-12 text-center mb-2">
+                                        <form action="<?= base_url('skm/form'); ?>">
+                                            <button type="submit" class="btn btn-block btn-outline-maroon">
+                                                <i class="fa fa-list-ol mt-1" aria-hidden="true" style="font-size: 23px;"></i>
+                                                <br>
+                                                Isi Survery Disini
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
                                     <div class="col-12 text-center">
-                                        <a href="<?= base_url(); ?>skm/form" class="btn btn-primary">Isi Survey Disini</a>
+                                        <h3 class="font-weight-bold">
+                                            Semester <?= ($semester == 1) ? '1 <br> Januari - Juni' : '2 <br> Juli - Desember'; ?> <?= date('Y'); ?>
+                                        </h3>
                                     </div>
                                 </div>
                                 <hr>

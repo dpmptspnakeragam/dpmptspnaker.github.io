@@ -127,6 +127,7 @@
                                 <ul>
                                     <li><a class="nav-link" href="<?= base_url(); ?>admin/skm">Kepuasan masyarakat (SKM)</a></li>
                                     <li><a class="nav-link" href="<?= base_url(); ?>admin/spkp_antikorupsi">SPKP & Anti Korupsi</a></li>
+                                    <li><a class="nav-link" href="<?= base_url('admin/rekap_ikm'); ?>">Rekap IKM</a></li>
                                 </ul>
                             </div>
                         </li>

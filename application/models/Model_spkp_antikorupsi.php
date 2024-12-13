@@ -13,18 +13,22 @@ class Model_spkp_antikorupsi extends CI_Model
         return $query;
     }
 
-    public function total_responden()
+    public function total_responden($startMonth, $endMonth)
     {
         $this->db->from('spkp');
+        $this->db->where('MONTH(date) >=', $startMonth);
+        $this->db->where('MONTH(date) <=', $endMonth);
         $total = $this->db->count_all_results();
         return $total;
     }
 
-    public function get_rating_spkp()
+    public function get_rating_spkp($startMonth, $endMonth)
     {
         $ratings = [];
 
         // Mengambil data dari tabel 'spkp'
+        $this->db->where('MONTH(date) >=', $startMonth);
+        $this->db->where('MONTH(date) <=', $endMonth);
         $query = $this->db->get('spkp');
         $results = $query->result_array();
 
@@ -60,11 +64,13 @@ class Model_spkp_antikorupsi extends CI_Model
         return $ratings;
     }
 
-    public function get_rating_antikorupsi()
+    public function get_rating_antikorupsi($startMonth, $endMonth)
     {
         $ratings = [];
 
         // Mengambil data dari tabel 'spak'
+        $this->db->where('MONTH(date) >=', $startMonth);
+        $this->db->where('MONTH(date) <=', $endMonth);
         $query = $this->db->get('spak');
         $results = $query->result_array();
 
@@ -126,16 +132,20 @@ class Model_spkp_antikorupsi extends CI_Model
     }
 
     // Nilai Survey
-    public function get_avg_z()
+    public function get_avg_z($startMonth, $endMonth)
     {
         $this->db->select('AVG(z1) as avg_z1, AVG(z2) as avg_z2, AVG(z3) as avg_z3, AVG(z4) as avg_z4, AVG(z5) as avg_z5, AVG(z6) as avg_z6, AVG(z7) as avg_z7, AVG(z8) as avg_z8');
+        $this->db->where('MONTH(date) >=', $startMonth);
+        $this->db->where('MONTH(date) <=', $endMonth);
         $query = $this->db->get('spkp')->row();
         return $query;
     }
 
-    public function get_avg_r()
+    public function get_avg_r($startMonth, $endMonth)
     {
         $this->db->select('AVG(r1) as avg_r1, AVG(r2) as avg_r2, AVG(r3) as avg_r3, AVG(r4) as avg_r4, AVG(r5) as avg_r5');
+        $this->db->where('MONTH(date) >=', $startMonth);
+        $this->db->where('MONTH(date) <=', $endMonth);
         $query = $this->db->get('spak')->row();
         return $query;
     }
