@@ -447,11 +447,11 @@
                                                 <small class="text-danger"><?= form_error('rating_r5'); ?></small>
                                                 <input type="hidden" name="rating_r5" value="<?= set_value('rating_r5'); ?>">
                                             </div>
-
-                                            <div class="modal-footer border-0">
-                                                <a href="<?= base_url('skm'); ?>" class="btn btn-secondary">Batal</a>
-                                                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Kirim</button>
-                                            </div>
+                                            <!-- <a href="<?= base_url('skm'); ?>" class="btn btn-secondary">Batal</a> -->
+                                            <button type="submit" class="btn-survey mt-2">
+                                                Kirim Survey
+                                                <i class="fa fa-file-import"></i>
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
