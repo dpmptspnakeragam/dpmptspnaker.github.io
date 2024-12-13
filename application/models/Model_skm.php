@@ -359,10 +359,29 @@ class Model_skm extends CI_model
         return $query->result();
     }
 
-    public function hapus_skm($id_skm)
+    public function hapus_data_terkait($id_skm)
     {
+        $this->db->trans_start();
+
+        $this->db->select('id_spkp');
+        $this->db->where('id_skm', $id_skm);
+        $spak_ids = $this->db->get('spak')->result_array();
+
+        if (!empty($spak_ids)) {
+            $spkp_ids = array_column($spak_ids, 'id_spkp');
+
+            $this->db->where_in('id_spkp', $spkp_ids);
+            $this->db->delete('spkp');
+        }
+
         $this->db->where('id_skm', $id_skm);
         $this->db->delete('skm');
-        return $this->db->affected_rows() > 0;
+
+        $this->db->where('id_skm', $id_skm);
+        $this->db->delete('spak');
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
     }
 }

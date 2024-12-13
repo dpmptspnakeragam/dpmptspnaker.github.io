@@ -99,7 +99,7 @@
                                 <td class="text-center align-middle"><?= $row->u9; ?></td>
                                 <td class="text-center align-middle"><?= date('d-m-Y / H:i:s', strtotime($row->date)); ?></td>
                                 <td class="text-center align-middle">
-                                    <a class="btn btn-outline-danger btn-sm btn-circle mt-1 mb-1" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus <?= $row->layanan; ?>?')">
+                                    <a class="btn btn-outline-danger btn-sm btn-circle mt-1 mb-1" href="<?php echo base_url('admin/skm/delete/' . $row->id_skm); ?>" title="Hapus" onclick="return confirm('Anda yakin hapus data SKM, SPKP, dan SPAK')">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     <button class="btn btn-outline-success btn-sm btn-circle mt-1 mb-1" onclick="printSKM(<?= $row->id_skm; ?>)">

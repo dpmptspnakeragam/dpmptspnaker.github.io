@@ -27,9 +27,14 @@ class Spkp_antikorupsi extends CI_Controller
 
     public function delete($id_spkp)
     {
-        $this->Model_spkp_antikorupsi->hapus_spkp($id_spkp);
-        $this->Model_spkp_antikorupsi->hapus_spak($id_spkp);
-        $this->session->set_flashdata('berhasil', 'Data SPKP dan Anti Korupsi berhasil dihapus.');
+        $result = $this->Model_spkp_antikorupsi->hapus_data_terkait($id_spkp);
+
+        if ($result) {
+            $this->session->set_flashdata('berhasil', 'Data SPKP, SPAK, dan SKM berhasil dihapus.');
+        } else {
+            $this->session->set_flashdata('gagal', 'Penghapusan data gagal. Silahkan coba lagi.');
+        }
+
         redirect('admin/spkp_antikorupsi', 'refresh');
     }
 

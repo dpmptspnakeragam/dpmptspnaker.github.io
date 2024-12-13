@@ -106,18 +106,30 @@ class Model_spkp_antikorupsi extends CI_Model
         return $ratings;
     }
 
-    public function hapus_spkp($id_spkp)
+    public function hapus_data_terkait($id_spkp)
     {
-        $this->db->where('id_spkp', $id_spkp);
-        $this->db->delete('spkp');
-        return $this->db->affected_rows() > 0;
-    }
+        $this->db->trans_start();
 
-    public function hapus_spak($id_spkp)
-    {
+        $this->db->select('id_skm');
+        $this->db->where('id_spkp', $id_spkp);
+        $skm_ids = $this->db->get('spak')->result_array();
+
+        if (!empty($skm_ids)) {
+            $skm_ids = array_column($skm_ids, 'id_skm');
+
+            $this->db->where_in('id_skm', $skm_ids);
+            $this->db->delete('skm');
+        }
+
         $this->db->where('id_spkp', $id_spkp);
         $this->db->delete('spak');
-        return $this->db->affected_rows() > 0;
+
+        $this->db->where('id_spkp', $id_spkp);
+        $this->db->delete('spkp');
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
     }
 
     public function get_data_by_id($id_spkp)

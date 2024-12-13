@@ -26,8 +26,14 @@ class Skm extends CI_controller
 
     public function delete($id_skm)
     {
-        $this->Model_skm->hapus_skm($id_skm);
-        $this->session->set_flashdata('berhasil', 'Data SKM berhasil dihapus.');
+        $result = $this->Model_skm->hapus_data_terkait($id_skm);
+
+        if ($result) {
+            $this->session->set_flashdata('berhasil', 'Data SKM, SPKP, dan SPAK berhasil dihapus.');
+        } else {
+            $this->session->set_flashdata('gagal', 'Penghapusan data gagal. Silahkan coba lagi.');
+        }
+
         redirect('admin/skm', 'refresh');
     }
 

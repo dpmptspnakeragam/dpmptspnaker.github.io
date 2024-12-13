@@ -488,7 +488,10 @@
 			<div class="col-12 mb-3">
 				<div class="text-center">
 					<p style="font-size:20px;">Untuk mengisi kuesioner Survey Kepuasan Masyarakat (SKM) dan Survey Persepsi Kualitas Pelayanan (SPKP) secara online, silahkan klik tombol dibawah ini:</p>
-					<a href="<?= base_url(); ?>skm" class="pilih-profil border-white text-white">Isi Survey</a>
+					<a href="<?= base_url(); ?>skm" class="pilih-profil border-white text-white">
+						<i class="fa fa-list-ol" aria-hidden="true"></i>
+						Isi Survey
+					</a>
 				</div>
 			</div>
 
