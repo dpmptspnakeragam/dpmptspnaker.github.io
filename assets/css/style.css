@@ -1003,6 +1003,43 @@ video {
 	margin: 10px;
 }
 
+.btn-tracking {
+	font-size: 14px;
+	padding: 6px;
+	text-decoration: none;
+	color: maroon;
+	display: inline-block;
+	width: 100%;
+	transition-duration: 0.5s;
+	border: 2px solid;
+}
+
+.btn-tracking:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 50px;
+	padding: 6px;
+}
+
+.btn-survey {
+	padding: 6px;
+	text-decoration: none;
+	color: maroon;
+	display: inline-block;
+	width: 100%;
+	transition-duration: 0.5s;
+	border: 2px solid;
+}
+
+.btn-survey:hover {
+	background-color: maroon;
+	color: white;
+	transition-duration: 0.5s;
+	border-radius: 50px;
+	padding: 6px;
+}
+
 /*tutup login*/
 
 @media (min-width: 760px) {
@@ -1221,43 +1258,6 @@ video {
 		transition-duration: 0.5s;
 		border-radius: 50px;
 		padding: 10px;
-	}
-
-	.btn-tracking {
-		font-size: 14px;
-		padding: 6px;
-		text-decoration: none;
-		color: maroon;
-		display: inline-block;
-		width: 100%;
-		transition-duration: 0.5s;
-		border: 2px solid;
-	}
-
-	.btn-tracking:hover {
-		background-color: maroon;
-		color: white;
-		transition-duration: 0.5s;
-		border-radius: 50px;
-		padding: 6px;
-	}
-
-	.btn-survey {
-		padding: 6px;
-		text-decoration: none;
-		color: maroon;
-		display: inline-block;
-		width: 100%;
-		transition-duration: 0.5s;
-		border: 2px solid;
-	}
-
-	.btn-survey:hover {
-		background-color: maroon;
-		color: white;
-		transition-duration: 0.5s;
-		border-radius: 50px;
-		padding: 6px;
 	}
 
 	/*tutup pelayanan*/
