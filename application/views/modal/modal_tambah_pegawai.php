@@ -38,7 +38,7 @@
                                 <select class="form-control" name="jenis_nip" id="jenis_nip" required>
                                     <option value="" disabled selected>Type NIP</option>
                                     <option value="NIP">NIP</option>
-                                    <option value="NIP PPPK">NIPPPK</option>
+                                    <option value="NIPPPK">NIPPPK</option>
                                 </select>
                             </div>
                         </div>

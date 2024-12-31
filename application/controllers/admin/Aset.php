@@ -10,20 +10,26 @@ class Aset extends CI_controller
             redirect('login');
         }
         $this->load->helper('download');
+
+        $this->load->model('Model_pegawai');
+        $this->load->model('Model_aset');
     }
 
     public function index()
     {
-        $this->load->model('Model_pegawai');
-        $this->load->model('Model_aset');
+        $data['home'] = 'Home';
+        $data['title'] = 'Manajemen Aset';
+
         $data['aset'] = $this->Model_aset->tampil_data();
         $data['pegawai'] = $this->Model_pegawai->tampil_pegawai();
         $data['idmax'] = $this->Model_aset->idmax();
-        $this->load->view('templates/header_aset');
+
+        $this->load->view('layout/admin/header', $data, FALSE);
+        $this->load->view('layout/admin/navbar_sidebar', $data, FALSE);
         $this->load->view('admin/aset', $data);
         $this->load->view('modal/modal_tambah_aset', $data);
         $this->load->view('edit/edit_aset', $data);
-        $this->load->view('templates/footer_aset');
+        $this->load->view('layout/admin/footer');
     }
 
     public function tambah()
@@ -40,7 +46,7 @@ class Aset extends CI_controller
         $pemakai = $this->input->post('pemakai', true);
         $foto_brg = $_FILES['foto_brg']['name'];
 
-        if ($foto_brg == '') {
+        if (empty($foto_brg)) {
             $this->session->set_flashdata("gagal", "Foto tidak boleh kosong");
             redirect('admin/aset');
         } else {
@@ -52,33 +58,36 @@ class Aset extends CI_controller
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('foto_brg')) {
                 $foto_brg = $this->upload->data('file_name');
+            } else {
+                $this->session->set_flashdata('error', 'Upload foto gagal. ' . $this->upload->display_errors());
+                redirect('admin/aset');
             }
         }
 
-        $dataqrcode = '' . $kode_brg . ' | ' . $kode_rekening . ' | ' . $nama_brg . ' | ' . $no_register . ' | ' . $tahun_beli . '
-        | ' . $asal_usul . ' | ' . $kondisi_brg . ' | ' . $nilai_aset . ' | ' . $pemakai . '';
+        $dataqrcode = "$kode_brg | $kode_rekening | $nama_brg | $no_register | $tahun_beli | $asal_usul | $kondisi_brg | $nilai_aset | $pemakai";
 
-        $this->load->library('ciqrcode'); //pemanggilan library QR CODE
+        // Pemanggilan library QR Code
+        $this->load->library('ciqrcode');
 
-        $config['cacheable']    = true; //boolean, the default is true
-        $config['cachedir']     = './qr/'; //string, the default is application/cache/
-        $config['errorlog']     = './qr/'; //string, the default is application/logs/
-        $config['imagedir']     = './qr/'; //direktori penyimpanan qr code
-        $config['quality']      = true; //boolean, the default is true
-        $config['size']         = '1024'; //interger, the default is 1024
-        $config['black']        = array(224, 255, 255); // array, default is array(255,255,255)
-        $config['white']        = array(70, 130, 180); // array, default is array(0,0,0)
+        $config['cacheable']    = true;
+        $config['cachedir']     = './assets/qr/';
+        $config['errorlog']     = './assets/qr/';
+        $config['imagedir']     = './assets/qr/';
+        $config['quality']      = true;
+        $config['size']         = '1024';
+        $config['black']        = [224, 255, 255];
+        $config['white']        = [70, 130, 180];
         $this->ciqrcode->initialize($config);
 
-        $image_name = 'Aset-' . $id_aset . '.png'; //buat name dari qr code sesuai dengan data
+        $image_name = 'QR-Code Aset ' . $kode_brg . ' - ' . $nama_brg . '.png';
 
-        $params['data'] = $dataqrcode; //data yang akan di jadikan QR CODE
-        $params['level'] = 'H'; //H=High
+        $params['data'] = $dataqrcode;
+        $params['level'] = 'H';
         $params['size'] = 10;
-        $params['savename'] = FCPATH . $config['imagedir'] . $image_name; //simpan image QR CODE ke folder assets/images/
-        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+        $params['savename'] = FCPATH . $config['imagedir'] . $image_name;
+        $this->ciqrcode->generate($params);
 
-        $data = array(
+        $data = [
             'id_aset' => $id_aset,
             'kode_brg' => $kode_brg,
             'kode_rekening' => $kode_rekening,
@@ -91,12 +100,17 @@ class Aset extends CI_controller
             'pemakai' => $pemakai,
             'foto_brg' => $foto_brg,
             'qrcode' => $image_name
-        );
+        ];
 
-        $this->load->model('Model_aset');
-        $this->Model_aset->input($data);
-        $this->session->set_flashdata("berhasil", "Tambah data <b>$nama_brg</b> berhasil !");
-        redirect('admin/aset');
+        $result = $this->Model_aset->input($data);
+
+        if ($result) {
+            $this->session->set_flashdata('success', 'Data Aset berhasil disimpan.');
+        } else {
+            $this->session->set_flashdata('error', 'Penyimpanan data gagal. Silahkan coba lagi.');
+        }
+
+        redirect('admin/aset', 'refresh');
     }
 
     public function ubah()
@@ -111,49 +125,59 @@ class Aset extends CI_controller
         $kondisi_brg = $this->input->post('kondisi_brg', true);
         $nilai_aset = $this->input->post('nilai_aset', true);
         $pemakai = $this->input->post('pemakai', true);
-        $qrold = $this->input->post('qrold', true);
         $foto_brg = $_FILES['foto_brg']['name'];
+        $foto_lama = $this->input->post('old', true);
 
-        if (empty($_FILES['foto_brg']['name'])) {
-            $foto_brg = $this->input->post('old', true);
-        } else {
+        // Logika untuk foto barang
+        if (!empty($foto_brg)) {
             $nmfile = "Aset-" . $id_aset;
             $config['upload_path'] = './assets/imgupload/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['file_name'] = $nmfile;
 
             $this->load->library('upload', $config);
+
             if ($this->upload->do_upload('foto_brg')) {
                 $foto_brg = $this->upload->data('file_name');
-                $fotolama = $this->input->post('old', true);
-                unlink("./assets/imgupload/" . $fotolama);
+
+                // Hapus foto lama
+                if (!empty($foto_lama) && file_exists("./assets/imgupload/" . $foto_lama)) {
+                    unlink("./assets/imgupload/" . $foto_lama);
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Upload foto gagal. ' . $this->upload->display_errors());
+                redirect('admin/aset');
             }
+        } else {
+            $foto_brg = $foto_lama; // Gunakan foto lama jika tidak ada perubahan
         }
 
-        $dataqrcode = '' . $kode_brg . ' | ' . $kode_rekening . ' | ' . $nama_brg . ' | ' . $no_register . ' | ' . $tahun_beli . '
-        | ' . $asal_usul . ' | ' . $kondisi_brg . ' | ' . $nilai_aset . ' | ' . $pemakai . '';
+        // Data untuk QR Code
+        $dataqrcode = "$kode_brg | $kode_rekening | $nama_brg | $no_register | $tahun_beli | $asal_usul | $kondisi_brg | $nilai_aset | $pemakai";
 
-        $this->load->library('ciqrcode'); //pemanggilan library QR CODE
+        // Pemanggilan library QR Code
+        $this->load->library('ciqrcode');
 
-        $config['cacheable']    = true; //boolean, the default is true
-        $config['cachedir']     = './qr/'; //string, the default is application/cache/
-        $config['errorlog']     = './qr/'; //string, the default is application/logs/
-        $config['imagedir']     = './qr/'; //direktori penyimpanan qr code
-        $config['quality']      = true; //boolean, the default is true
-        $config['size']         = '1024'; //interger, the default is 1024
-        $config['black']        = array(224, 255, 255); // array, default is array(255,255,255)
-        $config['white']        = array(70, 130, 180); // array, default is array(0,0,0)
+        $config['cacheable']    = true;
+        $config['cachedir']     = './assets/qr/';
+        $config['errorlog']     = './assets/qr/';
+        $config['imagedir']     = './assets/qr/';
+        $config['quality']      = true;
+        $config['size']         = '1024';
+        $config['black']        = [224, 255, 255];
+        $config['white']        = [70, 130, 180];
         $this->ciqrcode->initialize($config);
 
-        $image_name = 'Aset-' . $id_aset . '.png'; //buat name dari qr code sesuai dengan data
+        $image_name = 'QR-Code Aset ' . $kode_brg . ' - ' . $nama_brg . '.png';
 
-        $params['data'] = $dataqrcode; //data yang akan di jadikan QR CODE
-        $params['level'] = 'H'; //H=High
+        $params['data'] = $dataqrcode;
+        $params['level'] = 'H';
         $params['size'] = 10;
-        $params['savename'] = FCPATH . $config['imagedir'] . $image_name; //simpan image QR CODE ke folder assets/images/
-        $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
+        $params['savename'] = FCPATH . $config['imagedir'] . $image_name;
+        $this->ciqrcode->generate($params);
 
-        $data = array(
+        // Data untuk database
+        $data = [
             'id_aset' => $id_aset,
             'kode_brg' => $kode_brg,
             'kode_rekening' => $kode_rekening,
@@ -166,12 +190,17 @@ class Aset extends CI_controller
             'pemakai' => $pemakai,
             'foto_brg' => $foto_brg,
             'qrcode' => $image_name
-        );
+        ];
 
-        $this->load->model('Model_aset');
-        $this->Model_aset->update($data, $id_aset);
-        $this->session->set_flashdata("berhasil", "Ubah data <b>$nama_brg</b> berhasil !");
-        redirect('admin/aset');
+        $result = $this->Model_aset->update($data, $id_aset);
+
+        if ($result) {
+            $this->session->set_flashdata('success', 'Data Aset berhasil diperbarui.');
+        } else {
+            $this->session->set_flashdata('error', 'Perbarui data gagal. Silakan coba lagi.');
+        }
+
+        redirect('admin/aset', 'refresh');
     }
 
     public function hapus($id)
@@ -180,17 +209,22 @@ class Aset extends CI_controller
         $query = $this->db->get('aset');
         $row = $query->row();
 
-        unlink("./assets/imgupload/" . $row->foto_brg);
-        unlink("./qr/" . $row->qrcode);
+        if (!empty($row->foto_brg) && file_exists("./assets/imgupload/$row->foto_brg")) {
+            unlink("./assets/imgupload/$row->foto_brg");
+        }
 
-        $this->load->model('Model_aset');
-        $this->Model_aset->delete($id);
-        $this->session->set_flashdata("gagal", "Hapus data <b>$row->nama_brg</b> berhasil !");
-        redirect('admin/aset');
-    }
+        if (!empty($row->qrcode) && file_exists("./assets/qr/$row->qrcode")) {
+            unlink("./assets/qr/$row->qrcode");
+        }
 
-    public function download($qrcode)
-    {
-        force_download('./qr/' . $qrcode . '', NULL);
+        $result = $this->Model_aset->delete($id);
+
+        if ($result) {
+            $this->session->set_flashdata('success', 'Data Aset berhasil dihapus.');
+        } else {
+            $this->session->set_flashdata('error', 'Penghapusan data gagal. Silahkan coba lagi.');
+        }
+
+        redirect('admin/aset', 'refresh');
     }
 }

@@ -47,7 +47,7 @@
                                     <select class="form-control" name="jenis_nip" id="type_nip" required>
                                         <option value="" disabled <?php echo empty($row->jenis_nip) ? 'selected' : ''; ?>>Type NIP</option>
                                         <option value="NIP" <?php echo ($row->jenis_nip == 'NIP') ? 'selected' : ''; ?>>NIP</option>
-                                        <option value="NIP PPPK" <?php echo ($row->jenis_nip == 'NIP PPPK') ? 'selected' : ''; ?>>NIPPPK</option>
+                                        <option value="NIPPPK" <?php echo ($row->jenis_nip == 'NIPPPK') ? 'selected' : ''; ?>>NIPPPK</option>
                                     </select>
                                 </div>
                             </div>
