@@ -41,12 +41,12 @@
                                 <?php foreach ($pegawai->result() as $row) : ?>
                                     <tr>
                                         <td class="text-center align-middle"><?= $row->no_urut; ?></td>
-                                        <td class="text-left align-middle"><?= $row->nama; ?></td>
-                                        <td class="text-left align-middle"><?= $row->jenis_nip; ?></td>
-                                        <td class="text-left align-middle"><?= $row->nip; ?></td>
-                                        <td class="text-left align-middle"><?= $row->jabatan; ?></td>
-                                        <td class="text-left align-middle"><?= $row->golongan; ?></td>
-                                        <td class="text-left align-middle"><?= $row->alamat; ?></td>
+                                        <td class="text-center align-middle"><?= $row->nama; ?></td>
+                                        <td class="text-center align-middle"><?= $row->jenis_nip; ?></td>
+                                        <td class="text-center align-middle"><?= $row->nip; ?></td>
+                                        <td class="text-center align-middle"><?= $row->jabatan; ?></td>
+                                        <td class="text-center align-middle"><?= $row->golongan; ?></td>
+                                        <td class="text-center align-middle"><?= $row->alamat; ?></td>
                                         <td class="text-center align-middle">
                                             <img src="<?= base_url(); ?>assets/imgupload/<?= $row->gambar; ?>" class="elevation-2 img-size-64 img-thumbnail">
                                         </td>
