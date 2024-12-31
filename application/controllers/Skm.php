@@ -20,8 +20,8 @@ class Skm extends CI_Controller
         $semester = ($currentMonth >= 1 && $currentMonth <= 6) ? 1 : 2;
 
         // tentukan range bulan berdasarkan semester
-        $startMonth = ($semester == 1) ? 1 : 7;
-        $endMonth = ($semester == 1) ? 6 : 12;
+        $startMonth = ($semester == 1) ? 1 : 6;
+        $endMonth = ($semester == 1) ? 7 : 12;
 
         // SKM
         $data['jumlah'] = $this->Model_skm->jmlh_data($startMonth, $endMonth);

@@ -18,11 +18,13 @@ class Spkp_antikorupsi extends CI_Controller
     public function index()
     {
         $data['rating'] = $this->Model_spkp_antikorupsi->get_data_rating();
+        $data['home'] = 'Home';
+        $data['title'] = 'SPKP & SPAK';
 
-        $this->load->view('templates/header_admin');
-        $this->load->view('templates/navbar_admin');
-        $this->load->view('admin/spkp_antikorupsi', $data);
-        $this->load->view('templates/footer_admin');
+        $this->load->view('layout/admin/header', $data, FALSE);
+        $this->load->view('layout/admin/navbar_sidebar', $data, FALSE);
+        $this->load->view('admin/spkp_antikorupsi', $data, FALSE);
+        $this->load->view('layout/admin/footer');
     }
 
     public function delete($id_spkp)
@@ -30,9 +32,9 @@ class Spkp_antikorupsi extends CI_Controller
         $result = $this->Model_spkp_antikorupsi->hapus_data_terkait($id_spkp);
 
         if ($result) {
-            $this->session->set_flashdata('berhasil', 'Data SPKP, SPAK, dan SKM berhasil dihapus.');
+            $this->session->set_flashdata('success', 'Data SPKP, SPAK, dan SKM berhasil dihapus.');
         } else {
-            $this->session->set_flashdata('gagal', 'Penghapusan data gagal. Silahkan coba lagi.');
+            $this->session->set_flashdata('error', 'Penghapusan data gagal. Silahkan coba lagi.');
         }
 
         redirect('admin/spkp_antikorupsi', 'refresh');

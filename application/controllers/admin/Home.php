@@ -11,10 +11,13 @@ class Home extends CI_controller
 
     public function index()
     {
-        $this->load->view('templates/header_admin');
-        $this->load->view('templates/navbar_admin');
-        $this->load->view('admin/home');
-        $this->load->view('templates/footer_admin');
+        $data['home'] = 'Home';
+        $data['title'] = '';
+
+        $this->load->view('layout/admin/header', $data, FALSE);
+        $this->load->view('layout/admin/navbar_sidebar', $data, FALSE);
+        $this->load->view('admin/home', $data, FALSE);
+        $this->load->view('layout/admin/footer');
     }
 
     public function logout()

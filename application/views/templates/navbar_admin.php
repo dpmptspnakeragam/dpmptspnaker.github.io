@@ -21,13 +21,14 @@
                                 Home <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?= base_url(); ?>admin/aset">
                                 <span data-feather="archive"></span>
                                 Manajemen Aset
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+
+                        <!-- <li class="nav-item">
                             <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#profil" role="button" aria-expanded="false" aria-controls="profil">
                                 <span data-feather="book"></span>
                                 Profil
@@ -42,14 +43,16 @@
                                     <li><a class="nav-link" href="<?= base_url(); ?>admin/pengaturan">Pengaturan Teks</a></li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?= base_url(); ?>admin/informasi">
                                 <span data-feather="info"></span>
                                 Informasi
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+
+                        <!-- <li class="nav-item">
                             <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">
                                 <span data-feather="book"></span>
                                 Layanan
@@ -63,8 +66,9 @@
                                     <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_izin">Grafik Izin Terbit</a></li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+
+                        <!-- <li class="nav-item">
                             <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse1">
                                 <span data-feather="dollar-sign"></span>
                                 Investasi
@@ -76,16 +80,16 @@
                                     <li><a class="nav-link" href="<?= base_url(); ?>admin/tanah_ulayat">Tanah Ulayat Untuk Investasi</a></li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> -->
                     <?php endif; ?>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?= base_url(); ?>admin/pengaduan">
                             <span data-feather="info"></span>
                             Pengaduan
                         </a>
-                    </li>
+                    </li> -->
                     <?php if ($this->session->userdata('username') != 'pengaduan'): ?>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse1">
                                 <span data-feather="trending-up"></span>
                                 Grafik
@@ -99,26 +103,26 @@
                                     <li><a class="nav-link" href="<?= base_url(); ?>admin/grafik_nib">Grafik NIB</a></li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?= base_url(); ?>admin/runningteks">
                                 <span data-feather="info"></span>
                                 Running Teks
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?= base_url(); ?>admin/banner">
                                 <span data-feather="image"></span>
                                 Banner
                             </a>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url(); ?>admin/skm">
-                            <span data-feather="file"></span>
-                            Survey Kepuasan masyarakat (SKM)
-                        </a>
-                    </li> -->
-                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url(); ?>admin/skm">
+                                <span data-feather="file"></span>
+                                Survey Kepuasan masyarakat (SKM)
+                            </a>
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#survey" role="button" aria-expanded="false" aria-controls="collapse1">
                                 <span data-feather="trending-up"></span>
                                 Survey
@@ -130,13 +134,13 @@
                                     <li><a class="nav-link" href="<?= base_url('admin/rekap_ikm'); ?>">Rekap IKM</a></li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?= base_url(); ?>admin/pesan">
                                 <span data-feather="message-circle"></span>
                                 Pesan
                             </a>
-                        </li>
+                        </li> -->
                     <?php endif; ?>
                 </ul>
             </div>

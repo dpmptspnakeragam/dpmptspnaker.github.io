@@ -71,7 +71,10 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="jk">Jenis Kelamin</label>
+                                                        <label for="jk">
+                                                            Jenis Kelamin
+                                                            <small class="text-danger">*</small>
+                                                        </label>
                                                         <select id="jk" name="jk" class="form-control">
                                                             <option value="" selected disabled>Pilih Jenis Kelamin</option>
                                                             <option value="1" <?= set_select('jk', '1', ($this->input->post('jk') == '1')); ?>>Laki-Laki</option>
@@ -82,7 +85,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="persyaratan">Usia</label>
+                                                        <label for="persyaratan">
+                                                            Usia
+                                                            <small class="text-danger">*</small>
+                                                        </label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" name="umur" placeholder="Masukan Usia" aria-label="Username" aria-describedby="basic-addon1" value="<?= set_value('umur'); ?>">
                                                             <div class="input-group-prepend">
@@ -96,14 +102,17 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="pendidikan">Pendidikan</label>
+                                                        <label for="pendidikan">
+                                                            Pendidikan
+                                                            <small class="text-danger">*</small>
+                                                        </label>
                                                         <select id="pendidikan" name="pendidikan" class="form-control">
                                                             <option value="" selected disabled>Pilih Pendidikan</option>
-                                                            <option value="1" <?= set_select('pendidikan', '1', ($this->input->post('pendidikan') == '1')); ?>>SD Sederajat</option>
-                                                            <option value="2" <?= set_select('pendidikan', '2', ($this->input->post('pendidikan') == '2')); ?>>SLTP Sederajat</option>
-                                                            <option value="3" <?= set_select('pendidikan', '3', ($this->input->post('pendidikan') == '3')); ?>>SLTA Sederajat</option>
-                                                            <option value="4" <?= set_select('pendidikan', '4', ($this->input->post('pendidikan') == '4')); ?>>D3</option>
-                                                            <option value="5" <?= set_select('pendidikan', '5', ($this->input->post('pendidikan') == '5')); ?>>S1</option>
+                                                            <option value="1" <?= set_select('pendidikan', '1', ($this->input->post('pendidikan') == '1')); ?>>SD</option>
+                                                            <option value="2" <?= set_select('pendidikan', '2', ($this->input->post('pendidikan') == '2')); ?>>SMP</option>
+                                                            <option value="3" <?= set_select('pendidikan', '3', ($this->input->post('pendidikan') == '3')); ?>>SMA</option>
+                                                            <option value="4" <?= set_select('pendidikan', '4', ($this->input->post('pendidikan') == '4')); ?>>DI/DII/DIII</option>
+                                                            <option value="5" <?= set_select('pendidikan', '5', ($this->input->post('pendidikan') == '5')); ?>>DIV/S1</option>
                                                             <option value="6" <?= set_select('pendidikan', '6', ($this->input->post('pendidikan') == '6')); ?>>S2</option>
                                                         </select>
                                                         <small class="text-danger"><?= form_error('pendidikan'); ?></small>
@@ -111,7 +120,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="pekerjaan">Pekerjaan</label>
+                                                        <label for="pekerjaan">
+                                                            Pekerjaan
+                                                            <small class="text-danger">*</small>
+                                                        </label>
                                                         <select id="pekerjaan" name="pekerjaan" class="form-control">
                                                             <option value="" selected disabled>Pilih Pekerjaan</option>
                                                             <option value="1" <?= set_select('pekerjaan', '1', ($this->input->post('pekerjaan') == '1')); ?>>PNS</option>
@@ -126,7 +138,10 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="jenis_layanan">Jenis Layanan yang diterima</label>
+                                                <label for="jenis_layanan">
+                                                    Jenis Layanan yang diterima
+                                                    <small class="text-danger">*</small>
+                                                </label>
                                                 <input type="text" class="form-control" name="layanan" placeholder="Masukan Jenis layanan yang diterima" value="<?= set_value('layanan'); ?>">
                                                 <small class="text-danger mb-0"><?= form_error('layanan'); ?></small>
                                                 <small>Contoh: <span class="font-italic font-weight-bold">PBG, SIP Bidan, Izin Penelitian, dll.</span></small>

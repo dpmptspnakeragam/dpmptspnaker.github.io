@@ -44,13 +44,13 @@ class Model_pegawai extends CI_model
 
     public function input($data)
     {
-        $this->db->insert('pegawai', $data);
+        return $this->db->insert('pegawai', $data);
     }
 
     public function update_pegawai($data, $id)
     {
         $this->db->where('id_pegawai', $id);
-        $this->db->update('pegawai', $data);
+        return $this->db->update('pegawai', $data);
     }
 
     public function update_kabid($data, $id)
@@ -62,6 +62,6 @@ class Model_pegawai extends CI_model
     public function delete($id_pegawai)
     {
         $this->db->where('id_pegawai', $id_pegawai);
-        $this->db->delete('pegawai');
+        return $this->db->delete('pegawai');
     }
 }

@@ -17,11 +17,13 @@ class Skm extends CI_controller
     public function index()
     {
         $data['skm'] = $this->Model_skm->get_data_skm();
+        $data['home'] = 'Home';
+        $data['title'] = 'SKM';
 
-        $this->load->view('templates/header_admin');
-        $this->load->view('templates/navbar_admin');
-        $this->load->view('admin/skm', $data);
-        $this->load->view('templates/footer_admin');
+        $this->load->view('layout/admin/header', $data, FALSE);
+        $this->load->view('layout/admin/navbar_sidebar', $data, FALSE);
+        $this->load->view('admin/skm', $data, FALSE);
+        $this->load->view('layout/admin/footer');
     }
 
     public function delete($id_skm)
@@ -29,9 +31,9 @@ class Skm extends CI_controller
         $result = $this->Model_skm->hapus_data_terkait($id_skm);
 
         if ($result) {
-            $this->session->set_flashdata('berhasil', 'Data SKM, SPKP, dan SPAK berhasil dihapus.');
+            $this->session->set_flashdata('success', 'Data SKM, SPKP, dan SPAK berhasil dihapus.');
         } else {
-            $this->session->set_flashdata('gagal', 'Penghapusan data gagal. Silahkan coba lagi.');
+            $this->session->set_flashdata('error', 'Penghapusan data gagal. Silahkan coba lagi.');
         }
 
         redirect('admin/skm', 'refresh');

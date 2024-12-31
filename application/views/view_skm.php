@@ -90,7 +90,7 @@
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         <h3 class="font-weight-bold">
-                                            Semester <?= ($semester == 1) ? '1 <br> Januari - Juni' : '2 <br> Juli - Desember'; ?> <?= date('Y'); ?>
+                                            Semester <?= ($semester == 1) ? '1 <br> Januari s.d Juni' : '2 <br> Juli s.d Desember'; ?> <br> Tahun <?= date('Y'); ?>
                                         </h3>
                                     </div>
                                 </div>
