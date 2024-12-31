@@ -7,6 +7,42 @@
         </li>
     </ul>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.querySelector('.main-sidebar');
+            const pushMenuButton = document.querySelector('[data-widget="pushmenu"]');
+
+            pushMenuButton.addEventListener('click', () => {
+                // Toggle class to check if sidebar is minimized
+                sidebar.classList.toggle('sidebar-mini');
+            });
+        });
+    </script>
+    <style>
+        /* Default state: normal sidebar */
+        .main-sidebar .brand-link .brand-image:first-child {
+            display: none;
+            /* Hide small logo */
+        }
+
+        .main-sidebar .brand-link .brand-image:last-child {
+            display: block;
+            /* Show normal logo */
+        }
+
+        /* Sidebar minimized */
+        .main-sidebar.sidebar-mini .brand-link .brand-image:first-child {
+            display: block;
+            /* Show small logo */
+        }
+
+        .main-sidebar.sidebar-mini .brand-link .brand-image:last-child {
+            display: none;
+            /* Hide normal logo */
+        }
+    </style>
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Nav Item - User Role -->
@@ -23,10 +59,11 @@
 <aside class="main-sidebar sidebar-light-maroon">
     <!-- Brand Logo -->
     <a href="<?= base_url($this->uri->segment(1)); ?>" class="brand-link elevation-2">
-        <img src="<?= base_url('assets/'); ?>img/agam.png" alt="AdminLTE Logo" class="brand-image">
-        <span class="brand-text">
-            <strong>DPMPTSP AGAM</strong>
-        </span>
+        <!-- Small logo for minimized sidebar -->
+        <img src="<?= base_url('assets/img/agam.png'); ?>" alt="DPMPTSP Logo" class="brand-image">
+
+        <!-- Normal logo for full sidebar -->
+        <img src="<?= base_url('assets/img/logo_dpmptspwarna.png'); ?>" alt="DPMPTSP Logo Warna" class="brand-image">
     </a>
 
     <!-- Sidebar -->

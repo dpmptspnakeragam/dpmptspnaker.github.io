@@ -43,10 +43,10 @@
                                             <img src="<?= base_url('assets/imgupload/') . $row->foto; ?>" class="elevation-2 img-size-64 img-thumbnail">
                                         </td>
                                         <td class="text-center align-middle">
-                                            <button type="button" data-toggle="modal" data-target="#EditKadis<?= $row->id_kadis; ?>" class="btn btn-outline-warning">
+                                            <button type="button" data-toggle="modal" data-target="#EditKadis<?= $row->id_kadis; ?>" class="btn btn-outline-warning mt-1 mb-1">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button type="button" data-toggle="modal" data-target="#deleteKadis<?= $row->id_kadis; ?>" class="btn btn-outline-danger">
+                                            <button type="button" data-toggle="modal" data-target="#deleteKadis<?= $row->id_kadis; ?>" class="btn btn-outline-danger mt-1 mb-1">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>
