@@ -71,7 +71,7 @@ class Regulasi extends CI_controller
         $result = $this->Model_regulasi->input($data);
 
         if ($result) {
-            $this->session->set_flashdata('success', 'Data Regulasi berhasil ditambahkan.');
+            $this->session->set_flashdata('success', 'Data Regulasi berhasil disimpan.');
         } else {
             $this->session->set_flashdata('error', 'Penyimpanan data gagal. Silahkan coba lagi.');
         }
@@ -132,9 +132,9 @@ class Regulasi extends CI_controller
         $result = $this->Model_regulasi->update($data, $id);
 
         if ($result) {
-            $this->session->set_flashdata('success', 'Data Regulasi berhasil diupdate.');
+            $this->session->set_flashdata('success', 'Data Regulasi berhasil diperbarui.');
         } else {
-            $this->session->set_flashdata('error', 'Penyimpanan data gagal. Silahkan coba lagi.');
+            $this->session->set_flashdata('error', 'Perbarui data gagal. Silakan coba lagi.');
         }
 
         redirect('admin/regulasi', 'refresh');
