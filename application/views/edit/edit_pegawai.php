@@ -93,6 +93,7 @@
                                         <option>PTT</option>
                                         <option>Tenaga Kontrak</option>
                                         <option>THL</option>
+                                        <option>Tenaga Outsourcing</option>
                                     </select>
                                 </div>
                             </div>
