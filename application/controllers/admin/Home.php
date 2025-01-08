@@ -12,7 +12,7 @@ class Home extends CI_controller
     public function index()
     {
         $data['home'] = 'Home';
-        $data['title'] = '';
+        $data['title'] = 'DPMPTSP Kab. Agam';
 
         $this->load->view('layout/admin/header', $data, FALSE);
         $this->load->view('layout/admin/navbar_sidebar', $data, FALSE);

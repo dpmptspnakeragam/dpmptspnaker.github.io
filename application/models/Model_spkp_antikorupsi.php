@@ -3,32 +3,55 @@
 class Model_spkp_antikorupsi extends CI_Model
 {
 
-    public function get_data_rating()
+    public function get_data_rating($awalBulan, $akhirBulan, $awalTahun, $akhirTahun)
     {
         $this->db->select('spkp.*, IFNULL(spak.r1, 0) AS r1, IFNULL(spak.r2, 0) AS r2, IFNULL(spak.r3, 0) AS r3, IFNULL(spak.r4, 0) AS r4, IFNULL(spak.r5, 0) AS r5, IFNULL(spkp.z1, 0) AS z1, IFNULL(spkp.z2, 0) AS z2, IFNULL(spkp.z3, 0) AS z3, IFNULL(spkp.z4, 0) AS z4, IFNULL(spkp.z5, 0) AS z5, IFNULL(spkp.z6, 0) AS z6, IFNULL(spkp.z7, 0) AS z7, IFNULL(spkp.z8, 0) AS z8');
         $this->db->from('spkp');
         $this->db->join('spak', 'spkp.id_spkp = spak.id_spkp', 'left');
-        $this->db->order_by('date', 'desc');
+        $this->db->where('MONTH(spkp.date) >=', $awalBulan);
+        $this->db->where('MONTH(spkp.date) <=', $akhirBulan);
+        $this->db->where('YEAR(spkp.date) >=', $awalTahun);
+        $this->db->where('YEAR(spkp.date) <=', $akhirTahun);
+        $this->db->order_by('spkp.date', 'DESC');
+
         $query = $this->db->get();
-        return $query;
+        return $query->result_array();
     }
 
-    public function total_responden($startMonth, $endMonth)
+    public function get_filter_data_spkp_spak($bulan_awal, $bulan_akhir, $tahun)
+    {
+        $this->db->select('spkp.*, IFNULL(spak.r1, 0) AS r1, IFNULL(spak.r2, 0) AS r2, IFNULL(spak.r3, 0) AS r3, IFNULL(spak.r4, 0) AS r4, IFNULL(spak.r5, 0) AS r5, IFNULL(spkp.z1, 0) AS z1, IFNULL(spkp.z2, 0) AS z2, IFNULL(spkp.z3, 0) AS z3, IFNULL(spkp.z4, 0) AS z4, IFNULL(spkp.z5, 0) AS z5, IFNULL(spkp.z6, 0) AS z6, IFNULL(spkp.z7, 0) AS z7, IFNULL(spkp.z8, 0) AS z8');
+        $this->db->from('spkp');
+        $this->db->join('spak', 'spkp.id_spkp = spak.id_spkp', 'left');
+        $this->db->where('MONTH(spkp.date) >=', $bulan_awal);
+        $this->db->where('MONTH(spkp.date) <=', $bulan_akhir);
+        $this->db->where('YEAR(spkp.date)', $tahun);
+        $this->db->order_by('spkp.date', 'DESC');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function total_responden($awalBulan, $akhirBulan, $awalTahun, $akhirTahun)
     {
         $this->db->from('spkp');
-        $this->db->where('MONTH(date) >=', $startMonth);
-        $this->db->where('MONTH(date) <=', $endMonth);
+        $this->db->where('MONTH(date) >=', $awalBulan);
+        $this->db->where('MONTH(date) <=', $akhirBulan);
+        $this->db->where('YEAR(date) >=', $awalTahun);
+        $this->db->where('YEAR(date) <=', $akhirTahun);
         $total = $this->db->count_all_results();
         return $total;
     }
 
-    public function get_rating_spkp($startMonth, $endMonth)
+    public function get_rating_spkp($awalBulan, $akhirBulan, $awalTahun, $akhirTahun)
     {
         $ratings = [];
 
         // Mengambil data dari tabel 'spkp'
-        $this->db->where('MONTH(date) >=', $startMonth);
-        $this->db->where('MONTH(date) <=', $endMonth);
+        $this->db->where('MONTH(date) >=', $awalBulan);
+        $this->db->where('MONTH(date) <=', $akhirBulan);
+        $this->db->where('YEAR(date) >=', $awalTahun);
+        $this->db->where('YEAR(date) <=', $akhirTahun);
         $query = $this->db->get('spkp');
         $results = $query->result_array();
 
@@ -64,13 +87,15 @@ class Model_spkp_antikorupsi extends CI_Model
         return $ratings;
     }
 
-    public function get_rating_antikorupsi($startMonth, $endMonth)
+    public function get_rating_antikorupsi($awalBulan, $akhirBulan, $awalTahun, $akhirTahun)
     {
         $ratings = [];
 
         // Mengambil data dari tabel 'spak'
-        $this->db->where('MONTH(date) >=', $startMonth);
-        $this->db->where('MONTH(date) <=', $endMonth);
+        $this->db->where('MONTH(date) >=', $awalBulan);
+        $this->db->where('MONTH(date) <=', $akhirBulan);
+        $this->db->where('YEAR(date) >=', $awalTahun);
+        $this->db->where('YEAR(date) <=', $akhirTahun);
         $query = $this->db->get('spak');
         $results = $query->result_array();
 
@@ -144,20 +169,24 @@ class Model_spkp_antikorupsi extends CI_Model
     }
 
     // Nilai Survey
-    public function get_avg_z($startMonth, $endMonth)
+    public function get_avg_z($awalBulan, $akhirBulan, $awalTahun, $akhirTahun)
     {
         $this->db->select('AVG(z1) as avg_z1, AVG(z2) as avg_z2, AVG(z3) as avg_z3, AVG(z4) as avg_z4, AVG(z5) as avg_z5, AVG(z6) as avg_z6, AVG(z7) as avg_z7, AVG(z8) as avg_z8');
-        $this->db->where('MONTH(date) >=', $startMonth);
-        $this->db->where('MONTH(date) <=', $endMonth);
+        $this->db->where('MONTH(date) >=', $awalBulan);
+        $this->db->where('MONTH(date) <=', $akhirBulan);
+        $this->db->where('YEAR(date) >=', $awalTahun);
+        $this->db->where('YEAR(date) <=', $akhirTahun);
         $query = $this->db->get('spkp')->row();
         return $query;
     }
 
-    public function get_avg_r($startMonth, $endMonth)
+    public function get_avg_r($awalBulan, $akhirBulan, $awalTahun, $akhirTahun)
     {
         $this->db->select('AVG(r1) as avg_r1, AVG(r2) as avg_r2, AVG(r3) as avg_r3, AVG(r4) as avg_r4, AVG(r5) as avg_r5');
-        $this->db->where('MONTH(date) >=', $startMonth);
-        $this->db->where('MONTH(date) <=', $endMonth);
+        $this->db->where('MONTH(date) >=', $awalBulan);
+        $this->db->where('MONTH(date) <=', $akhirBulan);
+        $this->db->where('YEAR(date) >=', $awalTahun);
+        $this->db->where('YEAR(date) <=', $akhirTahun);
         $query = $this->db->get('spak')->row();
         return $query;
     }

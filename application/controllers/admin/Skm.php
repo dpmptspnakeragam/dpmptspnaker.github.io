@@ -16,7 +16,26 @@ class Skm extends CI_controller
 
     public function index()
     {
-        $data['skm'] = $this->Model_skm->get_data_skm();
+        $BulanIni = date('n');
+        $TahunIni = date('Y');
+
+        // tentukan semester berdasarkan bulan
+        $semester = ($BulanIni >= 1 && $BulanIni <= 6) ? 1 : 2;
+
+        // tentukan range bulan berdasarkan semester
+        if ($semester == 1) {
+            $awalBulan = 1;
+            $akhirBulan = 6;
+            $awalTahun = $TahunIni; // Tahun awal semester 1 adalah tahun saat ini
+            $akhirTahun = $TahunIni;
+        } else {
+            $awalBulan = 7;
+            $akhirBulan = 12;
+            $awalTahun = $TahunIni; // Tahun awal semester 2 adalah tahun saat ini
+            $akhirTahun = $TahunIni;
+        }
+
+        $data['skm'] = $this->Model_skm->get_data_skm($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
         $data['home'] = 'Home';
         $data['title'] = 'SKM';
 
@@ -58,5 +77,29 @@ class Skm extends CI_controller
         $dompdf->setPaper('Legal', 'portrait');
         $dompdf->render();
         $dompdf->stream('Survey Kepuasan Masyarakat (' . $id_skm . ').pdf', array('Attachment' => false));
+    }
+
+    public function filter()
+    {
+        $bulan_awal = $this->input->get('bulan_awal') ?? 1;
+        $bulan_akhir = $this->input->get('bulan_akhir') ?? date('n');
+        $tahun = $this->input->get('tahun') ?? date('Y');
+
+        $result = $this->Model_skm->get_filter_data_skm($bulan_awal, $bulan_akhir, $tahun);
+
+        $data = array(
+            'home' => 'Home',
+            'title' => 'SKM',
+            'skm' => $result,
+        );
+
+        if (empty($result)) {
+            $this->session->set_flashdata('warning', 'Filter Data tidak ditemukan.');
+        }
+
+        $this->load->view('layout/admin/header', $data);
+        $this->load->view('layout/admin/navbar_sidebar', $data);
+        $this->load->view('admin/skm', $data);
+        $this->load->view('layout/admin/footer');
     }
 }

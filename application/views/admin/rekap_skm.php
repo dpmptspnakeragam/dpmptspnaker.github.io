@@ -19,6 +19,14 @@
 
                         <hr>
 
+                        <h5 class="text-center">
+                            Semester <?= ($semester == 1) ? '1 <br> Januari s.d Juni' : '2 <br> Juli s.d Desember'; ?>
+                            <br>
+                            Tahun <?= date('Y'); ?>
+                        </h5>
+
+                        <hr>
+
                         <div class="row">
                             <div class="col-lg-4 mt-1 mb-1">
                                 <button type="button" class="btn btn-block btn-outline-danger" onclick="printSKM()">
@@ -50,14 +58,6 @@
                                 window.open('<?= base_url('admin/rekap_survey/spak') ?>', '_blank');
                             }
                         </script>
-
-                        <hr>
-
-                        <h5 class="text-center">
-                            Semester <?= ($semester == 1) ? '1 <br> Januari s.d Juni' : '2 <br> Juli s.d Desember'; ?>
-                            <br>
-                            Tahun <?= date('Y'); ?>
-                        </h5>
 
                         <div class="row">
 

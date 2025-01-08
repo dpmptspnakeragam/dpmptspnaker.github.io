@@ -5,6 +5,59 @@
             <div class="col-12">
                 <div class="card card-outline card-maroon">
                     <div class="card-header">
+                        <h3 class="card-title">Filter Data</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="GET" action="<?= base_url('admin/spkp_antikorupsi/filter'); ?>">
+                            <div class="row">
+                                <div class="col-md-3 mb-2">
+                                    <label for="bulan_awal">Bulan Awal</label>
+                                    <select name="bulan_awal" id="bulan_awal" class="form-control">
+                                        <?php
+                                        $bulan_awal_selected = $this->input->get('bulan_awal') ?? 1;
+                                        for ($i = 1; $i <= 12; $i++): ?>
+                                            <option value="<?= $i; ?>" <?= ($i == $bulan_awal_selected) ? 'selected' : ''; ?>>
+                                                <?= date('F', mktime(0, 0, 0, $i, 10)); ?>
+                                            </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-2">
+                                    <label for="bulan_akhir">Bulan Akhir</label>
+                                    <select name="bulan_akhir" id="bulan_akhir" class="form-control">
+                                        <?php
+                                        $bulan_akhir_selected = $this->input->get('bulan_akhir') ?? date('n');
+                                        for ($i = 1; $i <= 12; $i++) : ?>
+                                            <option value="<?= $i;; ?>" <?= ($i == $bulan_akhir_selected) ? 'selected' : ''; ?>>
+                                                <?= date('F', mktime(0, 0, 0, $i, 10)); ?>
+                                            </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-2">
+                                    <label for="tahun">Tahun</label>
+                                    <select name="tahun" id="tahun" class="form-control">
+                                        <?php
+                                        $tahun_selected = $this->input->get('tahun') ?? date('Y');
+                                        for ($i = date('Y') - 5; $i <= date('Y'); $i++) : ?>
+                                            <option value="<?= $i; ?>" <?= ($i == $tahun_selected) ? 'selected' : ''; ?>>
+                                                <?= $i; ?>
+                                            </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 mb-2 mt-2 align-self-end">
+                                    <button type="submit" class="btn btn-block btn-outline-danger">Tampilkan Data</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card card-outline card-maroon">
+                    <div class="card-header">
                         <h3 class="card-title">Tabel <?= $title; ?></h3>
                     </div>
                     <!-- /.card-header -->
@@ -53,28 +106,28 @@
 
                             <tbody>
                                 <?php $count = 1; ?>
-                                <?php foreach ($rating->result() as $row) : ?>
+                                <?php foreach ($rating as $row) : ?>
                                     <tr>
                                         <td class="text-center align-middle"><?= $count++; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z1; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z2; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z3; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z4; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z5; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z6; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z7; ?></td>
-                                        <td class="text-center align-middle"><?= $row->z8; ?></td>
-                                        <td class="text-center align-middle"><?= $row->r1; ?></td>
-                                        <td class="text-center align-middle"><?= $row->r2; ?></td>
-                                        <td class="text-center align-middle"><?= $row->r3; ?></td>
-                                        <td class="text-center align-middle"><?= $row->r4; ?></td>
-                                        <td class="text-center align-middle"><?= $row->r5; ?></td>
-                                        <td class="text-center align-middle"><?= date('d-m-Y / H:i:s', strtotime($row->date)); ?></td>
+                                        <td class="text-center align-middle"><?= $row['z1']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['z2']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['z3']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['z4']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['z5']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['z6']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['z7']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['z8']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['r1']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['r2']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['r3']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['r4']; ?></td>
+                                        <td class="text-center align-middle"><?= $row['r5']; ?></td>
+                                        <td class="text-center align-middle"><?= date('d-m-Y / H:i:s', strtotime($row['date'])); ?></td>
                                         <td class="text-center align-middle">
-                                            <button type="button" data-toggle="modal" data-target="#deleteBarang<?= $row->id_spkp; ?>" class="btn btn-outline-danger mt-1 mb-1">
+                                            <button type="button" data-toggle="modal" data-target="#deleteBarang<?= $row['id_spkp']; ?>" class="btn btn-outline-danger mt-1 mb-1">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
-                                            <button type="button" class="btn btn-outline-info mt-1 mb-1" onclick="printSKM(<?= $row->id_spkp ?>)">
+                                            <button type="button" class="btn btn-outline-info mt-1 mb-1" onclick="printSKM(<?= $row['id_spkp'] ?>)">
                                                 <i class="fas fa-print"></i>
                                             </button>
 
@@ -103,8 +156,8 @@
 </section>
 <!-- /.content -->
 
-<?php foreach ($rating->result() as $row) : ?>
-    <div class="modal fade" id="deleteBarang<?= $row->id_spkp; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<?php foreach ($rating as $row) : ?>
+    <div class="modal fade" id="deleteBarang<?= $row['id_spkp']; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -118,7 +171,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Kembali</button>
-                    <a href="<?= base_url('admin/spkp_antikorupsi/delete/' . $row->id_spkp); ?>" class="btn btn-outline-danger">Hapus</a>
+                    <a href="<?= base_url('admin/spkp_antikorupsi/delete/' . $row['id_spkp']); ?>" class="btn btn-outline-danger">Hapus</a>
                 </div>
             </div>
         </div>

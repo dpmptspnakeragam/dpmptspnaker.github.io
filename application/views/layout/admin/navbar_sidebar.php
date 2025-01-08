@@ -58,7 +58,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-maroon">
     <!-- Brand Logo -->
-    <a href="<?= base_url($this->uri->segment(1)); ?>" class="brand-link elevation-2">
+    <a href="<?= base_url('admin/home'); ?>" class="brand-link elevation-2">
         <!-- Small logo for minimized sidebar -->
         <img src="<?= base_url('assets/img/agam.png'); ?>" alt="DPMPTSP Logo" class="brand-image">
 
@@ -452,7 +452,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
-                            <a class="text-maroon" href="<?= base_url($this->uri->segment(2)); ?>">
+                            <a class="text-maroon" href="<?= base_url('admin/home'); ?>">
                                 <i class="fas fa-home"></i> <?= $home; ?>
                             </a>
                         </li>

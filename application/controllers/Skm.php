@@ -13,42 +13,51 @@ class Skm extends CI_Controller
 
     public function index()
     {
-        // tentukan bulan saat ini
-        $currentMonth = date('n'); // -> mengambil bulan dalam format angka (1-12)
+        $BulanIni = date('n');
+        $TahunIni = date('Y');
 
         // tentukan semester berdasarkan bulan
-        $semester = ($currentMonth >= 1 && $currentMonth <= 6) ? 1 : 2;
+        $semester = ($BulanIni >= 1 && $BulanIni <= 6) ? 1 : 2;
 
         // tentukan range bulan berdasarkan semester
-        $startMonth = ($semester == 1) ? 1 : 6;
-        $endMonth = ($semester == 1) ? 7 : 12;
+        if ($semester == 1) {
+            $awalBulan = 1;
+            $akhirBulan = 6;
+            $awalTahun = $TahunIni; // Tahun awal semester 1 adalah tahun saat ini
+            $akhirTahun = $TahunIni;
+        } else {
+            $awalBulan = 7;
+            $akhirBulan = 12;
+            $awalTahun = $TahunIni; // Tahun awal semester 2 adalah tahun saat ini
+            $akhirTahun = $TahunIni;
+        }
 
         // SKM
-        $data['jumlah'] = $this->Model_skm->jmlh_data($startMonth, $endMonth);
-        $data['jmlh_lk'] = $this->Model_skm->jmlh_lk($startMonth, $endMonth);
-        $data['jmlh_pr'] = $this->Model_skm->jmlh_pr($startMonth, $endMonth);
-        $data['jmlh_sd'] = $this->Model_skm->jmlh_sd($startMonth, $endMonth);
-        $data['jmlh_smp'] = $this->Model_skm->jmlh_smp($startMonth, $endMonth);
-        $data['jmlh_sma'] = $this->Model_skm->jmlh_sma($startMonth, $endMonth);
-        $data['jmlh_d1'] = $this->Model_skm->jmlh_d1($startMonth, $endMonth);
-        $data['jmlh_s1'] = $this->Model_skm->jmlh_s1($startMonth, $endMonth);
-        $data['jmlh_s2'] = $this->Model_skm->jmlh_s2($startMonth, $endMonth);
-        $data['jmlh_pns'] = $this->Model_skm->jmlh_pns($startMonth, $endMonth);
-        $data['jmlh_tni'] = $this->Model_skm->jmlh_tni($startMonth, $endMonth);
-        $data['jmlh_polri'] = $this->Model_skm->jmlh_polri($startMonth, $endMonth);
-        $data['jmlh_swasta'] = $this->Model_skm->jmlh_swasta($startMonth, $endMonth);
-        $data['jmlh_wirausaha'] = $this->Model_skm->jmlh_wirausaha($startMonth, $endMonth);
-        $data['jmlh_lainnya'] = $this->Model_skm->jmlh_lainnya($startMonth, $endMonth);
+        $data['jumlah'] = $this->Model_skm->jmlh_data($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_lk'] = $this->Model_skm->jmlh_lk($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_pr'] = $this->Model_skm->jmlh_pr($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_sd'] = $this->Model_skm->jmlh_sd($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_smp'] = $this->Model_skm->jmlh_smp($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_sma'] = $this->Model_skm->jmlh_sma($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_d1'] = $this->Model_skm->jmlh_d1($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_s1'] = $this->Model_skm->jmlh_s1($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_s2'] = $this->Model_skm->jmlh_s2($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_pns'] = $this->Model_skm->jmlh_pns($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_tni'] = $this->Model_skm->jmlh_tni($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_polri'] = $this->Model_skm->jmlh_polri($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_swasta'] = $this->Model_skm->jmlh_swasta($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_wirausaha'] = $this->Model_skm->jmlh_wirausaha($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['jmlh_lainnya'] = $this->Model_skm->jmlh_lainnya($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
 
-        $avg_u1 = $this->Model_skm->avg_u1($startMonth, $endMonth);
-        $avg_u2 = $this->Model_skm->avg_u2($startMonth, $endMonth);
-        $avg_u3 = $this->Model_skm->avg_u3($startMonth, $endMonth);
-        $avg_u4 = $this->Model_skm->avg_u4($startMonth, $endMonth);
-        $avg_u5 = $this->Model_skm->avg_u5($startMonth, $endMonth);
-        $avg_u6 = $this->Model_skm->avg_u6($startMonth, $endMonth);
-        $avg_u7 = $this->Model_skm->avg_u7($startMonth, $endMonth);
-        $avg_u8 = $this->Model_skm->avg_u8($startMonth, $endMonth);
-        $avg_u9 = $this->Model_skm->avg_u9($startMonth, $endMonth);
+        $avg_u1 = $this->Model_skm->avg_u1($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u2 = $this->Model_skm->avg_u2($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u3 = $this->Model_skm->avg_u3($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u4 = $this->Model_skm->avg_u4($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u5 = $this->Model_skm->avg_u5($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u6 = $this->Model_skm->avg_u6($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u7 = $this->Model_skm->avg_u7($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u8 = $this->Model_skm->avg_u8($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_u9 = $this->Model_skm->avg_u9($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
 
         $data['u1'] = $avg_u1;
         $data['u2'] = $avg_u2;
@@ -75,13 +84,13 @@ class Skm extends CI_Controller
         // end of SKM
 
         // ----------------------------------------- SPKP and SPAK -----------------------------------------
-        $data['rating_spkp'] = $this->Model_spkp_antikorupsi->get_rating_spkp($startMonth, $endMonth);
-        $data['rating_antikorupsi'] = $this->Model_spkp_antikorupsi->get_rating_antikorupsi($startMonth, $endMonth);
-        $data['total_responden'] = $this->Model_spkp_antikorupsi->total_responden($startMonth, $endMonth);
+        $data['rating_spkp'] = $this->Model_spkp_antikorupsi->get_rating_spkp($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['rating_antikorupsi'] = $this->Model_spkp_antikorupsi->get_rating_antikorupsi($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $data['total_responden'] = $this->Model_spkp_antikorupsi->total_responden($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
 
         // Get average z and r values
-        $avg_z = $this->Model_spkp_antikorupsi->get_avg_z($startMonth, $endMonth);
-        $avg_r = $this->Model_spkp_antikorupsi->get_avg_r($startMonth, $endMonth);
+        $avg_z = $this->Model_spkp_antikorupsi->get_avg_z($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
+        $avg_r = $this->Model_spkp_antikorupsi->get_avg_r($awalBulan, $akhirBulan, $awalTahun, $akhirTahun);
 
         $data['z1'] = $avg_z->avg_z1;
         $data['z2'] = $avg_z->avg_z2;

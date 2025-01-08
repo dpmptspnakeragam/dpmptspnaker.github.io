@@ -24,7 +24,7 @@
                         <table id="TabelData1" class="table table-bordered table-sm table-hover">
                             <thead>
                                 <tr>
-                                    <th class="text-center align-middle">No</th>
+                                    <th class="text-center align-middle">No.</th>
                                     <th class="text-center align-middle">Nama</th>
                                     <th class="text-center align-middle">Type NIP</th>
                                     <th class="text-center align-middle">NIP</th>
