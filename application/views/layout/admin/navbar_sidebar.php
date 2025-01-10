@@ -189,7 +189,6 @@
                                                 'nonperizinan',
                                                 'perizinan_risiko',
                                                 'grafik_izin',
-                                                'pengaturan'
                                             ]
                                         ) ? 'menu-open' : ''; ?>">
                         <a href="" class="nav-link <?= in_array(
@@ -200,7 +199,6 @@
                                                             'nonperizinan',
                                                             'perizinan_risiko',
                                                             'grafik_izin',
-                                                            'pengaturan'
                                                         ]
                                                     ) ? 'active' : ''; ?>">
                             <i class="nav-icon fas fa-book-open"></i>
