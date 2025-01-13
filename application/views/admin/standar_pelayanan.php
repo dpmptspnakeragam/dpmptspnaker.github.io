@@ -25,9 +25,12 @@
                         <?php if (!empty($pdf)) : ?>
                             <?php foreach ($pdf as $file) : ?>
                                 <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Nama File: <?= $file->title; ?></h3>
+                                    </div>
                                     <div class="card-body text-center">
                                         <?php if (file_exists('./assets/fileupload/' . $file->file_name)) : ?>
-                                            <embed src="<?= base_url('assets/fileupload/' . $file->file_name); ?>" type="application/pdf" width="100%" height="500px" />
+                                            <embed src="<?= base_url('assets/fileupload/' . $file->file_name); ?>" type="application/pdf" width="100%" height="600px">
                                         <?php else : ?>
                                             <p>File PDF tidak tersedia.</p>
                                         <?php endif; ?>
