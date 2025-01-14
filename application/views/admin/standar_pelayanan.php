@@ -26,7 +26,7 @@
                         <!-- start: Display PDF -->
                         <?php if (!empty($pdf)) : ?>
                             <?php foreach ($pdf as $file) : ?>
-                                <div class="card">
+                                <div class="card card-maroon">
                                     <div class="card-header">
                                         <h3 class="card-title">Nama File: <?= $file->title; ?></h3>
                                     </div>
