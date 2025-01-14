@@ -14,12 +14,14 @@
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        <div class="d-flex mb-3">
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#ModalTambahSP">
-                                <i class="fa fa-plus p-1" aria-hidden="true"></i>
-                                Tambah Data
-                            </button>
-                        </div>
+                        <?php if (empty($pdf)) : ?>
+                            <div class="d-flex mb-3">
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#ModalTambahSP">
+                                    <i class="fa fa-plus p-1" aria-hidden="true"></i>
+                                    Tambah Data
+                                </button>
+                            </div>
+                        <?php endif; ?>
 
                         <!-- start: Display PDF -->
                         <?php if (!empty($pdf)) : ?>
