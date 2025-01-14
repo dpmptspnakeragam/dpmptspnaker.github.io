@@ -21,19 +21,19 @@ class Model_perizinan extends CI_model
 
     public function input($data)
     {
-        $this->db->insert('perizinan', $data);
+        return $this->db->insert('perizinan', $data);
     }
 
     public function update($data, $id)
     {
         $this->db->where('id_izin', $id);
-        $this->db->update('perizinan', $data);
+        return $this->db->update('perizinan', $data);
     }
 
     public function delete($id_izin)
     {
         $this->db->where('id_izin', $id_izin);
-        $this->db->delete('perizinan');
+        return $this->db->delete('perizinan');
     }
     //-----Perizinan-----//
 
