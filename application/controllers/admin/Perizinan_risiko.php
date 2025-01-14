@@ -9,18 +9,22 @@ class Perizinan_risiko extends CI_controller
         if ($this->session->userdata('username') == "") {
             redirect('login');
         }
+
+        $this->load->model('Model_perizinan');
     }
 
     public function index()
     {
-        $this->load->model('Model_perizinan');
         $data['perizinan'] = $this->Model_perizinan->tampil_data_risiko();
-        $this->load->view('templates/header_admin');
-        $this->load->view('templates/navbar_admin');
-        $this->load->view('admin/perizinan_risiko', $data);
+        $data['home'] = 'Home';
+        $data['title'] = 'Perizinan Berbasis Risiko';
+
+        $this->load->view('layout/admin/header', $data, FALSE);
+        $this->load->view('layout/admin/navbar_sidebar', $data, FALSE);
+        $this->load->view('admin/perizinan_risiko', $data, FALSE);
         $this->load->view('modal/modal_tambah_perizinan_risiko');
-        $this->load->view('edit/edit_perizinan_risiko');
-        $this->load->view('templates/footer_admin');
+        $this->load->view('edit/edit_perizinan_risiko', $data, FALSE);
+        $this->load->view('layout/admin/footer');
     }
 
     public function tambah()
@@ -38,13 +42,18 @@ class Perizinan_risiko extends CI_controller
             'biaya' => $biaya,
             'lamaproses' => $lamaproses
         );
-        $this->load->model('Model_perizinan');
-        $this->Model_perizinan->input_risiko($data);
-        $this->session->set_flashdata("berhasil", "Tambah data <b>$jenis</b> berhasil !");
-        redirect('admin/perizinan_risiko');
+
+        $result = $this->Model_perizinan->input_risiko($data);
+
+        if ($result) {
+            $this->session->set_flashdata('success', 'Data Perizinan Berbasis Risiko berhasil disimpan.');
+        } else {
+            $this->session->set_flashdata('error', 'Penyimpanan data gagal. Silahkan coba lagi.');
+        }
+        redirect('admin/perizinan_risiko', 'refresh');
     }
 
-    public function ubah()
+    public function edit()
     {
         $id = $this->input->post('id', true);
         $jenis = $this->input->post('jenis', true);
@@ -59,10 +68,16 @@ class Perizinan_risiko extends CI_controller
             'biaya' => $biaya,
             'lamaproses' => $lamaproses
         );
-        $this->load->model('Model_perizinan');
-        $this->Model_perizinan->update_risiko($data, $id);
-        $this->session->set_flashdata("berhasil", "Ubah data <b>$jenis</b> berhasil !");
-        redirect('admin/perizinan_risiko');
+
+        $result = $this->Model_perizinan->update_risiko($data, $id);
+
+        if ($result) {
+            $this->session->set_flashdata('success', 'Data Perizinan Berbasis Risiko berhasil diperbarui.');
+        } else {
+            $this->session->set_flashdata('error', 'Perbarui data gagal. Silakan coba lagi.');
+        }
+
+        redirect('admin/perizinan_risiko', 'refresh');
     }
 
     public function hapus($id)
@@ -71,9 +86,14 @@ class Perizinan_risiko extends CI_controller
         $query = $this->db->get('perizinan_risiko');
         $row = $query->row();
 
-        $this->load->model('Model_perizinan');
-        $this->Model_perizinan->delete_risiko($id);
-        $this->session->set_flashdata("gagal", "Hapus data <b>$row->jenis</b> berhasil !");
-        redirect('admin/perizinan_risiko');
+        $result = $this->Model_perizinan->delete_risiko($id);
+
+        if ($result) {
+            $this->session->set_flashdata('success', 'Data Perizinan Berbasis Risiko berhasil dihapus.');
+        } else {
+            $this->session->set_flashdata('error', 'Penghapusan data gagal. Silahkan coba lagi.');
+        }
+
+        redirect('admin/perizinan_risiko', 'refresh');
     }
 }
