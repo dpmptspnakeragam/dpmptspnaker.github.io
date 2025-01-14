@@ -1,4 +1,3 @@
-<script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 <?php foreach ($informasi->result() as $row) : ?>
     <div class="modal fade" id="EditInformasi<?php echo $row->id_berita; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -42,19 +41,13 @@
                             <!-- <div class="col-6">
                                 <div class="form-group">
                                     <label for="rangkuman">Rangkuman</label>
-                                    <textarea type="text" id="rangkuman<?= $row->id_berita; ?>" class="form-control" name="rangkuman" placeholder="Rangkuman Berita" required><?= $row->rangkuman; ?></textarea>
-                                    <script type="text/javascript">
-                                        CKEDITOR.replace('rangkuman<?= $row->id_berita; ?>');
-                                    </script>
+                                    <textarea type="text" id="rangkuman<?= $row->id_berita; ?>" class="form-control ckeditor" name="rangkuman" placeholder="Rangkuman Berita" required><?= $row->rangkuman; ?></textarea>
                                 </div>
                             </div> -->
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="isiberita">Isi</label>
-                                    <textarea id="isiberita<?= $row->id_berita; ?>" class="form-control" name="isi_berita" placeholder="Isi Berita" required><?= $row->isi_berita; ?></textarea>
-                                    <script type="text/javascript">
-                                        CKEDITOR.replace('isiberita<?= $row->id_berita; ?>');
-                                    </script>
+                                    <textarea id="isiberita<?= $row->id_berita; ?>" class="form-control ckeditor" name="isi_berita" placeholder="Isi Berita" required><?= $row->isi_berita; ?></textarea>
                                 </div>
                             </div>
                             <div class="col-6">
