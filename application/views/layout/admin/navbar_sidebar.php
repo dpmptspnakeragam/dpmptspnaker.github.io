@@ -237,16 +237,16 @@
                     <li class="nav-item <?= in_array(
                                             $this->uri->segment(2),
                                             [
-                                                'investasi',
                                                 'potensi_investasi',
+                                                'peluang_investasi',
                                                 'tanah_ulayat',
                                             ]
                                         ) ? 'menu-open' : ''; ?>">
                         <a href="" class="nav-link <?= in_array(
                                                         $this->uri->segment(2),
                                                         [
-                                                            'investasi',
                                                             'potensi_investasi',
+                                                            'peluang_investasi',
                                                             'tanah_ulayat',
                                                         ]
                                                     ) ? 'active' : ''; ?>">
@@ -258,15 +258,15 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= base_url('admin/investasi'); ?>" class="nav-link <?= $this->uri->segment(2) == 'investasi' ? 'active' : ''; ?>">
-                                    <i class="<?= $this->uri->segment(2) == 'investasi' ? 'fas' : 'far'; ?> fa-circle nav-icon <?= $this->uri->segment(2) == 'investasi' ? 'text-maroon' : ''; ?>"></i>
-                                    <p>Peluang Investasi</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="<?= base_url('admin/potensi_investasi'); ?>" class="nav-link <?= $this->uri->segment(2) == 'potensi_investasi' ? 'active' : ''; ?>">
                                     <i class="<?= $this->uri->segment(2) == 'potensi_investasi' ? 'fas' : 'far'; ?> fa-circle nav-icon <?= $this->uri->segment(2) == 'potensi_investasi' ? 'text-maroon' : ''; ?>"></i>
                                     <p>Potensi Investasi</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/peluang_investasi'); ?>" class="nav-link <?= $this->uri->segment(2) == 'peluang_investasi' ? 'active' : ''; ?>">
+                                    <i class="<?= $this->uri->segment(2) == 'peluang_investasi' ? 'fas' : 'far'; ?> fa-circle nav-icon <?= $this->uri->segment(2) == 'peluang_investasi' ? 'text-maroon' : ''; ?>"></i>
+                                    <p>Peluang Investasi</p>
                                 </a>
                             </li>
                             <li class="nav-item">

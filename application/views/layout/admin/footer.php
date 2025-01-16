@@ -15,7 +15,7 @@
             <div class="modal-footer">
                 <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <form action="<?= base_url('admin/home/logout'); ?>">
-                    <button type="submit" class="btn btn-outline-primary">Logout</button>
+                    <button type="submit" class="btn btn-outline-danger">Logout</button>
                 </form>
             </div>
         </div>

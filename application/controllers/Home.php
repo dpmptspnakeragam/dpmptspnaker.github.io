@@ -13,7 +13,7 @@ class Home extends CI_Controller
 		$this->API = "https://sicantikws.layanan.go.id/api/TemplateData/keluaran/24218.json";
 
 		$this->load->model('Model_informasi');
-		$this->load->model('Model_investasi');
+		$this->load->model('Model_peluang_investasi');
 		$this->load->model('Model_grafik');
 		$this->load->model('Model_runningteks');
 		$this->load->model('Model_banner');
@@ -91,7 +91,7 @@ class Home extends CI_Controller
 			'grafik_investasi' 		=> $this->Model_grafik_investasi->tampil_data(),
 			'grafik_skm'			=> $this->Model_grafik_skm->tampil_data(),
 			'berita' 				=> $this->Model_informasi->informasi(),
-			'investasi' 			=> $this->Model_investasi->tampil_data(),
+			'investasi' 			=> $this->Model_peluang_investasi->tampil_data(),
 			'potensi_investasi' 	=> $this->Model_potensi_investasi->tampil_data(),
 			'kabid' 				=> $this->Model_pegawai->tampil_kabid(),
 			'pegawai' 				=> $this->Model_pegawai->tampil_pegawai(),

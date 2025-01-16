@@ -1,6 +1,6 @@
 <?php
 
-class Model_investasi extends CI_model
+class Model_peluang_investasi extends CI_model
 {
     public function tampil_data()
     {
@@ -28,19 +28,19 @@ class Model_investasi extends CI_model
 
     public function input($data)
     {
-        $this->db->insert('peluang_investasi', $data);
+        return $this->db->insert('peluang_investasi', $data);
     }
 
     public function update($data, $id)
     {
         $this->db->where('id_investasi', $id);
-        $this->db->update('peluang_investasi', $data);
+        return  $this->db->update('peluang_investasi', $data);
     }
 
     public function delete($id_investasi)
     {
         $this->db->where('id_investasi', $id_investasi);
-        $this->db->delete('peluang_investasi');
+        return $this->db->delete('peluang_investasi');
     }
 
     public function tampil_investasi_pagination($limit, $start)
