@@ -78,6 +78,25 @@
 
         DataTable(["#TabelData1", "#TabelData2", "#TabelData3", "#TabelData4"]);
     });
+
+    $(function() {
+        function DataTable(selectors) {
+            selectors.forEach(function(selector) {
+                $(selector).DataTable({
+                    "paging": true,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                }).buttons().container().appendTo($(selector + '_wrapper .col-md-6:eq(0)'));
+            });
+        }
+
+        DataTable(["#TabelDataPrint"]);
+    });
 </script>
 
 <!-- Select 2 -->
