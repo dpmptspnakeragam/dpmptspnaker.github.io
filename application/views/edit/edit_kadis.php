@@ -1,5 +1,5 @@
 <?php foreach ($kadis->result() as $row) : ?>
-    <div class="modal fade" id="EditKadis<?php echo $row->id_kadis; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="EditKadis<?= $row->id_kadis; ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

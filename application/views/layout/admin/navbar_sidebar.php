@@ -188,7 +188,6 @@
                                                 'perizinan',
                                                 'nonperizinan',
                                                 'perizinan_risiko',
-                                                'grafik_izin',
                                             ]
                                         ) ? 'menu-open' : ''; ?>">
                         <a href="" class="nav-link <?= in_array(
@@ -198,7 +197,6 @@
                                                             'perizinan',
                                                             'nonperizinan',
                                                             'perizinan_risiko',
-                                                            'grafik_izin',
                                                         ]
                                                     ) ? 'active' : ''; ?>">
                             <i class="nav-icon fas fa-book-open"></i>
@@ -230,12 +228,6 @@
                                 <a href="<?= base_url('admin/perizinan_risiko'); ?>" class="nav-link <?= $this->uri->segment(2) == 'perizinan_risiko' ? 'active' : ''; ?>">
                                     <i class="<?= $this->uri->segment(2) == 'perizinan_risiko' ? 'fas' : 'far'; ?> fa-circle nav-icon <?= $this->uri->segment(2) == 'perizinan_risiko' ? 'text-maroon' : ''; ?>"></i>
                                     <p>Perizinan Berbasis Resiko</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="<?= base_url('admin/grafik_izin'); ?>" class="nav-link <?= $this->uri->segment(2) == 'grafik_izin' ? 'active' : ''; ?>">
-                                    <i class="<?= $this->uri->segment(2) == 'grafik_izin' ? 'fas' : 'far'; ?> fa-circle nav-icon <?= $this->uri->segment(2) == 'grafik_izin' ? 'text-maroon' : ''; ?>"></i>
-                                    <p>Grafik Izin Terbit</p>
                                 </a>
                             </li>
                         </ul>
