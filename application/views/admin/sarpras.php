@@ -39,7 +39,7 @@
                                         <td class="text-center align-middle"><?= $row->teks ?></td>
                                         <td class="text-center align-middle">
                                             <a href="<?= base_url('assets/imgupload/') . $row->gambar; ?>" target="_blank">
-                                                <img src="<?= base_url('assets/imgupload/') . $row->gambar; ?>" class="elevation-2 img-size-64 img-thumbnail">
+                                                <img src="<?= base_url('assets/imgupload/') . $row->gambar; ?>" class="elevation-2 img-thumbnail" style="max-width: 300px;">
                                             </a>
                                         </td>
                                         <td class="text-center align-middle">

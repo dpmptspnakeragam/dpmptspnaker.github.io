@@ -40,7 +40,7 @@
                                         <td class="text-center align-middle"><?= $row->nama; ?></td>
                                         <td class="text-center align-middle"><?= $row->periode; ?></td>
                                         <td class="text-center align-middle">
-                                            <img src="<?= base_url('assets/imgupload/') . $row->foto; ?>" class="elevation-2 img-size-64 img-thumbnail">
+                                            <img src="<?= base_url('assets/imgupload/') . $row->foto; ?>" class="elevation-2 img-thumbnail" style="max-width: 300px;">
                                         </td>
                                         <td class="text-center align-middle">
                                             <button type="button" data-toggle="modal" data-target="#EditKadis<?= $row->id_kadis; ?>" class="btn btn-outline-warning mt-1 mb-1">

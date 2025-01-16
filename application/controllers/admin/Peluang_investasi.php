@@ -35,7 +35,7 @@ class Peluang_investasi extends CI_controller
 
         if ($gambar = '') {
         } else {
-            $nmfile = "investasi-" . time();
+            $nmfile = "peluang-investasi-" . time();
             $config['upload_path'] = './assets/imgupload/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['file_name'] = $nmfile;
@@ -76,7 +76,7 @@ class Peluang_investasi extends CI_controller
 
         // Proses penggantian gambar jika ada file baru
         if (!empty($_FILES['gambar']['name'])) {
-            $nmfile = "investasi-" . time();
+            $nmfile = "peluang-investasi-" . time();
             $config['upload_path'] = './assets/imgupload/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
             $config['file_name'] = $nmfile;

@@ -41,13 +41,13 @@
                                     <tr>
                                         <td class="text-center align-middle"><?= $count++; ?></td>
                                         <td class="text-center align-middle"><?= $row->kategori; ?></td>
-                                        <td class="text-center align-middle"><?= $row->judul_berita; ?></td>
+                                        <td class="align-middle"><?= $row->judul_berita; ?></td>
                                         <!-- <td class="text-center align-middle"><?= $row->rangkuman; ?></td> -->
-                                        <td class="text-center align-middle"><?= $row->isi_berita; ?></td>
+                                        <td class="align-middle"><?= $row->isi_berita; ?></td>
                                         <td class="text-center align-middle"><?= date('d-m-Y', strtotime($row->tgl_berita)); ?></td>
                                         <td class="text-center align-middle">
                                             <a href="<?= base_url('assets/imgupload/') . $row->gambar; ?>" target="_blank">
-                                                <img src="<?= base_url('assets/imgupload/') . $row->gambar; ?>" class="elevation-2 img-size-64 img-thumbnail">
+                                                <img src="<?= base_url('assets/imgupload/') . $row->gambar; ?>" class="elevation-2 img-thumbnail" style="max-width: 300px;">
                                             </a>
                                         </td>
                                         <td class="text-center align-middle">
