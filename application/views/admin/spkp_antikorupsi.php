@@ -63,7 +63,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
 
-                        <table id="TabelData1" class="table table-bordered table-sm table-hover">
+                        <table id="TabelDataPrint" class="table table-bordered table-sm table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center align-middle" rowspan="2">No.</th>
