@@ -27,13 +27,13 @@ class Model_pengaduan extends CI_model
     public function update($data, $id)
     {
         $this->db->where('id_pengaduan', $id);
-        $this->db->update('pengaduan', $data);
+        return $this->db->update('pengaduan', $data);
     }
 
     public function delete($id_izin)
     {
         $this->db->where('id_pengaduan', $id_izin);
-        $this->db->delete('pengaduan');
+        return $this->db->delete('pengaduan');
     }
 
     public function getPengaduan($no_pengaduan)
