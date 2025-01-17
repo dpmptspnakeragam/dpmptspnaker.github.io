@@ -7,6 +7,7 @@ class Model_pengaduan extends CI_model
     {
         $this->db->select('*');
         $this->db->from('pengaduan');
+        $this->db->order_by('waktu_kejadian', 'DESC');
         $query = $this->db->get();
         return $query;
     }
