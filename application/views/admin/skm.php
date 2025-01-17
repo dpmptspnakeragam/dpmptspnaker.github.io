@@ -69,10 +69,10 @@
                                     <th class="text-center align-middle" rowspan="2">No.</th>
                                     <th class="text-center align-middle" rowspan="2">Nama</th>
                                     <th class="text-center align-middle" rowspan="2">Telepon</th>
-                                    <!-- <th class="text-center align-middle" rowspan="2">Jenis Kelamin</th> -->
-                                    <!-- <th class="text-center align-middle" rowspan="2">Umur</th> -->
-                                    <!-- <th class="text-center align-middle" rowspan="2">Pendidikan</th> -->
-                                    <!-- <th class="text-center align-middle" rowspan="2">Pekerjaan</th> -->
+                                    <th class="text-center align-middle" rowspan="2">Jenis Kelamin</th>
+                                    <th class="text-center align-middle" rowspan="2">Umur</th>
+                                    <th class="text-center align-middle" rowspan="2">Pendidikan</th>
+                                    <th class="text-center align-middle" rowspan="2">Pekerjaan</th>
                                     <th class="text-center align-middle" rowspan="2">Layanan</th>
                                     <th class="text-center align-middle" rowspan="2">Tanggal</th>
                                     <th id="toggle-column" class="text-center align-middle" colspan="9" style="cursor: pointer;">Pendapat Responden</th>
@@ -114,15 +114,15 @@
                                         <td class="text-center align-middle"><?= $count++; ?></td>
                                         <td class="text-center align-middle"><?= !empty($row['nama']) ? $row['nama'] : '-'; ?></td>
                                         <td class="text-center align-middle"><?= $row['no_hp']; ?></td>
-                                        <!-- <td class="text-center align-middle">
+                                        <td class="text-center align-middle">
                                             <?php if ($row['jk'] == 1) : ?>
                                                 Laki-Laki
                                             <?php elseif ($row['jk'] == 2) : ?>
                                                 Perempuan
                                             <?php endif; ?>
-                                        </td> -->
-                                        <!-- <td class="text-center align-middle"><?= $row['umur']; ?></td> -->
-                                        <!-- <td class="text-center align-middle">
+                                        </td>
+                                        <td class="text-center align-middle"><?= $row['umur']; ?></td>
+                                        <td class="text-center align-middle">
                                             <?php if ($row['pendidikan'] == 1) : ?>
                                                 SD
                                             <?php elseif ($row['pendidikan'] == 2) : ?>
@@ -136,8 +136,8 @@
                                             <?php elseif ($row['pendidikan'] == 6) : ?>
                                                 S2
                                             <?php endif; ?>
-                                        </td> -->
-                                        <!-- <td class="text-center align-middle">
+                                        </td>
+                                        <td class="text-center align-middle">
                                             <?php if ($row['pekerjaan'] == 1) : ?>
                                                 PNS
                                             <?php elseif ($row['pekerjaan'] == 2) : ?>
@@ -151,7 +151,7 @@
                                             <?php elseif ($row['pekerjaan'] == 6) : ?>
                                                 Lainnya
                                             <?php endif; ?>
-                                        </td> -->
+                                        </td>
                                         <td class="text-center align-middle"><?= $row['layanan']; ?></td>
                                         <td class="text-center align-middle"><?= date('d-m-Y / H:i:s', strtotime($row['date'])); ?></td>
                                         <td class="text-center align-middle"><?= $row['u1']; ?></td>
@@ -165,9 +165,9 @@
                                         <td class="text-center align-middle"><?= $row['u9']; ?></td>
 
                                         <td class="text-center align-middle">
-                                            <button type="button" data-toggle="modal" data-target="#detailSKM<?= $row['id_skm']; ?>" class="btn btn-outline-primary mt-1 mb-1">
+                                            <!-- <button type="button" data-toggle="modal" data-target="#detailSKM<?= $row['id_skm']; ?>" class="btn btn-outline-primary mt-1 mb-1">
                                                 <i class="fas fa-search"></i>
-                                            </button>
+                                            </button> -->
                                             <button type="button" data-toggle="modal" data-target="#deleteSKM<?= $row['id_skm']; ?>" class="btn btn-outline-danger mt-1 mb-1">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
