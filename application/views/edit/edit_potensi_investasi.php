@@ -16,16 +16,16 @@
                         </div>
                         <div class="form-group">
                             <label for="pelatihan">Potensi Investasi</label>
-                            <select class="form-control" name="nama_investasi" required>
+                            <select class="form-control select2" name="nama_investasi" required>
                                 <option disabled>Pilih Potensi Investasi</option>
-                                <option value="Pertanian" <?= $row->nama_investasi == 'Pertanian' ? 'selected' : ''; ?>>1. Pertanian</option>
-                                <option value="Perkebunan" <?= $row->nama_investasi == 'Perkebunan' ? 'selected' : ''; ?>>2. Perkebunan</option>
-                                <option value="Peternakan" <?= $row->nama_investasi == 'Peternakan' ? 'selected' : ''; ?>>3. Peternakan</option>
-                                <option value="Perikanan" <?= $row->nama_investasi == 'Perikanan' ? 'selected' : ''; ?>>4. Perikanan</option>
-                                <option value="Pariwisata" <?= $row->nama_investasi == 'Pariwisata' ? 'selected' : ''; ?>>5. Pariwisata</option>
-                                <option value="UMKM" <?= $row->nama_investasi == 'UMKM' ? 'selected' : ''; ?>>6. UMKM</option>
-                                <option value="Buah-Buahan" <?= $row->nama_investasi == 'Buah-Buahan' ? 'selected' : ''; ?>>7. Buah-Buahan</option>
-                                <option value="Holtikultura" <?= $row->nama_investasi == 'Holtikultura' ? 'selected' : ''; ?>>8. Holtikultura</option>
+                                <option value="Pertanian" <?= $row->nama_investasi == 'Pertanian' ? 'selected' : ''; ?>>Pertanian</option>
+                                <option value="Perkebunan" <?= $row->nama_investasi == 'Perkebunan' ? 'selected' : ''; ?>>Perkebunan</option>
+                                <option value="Peternakan" <?= $row->nama_investasi == 'Peternakan' ? 'selected' : ''; ?>>Peternakan</option>
+                                <option value="Perikanan" <?= $row->nama_investasi == 'Perikanan' ? 'selected' : ''; ?>>Perikanan</option>
+                                <option value="Pariwisata" <?= $row->nama_investasi == 'Pariwisata' ? 'selected' : ''; ?>>Pariwisata</option>
+                                <option value="UMKM" <?= $row->nama_investasi == 'UMKM' ? 'selected' : ''; ?>>UMKM</option>
+                                <option value="Buah-Buahan" <?= $row->nama_investasi == 'Buah-Buahan' ? 'selected' : ''; ?>>Buah-Buahan</option>
+                                <option value="Holtikultura" <?= $row->nama_investasi == 'Holtikultura' ? 'selected' : ''; ?>>Holtikultura</option>
                             </select>
                         </div>
                         <div class="form-group">

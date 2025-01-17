@@ -21,16 +21,16 @@
                     <?php } ?>
                     <div class="form-group">
                         <label>Peluang Investasi</label>
-                        <select class="form-control" name="nama_investasi" required>
+                        <select class="form-control select2" name="nama_investasi" required>
                             <option value="" disabled selected>Pilih Peluang Investasi</option>
-                            <option value="Pertanian">1. Pertanian</option>
-                            <option value="Perkebunan">2. Perkebunan</option>
-                            <option value="Peternakan">3. Peternakan</option>
-                            <option value="Perikanan">4. Perikanan</option>
-                            <option value="Pariwisata">5. Pariwisata</option>
-                            <option value="UMKM">6. UMKM</option>
-                            <option value="Buah-Buahan">7. Buah-Buahan</option>
-                            <option value="Holtikultura">8. Holtikultura</option>
+                            <option value="Pertanian">Pertanian</option>
+                            <option value="Perkebunan">Perkebunan</option>
+                            <option value="Peternakan">Peternakan</option>
+                            <option value="Perikanan">Perikanan</option>
+                            <option value="Pariwisata">Pariwisata</option>
+                            <option value="UMKM">UMKM</option>
+                            <option value="Buah-Buahan">Buah-Buahan</option>
+                            <option value="Holtikultura">Holtikultura</option>
                         </select>
                     </div>
                     <div class="form-group">

@@ -90,7 +90,7 @@
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                    "buttons": ["excel", "pdf", "print", "colvis"]
                 }).buttons().container().appendTo($(selector + '_wrapper .col-md-6:eq(0)'));
             });
         }
