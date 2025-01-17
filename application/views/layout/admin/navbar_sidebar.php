@@ -353,7 +353,7 @@
 
                     <!-- Running Teks -->
                     <li class="nav-item">
-                        <a href="<?= base_url('admin/runningteks'); ?>" class="nav-link <?php if (in_array($this->uri->segment(2), ['runningteks'])) echo "active"; ?>">
+                        <a href="<?= base_url('admin/running_teks'); ?>" class="nav-link <?php if (in_array($this->uri->segment(2), ['running_teks'])) echo "active"; ?>">
                             <i class="nav-icon fas fa-tools"></i>
                             <p>Running Teks</p>
                         </a>

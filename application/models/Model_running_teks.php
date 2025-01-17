@@ -1,6 +1,6 @@
 <?php
 
-class Model_runningteks extends CI_model
+class Model_running_teks extends CI_model
 {
     public function tampil_data()
     {
@@ -20,18 +20,18 @@ class Model_runningteks extends CI_model
 
     public function input($data)
     {
-        $this->db->insert('runningteks', $data);
+        return $this->db->insert('runningteks', $data);
     }
 
     public function update($data, $id)
     {
         $this->db->where('id_teks', $id);
-        $this->db->update('runningteks', $data);
+        return $this->db->update('runningteks', $data);
     }
 
     public function delete($id_teks)
     {
         $this->db->where('id_teks', $id_teks);
-        $this->db->delete('runningteks');
+        return $this->db->delete('runningteks');
     }
 }

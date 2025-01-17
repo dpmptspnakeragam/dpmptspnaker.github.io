@@ -15,7 +15,7 @@ class Home extends CI_Controller
 		$this->load->model('Model_informasi');
 		$this->load->model('Model_peluang_investasi');
 		$this->load->model('Model_grafik');
-		$this->load->model('Model_runningteks');
+		$this->load->model('Model_running_teks');
 		$this->load->model('Model_banner');
 		$this->load->model('Model_grafik_investasi');
 		$this->load->model('Model_grafik_skm');
@@ -86,7 +86,7 @@ class Home extends CI_Controller
 
 			'periode_grafik_oss'	=> $this->Model_grafik_nib->tampil_data_periode(),
 			'banner'				=> $this->Model_banner->tampil_data(),
-			'teks' 					=> $this->Model_runningteks->tampil_data(),
+			'teks' 					=> $this->Model_running_teks->tampil_data(),
 			'grafik' 				=> $this->Model_grafik->tampil_data(),
 			'grafik_investasi' 		=> $this->Model_grafik_investasi->tampil_data(),
 			'grafik_skm'			=> $this->Model_grafik_skm->tampil_data(),

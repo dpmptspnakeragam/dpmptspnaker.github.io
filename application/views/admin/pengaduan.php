@@ -21,7 +21,7 @@
                             </button>
                         </div>
 
-                        <table id="TabelData1" class="table table-bordered table-sm table-hover">
+                        <table id="TabelDataPrint" class="table table-bordered table-sm table-hover">
                             <thead>
                                 <tr>
                                     <th class="text-center align-middle">No.</th>
