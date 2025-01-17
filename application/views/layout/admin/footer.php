@@ -102,9 +102,13 @@
 <!-- Select 2 -->
 <script>
     $(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-    })
+        // Inisialisasi Select2 secara global untuk semua modal
+        $('.modal').on('shown.bs.modal', function() {
+            $(this).find('.select2').select2({
+                dropdownParent: $(this) // Set dropdownParent ke modal yang aktif
+            });
+        });
+    });
 </script>
 
 <!-- Sweetalert 2 -->

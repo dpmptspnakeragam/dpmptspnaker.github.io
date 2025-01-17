@@ -21,7 +21,7 @@
                     <?php } ?>
                     <div class="form-group">
                         <label>Peluang Investasi</label>
-                        <select class="form-control select2" name="nama_investasi" required>
+                        <select class="form-control" name="nama_investasi" required>
                             <option value="" disabled selected>Pilih Peluang Investasi</option>
                             <option value="Pertanian">Pertanian</option>
                             <option value="Perkebunan">Perkebunan</option>

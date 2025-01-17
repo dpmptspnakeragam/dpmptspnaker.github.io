@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="pelatihan">Potensi Investasi</label>
-                            <select class="form-control select2" name="nama_investasi" required>
+                            <select class="form-control" name="nama_investasi" required>
                                 <option disabled>Pilih Potensi Investasi</option>
                                 <option value="Pertanian" <?= $row->nama_investasi == 'Pertanian' ? 'selected' : ''; ?>>Pertanian</option>
                                 <option value="Perkebunan" <?= $row->nama_investasi == 'Perkebunan' ? 'selected' : ''; ?>>Perkebunan</option>
