@@ -1535,7 +1535,7 @@
 			<div class="modal-footer">
 				<input type="file" id="image-input" class="form-control border-0" accept="image/*">
 				<textarea id="message-input" class="form-control" placeholder="Tulis balasan..."></textarea>
-				<button class="btn btn-block btn-outline-maroon m-2" onclick="sendMessage()">Kirim</button>
+				<button class="btn btn-block btn-outline-maroon m-2" id="btn-kirim-pesan" onclick="sendMessage()">Kirim</button>
 			</div>
 		</div>
 	</div>
@@ -1609,7 +1609,7 @@
 
 		const message = document.getElementById('message-input').value.trim();
 		const imageFile = document.getElementById('image-input').files[0];
-		const sendButton = document.querySelector('.btn');
+		const sendButton = document.getElementById('btn-kirim-pesan');
 
 		if (message === '' && !imageFile) {
 			alert('Silakan masukkan pesan atau pilih gambar yang akan dikirim.');
@@ -1678,7 +1678,7 @@
         <img src="<?= base_url('assets/img/admin-avatar.png'); ?>" alt="Admin Avatar" class="chat-avatar">
         <div>
             <div>
-                (Pesan Otomatis) Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).
+                Assalamualaikum, silahkan ketik pertanyaan dan nomor WA untuk kami hubungi (jika sedang offline).
             </div>
             <small class="message-date admin-date">
                 ${new Date(currentTime).toLocaleString('id-ID', {
