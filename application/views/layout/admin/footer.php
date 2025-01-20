@@ -114,8 +114,9 @@
 <!-- Sweetalert 2 -->
 <script>
     $(document).ready(function() {
-        <?php if ($this->session->flashdata('success')) { ?>
-            const SuccessToast = Swal.mixin({
+        // Fungsi untuk menampilkan SweetAlert Toast
+        function showToast(icon, message) {
+            const Toast = Swal.mixin({
                 toast: true,
                 position: "center",
                 showConfirmButton: false,
@@ -126,46 +127,23 @@
                     toast.onmouseleave = Swal.resumeTimer;
                 }
             });
-            SuccessToast.fire({
-                icon: "success",
-                title: "<?= $this->session->flashdata('success'); ?>"
+            Toast.fire({
+                icon: icon,
+                title: message
             });
+        }
+
+        // Cek flashdata dan tampilkan notifikasi sesuai jenisnya
+        <?php if ($this->session->flashdata('success')) { ?>
+            showToast("success", "<?= $this->session->flashdata('success'); ?>");
         <?php } ?>
 
         <?php if ($this->session->flashdata('error')) { ?>
-            const ErrorToast = Swal.mixin({
-                toast: true,
-                position: "center",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            ErrorToast.fire({
-                icon: "error",
-                title: "<?= $this->session->flashdata('error'); ?>"
-            });
+            showToast("error", "<?= $this->session->flashdata('error'); ?>");
         <?php } ?>
 
         <?php if ($this->session->flashdata('warning')) { ?>
-            const WarningToast = Swal.mixin({
-                toast: true,
-                position: "center",
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            WarningToast.fire({
-                icon: "warning",
-                title: "<?= $this->session->flashdata('warning'); ?>"
-            });
+            showToast("warning", "<?= $this->session->flashdata('warning'); ?>");
         <?php } ?>
     });
 </script>

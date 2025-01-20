@@ -33,6 +33,8 @@
     <!-- jQuery -->
     <script src="<?= base_url('assets/'); ?>plugins/jquery/jquery.min.js"></script>
 
+    <link href="<?= base_url(); ?>assets/css/pesan-admin.css" media rel="stylesheet">
+
 </head>
 
 <body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed sidebar-closed text-sm">

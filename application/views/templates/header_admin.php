@@ -10,6 +10,7 @@
     <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/dashboard.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/style_admin.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/pesan-admin.css" media rel="stylesheet">
 
     <link href="<?= base_url(); ?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/css/navbar.css" rel="stylesheet">

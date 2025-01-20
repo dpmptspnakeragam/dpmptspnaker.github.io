@@ -1,89 +1,113 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <div class="container">
-        <!-- Breadcrumb Navigation -->
-        <div class="row">
-            <div class="col-md-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Pesan</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
 
         <div class="row">
-            <div class="col-lg-12">
-                <h3 class="text-center">Pesan</h3>
-                <hr>
+            <div class="col-12">
+                <!-- <hr>
+                <h3 class="text-center">Kepala Dinas <br> Dari Masa Ke Masa</h3>
+                <hr> -->
+                <div class="card card-outline card-maroon">
+                    <div class="card-header">
+                        <h3 class="card-title">Tabel <?= $title; ?></h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
 
-                <div class="table-responsive">
-                    <table class="table table-striped table-borderless table-hover" id="dataTables-example">
-                        <thead class="bg-dark text-light">
-                            <tr>
-                                <th class="text-center align-middle">No</th>
-                                <th class="text-center align-middle">Last Chat</th>
-                                <th class="text-center align-middle">IP Address</th>
-                                <th class="text-center align-middle">Device ID</th>
-                                <th class="text-center align-middle">Lokasi</th>
-                                <th class="text-center align-middle">Status</th>
-                                <th class="text-center align-middle">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body">
-                            <?php $no = 1;
-                            foreach ($messagesByIp as $messages): ?>
+                        <table id="TabelData1" class="table table-bordered table-sm table-hover">
+                            <thead>
                                 <tr>
-                                    <td class="text-center align-middle"><?= $no++ ?></td>
-                                    <td class="text-center align-middle"><?= date('d M Y H:i:s', strtotime($messages['last_chat'])) ?></td>
-                                    <td class="text-center align-middle"><?= $messages['ip_address'] ?></td>
-                                    <td class="text-center align-middle"><?= $messages['device_id'] ?></td>
-                                    <td class="text-center align-middle"><?= $messages['location'] ?? 'Lokasi Tidak Diketahui' ?></td>
-                                    <td class="text-center align-middle">
-                                        <?php if ($messages['unread_count'] > 0): ?>
-                                            <span class="text-danger">Belum Dibaca (<?= $messages['unread_count'] ?>)</span>
-                                        <?php else: ?>
-                                            <span class="text-primary">Dibaca</span>
-                                        <?php endif; ?>
-                                    </td>
-                                    <td class="text-center align-middle">
-                                        <button class="btn btn-outline-primary btn-sm mt-1 mb-1" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $messages['ip_address'] ?>', '<?= $messages['device_id'] ?>')">
-                                            <i class="fas fa-search"></i> Lihat Pesan
-                                        </button>
-                                        <button class="btn btn-outline-danger btn-sm mt-1 mb-1" onclick="deleteMessagesAndImages('<?= $messages['ip_address'] ?>', '<?= $messages['device_id'] ?>')">
-                                            <i class="fas fa-trash"></i> Hapus
-                                        </button>
-                                        <!-- <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button> -->
-                                    </td>
+                                    <th class="text-center align-middle">No.</th>
+                                    <th class="text-center align-middle">Last Chat</th>
+                                    <th class="text-center align-middle">IP Address</th>
+                                    <th class="text-center align-middle">Device ID</th>
+                                    <th class="text-center align-middle">Lokasi</th>
+                                    <th class="text-center align-middle">Status</th>
+                                    <th class="text-center align-middle">Aksi</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
 
-                <div class="modal fade" id="chatModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="chatModalLabel">Chat with User</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeChat()">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                            <tbody>
+                                <?php $count = 1; ?>
+                                <?php foreach ($messagesByIp as $messages): ?>
+                                    <tr>
+                                        <td class="text-center align-middle"><?= $count++ ?></td>
+                                        <td class="text-center align-middle"><?= date('d M Y H:i:s', strtotime($messages['last_chat'])) ?></td>
+                                        <td class="text-center align-middle"><?= $messages['ip_address'] ?></td>
+                                        <td class="text-center align-middle"><?= $messages['device_id'] ?></td>
+                                        <td class="text-center align-middle"><?= $messages['location'] ?? 'Lokasi Tidak Diketahui' ?></td>
+                                        <td class="text-center align-middle">
+                                            <?php if ($messages['unread_count'] > 0): ?>
+                                                <span class="text-danger">Belum Dibaca (<?= $messages['unread_count'] ?>)</span>
+                                            <?php else: ?>
+                                                <span class="text-primary">Dibaca</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <button class="btn btn-outline-primary btn-sm mt-1 mb-1" data-toggle="modal" data-target="#chatModal" onclick="openChat('<?= $messages['ip_address'] ?>', '<?= $messages['device_id'] ?>')">
+                                                <i class="fas fa-search"></i> Lihat Pesan
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-sm mt-1 mb-1" data-toggle="modal" data-target="#modalHapus" data-ip="<?= $messages['ip_address'] ?>" data-device="<?= $messages['device_id'] ?>">
+                                                <i class="fas fa-trash"></i> Hapus
+                                            </button>
+                                            <!-- <button class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead('<?= $ip ?>')"><i class="fas fa-check-double"></i> Baca Semua</button> -->
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+
+                        <div class="modal fade" id="chatModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="chatModalLabel">Chat with User</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeChat()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
+                                        <!-- Pesan akan dimuat di sini -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <textarea id="message-input" placeholder="Tulis balasan..." class="form-control"></textarea>
+                                        <button type="button" class="btn btn-block btn-outline-primary" onclick="sendMessage()">Kirim</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body" id="chat-body" style="overflow-y: auto; max-height: 350px;">
-                                <!-- Pesan akan dimuat di sini -->
-                            </div>
-                            <div class="modal-footer">
-                                <textarea id="message-input" placeholder="Tulis balasan..." class="form-control"></textarea>
-                                <button type="button" class="btn btn-block btn-outline-primary" onclick="sendMessage()">Kirim</button>
+                        </div>
+
+                        <div class="modal fade" id="modalHapus" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="hapusModalLabel">Konfirmasi Hapus</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah Anda yakin ingin menghapus pesan dan gambar untuk perangkat ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="button" class="btn btn-outline-danger" id="confirmHapus">Hapus</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- /.card-body -->
                 </div>
+                <!-- /.card -->
             </div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
     </div>
-</main>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 
 <script>
     // Inisialisasi variabel global
@@ -304,35 +328,92 @@
     }
 
     // Fungsi untuk menghapus pesan dan gambar berdasarkan IP
-    function deleteMessagesAndImages(ip, device_id) {
-        if (confirm("Apakah Anda yakin ingin menghapus pesan dan gambar untuk device ini?")) {
-            $.ajax({
-                url: '<?= site_url("admin/pesan/delete_messages_and_images_by_ip_and_device") ?>',
-                type: 'POST',
-                data: {
-                    ip: ip,
-                    device_id: device_id
-                },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.status === 'success') {
-                        alert('Pesan dan gambar berhasil dihapus.');
-                        location.reload();
-                    } else {
-                        alert('Gagal menghapus pesan dan gambar.');
-                    }
-                },
-                error: function() {
-                    alert('Terjadi kesalahan saat menghapus pesan dan gambar.');
+    // Menangkap data dari tombol dan memasukkannya ke dalam modal
+    $('#modalHapus').on('show.bs.modal', function(event) {
+        const button = $(event.relatedTarget); // Tombol yang men-trigger modal
+        const ip = button.data('ip'); // Ambil data IP
+        const device_id = button.data('device'); // Ambil data Device ID
+
+        // Simpan data ke tombol konfirmasi
+        const confirmButton = $(this).find('#confirmHapus');
+        confirmButton.data('ip', ip);
+        confirmButton.data('device', device_id);
+    });
+
+    // Eksekusi penghapusan saat tombol "Hapus" di dalam modal diklik
+    $('#confirmHapus').on('click', function() {
+        const ip = $(this).data('ip');
+        const device_id = $(this).data('device');
+
+        // Tutup modal setelah tombol Hapus diklik
+        $('#modalHapus').modal('hide');
+
+        // Lakukan penghapusan dengan AJAX
+        $.ajax({
+            url: '<?= site_url("admin/pesan/delete_messages_and_images_by_ip_and_device") ?>',
+            type: 'POST',
+            data: {
+                ip: ip,
+                device_id: device_id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // Tampilkan notifikasi SweetAlert untuk pesan berhasil
+                    Swal.fire({
+                        toast: true,
+                        icon: 'success',
+                        title: 'Pesan dan gambar berhasil dihapus.',
+                        position: 'center',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer);
+                            toast.addEventListener('mouseleave', Swal.resumeTimer);
+                        }
+                    }).then(() => {
+                        location.reload(); // Refresh halaman setelah notifikasi
+                    });
+                } else {
+                    // Tampilkan notifikasi SweetAlert untuk pesan gagal
+                    Swal.fire({
+                        toast: true,
+                        icon: 'error',
+                        title: 'Pesan dan gambar gagal dihapus.',
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer);
+                            toast.addEventListener('mouseleave', Swal.resumeTimer);
+                        }
+                    });
                 }
-            });
-        }
-    }
+            },
+            error: function() {
+                // Tampilkan notifikasi SweetAlert untuk pesan error
+                Swal.fire({
+                    toast: true,
+                    icon: 'error',
+                    title: 'Terjadi kesalahan saat menghapus pesan dan gambar.',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            }
+        });
+    });
 
     // Mulai polling pesan baru setiap 5 detik
     setInterval(checkNewMessages, 5000);
 </script>
-
 
 <!-- <script>
     function markAllAsRead(ip) {

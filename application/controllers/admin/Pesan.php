@@ -4,31 +4,26 @@ class Pesan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // Ensure the user is logged in
         if ($this->session->userdata('username') == "") {
             redirect('login');
         }
-        // Load the Model_pesan to interact with the database
         $this->load->model('Model_pesan');
     }
 
-    // Display the admin chat page
     public function index()
     {
-        // Cek jika ada device_id yang diterima dari form atau URL
-        $device_id = $this->input->get('device_id'); // Ambil dari URL query string
+        $device_id = $this->input->get('device_id');
 
-        // Dapatkan pesan yang dikelompokkan berdasarkan IP dan device_id
         $messagesByIp = $this->Model_pesan->get_messages_grouped_by_ip_and_device($device_id);
 
-        // Pass data ke view untuk ditampilkan
         $data['messagesByIp'] = $messagesByIp;
+        $data['home'] = 'Home';
+        $data['title'] = 'Pesan';
 
-        // Load views
-        $this->load->view('templates/header_admin');
-        $this->load->view('templates/navbar_admin');
-        $this->load->view('admin/pesan', $data);
-        $this->load->view('templates/footer_admin');
+        $this->load->view('layout/admin/header', $data, FALSE);
+        $this->load->view('layout/admin/navbar_sidebar', $data, FALSE);
+        $this->load->view('admin/pesan', $data, FALSE);
+        $this->load->view('layout/admin/footer');
     }
 
     public function load_messages()
@@ -48,7 +43,7 @@ class Pesan extends CI_Controller
         $messages = $this->Model_pesan->get_messages_by_ip_and_device($ipAddress, $deviceId, $lastMessageId);
 
         foreach ($messages as &$message) {
-            $message['is_admin'] = ($message['user_type'] === 'admin'); // Tandai pesan admin
+            $message['is_admin'] = ($message['user_type'] === 'admin');
         }
 
         echo json_encode(['status' => 'success', 'messages' => $messages]);
@@ -79,25 +74,23 @@ class Pesan extends CI_Controller
 
     public function load_table_data()
     {
-        $timestamp = $this->input->get('timestamp'); // Mendapatkan timestamp terakhir
+        $timestamp = $this->input->get('timestamp');
         $this->load->model('Model_pesan');
 
-        // Mengambil pesan baru berdasarkan timestamp
         $newMessages = $this->Model_pesan->get_new_messages($timestamp);
 
         echo json_encode([
             'newMessages' => !empty($newMessages),
             'messages' => $newMessages,
-            'latestTimestamp' => time() // Mengembalikan timestamp terbaru
+            'latestTimestamp' => time()
         ]);
     }
 
     public function delete_messages_and_images_by_ip_and_device()
     {
         $ip = $this->input->post('ip');
-        $device_id = $this->input->post('device_id');  // Mengambil device_id dari request POST
+        $device_id = $this->input->post('device_id');
 
-        // Panggil model untuk menghapus pesan berdasarkan IP dan device_id
         if ($this->Model_pesan->deleteMessagesAndImagesByIpAndDevice($ip, $device_id)) {
             echo json_encode(['status' => 'success']);
         } else {

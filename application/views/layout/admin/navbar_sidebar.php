@@ -413,12 +413,12 @@
                     </li>
 
                     <!-- Pesan -->
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a href="<?= base_url('admin/pesan'); ?>" class="nav-link <?php if (in_array($this->uri->segment(2), ['pesan'])) echo "active"; ?>">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>Pesan</p>
                         </a>
-                    </li> -->
+                    </li>
 
                 <?php endif; ?>
                 <!-- <div class="user-panel mb-1 d-flex"></div> -->
