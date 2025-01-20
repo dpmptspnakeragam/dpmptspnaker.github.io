@@ -67,7 +67,6 @@ class Pesan extends CI_Controller
         echo json_encode(['status' => $result ? 'success' : 'error']);
     }
 
-
     private function get_location_by_ip($ip)
     {
         // Contoh menggunakan ip-api (API gratis terbatas)
@@ -91,14 +90,15 @@ class Pesan extends CI_Controller
     {
         $last_id = $this->input->get('last_id');
         $device_id = $this->input->get('device_id');
+        $ipAddress = $this->input->ip_address(); // Menangkap alamat IP pengguna
 
         if (empty($device_id)) {
             echo json_encode([]);
             return;
         }
 
-        // Pastikan hanya mengambil pesan untuk user type = 'user'
-        $messages = $this->Model_pesan->get_messages($last_id, $device_id);
+        // Ambil pesan berdasarkan device_id dan ip_address
+        $messages = $this->Model_pesan->get_messages($last_id, $device_id, $ipAddress);
         echo json_encode($messages);
     }
 }

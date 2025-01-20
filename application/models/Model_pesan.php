@@ -28,10 +28,11 @@ class Model_pesan extends CI_Model
         return $this->db->insert('pesan', $data);
     }
 
-    public function get_messages($last_id, $device_id)
+    public function get_messages($last_id, $device_id, $ipAddress)
     {
         $this->db->where('id >', $last_id);
         $this->db->where('device_id', $device_id);
+        $this->db->where('ip_address', $ipAddress); // Tambahkan kondisi untuk alamat IP
         $this->db->order_by('id', 'ASC');
         $this->db->order_by('created_at', 'ASC');
         $query = $this->db->get('pesan');
