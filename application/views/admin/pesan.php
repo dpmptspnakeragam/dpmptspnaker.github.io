@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <textarea id="message-input" placeholder="Tulis balasan..." class="form-control"></textarea>
-                                        <button type="button" class="btn btn-block btn-outline-primary" onclick="sendMessage()">Kirim</button>
+                                        <button type="button" class="btn btn-block btn-outline-danger" onclick="sendMessage()">Balas Pesan</button>
                                     </div>
                                 </div>
                             </div>
