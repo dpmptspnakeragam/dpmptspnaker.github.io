@@ -1700,7 +1700,7 @@
         <img src="<?= base_url('assets/img/admin-avatar.png'); ?>" alt="Admin Avatar" class="chat-avatar">
         <div>
             <div>
-                (Pesan Otomatis) Jika pesan sedang berlangsung, diharapkan tetap di halaman ini. Terima kasih :)
+               Mohon tunggu beberapa menit, Admin segera membalas. Terima kasih.
             </div>
             <small class="message-date admin-date">
                 ${new Date(currentTime).toLocaleString('id-ID', {
@@ -1717,6 +1717,7 @@
 
 		// Tambahkan pesan 1 dan pesan 2 di akhir chat
 		chatBody.appendChild(welcomeMessage1);
+		chatBody.appendChild(welcomeMessage2);
 		// chatBody.appendChild(welcomeMessage2);
 
 		// Scroll otomatis ke bawah agar pesan terlihat
