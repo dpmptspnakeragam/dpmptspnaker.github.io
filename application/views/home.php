@@ -1524,13 +1524,14 @@
 	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered chat-modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="chatModalLabel">Chat with Admin</h5>
+				<h5 class="modal-title" id="chatModalLabel">
+					Chat with Admin
+				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeChat()">
 					<span class="text-white bonr" aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body" id="chat-body">
-				<!-- Pesan Selamat Datang akan muncul di sini -->
 			</div>
 			<div class="modal-footer">
 				<input type="file" id="image-input" class="form-control border-0" accept="image/*">
@@ -1541,6 +1542,10 @@
 	</div>
 </div>
 
+
+<style>
+
+</style>
 <!-- JavaScript for Chat Modal -->
 <script>
 	let lastMessageId = 0;
@@ -1558,7 +1563,13 @@
 
 		fetch(`<?= base_url('pesan/load_messages'); ?>?last_id=${lastMessageId}&device_id=${device_id}`)
 			.then(response => response.json())
-			.then(messages => {
+			.then(data => {
+				const {
+					messages,
+					admins
+				} = data;
+
+				// Tambahkan pesan baru ke dalam chat
 				if (messages.length > 0) {
 					let newMessageAdded = false;
 					messages.forEach(message => {
@@ -1580,7 +1591,11 @@
 						});
 
 						messageDiv.innerHTML = `
-                        <img src="${avatarSrc}" alt="${message.user_type === 'admin' ? 'Admin' : 'User'} Avatar" class="chat-avatar">
+                        <div class="chat-avatar-wrapper">
+                            <img src="${avatarSrc}" alt="${message.user_type === 'admin' ? 'Admin' : 'User'} Avatar" class="chat-avatar">
+                            ${message.user_type === 'admin' && admins.length > 0 ?
+                                `<span class="online-status ${admins[0].online ? 'online' : 'offline'}"></span>` : ''}
+                        </div>
                         <div>
                             <div>${message.message}</div>
                             ${message.image_url ? `<img src="${message.image_url}" alt="Image" class="chat-image">` : ''}
@@ -1603,9 +1618,8 @@
 			.catch(error => console.error('Gagal memuat pesan:', error));
 	}
 
-	// Fungsi untuk mengirim pesan
 	function sendMessage() {
-		if (isSending) return; // Mencegah pengiriman ganda
+		if (isSending) return;
 
 		const message = document.getElementById('message-input').value.trim();
 		const imageFile = document.getElementById('image-input').files[0];
@@ -1616,7 +1630,7 @@
 			return;
 		}
 
-		isSending = true; // Mengatur status pengiriman
+		isSending = true;
 		sendButton.disabled = true;
 		sendButton.innerHTML = 'Mengirim...';
 
@@ -1654,7 +1668,7 @@
 						alert('Terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.');
 					})
 					.finally(() => {
-						isSending = false; // Reset status pengiriman
+						isSending = false;
 						sendButton.disabled = false;
 						sendButton.innerHTML = 'Kirim';
 					});
@@ -1667,11 +1681,9 @@
 			});
 	}
 
-	// Fungsi untuk menampilkan pesan sambutan di akhir chat
 	function showWelcomeMessage() {
 		const currentTime = new Date().getTime();
 
-		// Pesan 1
 		const welcomeMessage1 = document.createElement('div');
 		welcomeMessage1.className = 'chat-message admin-message';
 		welcomeMessage1.innerHTML = `
@@ -1693,7 +1705,6 @@
         </div>
     `;
 
-		// Pesan 2
 		const welcomeMessage2 = document.createElement('div');
 		welcomeMessage2.className = 'chat-message admin-message';
 		welcomeMessage2.innerHTML = `
@@ -1715,35 +1726,28 @@
         </div>
     `;
 
-		// Tambahkan pesan 1 dan pesan 2 di akhir chat
 		chatBody.appendChild(welcomeMessage1);
 		chatBody.appendChild(welcomeMessage2);
-		// chatBody.appendChild(welcomeMessage2);
 
-		// Scroll otomatis ke bawah agar pesan terlihat
 		chatBody.scrollTop = chatBody.scrollHeight;
 	}
 
-	// Event Listener untuk membuka modal
 	chatButton.addEventListener('click', function() {
 		const chatModal = new bootstrap.Modal(document.getElementById('chat-modal'));
 		chatModal.show();
 
-		// Tambahkan sedikit delay untuk memastikan modal ditampilkan sepenuhnya
 		setTimeout(() => {
-			loadNewMessages(); // Memuat pesan dari server
-			showWelcomeMessage(); // Tambahkan pesan sambutan setiap kali modal dibuka
+			loadNewMessages();
+			showWelcomeMessage();
 		}, 500);
 
-		// Cek apakah interval sudah berjalan
 		if (!intervalId) {
 			intervalId = setInterval(loadNewMessages, 5000);
 		}
 	});
 
-	// Bersihkan interval ketika modal ditutup (opsional)
 	document.getElementById('chat-modal').addEventListener('hidden.bs.modal', function() {
-		if (intervalId) clearInterval(intervalId); // Hentikan interval ketika modal ditutup
+		if (intervalId) clearInterval(intervalId);
 	});
 </script>
 

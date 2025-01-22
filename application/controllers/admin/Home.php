@@ -7,6 +7,8 @@ class Home extends CI_controller
         if ($this->session->userdata('username') == "") {
             redirect('login');
         }
+
+        $this->load->model('Model_user');
     }
 
     public function index()
@@ -22,8 +24,12 @@ class Home extends CI_controller
 
     public function logout()
     {
-        $this->session->unset_userdata('username');
-        session_destroy();
+        $id = $this->session->userdata('id');
+        if ($id) {
+            $this->Model_user->update_online_status($id, 0);
+        }
+
+        $this->session->sess_destroy();
         redirect('login');
     }
 }

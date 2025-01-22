@@ -198,4 +198,14 @@ class Model_pesan extends CI_Model
             ->where('device_id', $device_id)  // Hanya hapus pesan dengan device_id ini
             ->delete('pesan');
     }
+
+    public function get_online_admins()
+    {
+        $this->db->select('id, nama, online');
+        $this->db->from('user');
+        $this->db->where('nama', 'Administrator');
+        $this->db->where('online', 1);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

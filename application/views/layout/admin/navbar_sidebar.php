@@ -48,7 +48,7 @@
         <!-- Nav Item - User Role -->
         <li class="nav-item">
             <span class="nav-link active">
-                <?= $this->session->userdata('nama') ?>
+                <?= $this->session->userdata('online') == 1 ? '<span style="color:green;">Online</span>' : '<span style="color:gray;">Offline</span>'; ?>
             </span>
         </li>
     </ul>

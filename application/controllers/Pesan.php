@@ -90,15 +90,19 @@ class Pesan extends CI_Controller
     {
         $last_id = $this->input->get('last_id');
         $device_id = $this->input->get('device_id');
-        $ipAddress = $this->input->ip_address(); // Menangkap alamat IP pengguna
+        $ipAddress = $this->input->ip_address();
 
         if (empty($device_id)) {
             echo json_encode([]);
             return;
         }
 
-        // Ambil pesan berdasarkan device_id dan ip_address
         $messages = $this->Model_pesan->get_messages($last_id, $device_id, $ipAddress);
-        echo json_encode($messages);
+        $admins = $this->Model_pesan->get_online_admins();
+
+        echo json_encode([
+            'messages' => $messages,
+            'admins' => $admins,
+        ]);
     }
 }
