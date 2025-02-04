@@ -1524,9 +1524,13 @@
 	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered chat-modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="chatModalLabel">
-					Chat with Admin
-				</h5>
+				<h5 class="modal-title" id="chatModalLabel">Chat with Admin</h5>
+				<div class="admin-status">
+					<span class="status-indicator <?= $adminonline ? 'online' : 'offline'; ?>"></span>
+					<span class="status-text <?= $adminonline ? 'online' : 'offline'; ?>">
+						<?= $adminonline ? 'Online' : 'Offline'; ?>
+					</span>
+				</div>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeChat()">
 					<span class="text-white bonr" aria-hidden="true">&times;</span>
 				</button>
@@ -1542,10 +1546,6 @@
 	</div>
 </div>
 
-
-<style>
-
-</style>
 <!-- JavaScript for Chat Modal -->
 <script>
 	let lastMessageId = 0;
@@ -1727,7 +1727,7 @@
     `;
 
 		chatBody.appendChild(welcomeMessage1);
-		chatBody.appendChild(welcomeMessage2);
+		// chatBody.appendChild(welcomeMessage2);
 
 		chatBody.scrollTop = chatBody.scrollHeight;
 	}

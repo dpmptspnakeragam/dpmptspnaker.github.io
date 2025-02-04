@@ -207,3 +207,41 @@
     background-color: #f44336;
     /* Warna merah untuk offline */
 }
+
+/* Status Pesan Onlien atau Offline */
+.admin-status {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left: 4px;
+}
+
+.status-indicator.online {
+    background-color: #4CAF50;
+    /* Hijau untuk online */
+}
+
+.status-indicator.offline {
+    background-color: #f44336;
+    /* Merah untuk offline */
+}
+
+.status-text {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status-text.online {
+    color: #4CAF50;
+}
+
+.status-text.offline {
+    color: #f44336;
+}

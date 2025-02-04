@@ -32,6 +32,8 @@ class Home extends CI_Controller
 
 		$this->load->model('Model_standar_pelayanan');
 		$this->load->model('admin/Model_skm_gambar');
+
+		$this->load->model('Model_pesan');
 	}
 
 	public function index()
@@ -107,6 +109,8 @@ class Home extends CI_Controller
 
 			'pdf' 					=> $this->Model_standar_pelayanan->tampil_data(),
 			'skm_gambar'			=> $this->Model_skm_gambar->tampil_data(),
+
+			'adminonline'			=> $this->Model_pesan->get_online_admins()
 		];
 
 		// $data['grafik_tahun'] = $this->Model_grafik_izin_tahun->tampil_data();
@@ -226,7 +230,6 @@ class Home extends CI_Controller
 
 		redirect('#pengaduan');
 	}
-
 
 	public function clear_flashdata()
 	{
