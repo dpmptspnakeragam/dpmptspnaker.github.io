@@ -99,7 +99,8 @@
                                     data: {
                                         labels: <?= $nama_izin_json; ?>,
                                         datasets: [{
-                                            label: "Data Izin Keluar Tahun " + new Date().getFullYear(),
+                                            // label: "Jumlah " + new Date().getFullYear(),
+                                            label: "Jumlah",
                                             backgroundColor: 'rgba(219, 22, 47, 0.7)', // Warna batang
                                             borderColor: 'rgba(219, 22, 47, 1)', // Warna garis tepi
                                             borderWidth: 1,
