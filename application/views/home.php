@@ -1532,7 +1532,7 @@
 					</span>
 				</div>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeChat()">
-					<span class="text-white bonr" aria-hidden="true">&times;</span>
+					<span class="text-white" aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body" id="chat-body">

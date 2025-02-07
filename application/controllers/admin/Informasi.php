@@ -53,7 +53,7 @@ class Informasi extends CI_controller
             'id_berita' => $id_berita,
             'id_kategori' => $id_kategori,
             'judul_berita' => $judul_berita,
-            // 'rangkuman' => $rangkuman,
+            'rangkuman' => $judul_berita,
             'isi_berita' => $isi_berita,
             'tgl_berita' => $tgl_berita,
             'gambar' => $gambar
@@ -108,7 +108,7 @@ class Informasi extends CI_controller
         $data = array(
             'id_kategori' => $id_kategori,
             'judul_berita' => $judul_berita,
-            // 'rangkuman' => $rangkuman,
+            'rangkuman' => $judul_berita,
             'isi_berita' => $isi_berita,
             'tgl_berita' => $tgl_berita,
             'gambar' => $gambar_baru

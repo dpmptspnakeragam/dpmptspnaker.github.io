@@ -103,10 +103,10 @@
     }
 }
 
-.modal-body {
+/* .modal-body {
     overflow-y: auto;
     max-height: 250px;
-}
+} */
 
 .chat-message {
     display: flex;
