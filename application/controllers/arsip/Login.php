@@ -39,14 +39,17 @@ class Login extends CI_Controller
         $user = $this->db->get_where('arsip_user', ['username' => $username])->row();
 
         if ($user && password_verify($password, $user->password)) {
+
+            $this->ModelLogin->update_online_status($user->id_user, 1);
+
             $this->session->set_userdata([
                 'id_user' => $user->id_user,
                 'username' => $user->username,
                 'role' => $user->role,
+                'nama' => $user->nama,
+                'online' => 1,
                 'logged_in' => TRUE,
             ]);
-
-            $this->ModelLogin->update_online_status($user->id_user, 1);
 
             $this->session->set_flashdata('success', 'Login berhasil.');
             redirect('arsip/dashboard');
@@ -54,6 +57,19 @@ class Login extends CI_Controller
             $this->session->set_flashdata('error', 'Username atau password salah.');
             redirect('arsip');
         }
+    }
+
+
+    public function logout()
+    {
+        $user_id = $this->session->userdata('id_user');
+
+        if ($user_id) {
+            $this->ModelLogin->update_online_status($user_id, 0);
+        }
+
+        $this->session->sess_destroy();
+        redirect('arsip');
     }
 }
 
